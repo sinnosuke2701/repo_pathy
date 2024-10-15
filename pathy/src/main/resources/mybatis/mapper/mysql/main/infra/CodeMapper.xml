@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shinnosuke.infra.code.CodeDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.shinnosuke.infra.code.CodeDto" id="resultMapObj"></resultMap>
+	
+	<sql id="selectCommon">
+		from
+			Code a
+		left join
+			codegroup b
+		on
+			a.CodeGroup_seq = b.cgseq
+		WHERE 1=1		
+		<if test="sh_DelNY != null and !sh_DelNY.equals('')">And cd_DelNY = #{sh_DelNY}</if>
+		<if test="sh_UseNY != null and !sh_UseNY.equals('')">And cd_UseNY = #{sh_UseNY}</if>
+		
+		<choose>
+			<when test="sh_Option == 1 ">AND CodeGroup_seq = #{sh_Value}</when>
+			<when test="sh_Option == 2 ">AND cg_Name LIKE CONCAT('%',#{sh_Value},'%')</when>
+			<when test="sh_Option == 3 ">AND a.cdseq = #{sh_Value}</when> 
+			<when test="sh_Option == 4 ">AND cd_Name LIKE CONCAT('%',#{sh_Value},'%')</when> 
+		</choose>
+		
+		<choose>
+			<when test="sh_OptionDate == 1">AND a.cd_ReDate BETWEEN #{sh_DateStart} AND #{sh_DateEnd}</when>
+			<when test="sh_OptionDate == 2">AND a.cd_MoDate BETWEEN #{sh_DateStart} AND #{sh_DateEnd}</when>
+		</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		select aa.* from (
+			select
+				a.cdseq
+				,a.cd_Name
+				,a.cd_UseNY
+				,a.cd_Order
+				,a.cd_Desc
+				,a.cd_ReDate
+				,a.cd_MoDate
+				,a.cd_DelNY
+				,a.CodeGroup_seq
+				,b.cg_Name
+				,b.cgseq
+		<include refid="selectCommon"></include>
+		Order By a.cdseq desc
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon"></include>
+	</select>
+	
+	<select id = "selectOne" resultMap="resultMapObj">
+		select
+			a.cdseq
+			,a.cd_Name
+			,a.cd_UseNY
+			,a.cd_Order
+			,a.cd_Desc
+			,a.cd_ReDate
+			,a.cd_MoDate
+			,a.cd_DelNY
+			,a.CodeGroup_seq	
+		from
+			Code a
+		where 1 =1
+			and a.cdseq = #{cdseq}		
+	</select>
+	
+	<insert id="insert">
+		insert into code(
+    		 cd_Name       
+			 ,cd_UseNY       
+			 ,cd_Order       
+			 ,cd_Desc           
+			 ,cd_ReDate           
+			 ,cd_MoDate       
+			 ,cd_DelNY   
+			 ,CodeGroup_seq	
+		)values(
+    		#{cd_Name}
+    		,#{cd_UseNY}
+    		,#{cd_Order}
+    		,#{cd_Desc}
+         	,now()
+    		,now()
+    		,0
+			,#{CodeGroup_seq}			
+		)
+		<selectKey resultType="String" keyProperty="cdseq" order="AFTER">
+			SELECT last_Insert_id()
+		</selectKey>
+	</insert>
+	
+		
+	<update id="update">
+		update Code
+		set
+			cd_Name = #{cd_Name}
+			,cd_UseNY = #{cd_UseNY}
+			,cd_Order = #{cd_Order}
+			,cd_Desc = #{cd_Desc}
+			,cd_DelNY = #{cd_DelNY}
+			,CodeGroup_seq = #{CodeGroup_seq}
+		where 1 = 1
+			and cdseq = #{cdseq}
+	</update>
+	
+	<select id="selectListCodeGroup" resultMap="resultMapObj">
+		select
+			a.cgseq as CodeGroup_seq
+			,a.cg_Name
+		from
+			CodeGroup a
+		where 1=1
+			
+	</select>
+	
+	<update id="uelete">
+		update Code
+		set
+			cd_DelNY = 1
+		where 1 = 1
+			and cdseq = #{cdseq}
+	</update>
+	
+	<delete id="delete">
+		delete from code
+		where 1=1
+			and cdseq = #{cdseq}
+	</delete>
+	
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			cdSeq
+			,cd_Name
+			,CodeGroup_seq
+		FROM
+			Code
+		WHERE 1=1
+			AND cd_DelNY = 0
+		    AND cd_UseNY = 1
+   </select>
+	
+	
+</mapper>
