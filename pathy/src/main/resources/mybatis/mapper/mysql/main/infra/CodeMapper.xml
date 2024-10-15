@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.shinnosuke.infra.code.CodeDao">
+<mapper namespace="com.pathy.infra.code.CodeDao">
 	<!-- namespace = mapper 와 연결될 dao -->
 	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
 
 	<!-- resultMap : 결과를 담아줄 그으르읏 -->
-	<resultMap type="com.shinnosuke.infra.code.CodeDto" id="resultMapObj"></resultMap>
+	<resultMap type="com.pathy.infra.code.CodeDto" id="resultMapObj"></resultMap>
 	
 	<sql id="selectCommon">
 		from
