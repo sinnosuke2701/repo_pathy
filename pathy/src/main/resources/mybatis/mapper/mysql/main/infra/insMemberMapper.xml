@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pathy.infra.insmember.InsMemberDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.pathy.infra.insmember.InsMemberDto" id="resultMapObj"></resultMap>
+	
+	<sql id="selectCommon">
+		from
+			insMember a
+		where 1 = 1
+		<if test="shDelNY != null and !shDelNY.equals('')">And insmDelNY = #{shDelNY}</if>
+		<if test="shUseNY != null and !shUseNY.equals('')">And insmUseNY = #{shUseNY}</if>
+		
+		<choose>
+			<when test="shOptionDate == 1">AND a.insmDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.insmDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == 1">AND a.insmSeq = #{shValue}</when> 
+			<when test="shOption == 2">AND insmName LIKE CONCAT('%',#{shValue},'%') AND insmName = #{shValue}</when>
+			<when test="shOption == 3">AND insmOrder = #{shValue}</when>
+		</choose>
+	</sql>
+		
+	<select id="selectList" resultMap="resultMapObj">
+		select aa.* from (
+			select
+				a.insmSeq
+				,a.insmName
+				,a.insmOrder
+				,a.insmGender
+				,a.insmId
+				,a.insmEmail
+				,a.insmPw
+				,a.insmSoNum
+				,a.insmPhone
+				,a.insmDesc
+				,a.insmDateTimeReg
+				,a.insmDateTimeEdit
+				,a.insmUseNY
+				,a.insmDelNY
+				,a.insmZipNum
+				,a.insmAdr
+				,a.insmAdrDt
+<!-- 				,(select count(b.CodeGroup_seq) from code b where 1 = 1 and b.CodeGroup_seq = a.cgseq) as codeGroupCount -->
+		<include refid="selectCommon"></include>
+		Order By a.insmSeq desc
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+		
+	</select>
+		
+		
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon"></include>
+	</select>
+	
+	
+	<select id = "selectOne" resultMap="resultMapObj">
+		select
+			a.insmSeq
+			,a.insmName
+			,a.insmOrder
+			,a.insmGender
+			,a.insmId
+			,a.insmEmail
+			,a.insmPw
+			,a.insmSoNum
+			,a.insmPhone
+			,a.insmDesc
+			,a.insmDateTimeReg
+			,a.insmDateTimeEdit
+			,a.insmUseNY
+			,a.insmDelNY
+			,a.insmZipNum
+			,a.insmAdr
+			,a.insmAdrDt
+		from
+			insMember a
+		where 1 =1
+			and a.insmSeq = #{insmSeq}		
+	</select>
+	
+	<insert id = "insert">
+		insert into insMember(
+			insmName
+			,insmOrder
+			,insmGender
+			,insmId
+			,insmEmail
+			,insmPw
+			,insmSoNum
+			,insmPhone
+			,insmDesc
+			,insmDateTimeReg
+			,insmDateTimeEdit
+			,insmUseNY
+			,insmDelNY
+			,insmZipNum
+			,insmAdr
+			,insmAdrDt
+		)values(
+    		#{insmName}
+    		,#{insmOrder}
+    		,#{insmGender}
+    		,#{insmId}
+    		,#{insmEmail}
+    		,#{insmPw}
+    		,#{insmSoNum}
+    		,#{insmPhone}
+    		,#{insmDesc}
+    		,now()
+    		,now()
+    		,#{insmUseNY}
+    		,0
+    		,#{insmZipNum}
+    		,#{insmAdr}
+    		,#{insmAdrDt}
+		)
+		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
+			SELECT last_Insert_id()
+		</selectKey>
+	</insert>
+		
+		
+	<update id="update">
+		update insMember
+		set
+			insmName = #{insmName}
+			,insmOrder = #{insmOrder}
+			,insmGender = #{insmGender}
+			,insmId = #{insmId}
+			,insmEmail = #{insmEmail}
+			,insmPw = #{insmPw}
+			,insmSoNum = #{insmSoNum}
+			,insmPhone = #{insmPhone}
+			,insmDesc = #{insmDesc}
+			,insmUseNY = #{insmUseNY}
+			,insmDelNY = #{insmDelNY}
+			,insmZipNum = #{insmZipNum}
+			,insmAdr = #{insmAdr}
+			,insmAdrDt = #{insmAdrDt}
+		where 1 = 1
+			and insmSeq = #{insmSeq}
+	</update>
+		
+	<delete id="delete">
+		delete from insMember
+		where 1=1
+			and insmSeq = #{insmSeq}
+	</delete>
+		
+	<update id="uelete">
+		update insMember
+		set
+			insmDelNY = 1
+		where 1 = 1
+			and insmSeq = #{insmSeq}
+	</update>
+	
+	
+	</mapper>
