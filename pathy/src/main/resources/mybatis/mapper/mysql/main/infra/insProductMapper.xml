@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pathy.infra.insProduct.InsProductDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.pathy.infra.insProduct.InsProductDto" id="resultMapObj"></resultMap>
+	
+	<!-- include S -->
+	<sql id="selectCoinspon">
+		FROM
+			insProduct AS a
+		WHERE 1 = 1
+			<if test="shDelNy != null and !shDelNy.equals('')">AND inspDelNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND inspSeq = #{shValue}</when>
+				<when test="shOption == 2">AND inspName LIKE CONCAT('%', #{shValue}, '%')</when>
+			</choose>
+			<choose>
+				<when test="shOptionDate == 1">AND inspDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 2">AND inspDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			</choose>
+	</sql>
+	<!-- include E -->
+	
+	<!-- count S -->
+	<select id="selectOneCount">
+		SELECT COUNT(*)
+		<include refid="selectCoinspon" />
+	</select>
+	<!-- count E -->
+	
+	<!-- selectList S -->
+	<select id="selectList" resultMap="resultMapObj">
+	SELECT aa.* FROM(
+			SELECT
+				a.inspSeq
+				,a.inspName
+				,a.inspBojang
+				,a.inspJogun
+				,a.inspPrice
+				,a.inspBohumDateStart
+				,a.inspBohumDateEnd
+				,a.inspBojangDateStart
+				,a.inspBojangDateEnd
+				,a.inspPaper
+				,a.inspDelNy
+				,a.inspDateTimeReg
+				,a.inspDateTimeEdit
+			<include refid="selectCoinspon" />
+			ORDER BY
+				a.inspSeq DESC
+			) aa
+			limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+	<!-- selectList E -->
+	
+	<!-- insert S -->
+	<insert id="insert">
+		INSERT INTO insProduct(
+			a.inspName
+			,a.inspBojang
+			,a.inspJogun
+			,a.inspPrice
+			,a.inspBohumDateStart
+			,a.inspBohumDateEnd
+			,a.inspBojangDateStart
+			,a.inspBojangDateEnd
+			,a.inspPaper
+			,a.inspDelNy
+			,a.inspDateTimeReg
+			,a.inspDateTimeEdit
+		)
+		VALUE(
+			#{inspName}
+		    ,#{inspBojang}
+		    ,#{inspJogun}
+		    ,#{inspPrice}
+		    ,#{inspBohumDateStart}
+		    ,#{inspBohumDateEnd}
+		    ,#{inspBojangDateStart}
+		    ,#{inspBojangDateEnd}
+		    ,#{inspPaper}
+		    ,0
+		    ,now()
+		    ,now()
+		)
+		<selectKey resultType="String" keyProperty="inspSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	<!-- insert E -->
+	
+	<!-- selectOne S -->
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.inspSeq
+			,a.inspName
+			,a.inspBojang
+			,a.inspJogun
+			,a.inspPrice
+			,a.inspBohumDateStart
+			,a.inspBohumDateEnd
+			,a.inspBojangDateStart
+			,a.inspBojangDateEnd
+			,a.inspPaper
+			,a.inspDelNy
+			,a.inspDateTimeReg
+			,a.inspDateTimeEdit
+		FROM
+			insProduct AS a
+		WHERE 1 = 1
+			AND a.inspSeq = #{inspSeq}
+	</select>
+	<!-- selectOne E -->
+	
+	<!-- update S -->
+	<update id="update">
+		UPDATE insProduct
+			SET
+				inspName = #{inspName}
+				,inspBojang = #{inspBojang}
+				,inspJogun = #{inspJogun}
+				,inspPrice = #{inspPrice}
+				,inspBohumDateStart = #{inspBohumDateStart}
+				,inspBohumDateEnd = #{inspBohumDateEnd}
+				,inspBojangDateStart = #{inspBojangDateStart}
+				,inspBojangDateEnd = #{inspBojangDateEnd}
+				,inspPaper = #{inspPaper}
+				,inspDelNy = 0
+				,inspDateTimeReg = now()
+				,inspDateTimeEdit = now()
+			WHERE 1 = 1
+				AND inspSeq = #{inspSeq}
+	</update>
+	<!-- update E -->
+	
+	<!-- uelete S -->
+	<update id="uelete">
+		UPDATE insProduct
+			SET
+				inspDelNy = 1
+			WHERE 1 = 1
+				AND inspSeq = #{inspSeq}
+	</update>
+	<!-- uelete E -->
+	
+	<!-- delete S -->
+	<delete id="delete">
+		DELETE FROM insProduct
+			WHERE 1 = 1
+			AND inspSeq = #{inspSeq}
+	</delete>
+	<!-- delete E -->
+	
+	<!-- selectOneLogin S -->
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT
+			a.inspSeq
+			,a.inspId
+			,a.inspPw
+			,a.inspName
+		FROM
+			insProduct AS a
+		WHERE 1 = 1
+			AND a.inspId = #{inspId}
+			AND a.inspPw = #{inspPw}
+	</select>
+	<!-- selectOneLogin E -->
+
+</mapper>
