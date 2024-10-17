@@ -1,6 +1,6 @@
-package com.pathy.infra.code;
+package com.pathy.infra.customer;
 
-public class CodeVo {
+public class CustomerVo {
 	
 	//검색조
 	private Integer sh_DelNY;
