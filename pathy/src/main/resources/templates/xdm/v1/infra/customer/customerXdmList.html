@@ -556,8 +556,8 @@
                             </ol>
                             <!-- Breadcrumb end -->
 
-                            <h2>Code</h2>
-						<form method="post" action="/xdm/v1/infra/code/codeXdmList" name="formList">
+                            <h2>Customer</h2>
+						<form method="post" action="/xdm/v1/infra/customer/customerXdmList" name="formList">
 							<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 							<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
                                 <table>
@@ -565,34 +565,34 @@
                                         <tr>
                                             <th>
                                                 <select class="form-select" aria-label="Default select example"
-                                                    style="width: 200px;" name="sh_DelNY" id="sh_DelNY">
-                                                    <option value="" th:selected="${vo.sh_DelNY == null}">삭제여부</option>
-                                                    <option value="0" th:selected="${vo.sh_DelNY == 0}">N</option>
-                                                    <option value="1" th:selected="${vo.sh_DelNY == 1}">Y</option>
+                                                    style="width: 200px;" name="shDelNY" id="shDelNY">
+                                                    <option value="" th:selected="${vo.shDelNY == null}">삭제여부</option>
+                                                    <option value="0" th:selected="${vo.shDelNY == 0}">N</option>
+                                                    <option value="1" th:selected="${vo.shDelNY == 1}">Y</option>
                                                 </select>
                                             </th>
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
-                                                    style="width: 200px;" name="sh_UseNY" id="sh_UseNY">
-                                                    <option value="" th:selected="${vo.sh_UseNY == null}">사용여부</option>
-                                                    <option value="0" th:selected="${vo.sh_UseNY == 0}">N</option>
-                                                    <option value="1" th:selected="${vo.sh_UseNY == 1}">Y</option>
+                                                    style="width: 200px;" name="shUseNY" id="shUseNY">
+                                                    <option value="" th:selected="${vo.shUseNY == null}">사용여부</option>
+                                                    <option value="0" th:selected="${vo.shUseNY == 0}">N</option>
+                                                    <option value="1" th:selected="${vo.shUseNY == 1}">Y</option>
                                                 </select>
                                             </td>
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
-                                                    style="width: 200px;" name="sh_OptionDate" id="sh_OptionDate">
-                                                    <option value="" th:selected="${vo.sh_OptionDate == null}">날짜</option>
-                                                    <option value="1" th:selected="${vo.sh_OptionDate == 0}">등록일</option>
-                                                    <option value="2" th:selected="${vo.sh_OptionDate == 1}">수정일</option>
+                                                    style="width: 200px;" name="shOptionDate" id="shOptionDate">
+                                                    <option value="" th:selected="${vo.shOptionDate == null}">날짜</option>
+                                                    <option value="1" th:selected="${vo.shOptionDate == 0}">등록일</option>
+                                                    <option value="2" th:selected="${vo.shOptionDate == 1}">수정일</option>
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="text" id="sh_DateStart" name="sh_DateStart" th:value="${#strings.substring(vo.sh_DateStart, 0, 10)}" autocomplete="off" placeholder="시작일" 
+                                                <input type="text" id="shDateStart" name="shDateStart" th:value="${#strings.substring(vo.shDateStart, 0, 10)}" autocomplete="off" placeholder="시작일" 
                                                     style="border-radius: 5px; border: 1px solid rgb(170, 176, 187);padding: 5px; box-sizing: border-box; width: 200px; height: 40px;">
                                             </td>
                                             <td>
-                                                <input type="text" id="sh_DateEnd" name="sh_DateEnd" th:value="${#strings.substring(vo.sh_DateEnd, 0, 10)}" autocomplete="off" placeholder="마감일" 
+                                                <input type="text" id="shDateEnd" name="shDateEnd" th:value="${#strings.substring(vo.shDateEnd, 0, 10)}" autocomplete="off" placeholder="마감일" 
                                                     style="border-radius: 5px; border: 1px solid rgb(170, 176, 187);padding: 5px; box-sizing: border-box; width: 200px; height: 40px;">
                                             </td>
                                         </tr>
@@ -601,16 +601,16 @@
                                         <tr>
                                             <th>
                                                 <select class="form-select" aria-label="Default select example"
-                                                    style="width: 200px;" name="sh_Option">
-                                                    <option value="" th:selected="${vo.sh_Option == null}">검색구분</option>
-                                                    <option value="1" th:selected="${vo.sh_Option == 1}">코드그룹 코드</option>
-                                                    <option value="2" th:selected="${vo.sh_Option == 2}">코드그룹 이름</option>
-                                                    <option value="3" th:selected="${vo.sh_Option == 3}">코드</option>
-                                                    <option value="4" th:selected="${vo.sh_Option == 4}">코드 이름</option>
+                                                    style="width: 200px;" name="shOption">
+                                                    <option value="" th:selected="${vo.shOption == null}">검색구분</option>
+                                                    <option value="1" th:selected="${vo.shOption == 1}">코드그룹 코드</option>
+                                                    <option value="2" th:selected="${vo.shOption == 2}">코드그룹 이름</option>
+                                                    <option value="3" th:selected="${vo.shOption == 3}">코드</option>
+                                                    <option value="4" th:selected="${vo.shOption == 4}">코드 이름</option>
                                                 </select>
                                             </th>
                                             <td>
-                                                <input type="text" placeholder="검색어" name="sh_Value" id="sh_Value" th:value="${vo.sh_Value}" autocomplete="off"
+                                                <input type="text" placeholder="검색어" name="shValue" id="shValue" th:value="${vo.shValue}" autocomplete="off"
                                                     style="border-radius: 5px; border: 1px solid rgb(170, 176, 187);padding: 5px; box-sizing: border-box; width: 200px; height: 40px;">
                                             </td>
                                             <td><button type="submit">🔍</button>
@@ -633,7 +633,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='11' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='19' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -651,38 +651,55 @@
                                                         <tr>
                                                         	<td><input type="checkbox"</td>
                                                         	<td>#</td>
-                                                            <td>코드그룹 코드</td>
-                                                            <td>코드그룹 이름</td>
-                                                            <td>코드</td>
-                                                            <td>코드 이름</td>
-                                                            <td>사용여부</td>
-                                                            <td>순서</td>
+                                                            <td>이름</td>
+                                                            <td>순</td>
+                                                            <td>성별</td>
+                                                            <td>아이디</td>
+                                                            <td>이메일</td>
+                                                            <td>비밀번호</td>
+                                                            <td>주민번호</td>
+                                                            <td>전화번호</td>
                                                             <td>설명</td>
                                                             <td>등록일</td>
                                                             <td>수정일</td>
+                                                            <td>사용여부</td>
                                                             <td>삭제여부</td>
+                                                            <td>우편번호</td>
+                                                            <td>주소</td>
+                                                            <td>상세주소</td>
+                                                            <td>계좌번호</td>
+                                                            <td>은행</td>
                                                         </tr>
-                                                        <tr th:if="${#lists.isEmpty(list1)}">
-                                                        	<td colspan="12" style="text-align: center;">
+                                                        <tr th:if="${#lists.isEmpty(list)}">
+                                                        	<td colspan="19" style="text-align: center;">
                                                         		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
                                                         	</td>
                                                         </tr>
                                                         
-                                                        <tr th:each="List : ${list1}">
+                                                        <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox"></td>
-                                                        	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td>
-                                                            <td th:text = "${List.CodeGroup_seq}"></td>
-                                                            <td th:text = "${List.cg_Name}"></td>
-                                                            <td th:text = "${List.cdseq}"><input type="checkbox"></td>
-                                                            <td><a th:href="@{/xdm/v1/infra/code/codeXdmMfom(cdseq=${List.cdseq})}" th:text="${List.cd_Name}"></a></td>
-                                                            <td th:if = "${List.cd_UseNY eq 0}">N</td>
-                                                            <td th:unless="${List.cd_UseNY eq 0}">Y</td>
-                                                            <td th:text = "${List.cd_Order}"></td>
-                                                            <td th:text = "${List.cd_Desc}"></td>
-                                                            <th th:text = "${#dates.format(List.cd_ReDate, 'yyyy-MM-dd HH:mm:ss')}"></th>
-                                                            <td th:text = "${#dates.format(List.cd_MoDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:if = "${List.cd_DelNY eq 0}">N</td>
-                                                            <td th:unless = "${List.cd_DelNY eq 0}">Y</td>
+<!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
+                                                            <td th:text = "${list.cmSeq}"></td>
+                                                            <td><a th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}" th:text="${list.cmName}"></a></td>
+                                                            <td th:text = "${list.cmOrder}"></td>
+                                                            <td th:text = "${list.cmGender}"></td>
+                                                            <td th:text = "${list.cmId}"></td>
+                                                            <td th:text = "${list.cmEmail}"></td>
+                                                            <td th:text = "${list.cmPw}"></td>
+                                                            <td th:text = "${list.cmSoNum}"></td>
+                                                            <td th:text = "${list.cmPhone}"></td>
+                                                            <td th:text = "${list.cmDesc}"></td>
+                                                            <th th:text = "${#dates.format(list.cmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
+                                                            <td th:text = "${#dates.format(list.cmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                                            <td th:if = "${list.cmUseNY eq 0}">N</td>
+                                                            <td th:unless="${list.cmUseNY eq 0}">Y</td>
+                                                            <td th:if = "${list.cmDelNY eq 0}">N</td>
+                                                            <td th:unless = "${list.cmDelNY eq 0}">Y</td>
+                                                            <td th:text = "${list.cmZipNum}"></td>
+                                                            <td th:text = "${list.cmAdr}"></td>
+                                                            <td th:text = "${list.cmAdrDt}"></td>
+                                                            <td th:text = "${list.cmAcc}"></td>
+                                                            <td th:text = "${list.cmBank}"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -816,7 +833,7 @@
 			
 			$.datetimepicker.setLocale('ko');
 
-			$("#sh_DateStart, #sh_DateEnd").datetimepicker({
+			$("#shDateStart, #shDateEnd").datetimepicker({
 				timepicker:false,
 				format: 'Y-m-d'
 			});
@@ -824,24 +841,24 @@
 		
 		goList = function (thisPage) {
 		    document.querySelector("input[name=thisPage]").value = thisPage;
-		    document.querySelector("form[name=formList]").action = "/xdm/v1/infra/code/codeXdmList";
+		    document.querySelector("form[name=formList]").action = "/xdm/v1/infra/customer/customerXdmList";
 		    document.querySelector("form[name=formList]").submit();
 		}
 		
 		document.getElementById("changeRowNum").onchange = function () {
 		    document.getElementById("rowNumToShow").value = document.getElementById("changeRowNum").value;
-		    formList.action = "/xdm/v1/infra/code/codeXdmList";
+		    formList.action = "/xdm/v1/infra/customer/customerXdmList";
 		    formList.submit();
 		}
 		
 		
 		//insert 버튼
 		document.getElementById("btnInsert").onclick = function (){
-			window.location = "/xdm/v1/infra/code/codeXdmForm";
+			window.location = "/xdm/v1/infra/customer/customerXdmForm";
 		}
 		//reload 버튼
 		document.getElementById("btnReload").onclick = function (){
-			window.location = "/xdm/v1/infra/code/codeXdmList";
+			window.location = "/xdm/v1/infra/customer/customerXdmList";
 		}
 	</script>
 	

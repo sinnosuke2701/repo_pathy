@@ -3,11 +3,9 @@ package com.pathy.infra.customer;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.pathy.infra.customer.CustomerDao;
-import com.pathy.infra.customer.CustomerDto;
-import com.pathy.infra.customer.CustomerVo;
-
+@Service
 public class CustomerService {
 	@Autowired
 	private CustomerDao CustomerDao;
@@ -40,9 +38,9 @@ public class CustomerService {
 //		return codeGroups;
 //	}
 	
-	public List<CustomerDto> selectListCustomer(){	
-		return CustomerDao.selectListCustomer();
-	}
+//	public List<CustomerDto> selectListCustomer(){	
+//		return CustomerDao.selectListCustomer();
+//	}
 	
 	public int uelete (CustomerDto customerDto) {
 		return CustomerDao.uelete(customerDto);

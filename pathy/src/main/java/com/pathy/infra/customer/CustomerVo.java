@@ -3,13 +3,13 @@ package com.pathy.infra.customer;
 public class CustomerVo {
 	
 	//검색조
-	private Integer sh_DelNY;
-	private Integer sh_UseNY;
-	private String sh_Value;
-	private Integer sh_Option;
-	private String sh_DateStart;
-	private String sh_DateEnd;
-	private Integer sh_OptionDate;
+	private Integer shDelNY;
+	private Integer shUseNY;
+	private String shValue;
+	private Integer shOption;
+	private String shDateStart;
+	private String shDateEnd;
+	private Integer shOptionDate;
 		
 	//페이징
 	private int thisPage = 1;				//현재 페이지 
@@ -68,65 +68,63 @@ public class CustomerVo {
 		System.out.println("endPage: " + getEndPage());
 		System.out.println("startRnumForMysql: " + getStartRnumForMysql());
 		System.out.println("df" + getStartRnumForMysql());
-		
 	}
-		
+
 	//get , set
-		
-	public Integer getSh_DelNY() {
-		return sh_DelNY;
+	public Integer getShDelNY() {
+		return shDelNY;
 	}
 
-	public void setSh_DelNY(Integer sh_DelNY) {
-		this.sh_DelNY = sh_DelNY;
+	public void setShDelNY(Integer shDelNY) {
+		this.shDelNY = shDelNY;
 	}
 
-	public Integer getSh_UseNY() {
-		return sh_UseNY;
+	public Integer getShUseNY() {
+		return shUseNY;
 	}
 
-	public void setSh_UseNY(Integer sh_UseNY) {
-		this.sh_UseNY = sh_UseNY;
+	public void setShUseNY(Integer shUseNY) {
+		this.shUseNY = shUseNY;
 	}
 
-	public String getSh_Value() {
-		return sh_Value;
+	public String getShValue() {
+		return shValue;
 	}
 
-	public void setSh_Value(String sh_Value) {
-		this.sh_Value = sh_Value;
+	public void setShValue(String shValue) {
+		this.shValue = shValue;
 	}
 
-	public Integer getSh_Option() {
-		return sh_Option;
+	public Integer getShOption() {
+		return shOption;
 	}
 
-	public void setSh_Option(Integer sh_Option) {
-		this.sh_Option = sh_Option;
+	public void setShOption(Integer shOption) {
+		this.shOption = shOption;
 	}
 
-	public String getSh_DateStart() {
-		return sh_DateStart;
+	public String getShDateStart() {
+		return shDateStart;
 	}
 
-	public void setSh_DateStart(String sh_DateStart) {
-		this.sh_DateStart = sh_DateStart;
+	public void setShDateStart(String shDateStart) {
+		this.shDateStart = shDateStart;
 	}
 
-	public String getSh_DateEnd() {
-		return sh_DateEnd;
+	public String getShDateEnd() {
+		return shDateEnd;
 	}
 
-	public void setSh_DateEnd(String sh_DateEnd) {
-		this.sh_DateEnd = sh_DateEnd;
+	public void setShDateEnd(String shDateEnd) {
+		this.shDateEnd = shDateEnd;
 	}
 
-	public Integer getSh_OptionDate() {
-		return sh_OptionDate;
+	public Integer getShOptionDate() {
+		return shOptionDate;
 	}
 
-	public void setSh_OptionDate(Integer sh_OptionDate) {
-		this.sh_OptionDate = sh_OptionDate;
+	public void setShOptionDate(Integer shOptionDate) {
+		this.shOptionDate = shOptionDate;
 	}
 
 	public int getThisPage() {
@@ -192,9 +190,5 @@ public class CustomerVo {
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
-
-	
-	
-	
-	
+		
 }

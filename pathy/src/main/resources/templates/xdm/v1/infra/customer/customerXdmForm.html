@@ -366,10 +366,10 @@
 									<a href="profile.html">Profile</a> <a
 										href="account-settings.html">Settings</a> <a href="login.html">Logout</a>
 								</div>
-							</div></li>
+							</div>
+						</li>
 					</ul>
 					<!-- Header actions end -->
-
 				</div>
 				<!-- Header actions ccontainer end -->
 
@@ -383,7 +383,7 @@
 				<li class="breadcrumb-item breadcrumb-active" aria-current="page">Default</li>
 			</ol>
 			<!-- Breadcrumb end -->
-			<h3>Code</h3>
+			<h3>Customer</h3>
 			<!-- Content wrapper scroll start -->
 			<div class="content-wrapper-scroll">
 
@@ -401,7 +401,7 @@
 									<div class="card-title">기본정보</div>
 								</div>
 								<form class="needs-validation" novalidate id="form" name="form"
-									method="post" action="/xdm/v1/infra/code/codeXdmInst">
+									method="post" action="/xdm/v1/infra/customer/customerXdmInst">
 									<div class="card-body">
 										<div class="container-fluid">
 											<div class="row mb-3">
@@ -409,47 +409,146 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="CodeGroup_seq" class="form-label">코드그룹</label>
-																<select class="form-select" id="CodeGroup_seq" name="CodeGroup_seq">
+																<label for="cmName" class="form-label">이름<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="cmName" name="cmName" th:value="${item?.cmName}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="cmOrder" class="form-label">순서<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="cmOrder" name="cmOrder" th:value="${item?.cmOrder}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="cmGender" class="form-label">성별(이건 나중에 ㅇㅇ int로 입력 ㄱㄱ)<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="cmGender" name="cmGender" th:value="${item?.cmGender}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+<!-- 													<div class="col-md-3"> -->
+<!-- 														<div class="card"> -->
+<!-- 															<div class="card-body"> -->
+<!-- 																<label for="cmGender" class="form-label fs--1">성별 <span class="text-danger fs-0">*</span></label> -->
+<!-- 																<select id="cmGender" name="cmGender" class="form-select"> -->
+<!-- 																	<option value="">선택하세요</option> -->
+<!-- 																	<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cdName}" th:selected="${list.cdseq} == ${item?.cmGender}"></option> -->
+<!-- 																</select>	 -->
+<!-- 															</div>						 -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="cmId" class="form-label">아이디<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="cmId" name="cmId" th:value="${item?.cmId}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="cmEmail" class="form-label">이메일<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="cmEmail" name="cmEmail" th:value="${item?.cmEmail}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="cmPw" class="form-label">비밀번호<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="cmPw" name="cmPw" th:value="${item?.cmPw}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="cmSoNum" class="form-label">주민번호<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="cmSoNum" name="cmSoNum" th:value="${item?.cmSoNum}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="cmPhone" class="form-label">전화번호<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="cmPhone" name="cmPhone" th:value="${item?.cmPhone}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="cmUseNY" class="form-label">사용여부<span
+																	style="color: red;">*</span></label>
+																<select class="form-select" id="cmUseNY" name="cmUseNY">
 																	<option value="">선택</option>
-																	<option th:each = "List : ${listCodeGroup}" th:value = "${List.CodeGroup_seq}" th:text="${List.cg_Name}" >사용</option>
+																	<option value="0" th:selected="${item?.cmUseNY == 0}">미사용</option>
+																	<option value="1" th:selected="${item?.cmUseNY == 1}" >사용</option>
 																</select>
 															</div>
 														</div>
 													</div>
-													<div class = "col-md-9"></div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="cd_Name" class="form-label">이름<span
+																<label for="cmAcc" class="form-label">계좌번호<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="cd_Name" name="cd_Name" th:value="${item?.cd_Name}" autocomplete="off">
+																<input type="text" class="form-control" id="cmAcc" name="cmAcc" th:value="${item?.cmAcc}" autocomplete="off">
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="cd_UseNY" class="form-label">사용여부<span
+																<label for="cmAcc" class="form-label">은행(이건 나중에 ㅇㅇ int로 입력 ㄱㄱ)<span
 																	style="color: red;">*</span></label>
-																<select class="form-select" id="cd_UseNY" name="cd_UseNY">
-																	<option value="">선택</option>
-																	<option value="0" th:selected="${item?.cd_UseNY == 0}">미사용</option>
-																	<option value="1" th:selected="${item?.cd_UseNY == 1}" >사용</option>
-																</select>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="cd_Order" class="form-label">순서<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="cd_Order" name="cd_Order" th:value="${item?.cd_Order}" autocomplete="off">
+																<input type="text" class="form-control" id="cmAcc" name="cmAcc" th:value="${item?.cmAcc}" autocomplete="off">
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3"></div>
+													<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
+															<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
+															<input type="text" class="form-control" id="sample6_postcode" name="memZipcode" placeholder="우편번호" autocomplete="off">
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
+															<input type="text" class="form-control" id="sample6_address" name="memAddress" placeholder="주소" autocomplete="off">
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
+															<input type="text" class="form-control" id="sample6_detailAddress" name="memDtAddress" placeholder="상세주소" autocomplete="off">
+														</div>
+													</div>
+												</div>
 													<div class="col-md-6">
 													    <div class="card">
 													        <div class="card-body">
@@ -458,19 +557,6 @@
 													        </div>
 													    </div>
 													</div>
-													<!-- <div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="cd_DelNY" class="form-label">삭제여부<span
-																	style="color: red;">*</span></label>
-																	<select class="form-select" id="cd_DelNY" name="cd_DelNY">
-																	<option value="0">미삭제</option>
-																	<option value="1">삭제</option>
-																</select>
-															</div>
-														</div>
-													</div> -->
-												</div>
 												<div class="row mb-3">
 													<div class="col">
 														<button type="button" id='btnList' class="btn btn-white">
@@ -502,23 +588,13 @@
 										</div>
 									</div>
 								</form>
-									
-
 								<!-- Row end -->
-
-								<!-- Form actions footer start -->
-
-								<!-- Form actions footer end -->
-
 							</div>
 						</div>
 						<!-- Card end -->
-
 					</div>
-
 				</div>
 				<!-- Row end -->
-
 			</div>
 			<!-- Content wrapper end -->
 
@@ -563,71 +639,140 @@
 	
 	<script>
 		document.getElementById("btnList").onclick = function (){
-			window.location = "/xdm/v1/infra/code/codeXdmList";
+			window.location = "/xdm/v1/infra/customer/customerXdmList";
 		}
 		
 		document.getElementById("btnSubmit").onclick = function (){
-			
-			var CodeGroup_seq = document.getElementById("CodeGroup_seq");
-		    var CodeGroup_seqValue = document.getElementById("CodeGroup_seq").value;
 		    
-		    if (CodeGroup_seqValue == "" || CodeGroup_seqValue == null) {
-				alert("코드그룹을 선택해주세요.");
-				CodeGroup_seq.focus();
-				return false;
-		    } else {
-//	 			by pass
-		    }
+		    var cmName = document.getElementById("cmName");
+		    var cmNameValue = document.getElementById("cmName").value.trim();
 		    
-		    var cd_Name = document.getElementById("cd_Name");
-		    var cd_NameValue = document.getElementById("cd_Name").value.trim();
-		    
-		    if(cd_NameValue == "" || cd_NameValue == null){
+		    if(cmNameValue == "" || cmNameValue == null){
 		    	alert("이름을 입력해주세요.");
-		    	cd_Name.focus();
+		    	cmName.focus();
 		    	return false;
 		    } else{
 // 		    	by pass
 		    }
 		    
-		    var cd_UseNY = document.getElementById("cd_UseNY");
-		    var cd_UseNYValue = document.getElementById("cd_UseNY").value;
+		    var cmUseNY = document.getElementById("cmUseNY");
+		    var cmUseNYValue = document.getElementById("cmUseNY").value;
 		    
-		    if(cd_UseNYValue == "" || cd_UseNYValue == null){
+		    if(cmUseNYValue == "" || cmUseNYValue == null){
 		    	alert("사용여부를 선택해주세요.");
-		    	cd_UseNY.focus();
+		    	cmUseNY.focus();
 		    	return false;
 		    } else{
 // 		    	by pass
 		    }
 		    
-		    var cd_Order = document.getElementById("cd_Order");
-		    var cd_OrderValue = document.getElementById("cd_Order").value.trim();
+		    var cmOrder = document.getElementById("cmOrder");
+		    var cmOrderValue = document.getElementById("cmOrder").value.trim();
 		    
-		    if(cd_OrderValue == "" || cd_OrderValue == null){
+		    if(cmOrderValue == "" || cmOrderValue == null){
 		    	alert("순서를 입력해주세요.");
-		    	cd_Order.focus();
+		    	cmOrder.focus();
 		    	return false;
 		    } else {
 		    	//by pass
 		    }
 		    
-		    var cd_Desc = document.getElementById("cd_Desc");
-		    var cd_DescValue = document.getElementById("cd_Desc").value;
+		    var cmDesc = document.getElementById("cmDesc");
+		    var cmDescValue = document.getElementById("cmDesc").value;
 		    
-		    if(cd_DescValue == "" || cd_DescValue == null){
+		    if(cmDescValue == "" || cmDescValue == null){
 		    	alert("설명을 입력해주세요.");
-		    	cd_Desc.focus();
+		    	cmDesc.focus();
 		    	return false;
 		    } else {
 		    	//by pass
 		    }
 			let form = document.querySelector("form[name=form]");
-			form.action = "/xdm/v1/infra/code/codeXdmInst";
+			form.action = "/xdm/v1/infra/customer/customerXdmInst";
 			form.submit(); 
 		}
 	</script>
+	<!-- kakao 우편번호 Start -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript">
+	    function sample6_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                var addr = '';
+	                var extraAddr = '';
 	
+	                if (data.userSelectedType === 'R') {
+	                    addr = data.roadAddress;
+	                } else {
+	                    addr = data.jibunAddress;
+	                }
+	
+	                // 위도 경도 요청 추가
+	                var REST_API_KEY = '4a9a79871cbda231acbe5307768f4f50'; // API 키
+	                fetch(`https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURIComponent(addr)}`, {
+	                    method: 'GET',
+	                    headers: {
+	                        'Authorization': `KakaoAK ${REST_API_KEY}`
+	                    }
+	                })
+	                .then(response => response.json())
+	                .then(data => {
+	                    if (data.documents.length > 0) {
+	                        var latitude = data.documents[0].y; // 위도
+	                        var longitude = data.documents[0].x; // 경도
+	                        document.getElementById('latitude').value = latitude;
+	                        document.getElementById('longitude').value = longitude;
+	                        console.log(`위도: ${latitude}, 경도: ${longitude}`);
+	                    } else {
+	                        console.log('위도와 경도를 찾을 수 없습니다.');
+	                    }
+	                })
+	                .catch(error => console.error('API 요청 에러:', error));
+	
+	                // 기존 코드 계속 실행
+	                if (data.userSelectedType === 'R') {
+	                    // ... (기존 코드)
+	                    
+		                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+		                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+		                    addr = data.roadAddress;
+		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+		                    addr = data.jibunAddress;
+		                }
+		             	// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+		                if(data.userSelectedType === 'R'){
+		                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+		                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+		                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+		                        extraAddr += data.bname;
+		                    }
+		                    // 건물명이 있고, 공동주택일 경우 추가한다.
+		                    if(data.buildingName !== '' && data.apartment === 'Y'){
+		                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		                    }
+		                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+		                    if(extraAddr !== ''){
+		                        extraAddr = ' (' + extraAddr + ')';
+		                    }
+		                    // 조합된 참고항목을 해당 필드에 넣는다.
+		                    document.getElementById("sample6_address").value = extraAddr;
+		                
+		                } else {
+		                    document.getElementById("sample6_address").value = '';
+		                }
+	                    
+	                } else {
+	                    document.getElementById("sample6_address").value = '';
+	                }
+	
+	                document.getElementById('sample6_postcode').value = data.zonecode;
+	                document.getElementById("sample6_address").value = addr;
+	                document.getElementById("sample6_detailAddress").focus();
+	            }
+	        }).open();
+	    }
+	</script>
+<!-- kakao 우편번호 End -->
 </body>
 
 </html>

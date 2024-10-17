@@ -425,8 +425,7 @@
 														<div class="card-body">
 															<label for="validationCustom02" class="form-label">seq<span
 																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="cdseq" th:value="${item?.cdseq}"
-																readonly>
+																class="form-control" name="cdseq" th:value="${item?.cdseq}" readonly>
 														</div>
 													</div>
 												</div>
@@ -557,26 +556,14 @@
 												</div>
 											</div>
 										</div>
-										
-
-
-
-
-
-
-								</form>
-
+									</form>
 								<!-- Row end -->
-
 							</div>
 						</div>
 						<!-- Card end -->
-
 					</div>
-
 				</div>
 				<!-- Row end -->
-
 			</div>
 			<!-- Content wrapper end -->
 
@@ -598,11 +585,6 @@
 					</div>
 				</div>
 			</div> -->
-
-
-
-
-
 			<!-- modal end -->
 
 			<!-- App Footer start -->
@@ -646,24 +628,24 @@
 
 	<script>
 		document.getElementById("btnList").onclick = function (){
-			window.location = "/xdm/v1/infra/code/codeXdmList";
+			window.location = "/xdm/v1/infra/customer/customerXdmList";
 		}
 		
 		document.getElementById("btnDelete").onclick = function() {
 			let form = document.querySelector("form[name='form']");
-			form.action = "/xdm/v1/infra/code/codeXdmDele";
+			form.action = "/xdm/v1/infra/customer/customerXdmDele";
 			form.submit();
 		};
 		
 		document.getElementById("btnUelete").onclick = function() {
 			let form = document.querySelector("form[name='form']");
-			form.action = "/xdm/v1/infra/code/codeXdmUele";
+			form.action = "/xdm/v1/infra/customer/customerXdmUele";
 			form.submit();
 		}
 		
 		document.getElementById("btnPdt").onclick = function(){
 			let form = document.querySelector("form[name=form]");
-			form.action = "/xdm/v1/infra/code/codeXdmPdt";
+			form.action = "/xdm/v1/infra/customer/customerXdmPdt";
 			form.submit();
 		}
 	</script>
