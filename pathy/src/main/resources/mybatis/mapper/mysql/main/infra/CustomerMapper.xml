@@ -93,8 +93,7 @@
 	
 	<insert id = "insert">
 		insert into customer(
-    		cmSeq
-			,cmName
+			cmName
 			,cmOrder
 			,cmGender
 			,cmId
@@ -112,7 +111,7 @@
 			,cmAdrDt
 			,cmAcc
 			,cmBank
-		)value(
+		)values(
     		#{cmName}
     		,#{cmOrder}
     		,#{cmGender}
@@ -132,7 +131,7 @@
     		,#{cmAcc}
     		,#{cmBank}
 		)
-		<selectKey resultType="String" keyProperty="cgseq" order="AFTER">
+		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
 			SELECT last_Insert_id()
 		</selectKey>
 	</insert>
@@ -171,7 +170,7 @@
 	<update id="uelete">
 		update customer
 		set
-			cg_DelNY = 1
+			cmDelNY = 1
 		where 1 = 1
 			and cmSeq = #{cmSeq}
 	</update>

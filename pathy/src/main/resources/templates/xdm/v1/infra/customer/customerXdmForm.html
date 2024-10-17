@@ -514,9 +514,9 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="cmAcc" class="form-label">은행(이건 나중에 ㅇㅇ int로 입력 ㄱㄱ)<span
+																<label for="cmBank" class="form-label">은행(이건 나중에 ㅇㅇ int로 입력 ㄱㄱ)<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="cmAcc" name="cmAcc" th:value="${item?.cmAcc}" autocomplete="off">
+																<input type="text" class="form-control" id="cmBank" name="cmBank" th:value="${item?.cmBank}" autocomplete="off">
 															</div>
 														</div>
 													</div>
@@ -531,21 +531,21 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<input type="text" class="form-control" id="sample6_postcode" name="memZipcode" placeholder="우편번호" autocomplete="off">
+															<input type="text" class="form-control" id="sample6_postcode" name="cmZipNum" placeholder="우편번호" autocomplete="off">
 														</div>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<input type="text" class="form-control" id="sample6_address" name="memAddress" placeholder="주소" autocomplete="off">
+															<input type="text" class="form-control" id="sample6_address" name="cmAdr" placeholder="주소" autocomplete="off">
 														</div>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<input type="text" class="form-control" id="sample6_detailAddress" name="memDtAddress" placeholder="상세주소" autocomplete="off">
+															<input type="text" class="form-control" id="sample6_detailAddress" name="cmAdrDt" placeholder="상세주소" autocomplete="off">
 														</div>
 													</div>
 												</div>
@@ -677,16 +677,16 @@
 		    	//by pass
 		    }
 		    
-		    var cmDesc = document.getElementById("cmDesc");
-		    var cmDescValue = document.getElementById("cmDesc").value;
+// 		    var cmDesc = document.getElementById("cmDesc");
+// 		    var cmDescValue = document.getElementById("cmDesc");
 		    
-		    if(cmDescValue == "" || cmDescValue == null){
-		    	alert("설명을 입력해주세요.");
-		    	cmDesc.focus();
-		    	return false;
-		    } else {
-		    	//by pass
-		    }
+// 		    if(cmDescValue == "" || cmDescValue == null){
+// 		    	alert("설명을 입력해주세요.");
+// 		    	cmDesc.focus();
+// 		    	return false;
+// 		    } else {
+// 		    	//by pass
+// 		    }
 			let form = document.querySelector("form[name=form]");
 			form.action = "/xdm/v1/infra/customer/customerXdmInst";
 			form.submit(); 
