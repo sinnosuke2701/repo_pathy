@@ -1,7 +1,5 @@
 package com.pathy.infra.insProduct;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +8,7 @@ public class InsProductService {
 	
 	@Autowired
 	InsProductDao insProductDao;
+<<<<<<< HEAD
 	
 //	selectList
 	public List<InsProductDto> selectList(InsProductVo insProductVo) {
@@ -56,4 +55,7 @@ public class InsProductService {
 		return insProductDao.selectOneLogin(insProductDto);
 	}
 	
+=======
+
+>>>>>>> branch 'main' of https://github.com/sinnosuke2701/repo_pathy.git
 }

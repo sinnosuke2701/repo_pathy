@@ -1,11 +1,10 @@
 package com.pathy.infra.insProduct;
 
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InsProductDao {
+<<<<<<< HEAD
 	
  
 //	selectList
@@ -37,5 +36,7 @@ public interface InsProductDao {
 
 //	selectOneId
 	public InsProductDto selectOneId(InsProductDto insProductDto);
+=======
+>>>>>>> branch 'main' of https://github.com/sinnosuke2701/repo_pathy.git
 
 }

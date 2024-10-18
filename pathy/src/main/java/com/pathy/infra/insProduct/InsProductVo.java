@@ -3,10 +3,11 @@ package com.pathy.infra.insProduct;
 public class InsProductVo {
 
 	// 검색조
-	private Integer shDelNy;
-	private Integer shUseNy;
+	private Integer shDelNY;
+	private Integer shUseNY;
 	private String shValue;
 	private Integer shOption;
+	private Integer shGender;
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOptionDate;
@@ -71,27 +72,25 @@ public class InsProductVo {
 	}
 
 	// get , set
-	
-	public Integer getShDelNy() {
-		return shDelNy;
+	public Integer getShDelNY() {
+		return shDelNY;
 	}
-	
-	public void setShDelNy(Integer shDelNy) {
-		this.shDelNy = shDelNy;
+
+	public void setShDelNY(Integer shDelNY) {
+		this.shDelNY = shDelNY;
 	}
-	
-	public Integer getShUseNy() {
-		return shUseNy;
+
+	public Integer getShUseNY() {
+		return shUseNY;
 	}
-	
-	public void setShUseNy(Integer shUseNy) {
-		this.shUseNy = shUseNy;
+
+	public void setShUseNY(Integer shUseNY) {
+		this.shUseNY = shUseNY;
 	}
 
 	public String getShValue() {
 		return shValue;
 	}
-
 
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
@@ -191,6 +190,14 @@ public class InsProductVo {
 
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+
+	public Integer getShGender() {
+		return shGender;
+	}
+
+	public void setShGender(Integer shGender) {
+		this.shGender = shGender;
 	}
 
 }

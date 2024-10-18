@@ -1,8 +1,7 @@
 package com.pathy.infra.insProduct;
 
-import java.util.Date;
-
 public class InsProductDto {
+<<<<<<< HEAD
 	
 	private String inspSeq;
 	private String inspName;
@@ -99,5 +98,7 @@ public class InsProductDto {
 	}
 	
 	
+=======
+>>>>>>> branch 'main' of https://github.com/sinnosuke2701/repo_pathy.git
 
 }

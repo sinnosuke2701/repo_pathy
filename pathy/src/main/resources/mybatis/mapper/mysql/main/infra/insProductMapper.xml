@@ -6,6 +6,7 @@
 	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
 
 	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+<<<<<<< HEAD
 	<resultMap type="com.pathy.infra.insProduct.InsProductDto" id="resultMapObj"></resultMap>
 	 
 	<!-- include S -->
@@ -155,4 +156,9 @@
 	</delete>
 	<!-- delete E -->
 	
+=======
+	<resultMap type="com.pathy.infra.insProduct.InsProductDao" id="resultMapObj"></resultMap>
+
+
+>>>>>>> branch 'main' of https://github.com/sinnosuke2701/repo_pathy.git
 </mapper>
