@@ -556,8 +556,8 @@
                             </ol>
                             <!-- Breadcrumb end -->
 
-                            <h2>Customer</h2>
-						<form method="post" action="/xdm/v1/infra/customer/customerXdmList" name="formList">
+                            <h2>Qna</h2>
+						<form method="post" action="/xdm/v1/infra/qna/qnaXdmList" name="formList">
 							<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 							<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
                                 <table>
@@ -574,26 +574,18 @@
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shUseNY" id="shUseNY">
-                                                    <option value="" th:selected="${vo.shUseNY == null}">사용여부</option>
-                                                    <option value="0" th:selected="${vo.shUseNY == 0}">N</option>
-                                                    <option value="1" th:selected="${vo.shUseNY == 1}">Y</option>
+                                                    <option value="" th:selected="${vo.shUseNY == null}">카테고리</option>
+                                                    <option value="0" th:selected="${vo.shUseNY == 0}">궁금해</option>
+                                                    <option value="1" th:selected="${vo.shUseNY == 1}">문의</option>
                                                 </select>
                                             </td>
 <!--                                             <td> -->
 <!--                                             	<select class="form-select" aria-label="Default select example" -->
 <!--                                                     style="width: 200px;" name="shGender" id="shGender"> -->
-<!-- 													<option value="" th:selected="${vo.shGender == null}">성별</option> -->
+<!-- 													<option value="" th:selected="${vo.shGender == null}">카테고리</option> -->
 <!-- 													<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cd_Name}" th:selected="${list.cdseq} == ${vo.shGender}"></option> -->
 <!-- 												</select> -->
 <!--                                             </td> -->
-											<td>
-                                                <select class="form-select" aria-label="Default select example"
-                                                    style="width: 200px;" name="shGender" id="shGender">
-                                                    <option value="" th:selected="${vo.shGender == null}">성별</option>
-                                                    <option value="0" th:selected="${vo.shGender == 0}">남</option>
-                                                    <option value="1" th:selected="${vo.shGender == 1}">여</option>
-                                                </select>
-                                            </td>
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shOptionDate" id="shOptionDate">
@@ -621,13 +613,6 @@
                                                     <option value="1" th:selected="${vo.shOption == 1}">이름</option>
                                                     <option value="2" th:selected="${vo.shOption == 2}">순서</option>
                                                     <option value="3" th:selected="${vo.shOption == 3}">아이디</option>
-                                                    <option value="4" th:selected="${vo.shOption == 4}">이메일</option>
-                                                    <option value="5" th:selected="${vo.shOption == 5}">비밀번호</option>
-                                                    <option value="6" th:selected="${vo.shOption == 6}">주민번호</option>
-                                                    <option value="7" th:selected="${vo.shOption == 7}">전화번호</option>
-                                                    <option value="8" th:selected="${vo.shOption == 8}">주소</option>
-                                                    <option value="9" th:selected="${vo.shOption == 9}">상세주소</option>
-                                                    <option value="10" th:selected="${vo.shOption == 10}">계좌번호</option>
                                                 </select>
                                             </th>
                                             <td>
@@ -654,7 +639,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='19' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='10' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -672,24 +657,15 @@
                                                         <tr>
                                                         	<td><input type="checkbox"</td>
                                                         	<td>#</td>
-                                                            <td>이름</td>
-                                                            <td>순서</td>
-                                                            <td>성별</td>
-                                                            <td>아이디</td>
-                                                            <td>이메일</td>
-                                                            <td>비밀번호</td>
-                                                            <td>주민번호</td>
-                                                            <td>전화번호</td>
-                                                            <td>설명</td>
+                                                            <td>qnaSeq</td>
+                                                            <td>고객이름</td>
+                                                            <td>직원이름</td>
+                                                            <td>카테고리</td>
+                                                            <td>제목</td>
+                                                            <td>내용</td>
                                                             <td>등록일</td>
                                                             <td>수정일</td>
-                                                            <td>사용여부</td>
                                                             <td>삭제여부</td>
-                                                            <td>우편번호</td>
-                                                            <td>주소</td>
-                                                            <td>상세주소</td>
-                                                            <td>계좌번호</td>
-                                                            <td>은행</td>
                                                         </tr>
                                                         <tr th:if="${#lists.isEmpty(list)}">
                                                         	<td colspan="20" style="text-align: center;">
@@ -699,29 +675,19 @@
                                                         
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox"></td>
+                                                        	<td></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-                                                            <td th:text = "${list.cmSeq}"></td>
-                                                            <td><a th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}" th:text="${list.cmName}"></a></td>
-                                                            <td th:text = "${list.cmOrder}"></td>
-                                                            <td th:if = "${list.cmGender eq 0}">남</td>
-                                                            <td th:unless = "${list.cmGender eq 0}">여</td>
-                                                            <td th:text = "${list.cmId}"></td>
-                                                            <td th:text = "${list.cmEmail}"></td>
-                                                            <td th:text = "${list.cmPw}"></td>
-                                                            <td th:text = "${list.cmSoNum}"></td>
-                                                            <td th:text = "${list.cmPhone}"></td>
-                                                            <td th:text = "${list.cmDesc}"></td>
-                                                            <th th:text = "${#dates.format(list.cmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
-                                                            <td th:text = "${#dates.format(list.cmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:if = "${list.cmUseNY eq 0}">N</td>
-                                                            <td th:unless="${list.cmUseNY eq 0}">Y</td>
-                                                            <td th:if = "${list.cmDelNY eq 0}">N</td>
-                                                            <td th:unless = "${list.cmDelNY eq 0}">Y</td>
-                                                            <td th:text = "${list.cmZipNum}"></td>
-                                                            <td th:text = "${list.cmAdr}"></td>
-                                                            <td th:text = "${list.cmAdrDt}"></td>
-                                                            <td th:text = "${list.cmAcc}"></td>
-                                                            <td th:text = "${list.cmBank}"></td>
+                                                            <td th:text = "${list.qnaSeq}"></td>
+                                                            <td th:text = "${list.cmName}"></td>
+                                                            <td th:text = "${list.insmName}"></td>
+                                                            <td th:if = "${list.qnaCategory eq 0}">짜증나</td>
+                                                            <td th:unless = "${list.qnaCategory eq 0}">문의</td>
+                                                            <td><a th:href="@{/xdm/v1/infra/qna/qnaXdmMfom(cmSeq=${list.qnaSeq})}" th:text = "${list.qnaTitle}"></a></td>
+                                                            <td th:text = "${list.qnaContent}"></td>
+                                                            <th th:text = "${#dates.format(list.qnaDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
+                                                            <td th:text = "${#dates.format(list.qnaDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                                            <td th:if = "${list.qnaDelNY eq 0}">N</td>
+                                                            <td th:unless = "${list.qnaDelNY eq 0}">Y</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -850,11 +816,8 @@
  	<script src="/xdm/v1/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
 	
 	<script>
-		
 		window.addEventListener('load', function(){
-			
 			$.datetimepicker.setLocale('ko');
-
 			$("#shDateStart, #shDateEnd").datetimepicker({
 				timepicker:false,
 				format: 'Y-m-d'
@@ -863,24 +826,23 @@
 		
 		goList = function (thisPage) {
 		    document.querySelector("input[name=thisPage]").value = thisPage;
-		    document.querySelector("form[name=formList]").action = "/xdm/v1/infra/customer/customerXdmList";
+		    document.querySelector("form[name=formList]").action = "/xdm/v1/infra/qna/qnaXdmList";
 		    document.querySelector("form[name=formList]").submit();
 		}
 		
 		document.getElementById("changeRowNum").onchange = function () {
 		    document.getElementById("rowNumToShow").value = document.getElementById("changeRowNum").value;
-		    formList.action = "/xdm/v1/infra/customer/customerXdmList";
+		    formList.action = "/xdm/v1/infra/qna/qnaXdmList";
 		    formList.submit();
 		}
 		
-		
 		//insert 버튼
 		document.getElementById("btnInsert").onclick = function (){
-			window.location = "/xdm/v1/infra/customer/customerXdmForm";
+			window.location = "/xdm/v1/infra/qna/qnaXdmForm";
 		}
 		//reload 버튼
 		document.getElementById("btnReload").onclick = function (){
-			window.location = "/xdm/v1/infra/customer/customerXdmList";
+			window.location = "/xdm/v1/infra/qna/qnaXdmList";
 		}
 	</script>
 	

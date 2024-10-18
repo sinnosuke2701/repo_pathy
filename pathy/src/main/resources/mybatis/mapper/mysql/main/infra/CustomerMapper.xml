@@ -12,6 +12,9 @@
 		from
 			Customer a
 		where 1 = 1
+		<if test="shDelNY != null and !shDelNY.equals('')">AND cmDelNY = #{shDelNY}</if>
+		<if test="shGender != null and !shGender.equals('')">AND cmGender = #{shGender}</if>
+		
 		<if test="shDelNY != null and !shDelNY.equals('')">And cmDelNY = #{shDelNY}</if>
 		<if test="shUseNY != null and !shUseNY.equals('')">And cmUseNY = #{shUseNY}</if>
 		
@@ -21,9 +24,17 @@
 		</choose>
 		
 		<choose>
-			<when test="shOption == 1">AND a.cmSeq = #{shValue}</when> 
-			<when test="shOption == 2">AND cmName LIKE CONCAT('%',#{shValue},'%') AND cmName = #{shValue}</when>
-			<when test="shOption == 3">AND cmOrder = #{shValue}</when>
+			<when test="shOption == 1">AND cmName LIKE CONCAT('%',#{shValue},'%') AND cmName = #{shValue}</when>
+			<when test="shOption == 2">AND cmOrder = #{shValue}</when>
+			<when test="shOption == 3">AND cmId LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND cmEmail LIKE CONCAT('%',#{shValue},'%') AND cmEmail = #{shValue}</when>
+			<when test="shOption == 5">AND cmPw LIKE CONCAT('%',#{shValue},'%') AND cmPw = #{shValue}</when>
+			<when test="shOption == 6">AND cmSoNum LIKE CONCAT('%',#{shValue},'%') AND cmSoNum = #{shValue}</when>
+			<when test="shOption == 7">AND cmPhone LIKE CONCAT('%',#{shValue},'%') AND cmPhone = #{shValue}</when>
+			<when test="shOption == 8">AND cmAdr LIKE CONCAT('%',#{shValue},'%') AND cmAdr = #{shValue}</when>
+			<when test="shOption == 9">AND cmAdrDt LIKE CONCAT('%',#{shValue},'%') AND cmAdrDt = #{shValue}</when>
+			<when test="shOption == 10">AND cmAcc LIKE CONCAT('%',#{shValue},'%') AND cmAcc = #{shValue}</when>
+			 
 		</choose>
 	</sql>
 		
@@ -151,7 +162,7 @@
 			,cmDesc = #{cmDesc}
 			,cmId = #{cmId}
 			,cmUseNY = #{cmUseNY}
-			,cmDelNY = #{cmDelNY}
+			,cmDelNY = 0
 			,cmZipNum = #{cmZipNum}
 			,cmAdr = #{cmAdr}
 			,cmAdrDt = #{cmAdrDt}
