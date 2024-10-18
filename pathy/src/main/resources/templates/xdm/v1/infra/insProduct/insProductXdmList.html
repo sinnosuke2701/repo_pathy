@@ -265,12 +265,9 @@ svg.className {
 												aria-label="Default select example" style="width: 200px;"
 												name="shOption">
 													<option value="" th:selected="${vo.shOption == null}">검색구분</option>
-													<option value="1" th:selected="${vo.shOption == 1}">코드그룹
+													<option value="1" th:selected="${vo.shOption == 1}">
 														코드</option>
-													<option value="2" th:selected="${vo.shOption == 2}">코드그룹
-														이름</option>
-													<option value="3" th:selected="${vo.shOption == 3}">코드</option>
-													<option value="4" th:selected="${vo.shOption == 4}">코드
+													<option value="2" th:selected="${vo.shOption == 2}">
 														이름</option>
 											</select></th>
 											<td><input type="text" placeholder="검색어" name="shValue"
@@ -352,10 +349,10 @@ svg.className {
 																<td th:text="${list.inspBojang}"></td>
 																<td th:text="${list.inspJogun}"></td>
 																<td th:text="${list.inspPrice}"></td>
-																<td th:text="${#dates.format(list.inspBohumDateStart, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td th:text="${#dates.format(list.inspBohumDateEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td th:text="${#dates.format(list.inspBojangDateStart, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td th:text="${#dates.format(list.inspBojangDateEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																<td th:text="${list.inspBohumDateStart}"></td>
+																<td th:text="${list.inspBohumDateEnd}"></td>
+																<td th:text="${list.inspBojangDateStart}"></td>
+																<td th:text="${list.inspBojangDateEnd}"></td>
 																<td th:text="${list.inspPaper}"></td>
 																<td th:if="${list.inspDelNy eq 0}">N</td>
 																<td th:unless="${list.inspDelNy eq 0}">Y</td>
