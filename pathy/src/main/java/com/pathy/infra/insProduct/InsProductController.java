@@ -48,19 +48,13 @@ public class InsProductController {
 		return "redirect:/v1/infra/insProduct/insProductXdmList";
 	}
 	
-//	insProductXdmInstUsr
-	@RequestMapping(value="/v1/infra/insProduct/insProductXdmInstUsr")
-	public String insProductXdmInstUsr(InsProductDto insProductDto) {
-		insProductService.insertUsr(insProductDto);
-		return "redirect:/v1/infra/login/loginUsrSignIn";
-	}
 	
 //	insProductXdmMForm
 //	update - selectOne
 	@RequestMapping(value="/v1/infra/insProduct/insProductXdmMForm")
 	public String insProductXdmMForm(InsProductDto insProductDto, Model model) {
 		model.addAttribute("item", insProductService.selectOne(insProductDto));
-		return "xdm/v1/infra/insProduct/insProductXdmMForm";
+		return "/xdm/v1/infra/insProduct/insProductXdmMForm";
 	}
 	
 //	update - update

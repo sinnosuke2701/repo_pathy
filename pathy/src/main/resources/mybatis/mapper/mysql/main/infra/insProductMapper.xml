@@ -60,18 +60,18 @@
 	<!-- insert S -->
 	<insert id="insert">
 		INSERT INTO insProduct(
-			a.inspName
-			,a.inspBojang
-			,a.inspJogun
-			,a.inspPrice
-			,a.inspBohumDateStart
-			,a.inspBohumDateEnd
-			,a.inspBojangDateStart
-			,a.inspBojangDateEnd
-			,a.inspPaper
-			,a.inspDelNy
-			,a.inspDateTimeReg
-			,a.inspDateTimeEdit
+			inspName
+			,inspBojang
+			,inspJogun
+			,inspPrice
+			,inspBohumDateStart
+			,inspBohumDateEnd
+			,inspBojangDateStart
+			,inspBojangDateEnd
+			,inspPaper
+			,inspDelNy
+			,inspDateTimeReg
+			,inspDateTimeEdit
 		)
 		VALUE(
 			#{inspName}
@@ -155,19 +155,4 @@
 	</delete>
 	<!-- delete E -->
 	
-	<!-- selectOneLogin S -->
-	<select id="selectOneLogin" resultMap="resultMapObj">
-		SELECT
-			a.inspSeq
-			,a.inspId
-			,a.inspPw
-			,a.inspName
-		FROM
-			insProduct AS a
-		WHERE 1 = 1
-			AND a.inspId = #{inspId}
-			AND a.inspPw = #{inspPw}
-	</select>
-	<!-- selectOneLogin E -->
-
 </mapper>
