@@ -7,6 +7,7 @@ public class CustomerVo {
 	private Integer shUseNY;
 	private String shValue;
 	private Integer shOption;
+	private Integer shGender;
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOptionDate;
@@ -189,6 +190,14 @@ public class CustomerVo {
 
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+
+	public Integer getShGender() {
+		return shGender;
+	}
+
+	public void setShGender(Integer shGender) {
+		this.shGender = shGender;
 	}
 		
 }
