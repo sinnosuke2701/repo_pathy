@@ -20,7 +20,7 @@ public class InsProductController {
 //		날짜 필드에 시간 추가
 //		insProductVo.setShDateStart(insProductVo.getShDateStart()+" 00:00:00");			
 //		insProductVo.setShDateEnd(insProductVo.getShDateEnd()+" 23:59:59");
-		
+		 
 		// 초기값 세팅이 없는 경우 사용
 		insProductVo.setShDateStart(insProductVo.getShDateStart() == null || insProductVo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(insProductVo.getShDateStart()));
 		insProductVo.setShDateEnd(insProductVo.getShDateEnd() == null || insProductVo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(insProductVo.getShDateEnd()));

@@ -25,7 +25,7 @@ public class InsProductService {
 	public int insertUsr(InsProductDto insProductDto) {
 		return insProductDao.insert(insProductDto);
 	}
-	
+	 
 //	update - selectOne
 	public InsProductDto selectOne(InsProductDto insProductDto) {
 		return insProductDao.selectOne(insProductDto);

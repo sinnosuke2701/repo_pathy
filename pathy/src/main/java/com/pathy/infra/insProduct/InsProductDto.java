@@ -18,7 +18,7 @@ public class InsProductDto {
 	private Date inspDateTimeReg;
 	private Date inspDateTimeEdit;
 	
-	
+	 
 	public String getInspSeq() {
 		return inspSeq;
 	}

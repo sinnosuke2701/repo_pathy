@@ -7,7 +7,7 @@
 
 	<!-- resultMap : 결과를 담아줄 그으르읏 -->
 	<resultMap type="com.pathy.infra.insProduct.InsProductDto" id="resultMapObj"></resultMap>
-	
+	 
 	<!-- include S -->
 	<sql id="selectCoinspon">
 		FROM
