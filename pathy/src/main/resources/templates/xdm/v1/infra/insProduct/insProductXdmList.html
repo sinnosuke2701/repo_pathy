@@ -101,7 +101,188 @@ svg.className {
 	<div class="page-wrapper">
 
 		<!-- Sidebar wrapper start -->
-		<th:block th:replace="~{/xdm/v1/infra/include/nav :: nav}"></th:block>
+		<nav class="sidebar-wrapper">
+
+			<!-- Sidebar brand starts -->
+			<div class="sidebar-brand">
+				<a href="index.html" class="logo"> <img
+					src="/xdm/v1/template/vivo/assets/images/logo.svg"
+					alt="Vivo Admin Dashboard" />
+				</a>
+			</div>
+			<!-- Sidebar brand starts -->
+
+			<!-- Sidebar menu starts -->
+			<div class="sidebar-menu">
+				<div class="sidebarMenuScroll">
+					<ul>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-house"></i> <span class="menu-text">Dashboards</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="index.html">Sales</a></li>
+									<li><a href="ecommerce.html">eCommerce</a></li>
+									<li><a href="analytics.html">Analytics</a></li>
+									<li><a href="tasks.html">Tasks</a></li>
+									<li><a href="crm.html">CRM</a></li>
+									<li><a href="social.html">Social</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-handbag"></i> <span class="menu-text">Product</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="orders.html">Order History</a></li>
+									<li><a href="products.html">Products</a></li>
+									<li><a href="view-cart.html">Shopping Cart</a></li>
+									<li><a href="checkout.html">Billing Details</a></li>
+									<li><a href="customers.html">Customers</a></li>
+									<li><a href="add-product.html">Add Product</a></li>
+									<li><a href="reviews.html">Reviews</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-gem"></i> <span class="menu-text">Widgets</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="widgets.html">Widgets</a></li>
+									<li><a href="graph-widgets.html">Graph Widgets</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-collection"></i> <span class="menu-text">UI
+									Elements</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="accordions.html">Accordions</a></li>
+									<li><a href="alerts.html">Alerts</a></li>
+									<li><a href="buttons.html">Buttons</a></li>
+									<li><a href="badges.html">Badges</a></li>
+									<li><a href="cards.html">Cards</a></li>
+									<li><a href="carousel.html">Carousel</a></li>
+									<li><a href="dropdowns.html">Dropdowns</a></li>
+									<li><a href="icons.html">Icons</a></li>
+									<li><a href="modals.html">Modals</a></li>
+									<li><a href="offcanvas.html">Off Canvas</a></li>
+									<li><a href="progress.html">Progress Bars</a></li>
+									<li><a href="spinners.html">Spinners</a></li>
+									<li><a href="tabs.html">Tabs</a></li>
+									<li><a href="tooltips.html">Tooltips</a></li>
+									<li><a href="typography.html">Typography</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-stickies"></i> <span class="menu-text">Pages</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="create-invoice.html">Create Invoice</a></li>
+									<li><a href="view-invoice.html">View Invoice</a></li>
+									<li><a href="invoice-list.html">Invoice List</a></li>
+									<li><a href="subscribers.html">Subscribers</a></li>
+									<li><a href="contacts.html">Contacts</a></li>
+									<li><a href="pricing.html">Pricing</a></li>
+									<li><a href="profile.html">Profile</a></li>
+									<li><a href="account-settings.html">Account Settings</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-calendar4"></i> <span class="menu-text">Calendars</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="calendar.html">Daygrid View</a></li>
+									<li><a href="calendar-external-draggable.html">External
+											Draggable</a></li>
+									<li><a href="calendar-google.html">Google Calendar</a></li>
+									<li><a href="calendar-list-view.html">List View</a></li>
+									<li><a href="calendar-selectable.html">Selectable</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-columns-gap"></i> <span class="menu-text">Forms</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="form-inputs.html">Form Inputs</a></li>
+									<li><a href="form-checkbox-radio.html">Checkbox &amp;
+											Radio</a></li>
+									<li><a href="form-file-input.html">File Input</a></li>
+									<li><a href="form-validations.html">Validations</a></li>
+									<li><a href="bs-select.html">Bootstrap Select</a></li>
+									<li><a href="date-time-pickers.html">Date Time Pickers</a>
+									</li>
+									<li><a href="input-mask.html">Input Masks</a></li>
+									<li><a href="summernote.html">Summernote</a></li>
+									<li><a href="form-layout1.html">Form Layout</a></li>
+									<li><a href="form-layout2.html">Form Layout 2</a></li>
+									<li><a href="form-layout3.html">Form Layout 3</a></li>
+									<li><a href="form-layout4.html">Form Layout Horizontal</a>
+									</li>
+									<li><a href="form-layout5.html">Form Layout Tabs</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown active"><a href="#"> <i
+								class="bi bi-window-split"></i> <span class="menu-text">Tables</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="tables.html">Tables</a></li>
+									<li><a href="data-tables.html" class="current-page">Data
+											Tables</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-pie-chart"></i> <span class="menu-text">Graphs
+									&amp; Maps</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="apex.html">Apex</a></li>
+									<li><a href="morris.html">Morris</a></li>
+									<li><a href="maps.html">Maps</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-layout-sidebar"></i> <span class="menu-text">Layouts</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="layout.html">Default Layout</a></li>
+									<li><a href="layout-grid.html">Grid Layout</a></li>
+									<li><a href="layout-mega-menu.html">Mega Menu</a></li>
+									<li><a href="layout-full-screen.html">Full Screen</a></li>
+									<li><a href="layout-toggle-screen.html">Toggle Screen</a>
+									</li>
+									<li><a href="layout-welcome.html">Welcome Layout</a></li>
+									<li><a href="layout-dark-sidebar.html">Dark Sidebar</a></li>
+									<li><a href="layout-logo-large.html">Full Logo</a></li>
+								</ul>
+							</div></li>
+						<li class="sidebar-dropdown"><a href="#"> <i
+								class="bi bi-x-diamond"></i> <span class="menu-text">Authentication</span>
+						</a>
+							<div class="sidebar-submenu">
+								<ul>
+									<li><a href="login.html">Login</a></li>
+									<li><a href="signup.html">Signup</a></li>
+									<li><a href="error.html">Error</a></li>
+									<li><a href="maintenance.html">Maintenance</a></li>
+								</ul>
+							</div></li>
+						<li><a href="starter-page.html"> <i
+								class="bi bi-hand-index-thumb"></i> <span class="menu-text">Link</span>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- Sidebar menu ends -->
+
+		</nav>
 		<!-- Sidebar wrapper end -->
 
 		<!-- *************
@@ -227,17 +408,31 @@ svg.className {
 										<tr>
 											<th><select class="form-select"
 												aria-label="Default select example" style="width: 200px;"
-												name="shDelNy" id="shDelNy">
-													<option value="" th:selected="${vo.shDelNy == null}">삭제여부</option>
-													<option value="0" th:selected="${vo.shDelNy == 0}">N</option>
-													<option value="1" th:selected="${vo.shDelNy == 1}">Y</option>
+												name="shDelNY" id="shDelNY">
+													<option value="" th:selected="${vo.shDelNY == null}">삭제여부</option>
+													<option value="0" th:selected="${vo.shDelNY == 0}">N</option>
+													<option value="1" th:selected="${vo.shDelNY == 1}">Y</option>
 											</select></th>
 											<td><select class="form-select"
 												aria-label="Default select example" style="width: 200px;"
-												name="shUseNy" id="shUseNy">
-													<option value="" th:selected="${vo.shUseNy == null}">사용여부</option>
-													<option value="0" th:selected="${vo.shUseNy == 0}">N</option>
-													<option value="1" th:selected="${vo.shUseNy == 1}">Y</option>
+												name="shUseNY" id="shUseNY">
+													<option value="" th:selected="${vo.shUseNY == null}">사용여부</option>
+													<option value="0" th:selected="${vo.shUseNY == 0}">N</option>
+													<option value="1" th:selected="${vo.shUseNY == 1}">Y</option>
+											</select></td>
+                                            <td>
+                                            	<select class="form-select" aria-label="Default select example"
+                                                    style="width: 200px;" name="shGender" id="shGender">
+													<option value="" th:selected="${vo.shGender == null}">성별</option>
+													<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cd_Name}" th:selected="${list.cdseq} == ${vo.shGender}"></option>
+												</select>
+                                            </td>
+											<td><select class="form-select"
+												aria-label="Default select example" style="width: 200px;"
+												name="shGender" id="shGender">
+													<option value="" th:selected="${vo.shGender == null}">성별</option>
+													<option value="0" th:selected="${vo.shGender == 0}">남</option>
+													<option value="1" th:selected="${vo.shGender == 1}">여</option>
 											</select></td>
 											<td><select class="form-select"
 												aria-label="Default select example" style="width: 200px;"
@@ -265,13 +460,16 @@ svg.className {
 												aria-label="Default select example" style="width: 200px;"
 												name="shOption">
 													<option value="" th:selected="${vo.shOption == null}">검색구분</option>
-													<option value="1" th:selected="${vo.shOption == 1}">코드그룹
-														코드</option>
-													<option value="2" th:selected="${vo.shOption == 2}">코드그룹
-														이름</option>
-													<option value="3" th:selected="${vo.shOption == 3}">코드</option>
-													<option value="4" th:selected="${vo.shOption == 4}">코드
-														이름</option>
+													<option value="1" th:selected="${vo.shOption == 1}">이름</option>
+													<option value="2" th:selected="${vo.shOption == 2}">순서</option>
+													<option value="3" th:selected="${vo.shOption == 3}">아이디</option>
+													<option value="4" th:selected="${vo.shOption == 4}">이메일</option>
+													<option value="5" th:selected="${vo.shOption == 5}">비밀번호</option>
+													<option value="6" th:selected="${vo.shOption == 6}">주민번호</option>
+													<option value="7" th:selected="${vo.shOption == 7}">전화번호</option>
+													<option value="8" th:selected="${vo.shOption == 8}">주소</option>
+													<option value="9" th:selected="${vo.shOption == 9}">상세주소</option>
+													<option value="10" th:selected="${vo.shOption == 10}">계좌번호</option>
 											</select></th>
 											<td><input type="text" placeholder="검색어" name="shValue"
 												id="shValue" th:value="${vo.shValue}" autocomplete="off"
@@ -296,7 +494,7 @@ svg.className {
 													<table class="table m-0">
 														<thead>
 															<tr>
-																<th colspan='13'
+																<th colspan='19'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -320,20 +518,26 @@ svg.className {
 																<td><input type="checkbox"</td>
 																<td>#</td>
 																<td>이름</td>
-																<td>보장내용</td>
-																<td>가입조건</td>
-																<td>보험료</td>
-																<td>보험시작일</td>
-																<td>보험종료일</td>
-																<td>보장시작일</td>
-																<td>보장종료일</td>
-																<td>필요서류</td>
-																<td>삭제여부</td>
+																<td>순서</td>
+																<td>성별</td>
+																<td>아이디</td>
+																<td>이메일</td>
+																<td>비밀번호</td>
+																<td>주민번호</td>
+																<td>전화번호</td>
+																<td>설명</td>
 																<td>등록일</td>
 																<td>수정일</td>
+																<td>사용여부</td>
+																<td>삭제여부</td>
+																<td>우편번호</td>
+																<td>주소</td>
+																<td>상세주소</td>
+																<td>계좌번호</td>
+																<td>은행</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
-																<td colspan="14" style="text-align: center;">
+																<td colspan="20" style="text-align: center;">
 																	<p class="fs-5" style="padding-top: 12px;">there
 																		are no data!</p>
 																</td>
@@ -341,26 +545,33 @@ svg.className {
 
 															<tr th:each="list : ${list}">
 																<td><input type="checkbox"></td>
-<!-- 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-																<td th:text="${list.inspSeq}"></td>
-																<td>
-																	<a
-																		th:href="@{/v1/infra/insProduct/insProductXdmMForm(inspSeq=${list.inspSeq})}"
-																		th:text="${list.inspName}">
-																	</a>
-																</td>
-																<td th:text="${list.inspBojang}"></td>
-																<td th:text="${list.inspJogun}"></td>
-																<td th:text="${list.inspPrice}"></td>
-																<td th:text="${#dates.format(list.inspBohumDateStart, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td th:text="${#dates.format(list.inspBohumDateEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td th:text="${#dates.format(list.inspBojangDateStart, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td th:text="${#dates.format(list.inspBojangDateEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td th:text="${list.inspPaper}"></td>
-																<td th:if="${list.inspDelNy eq 0}">N</td>
-																<td th:unless="${list.inspDelNy eq 0}">Y</td>
-																<td th:text="${#dates.format(list.inspDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td th:text="${#dates.format(list.inspDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																<!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
+																<td th:text="${list.cmSeq}"></td>
+																<td><a
+																	th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}"
+																	th:text="${list.cmName}"></a></td>
+																<td th:text="${list.cmOrder}"></td>
+																<td th:if="${list.cmGender eq 0}">남</td>
+																<td th:unless="${list.cmGender eq 0}">여</td>
+																<td th:text="${list.cmId}"></td>
+																<td th:text="${list.cmEmail}"></td>
+																<td th:text="${list.cmPw}"></td>
+																<td th:text="${list.cmSoNum}"></td>
+																<td th:text="${list.cmPhone}"></td>
+																<td th:text="${list.cmDesc}"></td>
+																<th
+																	th:text="${#dates.format(list.cmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
+																<td
+																	th:text="${#dates.format(list.cmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																<td th:if="${list.cmUseNY eq 0}">N</td>
+																<td th:unless="${list.cmUseNY eq 0}">Y</td>
+																<td th:if="${list.cmDelNY eq 0}">N</td>
+																<td th:unless="${list.cmDelNY eq 0}">Y</td>
+																<td th:text="${list.cmZipNum}"></td>
+																<td th:text="${list.cmAdr}"></td>
+																<td th:text="${list.cmAdrDt}"></td>
+																<td th:text="${list.cmAcc}"></td>
+																<td th:text="${list.cmBank}"></td>
 															</tr>
 														</tbody>
 													</table>
@@ -523,24 +734,24 @@ svg.className {
 
 		goList = function(thisPage) {
 			document.querySelector("input[name=thisPage]").value = thisPage;
-			document.querySelector("form[name=formList]").action = "/v1/infra/insProduct/insProductXdmList";
+			document.querySelector("form[name=formList]").action = "/xdm/v1/infra/customer/customerXdmList";
 			document.querySelector("form[name=formList]").submit();
 		}
 
 		document.getElementById("changeRowNum").onchange = function() {
 			document.getElementById("rowNumToShow").value = document
 					.getElementById("changeRowNum").value;
-			formList.action = "/v1/infra/insProduct/insProductXdmList";
+			formList.action = "/xdm/v1/infra/customer/customerXdmList";
 			formList.submit();
 		}
 
 		//insert 버튼
 		document.getElementById("btnInsert").onclick = function() {
-			window.location = "/v1/infra/insProduct/insProductXdmForm";
+			window.location = "/xdm/v1/infra/customer/customerXdmForm";
 		}
 		//reload 버튼
 		document.getElementById("btnReload").onclick = function() {
-			window.location = "/v1/infra/insProduct/insProductXdmList";
+			window.location = "/xdm/v1/infra/customer/customerXdmList";
 		}
 	</script>
 
