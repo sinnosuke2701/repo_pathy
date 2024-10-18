@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pathy.infra.applicationShin.ApplicationShinDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.pathy.infra.applicationShin.ApplicationShinDto" id="resultMapObj"></resultMap>
+
+	<!-- include S -->
+	<sql id="selectCommon">
+		FROM
+			applicationShin AS a
+		WHERE 1 = 1
+			<if test="shDelNy != null and !shDelNy.equals('')">AND shinDelNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND shinSeq = #{shValue}</when>
+				<when test="shOption == 2">AND shinName LIKE CONCAT('%', #{shValue}, '%')</when>
+			</choose>
+			<choose>
+				<when test="shOptionDate == 1">AND shinDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 2">AND shinDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			</choose>
+	</sql>
+	<!-- include E -->
+	
+	<!-- count S -->
+	<select id="selectOneCount">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	<!-- count E -->
+	
+	<!-- selectList S -->
+	<select id="selectList" resultMap="resultMapObj">
+	SELECT aa.* FROM(
+			SELECT
+				a.shinSeq
+				,a.shinDate
+				,a.shinDateGa
+				,a.shinDelNy
+				,a.shinDateTimeReg
+				,a.shinDateTimeEdit
+				,a.insProduct_inspSeq
+				,a.customer_cmSeq
+				,a.insMember_insmSeq
+			<include refid="selectCommon" />
+			ORDER BY
+				a.shinSeq DESC
+			) aa
+			limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+	<!-- selectList E -->
+
+</mapper>
