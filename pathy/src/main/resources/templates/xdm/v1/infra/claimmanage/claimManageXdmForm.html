@@ -366,10 +366,10 @@
 									<a href="profile.html">Profile</a> <a
 										href="account-settings.html">Settings</a> <a href="login.html">Logout</a>
 								</div>
-							</div></li>
+							</div>
+						</li>
 					</ul>
 					<!-- Header actions end -->
-
 				</div>
 				<!-- Header actions ccontainer end -->
 
@@ -383,7 +383,7 @@
 				<li class="breadcrumb-item breadcrumb-active" aria-current="page">Default</li>
 			</ol>
 			<!-- Breadcrumb end -->
-			<h3>InsMember</h3>
+			<h3>ClaimManage</h3>
 			<!-- Content wrapper scroll start -->
 			<div class="content-wrapper-scroll">
 
@@ -394,233 +394,97 @@
 					<div class="row mb-3">
 						<div class="col-sm-12 col-12">
 
+
 							<!-- Card start -->
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">기본정보</div>
 								</div>
 								<form class="needs-validation" novalidate id="form" name="form"
-									method="post" action="/xdm/v1/infra/insmember/insMemberXdmPdt">
+									method="post" action="/xdm/v1/infra/claimmanage/claimManageXdmInst">
 									<div class="card-body">
 										<div class="container-fluid">
 											<div class="row mb-3">
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">seq<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmSeq" th:value="${item?.insmSeq}" readonly>
+												<div class="row mb-3">
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="clmName" class="form-label">직원 이름<span
+																	style="color: red;">*</span></label>
+																<select name = "clmName" class="form-select" id="validationCustom04" >
+																	<option value ="">선택하세요</option>
+																	<option th:each="list : ${listInsMember}" th:value="${list.clmSeq}" th:text="${list.clmName}">미사용</option>
+																</select>
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-md-9"></div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">이름<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmName"
-																th:value="${item?.insmName}" autocomplete="off">
+<!-- 													<div class="col-md-3"> -->
+<!-- 														<div class="card"> -->
+<!-- 															<div class="card-body"> -->
+<!-- 																<label for="cmGender" class="form-label fs--1">성별 <span class="text-danger fs-0">*</span></label> -->
+<!-- 																<select id="cmGender" name="cmGender" class="form-select"> -->
+<!-- 																	<option value="">선택하세요</option> -->
+<!-- 																	<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cdName}" th:selected="${list.cdseq} == ${item?.cmGender}"></option> -->
+<!-- 																</select>	 -->
+<!-- 															</div>						 -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 													<div class="col-md-3"> -->
+<!-- 														<div class="card"> -->
+<!-- 															<div class="card-body"> -->
+<!-- 																<label for="clmSituation" class="form-label fs--1">성별 <span class="text-danger fs-0">*</span></label> -->
+<!-- 																<select id="clmSituation" name="clmSituation" class="form-select"> -->
+<!-- 																	<option value="">선택하세요</option> -->
+<!-- 																	<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cdName}" th:selected="${list.cdseq} == ${item?.cmGender}"></option> -->
+<!-- 																</select>	 -->
+<!-- 															</div>						 -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="clmUseNY" class="form-label">사용여부<span
+																	style="color: red;">*</span></label>
+																<select class="form-select" id="clmUseNY" name="clmUseNY">
+																	<option value="">선택</option>
+																	<option value="0" th:selected="${item?.clmUseNY == 0}">미사용</option>
+																	<option value="1" th:selected="${item?.clmUseNY == 1}" >사용</option>
+																</select>
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">성별<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmGender"
-																th:value="${item?.insmGender}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">아이디<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmId"
-																th:value="${item?.insmId}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">이메일<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmEmail"
-																th:value="${item?.insmEmail}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">비밀번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmPw"
-																th:value="${item?.insmPw}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">주민번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmSoNum"
-																th:value="${item?.insmSoNum}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">전화번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmPhone"
-																th:value="${item?.insmPhone}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="cd_UseNY" class="form-label">사용여부<span
-																style="color: red;">*</span></label> <select class="form-select"
-																id="cd_UseNY" name="insmUseNY">
-																<option value="0" th:selected="${item?.insmUseNY == 0}">미사용</option>
-																<option value="1" th:selected="${item?.insmUseNY == 1}">사용</option>
-															</select>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-9"></div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">우편번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" id="sample6_postcode" name="insmZipNum" th:value="${item?.insmZipNum}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">주소<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" id="sample6_address" name="insmAdr" th:value="${item?.insmAdr}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">상세주소<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" id="sample6_detailAddress" name="insmAdrDt" th:value="${item?.insmAdrDt}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="card">
-														<div class="card-body">
-															<label for="cd_Desc" class="form-label">설명</label>
-															<textarea class="form-control" id="insmDesc"
-																name="cmDesc" th:text="${item?.insmDesc}" rows="3" autocomplete="off"></textarea>
-														</div>
-													</div>
-												</div>
 												<div class="col-md-6"></div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">등록일</label>
-															<input type="text" class="form-control" name="insmDateTimeReg"
-																th:value="${#dates.format(item?.insmDateTimeReg, 'yyyy/MM/dd HH:mm:ss')}"
-																disabled>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">수정일</label>
-															<input type="text" class="form-control" name="insmDateTimeEdit"
-																th:value="${#dates.format(item?.insmDateTimeEdit, 'yyyy/MM/dd HH:mm:ss')}"
-																readonly>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom04" class="form-label">삭제여부<span
-																style="color: red;">*</span></label> <select class="form-select"
-																id="insmDelNY" name="insmDelNY">
-																<option selected disabled value="">삭제 여부</option>
-																<option value="0" th:selected="${item?.insmDelNY == 0}">미삭제</option>
-																<option value="1" th:selected="${item?.insmDelNY == 1}">삭제</option>
-															</select>
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-md-3" style="padding-right: 0px;">
+												<div class="row mb-3">
+													<div class="col">
 														<button type="button" id='btnList' class="btn btn-white">
 															<svg xmlns="http://www.w3.org/2000/svg" width="16"
-																height="16" fill="black"
-																style="background-color: white;" class="bi bi-list-ul"
-																viewBox="0 0 16 16">
-																<path fill-rule="evenodd"
+																height="16" fill="black" style="background-color: white;"
+																class="bi bi-list-ul" viewBox="0 0 16 16">
+																	<path fill-rule="evenodd"
 																	d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
 																</svg>
 														</button>
-														<button type="button" id='btnDelete' class="btn btn-white"
-															style="background-color: red;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="10"
-																height="10" fill="white" class="bi bi-x-lg"
-																viewBox="0 0 16 16">
-		                                                            <path
-																	d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-		                                                        </svg>
-														</button>
-														<button type="button" id='btnUelete' class="btn btn-white"
-															style="background-color: red;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="10"
-																height="10" fill="white" class="bi bi-trash"
-																viewBox="0 0 16 16">
-		                                                            <path
-																	d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-		                                                            <path
-																	d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-		                                                        </svg>
-														</button>
 													</div>
-													<div class="col-md-8"></div>
-														<div class="col-md-1" style="margin-right: 0; margin-left: 0;">
-															<button type="button" id='btnPdt' class="btn btn-white" style="float: right;">
-																<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" style="background-color: blue;"
-																	class="bi bi-plus-square" viewBox="0 0 16 16">
-																	<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-																	<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+													<div class="col"></div>
+													<div class="col"></div>
+													<div class="col">
+														<button type="button" id='btnSubmit' class="btn btn-white"
+															style="float: right;">
+															<svg xmlns="http://www.w3.org/2000/svg" width="10"
+																height="10" fill="white" style="background-color: blue;"
+																class="bi bi-plus-square" viewBox="0 0 16 16">
+																	<path
+																	d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+																	<path
+																	d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
 																</svg>
-															</button>
-														</div>
+														</button>
 													</div>
 												</div>
 											</div>
 										</div>
-									</form>
+									</div>
+								</form>
 								<!-- Row end -->
 							</div>
 						</div>
@@ -630,26 +494,6 @@
 				<!-- Row end -->
 			</div>
 			<!-- Content wrapper end -->
-
-			<!-- modal start -->
-			<!-- <div class="modals-placeholder"> 
-			<div class="modal fade" id="modalSm" tabindex="-1" aria-labelledby="modalSmLabel" aria-hidden="true">
-				<div class="modal-dialog modal-sm">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="modalSmLabel">Modal title</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">...</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-								<button type="button" id="btnUelete" class="btn btn-success" data-bs-dismiss="modal">Save changes</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div> -->
-			<!-- modal end -->
 
 			<!-- App Footer start -->
 			<div class="app-footer">
@@ -689,31 +533,53 @@
 
 	<!-- Main Js Required -->
 	<script src="/xdm/v1/template/vivo/assets/js/main.js"></script>
-
+	
 	<script>
 		document.getElementById("btnList").onclick = function (){
-			window.location = "/xdm/v1/infra/insmember/insMemberXdmList";
+			window.location = "/xdm/v1/infra/claimmanage/claimManageXdmList";
 		}
 		
-		document.getElementById("btnDelete").onclick = function() {
-			let form = document.querySelector("form[name='form']");
-			form.action = "/xdm/v1/infra/insmember/insMemberXdmDele";
-			form.submit();
-		};
-		
-		document.getElementById("btnUelete").onclick = function() {
-			let form = document.querySelector("form[name='form']");
-			form.action = "/xdm/v1/infra/insmember/insMemberXdmUele";
-			form.submit();
-		}
-		
-		document.getElementById("btnPdt").onclick = function(){
+		document.getElementById("btnSubmit").onclick = function (){
+		    
+		    var clmName = document.getElementById("clmName");
+		    var clmNameValue = document.getElementById("clmName").value.trim();
+		    
+		    if(clmNameValue == "" || clmNameValue == null){
+		    	alert("이름을 입력해주세요.");
+		    	clmName.focus();
+		    	return false;
+		    } else{
+// 		    	by pass
+		    }
+		    
+		    var clmUseNY = document.getElementById("clmUseNY");
+		    var clmUseNYValue = document.getElementById("clmUseNY").value;
+		    
+		    if(clmUseNYValue == "" || clmUseNYValue == null){
+		    	alert("사용여부를 선택해주세요.");
+		    	clmUseNY.focus();
+		    	return false;
+		    } else{
+// 		    	by pass
+		    }
+		    
+		    
+// 		    var cmDesc = document.getElementById("cmDesc");
+// 		    var cmDescValue = document.getElementById("cmDesc");
+		    
+// 		    if(cmDescValue == "" || cmDescValue == null){
+// 		    	alert("설명을 입력해주세요.");
+// 		    	cmDesc.focus();
+// 		    	return false;
+// 		    } else {
+// 		    	//by pass
+// 		    }
 			let form = document.querySelector("form[name=form]");
-			form.action = "/xdm/v1/infra/insmember/insMemberXdmPdt";
-			form.submit();
+			form.action = "/xdm/v1/infra/claimmanage/claimManageXdmInst";
+			form.submit(); 
 		}
 	</script>
-<!-- kakao 우편번호 Start -->
+	<!-- kakao 우편번호 Start -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
 	    function sample6_execDaumPostcode() {

@@ -18,7 +18,6 @@ public interface InsMemberDao {
 		
 	public int update(InsMemberDto insMemberDto);
 	
-	public List<InsMemberDto> selectListCodeGroup();
 	
 	public int uelete (InsMemberDto insMemberDto);
 	
