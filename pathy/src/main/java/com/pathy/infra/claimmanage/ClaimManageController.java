@@ -37,6 +37,7 @@ public class ClaimManageController {
 	public String insMemberXdmForm(Model model) {
 //		List<CustomerDto> customers = CustomerService.selectListCustomer();
 //		model.addAttribute("listCodeGroup", customers);
+		model.addAttribute("listInsMember", claimManageService.selectListInsMember());
 		return "/xdm/v1/infra/claimmanage/claimManageXdmForm";
 	}
 

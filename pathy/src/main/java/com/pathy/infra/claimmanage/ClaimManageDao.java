@@ -18,7 +18,7 @@ public interface ClaimManageDao {
 		
 	public int update(ClaimManageDto claimManageDto);
 	
-	public List<ClaimManageDto> selectListCodeGroup();
+	public List<ClaimManageDto> selectListInsMember();
 	
 	public int uelete (ClaimManageDto claimManageDto);
 	

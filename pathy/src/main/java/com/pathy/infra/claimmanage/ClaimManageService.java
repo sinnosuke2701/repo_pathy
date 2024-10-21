@@ -27,6 +27,10 @@ public class ClaimManageService {
 		
 		return claimManageDao.insert(claimManageDto);
 	}
+	
+	public List<ClaimManageDto> selectListInsMember() {
+		return claimManageDao.selectListInsMember();
+	}
 		
 	public ClaimManageDto selectOne(ClaimManageDto claimManageDto){
 		ClaimManageDto dto = claimManageDao.selectOne(claimManageDto);

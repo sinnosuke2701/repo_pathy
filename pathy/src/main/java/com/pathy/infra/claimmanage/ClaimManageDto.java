@@ -11,6 +11,9 @@ public class ClaimManageDto {
 	private Date clmDateTimeEdit;
 	private Integer clmUseNY;
 	private Integer clmDelNY;
+	private String insMember_insmSeq;
+	private String insmName;
+	private String insmSeq;
 //	-----
 	public String getClmSeq() {
 		return clmSeq;
@@ -53,6 +56,24 @@ public class ClaimManageDto {
 	}
 	public void setClmSituation(Integer clmSituation) {
 		this.clmSituation = clmSituation;
+	}
+	public String getInsMember_insmSeq() {
+		return insMember_insmSeq;
+	}
+	public void setInsMember_insmSeq(String insMember_insmSeq) {
+		this.insMember_insmSeq = insMember_insmSeq;
+	}
+	public String getInsmName() {
+		return insmName;
+	}
+	public void setInsmName(String insmName) {
+		this.insmName = insmName;
+	}
+	public String getInsmSeq() {
+		return insmSeq;
+	}
+	public void setInsmSeq(String insmSeq) {
+		this.insmSeq = insmSeq;
 	}
 	
 	

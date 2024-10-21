@@ -10,37 +10,39 @@
 	
 	<sql id="selectCommon">
 		from
-			claimManage a
+			claimManage b left join insMember a on a.insmSeq = b.insMember_insmSeq
 		where 1 = 1
 		<if test="shDelNY != null and !shDelNY.equals('')">And clmDelNY = #{shDelNY}</if>
 		<if test="shUseNY != null and !shUseNY.equals('')">And clmUseNY = #{shUseNY}</if>
 		
 		<choose>
-			<when test="shOptionDate == 1">AND a.clmDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-			<when test="shOptionDate == 2">AND a.clmDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 1">AND b.clmDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND b.clmDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
 		
 		<choose>
-			<when test="shOption == 1">AND a.clmSeq = #{shValue}</when> 
+			<when test="shOption == 1">AND clmSeq = #{shValue}</when> 
 			<when test="shOption == 2">AND clmName LIKE CONCAT('%',#{shValue},'%') AND insmName = #{shValue}</when>
 			<when test="shOption == 3">AND clmOrder = #{shValue}</when>
 		</choose>
 	</sql>
 		
 	<select id="selectList" resultMap="resultMapObj">
-		select aa.* from (
+		select bb.* from (
 			select
-				a.clmSeq
-				,a.clmName
-				,a.clmSituation
-				,a.clmDateTimeReg
-				,a.clmDateTimeEdit
-				,a.clmUseNY
-				,a.clmDelNY
+				b.clmSeq
+				,b.clmName
+				,b.clmSituation
+				,b.clmDateTimeReg
+				,b.clmDateTimeEdit
+				,b.clmUseNY
+				,b.clmDelNY
+				,b.insMember_insmSeq
+				,a.insmName
 <!-- 				,(select count(b.CodeGroup_seq) from code b where 1 = 1 and b.CodeGroup_seq = a.cgseq) as codeGroupCount -->
 		<include refid="selectCommon"></include>
-		Order By a.clmSeq desc
-		) aa
+		Order By b.clmSeq desc
+		) bb
 		limit #{rowNumToShow} offset #{startRnumForMysql}
 		
 	</select>
@@ -55,16 +57,16 @@
 	<select id = "selectOne" resultMap="resultMapObj">
 		select
 			a.clmSeq
-				,a.clmName
-				,a.clmSituation
-				,a.insmDateTimeReg
-				,a.insmDateTimeEdit
-				,a.insmUseNY
-				,a.insmDelNY
+				,b.clmName
+				,b.clmSituation
+				,b.insmDateTimeReg
+				,b.insmDateTimeEdit
+				,b.insmUseNY
+				,b.insmDelNY
 		from
-			claimManage a
+			claimManage b
 		where 1 =1
-			and a.clmSeq = #{clmSeq}		
+			and b.clmSeq = #{clmSeq}		
 	</select>
 	
 	<insert id = "insert">
@@ -83,10 +85,19 @@
     		,#{clmUseNY}
     		,0
 		)
-		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
+		<selectKey resultType="String" keyProperty="clmSeq" order="AFTER">
 			SELECT last_Insert_id()
 		</selectKey>
 	</insert>
+	
+	<select id = "selectListInsMember" resultMap = "resultMapObj">
+		select
+			a.insmSeq
+			,a.insmName
+		from insMember a
+		where 1=1
+			and a.insmDelNy = 0
+	</select>
 		
 		
 	<update id="update">
