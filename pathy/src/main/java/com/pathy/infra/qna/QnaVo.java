@@ -10,6 +10,7 @@ public class QnaVo {
 		private String shDateStart;
 		private String shDateEnd;
 		private Integer shOptionDate;
+		private Integer shCategory;
 			
 		//페이징
 		private int thisPage = 1;				//현재 페이지 
@@ -197,5 +198,13 @@ public class QnaVo {
 
 		public void setShGender(Integer shGender) {
 			this.shGender = shGender;
+		}
+
+		public Integer getShCategory() {
+			return shCategory;
+		}
+
+		public void setShCategory(Integer shCategory) {
+			this.shCategory = shCategory;
 		}
 }

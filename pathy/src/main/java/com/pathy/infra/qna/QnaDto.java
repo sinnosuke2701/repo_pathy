@@ -19,6 +19,8 @@ public class QnaDto {
 	
 	private String insmSeq;
 	private String insmName;
+	
+	
 	//---------
 	public String getQnaSeq() {
 		return qnaSeq;

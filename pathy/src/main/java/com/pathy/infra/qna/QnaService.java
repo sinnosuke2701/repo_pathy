@@ -4,10 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.pathy.infra.customer.CustomerDao;
-import com.pathy.infra.customer.CustomerDto;
-import com.pathy.infra.customer.CustomerVo;
 @Service
 public class QnaService {
 	
@@ -36,10 +32,13 @@ public class QnaService {
 		 return qnaDao.update(qnaDto);
 	 }
 	
-//	public List<CodeDto> selectListCodeGroup(){
-//		List<CodeDto> codeGroups = CodeDao.selectListCodeGroup();
-//		return codeGroups;
-//	}
+	public List<QnaDto> selectListCustomer(){
+		return qnaDao.selectListCustomer();
+	}
+	
+	public List<QnaDto> selectListInsMember(){
+		return qnaDao.selectListInsMember();
+	}
 	
 	public int uelete (QnaDto qnaDto) {
 		return qnaDao.uelete(qnaDto);

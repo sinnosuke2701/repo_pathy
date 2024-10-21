@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pathy.common.util.UtilDateTime;
-import com.pathy.infra.customer.CustomerDto;
-import com.pathy.infra.customer.CustomerService;
-import com.pathy.infra.customer.CustomerVo;
 @Controller
 public class QnaController {
 	
@@ -33,21 +30,30 @@ public class QnaController {
 
 	@RequestMapping(value = "/xdm/v1/infra/qna/qnaXdmForm")
 	public String qnaXdmForm(Model model) {
-//		List<CustomerDto> customers = CustomerService.selectListCustomer();
-//		model.addAttribute("listCodeGroup", customers);
+		List<QnaDto> customers = qnaService.selectListCustomer();
+		model.addAttribute("listCustomer", customers);
+		
+		List<QnaDto> insmembers = qnaService.selectListInsMember();
+		model.addAttribute("listInsMember", insmembers);
 		return "/xdm/v1/infra/qna/qnaXdmForm";
 	}
 
-	@RequestMapping(value = "/xdm/v1/infra/customer/qnaXdmInst")
+	@RequestMapping(value = "/xdm/v1/infra/qna/qnaXdmInst")
 	public String qnaXdmInst(QnaDto qnaDto) {
 		qnaService.insert(qnaDto);
-		return "redirect:/xdm/v1/infra/customer/qnaXdmList";
+		return "redirect:/xdm/v1/infra/qna/qnaXdmList";
 	}
 
-	@RequestMapping(value = "/xdm/v1/infra/customer/qnaXdmMfom")
+	@RequestMapping(value = "/xdm/v1/infra/qna/qnaXdmMfom")
 	public String qnaXdmMfom(QnaDto qnaDto, Model model) {
 		model.addAttribute("item", qnaService.selectOne(qnaDto));
-		return "/xdm/v1/infra/customer/qnaXdmMfom";
+		
+		List<QnaDto> insmembers = qnaService.selectListInsMember();
+		model.addAttribute("listInsMember", insmembers);
+		
+		List<QnaDto> customers = qnaService.selectListCustomer();
+		model.addAttribute("listCustomer", customers);
+		return "/xdm/v1/infra/qna/qnaXdmMfom";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/qna/qnaXdmPdt")
@@ -65,7 +71,7 @@ public class QnaController {
 	@RequestMapping(value = "/xdm/v1/infra/qna/qnaXdmUele")
 	public String qnaXdmUele(QnaDto qnaDto) {
 		qnaService.uelete(qnaDto);
-		return "redirect:/xdm/v1/infra/qna/customerXdmList";
+		return "redirect:/xdm/v1/infra/qna/qnaXdmList";
 	}
 	
 	@RequestMapping(value = "/xdm/v1/infra/index/qnaXdmView")

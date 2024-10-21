@@ -19,7 +19,9 @@ public interface QnaDao {
 		
 	public int update(QnaDto qnaDto);
 	
-	public List<QnaDto> selectListCodeGroup();
+	public List<QnaDto> selectListCustomer();
+	
+	public List<QnaDto> selectListInsMember();
 	
 	public int uelete (QnaDto qnaDto);
 	

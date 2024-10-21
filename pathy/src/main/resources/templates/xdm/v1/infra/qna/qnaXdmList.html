@@ -573,10 +573,10 @@
                                             </th>
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
-                                                    style="width: 200px;" name="shUseNY" id="shUseNY">
+                                                    style="width: 200px;" name="shCategory" id="shCategory">
                                                     <option value="" th:selected="${vo.shUseNY == null}">카테고리</option>
-                                                    <option value="0" th:selected="${vo.shUseNY == 0}">궁금해</option>
-                                                    <option value="1" th:selected="${vo.shUseNY == 1}">문의</option>
+                                                    <option value="0" th:selected="${vo.shCategory == 0}">문의</option>
+                                                    <option value="1" th:selected="${vo.shCategory == 1}">짜증나</option>
                                                 </select>
                                             </td>
 <!--                                             <td> -->
@@ -610,9 +610,9 @@
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shOption">
                                                     <option value="" th:selected="${vo.shOption == null}">검색구분</option>
-                                                    <option value="1" th:selected="${vo.shOption == 1}">이름</option>
-                                                    <option value="2" th:selected="${vo.shOption == 2}">순서</option>
-                                                    <option value="3" th:selected="${vo.shOption == 3}">아이디</option>
+                                                    <option value="1" th:selected="${vo.shOption == 1}">고객이름</option>
+                                                    <option value="2" th:selected="${vo.shOption == 2}">직원이름</option>
+                                                    <option value="3" th:selected="${vo.shOption == 2}">제목</option>
                                                 </select>
                                             </th>
                                             <td>
@@ -678,11 +678,11 @@
                                                         	<td></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
                                                             <td th:text = "${list.qnaSeq}"></td>
-                                                            <td th:text = "${list.cmName}"></td>
+                                                            <td th:text = "${list.cmName}"></td> 
                                                             <td th:text = "${list.insmName}"></td>
-                                                            <td th:if = "${list.qnaCategory eq 0}">짜증나</td>
-                                                            <td th:unless = "${list.qnaCategory eq 0}">문의</td>
-                                                            <td><a th:href="@{/xdm/v1/infra/qna/qnaXdmMfom(cmSeq=${list.qnaSeq})}" th:text = "${list.qnaTitle}"></a></td>
+                                                            <td th:if = "${list.qnaCategory eq 0}">문의</td>
+                                                            <td th:unless = "${list.qnaCategory eq 0}">짜증나</td>
+                                                            <td><a th:href="@{/xdm/v1/infra/qna/qnaXdmMfom(qnaSeq=${list.qnaSeq})}" th:text = "${list.qnaTitle}"></a></td>
                                                             <td th:text = "${list.qnaContent}"></td>
                                                             <th th:text = "${#dates.format(list.qnaDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.qnaDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>

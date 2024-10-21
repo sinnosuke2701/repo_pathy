@@ -134,7 +134,7 @@
     		,#{cmDesc}
     		,now()
     		,now()
-    		,#{cmUseNY}
+    		,1
     		,0
     		,#{cmZipNum}
     		,#{cmAdr}

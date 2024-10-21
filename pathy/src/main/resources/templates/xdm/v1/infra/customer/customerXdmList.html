@@ -13,7 +13,11 @@
             width: 100px;
             height: 100px;
             color: limegreen;
-        }
+            }
+        .list-scroll {
+		  overflow-x: auto; /* 가로 스크롤바 활성화 */
+		  white-space: nowrap; /* 자식 요소들이 한 줄로 나열되도록 설정 */
+		}
     </style>
 
     <script>
@@ -644,12 +648,12 @@
                             
 
                             <hr style="color: rgb(199, 202, 209);">
-
                             <!-- Row start -->
-                            <div class="row">
-                                <div class="col-sm-12 col-12">
-                                    <div class="card">
-                                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-body">
+										<div class="list-scroll">
                                             <div class="table-responsive">
                                                 <table class="table m-0">
                                                     <thead>
@@ -726,6 +730,8 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            </div>
+                                            
 
                                             <!--페이지네이션 시작-->
                                             <div aria-label="...">

@@ -17,8 +17,6 @@ public class CustomerController {
 
 	@RequestMapping(value = "/xdm/v1/infra/customer/customerXdmList")
 	public String customerXdmList(Model model ,@ModelAttribute("vo")  CustomerVo customerVo) {
-//		codeVo.setSh_DateStart(codeVo.getSh_DateStart()+ " 00:00:00");
-//		codeVo.setSh_DateEnd(codeVo.getSh_DateEnd()+ " 23:59:59");
 		/* 초기값 세팅이 없는 경우 사용 */
 		customerVo.setShDateStart(customerVo.getShDateStart() == null || customerVo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(customerVo.getShDateStart()));
 		customerVo.setShDateEnd(customerVo.getShDateEnd() == null || customerVo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(customerVo.getShDateEnd()));
@@ -47,10 +45,8 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/customer/customerXdmMfom")
-	public String customerXdmMfom(CustomerDto codeDto, Model model) {
-		model.addAttribute("item", CustomerService.selectOne(codeDto));
-//		List<CustomerDto> customers = CustomerService.selectListCustomer();
-//		model.addAttribute("listCustomer", customers);
+	public String customerXdmMfom(CustomerDto customerDto, Model model) {
+		model.addAttribute("item", CustomerService.selectOne(customerDto));
 		return "/xdm/v1/infra/customer/customerXdmMfom";
 	}
 

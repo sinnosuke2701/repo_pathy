@@ -21,16 +21,18 @@
 			a.insMember_insmSeq = c.insmSeq
 		WHERE 1=1	
 		<if test="shDelNY != null and !shDelNY.equals('')">And qnaDelNY = #{shDelNY}</if>
+		<if test="shCategory != null and !shCategory.equals('')">And qnaCategory = #{shCategory}</if>
 		
 		<choose>
 			<when test="shOptionDate == 1">AND a.qnaDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 			<when test="shOptionDate == 2">AND a.qnaDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
 		
+		
 		<choose>
 			<when test="shOption == 1">AND cmName LIKE CONCAT('%',#{shValue},'%') AND cmName = #{shValue}</when>
-			<when test="shOption == 2">AND cmOrder = #{shValue}</when>
-			<when test="shOption == 3">AND cmId LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND insmName = #{shValue}</when>
+			<when test="shOption == 3">AND qnaTitle LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
 	</sql>
 		
@@ -106,7 +108,25 @@
 			SELECT last_Insert_id()
 		</selectKey>
 	</insert>
+	
+	<select id="selectListCustomer" resultMap="resultMapObj">
+		select
+			a.cmSeq as customer_cmSeq
+			,a.cmName
+		from
+			Customer a
+		where 1=1
+	</select>
 		
+	<select id="selectListInsMember" resultMap="resultMapObj">
+		select
+			a.insmSeq as insMember_insmSeq
+			,a.insmName
+		from
+			insMember a
+		where 1=1
+	</select>
+	
 		
 	<update id="update">
 		update qna
