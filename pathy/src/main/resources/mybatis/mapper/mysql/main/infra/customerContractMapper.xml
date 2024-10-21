@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pathy.infra.customercontract.CustomerContractDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.pathy.infra.customercontract.CustomerContractDto" id="resultMapObj"></resultMap>
+	
+	<sql id="selectCommon">
+		from
+			customerContract a
+		where 1 = 1
+		<if test="shDelNY != null and !shDelNY.equals('')">AND cmDelNY = #{shDelNY}</if>
+		<if test="shGender != null and !shGender.equals('')">AND cmGender = #{shGender}</if>
+		
+		<if test="shDelNY != null and !shDelNY.equals('')">And cmDelNY = #{shDelNY}</if>
+		<if test="shUseNY != null and !shUseNY.equals('')">And cmUseNY = #{shUseNY}</if>
+		
+		<choose>
+			<when test="shOptionDate == 1">AND a.cmDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.cmDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == 1">AND cmName LIKE CONCAT('%',#{shValue},'%') AND cmName = #{shValue}</when>
+			<when test="shOption == 2">AND cmOrder = #{shValue}</when>
+			<when test="shOption == 3">AND cmId LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND cmEmail LIKE CONCAT('%',#{shValue},'%') AND cmEmail = #{shValue}</when>
+			<when test="shOption == 5">AND cmPw LIKE CONCAT('%',#{shValue},'%') AND cmPw = #{shValue}</when>
+			<when test="shOption == 6">AND cmSoNum LIKE CONCAT('%',#{shValue},'%') AND cmSoNum = #{shValue}</when>
+			<when test="shOption == 7">AND cmPhone LIKE CONCAT('%',#{shValue},'%') AND cmPhone = #{shValue}</when>
+			<when test="shOption == 8">AND cmAdr LIKE CONCAT('%',#{shValue},'%') AND cmAdr = #{shValue}</when>
+			<when test="shOption == 9">AND cmAdrDt LIKE CONCAT('%',#{shValue},'%') AND cmAdrDt = #{shValue}</when>
+			<when test="shOption == 10">AND cmAcc LIKE CONCAT('%',#{shValue},'%') AND cmAcc = #{shValue}</when>
+			 
+		</choose>
+	</sql>
+		
+	<select id="selectList" resultMap="resultMapObj">
+		select aa.* from (
+			select
+				a.cmSeq
+				,a.cmName
+				,a.cmOrder
+				,a.cmGender
+				,a.cmId
+				,a.cmEmail
+				,a.cmPw
+				,a.cmSoNum
+				,a.cmPhone
+				,a.cmDesc
+				,a.cmDateTimeReg
+				,a.cmDateTimeEdit
+				,a.cmUseNY
+				,a.cmDelNY
+				,a.cmZipNum
+				,a.cmAdr
+				,a.cmAdrDt
+				,a.cmAcc
+				,a.cmBank
+<!-- 				,(select count(b.CodeGroup_seq) from code b where 1 = 1 and b.CodeGroup_seq = a.cgseq) as codeGroupCount -->
+		<include refid="selectCommon"></include>
+		Order By a.cmSeq desc
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+		
+	</select>
+		
+		
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon"></include>
+	</select>
+	
+	
+	<select id = "selectOne" resultMap="resultMapObj">
+		select
+			a.cmSeq
+			,a.cmName
+			,a.cmOrder
+			,a.cmGender
+			,a.cmId
+			,a.cmEmail
+			,a.cmPw
+			,a.cmSoNum
+			,a.cmPhone
+			,a.cmDesc
+			,a.cmDateTimeReg
+			,a.cmDateTimeEdit
+			,a.cmUseNY
+			,a.cmDelNY
+			,a.cmZipNum
+			,a.cmAdr
+			,a.cmAdrDt
+			,a.cmAcc
+			,a.cmBank
+		from
+			customerContract a
+		where 1 =1
+			and a.cmSeq = #{cmSeq}		
+	</select>
+	
+	<insert id = "insert">
+		insert into customerContract(
+			cmName
+			,cmOrder
+			,cmGender
+			,cmId
+			,cmEmail
+			,cmPw
+			,cmSoNum
+			,cmPhone
+			,cmDesc
+			,cmDateTimeReg
+			,cmDateTimeEdit
+			,cmUseNY
+			,cmDelNY
+			,cmZipNum
+			,cmAdr
+			,cmAdrDt
+			,cmAcc
+			,cmBank
+		)values(
+    		#{cmName}
+    		,#{cmOrder}
+    		,#{cmGender}
+    		,#{cmId}
+    		,#{cmEmail}
+    		,#{cmPw}
+    		,#{cmSoNum}
+    		,#{cmPhone}
+    		,#{cmDesc}
+    		,now()
+    		,now()
+    		,1
+    		,0
+    		,#{cmZipNum}
+    		,#{cmAdr}
+    		,#{cmAdrDt}
+    		,#{cmAcc}
+    		,#{cmBank}
+		)
+		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
+			SELECT last_Insert_id()
+		</selectKey>
+	</insert>
+		
+		
+	<update id="update">
+		update customerContract
+		set
+			cmName = #{cmName}
+			,cmOrder = #{cmOrder}
+			,cmGender = #{cmGender}
+			,cmId = #{cmId}
+			,cmEmail = #{cmEmail}
+			,cmPw = #{cmPw}
+			,cmSoNum = #{cmSoNum}
+			,cmPhone = #{cmPhone}
+			,cmDesc = #{cmDesc}
+			,cmId = #{cmId}
+			,cmUseNY = #{cmUseNY}
+			,cmDelNY = 0
+			,cmZipNum = #{cmZipNum}
+			,cmAdr = #{cmAdr}
+			,cmAdrDt = #{cmAdrDt}
+			,cmAcc = #{cmAcc}
+			,cmBank = #{cmBank}
+		where 1 = 1
+			and cmSeq = #{cmSeq}
+	</update>
+		
+	<delete id="delete">
+		delete from customerContract
+		where 1=1
+			and cmSeq = #{cmSeq}
+	</delete>
+		
+	<update id="uelete">
+		update customerContract
+		set
+			cmDelNY = 1
+		where 1 = 1
+			and cmSeq = #{cmSeq}
+	</update>
+	
+	
+	</mapper>
