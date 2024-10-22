@@ -37,6 +37,8 @@ public class ClaimController {
 	public String claimXdmForm(Model model) {
 //		List<CustomerDto> customers = CustomerService.selectListCustomer();
 //		model.addAttribute("listCodeGroup", customers);
+		model.addAttribute("customer", claimService.selectListCustomer());
+		
 		return "/xdm/v1/infra/claim/claimXdmForm";
 	}
 

@@ -80,14 +80,16 @@
 			,clmDateTimeAssign
 			,clmUseNY
 			,clmDelNY
+			,insMember_insmSeq
 		)values(
     		#{clmName}
     		,#{clmSituation}
     		,now()
     		,now()
-    		,#{clmDateTimeAssign}
+    		,now()
     		,#{clmUseNY}
     		,0
+    		,#{insMember_insmSeq}
 		)
 		<selectKey resultType="String" keyProperty="clmSeq" order="AFTER">
 			SELECT last_Insert_id()
@@ -101,6 +103,15 @@
 		from insMember a
 		where 1=1
 			and a.insmDelNy = 0
+	</select>
+	
+	<select id = "selectListCustomer" resultMap = "resultMapObj">
+		select
+			a.cmSeq
+			,a.cmName
+		from customer a
+		where 1=1
+			and a.cmDelNy = 0
 	</select>
 		
 		

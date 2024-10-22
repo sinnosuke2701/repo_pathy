@@ -20,6 +20,9 @@ public class ClaimDto {
 	private Integer clDelNY;
 	private String claimManage_clmSeq;
 	private String customer_cmSeq;
+	
+	private String cmSeq;
+	private String cmName;
 //	-----
 	public String getClSeq() {
 		return clSeq;
@@ -116,6 +119,18 @@ public class ClaimDto {
 	}
 	public void setCustomer_cmSeq(String customer_cmSeq) {
 		this.customer_cmSeq = customer_cmSeq;
+	}
+	public String getCmSeq() {
+		return cmSeq;
+	}
+	public void setCmSeq(String cmSeq) {
+		this.cmSeq = cmSeq;
+	}
+	public String getCmName() {
+		return cmName;
+	}
+	public void setCmName(String cmName) {
+		this.cmName = cmName;
 	}
 	
 	

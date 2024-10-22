@@ -31,6 +31,10 @@ public class ClaimManageService {
 	public List<ClaimManageDto> selectListInsMember() {
 		return claimManageDao.selectListInsMember();
 	}
+	
+	public List<ClaimManageDto> selectListCustomer() {
+		return claimManageDao.selectListCustomer();
+	}
 		
 	public ClaimManageDto selectOne(ClaimManageDto claimManageDto){
 		ClaimManageDto dto = claimManageDao.selectOne(claimManageDto);

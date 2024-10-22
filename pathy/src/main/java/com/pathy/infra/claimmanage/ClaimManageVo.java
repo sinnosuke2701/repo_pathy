@@ -23,7 +23,6 @@ public class ClaimManageVo {
 				
 			private int startRnumForMysql = 0;		//쿼리 시작 row
 			
-			private String clmDateTimeAssign;
 				
 			//---------------
 			
@@ -193,12 +192,5 @@ public class ClaimManageVo {
 				this.startRnumForMysql = startRnumForMysql;
 			}
 
-			public String getClmDateTimeAssign() {
-				return clmDateTimeAssign;
-			}
-
-			public void setClmDateTimeAssign(String clmDateTimeAssign) {
-				this.clmDateTimeAssign = clmDateTimeAssign;
-			}
 	
 }
