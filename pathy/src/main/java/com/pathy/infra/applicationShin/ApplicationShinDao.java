@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.pathy.infra.insContract.InsContractDto;
-
 @Repository
 public interface ApplicationShinDao {
 	

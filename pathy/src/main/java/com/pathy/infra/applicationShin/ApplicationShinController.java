@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pathy.common.util.UtilDateTime;
-import com.pathy.infra.insContract.InsContractDto;
 
 @Controller
 public class ApplicationShinController {
 	
 	@Autowired
-	ApplicationShinService applicationService;
+	ApplicationShinService applicationShinService;
 	
 	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmList")
 	public String applicationXdmList(@ModelAttribute("vo") ApplicationShinVo applicationShinVo, Model model) {
@@ -23,41 +22,41 @@ public class ApplicationShinController {
 		applicationShinVo.setShDateEnd(applicationShinVo.getShDateEnd() == null || applicationShinVo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(applicationShinVo.getShDateEnd()));
 		
 //		paging
-		applicationShinVo.setParamsPaging(applicationService.selectOneCount(applicationShinVo));
+		applicationShinVo.setParamsPaging(applicationShinService.selectOneCount(applicationShinVo));
 		if(applicationShinVo.getTotalRows() > 0) {
-			model.addAttribute("list", applicationService.selectList(applicationShinVo));
+			model.addAttribute("list", applicationShinService.selectList(applicationShinVo));
 		}
 		return "/xdm/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
 	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmForm")
 	public String applicationShinXdmForm(Model model, ApplicationShinDto applicationShinDto) {
-		model.addAttribute("item", applicationService.selectOne(applicationShinDto));
-		model.addAttribute("listInsProduct", applicationService.selectListInsProduct());
-		model.addAttribute("listCustomer", applicationService.selectListInsCustomer());
-		model.addAttribute("listInsMember", applicationService.selectListInsMember());
+		model.addAttribute("item", applicationShinService.selectOne(applicationShinDto));
+		model.addAttribute("listInsProduct", applicationShinService.selectListInsProduct());
+		model.addAttribute("listCustomer", applicationShinService.selectListInsCustomer());
+		model.addAttribute("listInsMember", applicationShinService.selectListInsMember());
 		return "/xdm/v1/infra/applicationShin/applicationShinXdmForm";
 	}
 	
 	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmInst")
 	public String applicationShinXdmInst(ApplicationShinDto applicationShinDto) {
-		applicationService.insert(applicationShinDto);
+		applicationShinService.insert(applicationShinDto);
 		return "redirect:/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
 	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmMForm")
 	public String applicationShinXdmMForm(Model model, ApplicationShinDto applicationShinDto) {
-		model.addAttribute("item", applicationService.selectOne(applicationShinDto));
-		model.addAttribute("listInsProduct", applicationService.selectListInsProduct());
-		model.addAttribute("listCustomer", applicationService.selectListInsCustomer());
-		model.addAttribute("listInsMember", applicationService.selectListInsMember());
+		model.addAttribute("item", applicationShinService.selectOne(applicationShinDto));
+		model.addAttribute("listInsProduct", applicationShinService.selectListInsProduct());
+		model.addAttribute("listCustomer", applicationShinService.selectListInsCustomer());
+		model.addAttribute("listInsMember", applicationShinService.selectListInsMember());
 		return "/xdm/v1/infra/applicationShin/applicationShinXdmMForm";
 	}
 	
 //	update - update
 	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmUpdt")
 	public String applicationShinXdmUpdt(ApplicationShinDto applicationShinDto) {
-		applicationService.update(applicationShinDto);
+		applicationShinService.update(applicationShinDto);
 		System.out.println("update");
 		return "redirect:/v1/infra/applicationShin/applicationShinXdmList";
 	}
@@ -65,14 +64,14 @@ public class ApplicationShinController {
 //	uelete
 	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmUel")
 	public String applicationShinXdmUel(ApplicationShinDto applicationShinDto) {
-		applicationService.uelete(applicationShinDto);
+		applicationShinService.uelete(applicationShinDto);
 		return "redirect:/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
 //	delete
 	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmDel")
 	public String applicationShinXdmDel(ApplicationShinDto applicationShinDto) {
-		applicationService.delete(applicationShinDto);
+		applicationShinService.delete(applicationShinDto);
 		return "redirect:/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
