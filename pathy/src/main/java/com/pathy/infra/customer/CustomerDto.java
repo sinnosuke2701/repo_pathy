@@ -22,7 +22,7 @@ public class CustomerDto {
 	private String cmAdr;
 	private String cmAdrDt;
 	private String cmAcc;
-	private String cmBank;
+	private Integer cmBank;
 	//-----------
 	public String getCmSeq() {
 		return cmSeq;
@@ -120,10 +120,10 @@ public class CustomerDto {
 	public void setCmAcc(String cmAcc) {
 		this.cmAcc = cmAcc;
 	}
-	public String getCmBank() {
+	public Integer getCmBank() {
 		return cmBank;
 	}
-	public void setCmBank(String cmBank) {
+	public void setCmBank(Integer cmBank) {
 		this.cmBank = cmBank;
 	}
 	public Integer getCmUseNy() {
