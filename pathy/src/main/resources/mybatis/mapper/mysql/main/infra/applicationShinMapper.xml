@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pathy.infra.applicationShin.ApplicationShinDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.pathy.infra.applicationShin.ApplicationShinDto" id="resultMapObj"></resultMap>
+
+	<!-- include S -->
+	<sql id="selectCommon">
+		FROM
+			applicationShin AS a
+		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+		LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
+		LEFT JOIN insMember AS d ON d.insmSeq = a.insMember_insmSeq
+		WHERE 1 = 1
+			<if test="shDelNy != null and !shDelNy.equals('')">AND shinDelNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND shinSeq = #{shValue}</when>
+				<when test="shOption == 2">AND inspName LIKE CONCAT('%', #{shValue}, '%')</when>
+				<when test="shOption == 3">AND cmName LIKE CONCAT('%', #{shValue}, '%')</when>
+				<when test="shOption == 4">AND insmName LIKE CONCAT('%', #{shValue}, '%')</when>
+			</choose>
+			<choose>
+				<when test="shOptionDate == 1">AND shinDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 2">AND shinDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			</choose>
+	</sql>
+	<!-- include E -->
+	
+	<!-- count S -->
+	<select id="selectOneCount">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	<!-- count E -->
+	
+	<!-- selectList S -->
+	<select id="selectList" resultMap="resultMapObj">
+	SELECT aa.* FROM(
+			SELECT
+				a.shinSeq
+				,a.shinDate
+				,a.shinDateGa
+				,a.shinDelNy
+				,a.shinDateTimeReg
+				,a.shinDateTimeEdit
+				,a.insProduct_inspSeq
+				,a.customer_cmSeq
+				,a.insMember_insmSeq
+				,b.inspName
+    			,c.cmName
+    			,d.insmName
+			<include refid="selectCommon" />
+			ORDER BY
+				a.shinSeq DESC
+			) aa
+			limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+	<!-- selectList E -->
+	
+	<!-- selectOne S -->
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.shinSeq
+			,a.shinDate
+			,a.shinDateGa
+			,a.shinDelNy
+			,a.shinDateTimeReg
+			,a.shinDateTimeEdit
+			,a.insProduct_inspSeq
+			,a.customer_cmSeq
+			,a.insMember_insmSeq
+			,b.inspName
+   			,c.cmName
+   			,d.insmName
+		FROM
+			applicationShin AS a
+		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+		LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
+		LEFT JOIN insMember AS d ON d.insmSeq = a.insMember_insmSeq
+		WHERE 1 = 1
+			AND a.shinSeq = #{shinSeq}
+	</select>
+	<!-- selectOne E -->
+	
+	<!-- insert S -->
+	<insert id="insert">
+		INSERT INTO applicationShin(
+			shinDate
+			,shinDateGa
+			,shinDelNy
+			,shinDateTimeReg
+			,shinDateTimeEdit
+			,insProduct_inspSeq
+			,customer_cmSeq
+			,insMember_insmSeq
+		)
+		VALUE(
+			#{shinDate}
+		    ,#{shinDateGa}
+		    ,0
+		    ,now()
+		    ,now()
+		    ,#{insProduct_inspSeq}
+		    ,#{customer_cmSeq}
+		    ,#{insMember_insmSeq}
+		)
+		<selectKey resultType="String" keyProperty="shinSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	<!-- insert E -->
+	
+	<select id="selectListInsProduct" resultMap="resultMapObj">
+		SELECT
+			a.inspSeq
+			,a.inspName
+		FROM
+			insProduct AS a
+		WHERE 1 = 1
+			AND a.inspDelNy = 0
+		ORDER BY
+			a.inspSeq DESC
+	</select>
+	
+	<select id="selectListInsCustomer" resultMap="resultMapObj">
+		SELECT
+			a.cmSeq
+			,a.cmName
+		FROM
+			customer AS a
+		WHERE 1 = 1
+			AND a.cmDelNy = 0
+		ORDER BY
+			a.cmSeq DESC
+	</select>
+	
+	<select id="selectListInsMember" resultMap="resultMapObj">
+		SELECT
+			a.insmSeq
+			,a.insmName
+		FROM
+			insMember AS a
+		WHERE 1 = 1
+			AND a.insmDelNy = 0
+		ORDER BY
+			a.insmSeq DESC
+	</select>
+	
+	<!-- update S -->
+	<update id="update">
+		UPDATE applicationShin
+			SET
+				shinDate = #{shinDate}
+				,shinDateGa = #{shinDateGa}
+				,shinDelNy = 0
+				,shinDateTimeReg = now()
+				,shinDateTimeEdit = now()
+				,insProduct_inspSeq = #{insProduct_inspSeq}
+				,customer_cmSeq = #{customer_cmSeq}
+				,insMember_insmSeq = #{insMember_insmSeq}
+			WHERE 1 = 1
+				AND shinSeq = #{shinSeq}
+	</update>
+	<!-- update E -->
+	
+	<!-- uelete S -->
+	<update id="uelete">
+		UPDATE applicationShin
+			SET
+				shinDelNy = 1
+			WHERE 1 = 1
+				AND shinSeq = #{shinSeq}
+	</update>
+	<!-- uelete E -->
+	
+	<!-- delete S -->
+	<delete id="delete">
+		DELETE FROM applicationShin
+			WHERE 1 = 1
+			AND shinSeq = #{shinSeq}
+	</delete>
+	<!-- delete E -->
+	
+	
+
+</mapper>

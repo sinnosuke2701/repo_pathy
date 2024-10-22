@@ -400,16 +400,16 @@
 									<div class="card-title">기본정보</div>
 								</div>
 								<form class="needs-validation" novalidate id="form" name="form"
-									method="post" action="/xdm/v1/infra/insmember/insMemberXdmPdt">
+									method="post" action="/xdm/v1/infra/claimmanage/ClaimManageXdmPdt">
 									<div class="card-body">
 										<div class="container-fluid">
 											<div class="row mb-3">
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom02" class="form-label">seq<span
+															<label for="validationCustom02" class="form-label">배정 코드<span
 																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmSeq" th:value="${item?.insmSeq}" readonly>
+																class="form-control" name="clmSeq" th:value="${item?.clmSeq}" readonly>
 														</div>
 													</div>
 												</div>
@@ -419,134 +419,41 @@
 														<div class="card-body">
 															<label for="validationCustom02" class="form-label">이름<span
 																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmName"
-																th:value="${item?.insmName}" autocomplete="off">
+																class="form-control" name="clmName"
+																th:value="${item?.clmName}" autocomplete="off">
 														</div>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom02" class="form-label">성별<span
+															<label for="validationCustom02" class="form-label">이름<span
 																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmGender"
-																th:value="${item?.insmGender}" autocomplete="off">
+																class="form-control" name="clmName"
+																th:value="${item?.clmName}" autocomplete="off">
 														</div>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom02" class="form-label">아이디<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmId"
-																th:value="${item?.insmId}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">이메일<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmEmail"
-																th:value="${item?.insmEmail}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">비밀번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmPw"
-																th:value="${item?.insmPw}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">주민번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmSoNum"
-																th:value="${item?.insmSoNum}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">전화번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmPhone"
-																th:value="${item?.insmPhone}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="cd_UseNY" class="form-label">사용여부<span
+															<label for="clmUseNY" class="form-label">사용여부<span
 																style="color: red;">*</span></label> <select class="form-select"
-																id="cd_UseNY" name="insmUseNY">
-																<option value="0" th:selected="${item?.insmUseNY == 0}">미사용</option>
-																<option value="1" th:selected="${item?.insmUseNY == 1}">사용</option>
+																id="clmUseNY" name="clmUseNY">
+																<option value="0" th:selected="${item?.clmUseNY == 0}">미사용</option>
+																<option value="1" th:selected="${item?.clmUseNY == 1}">사용</option>
 															</select>
 														</div>
 													</div>
 												</div>
 												<div class="col-md-9"></div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">우편번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" id="sample6_postcode" name="insmZipNum" th:value="${item?.insmZipNum}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">주소<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" id="sample6_address" name="insmAdr" th:value="${item?.insmAdr}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">상세주소<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" id="sample6_detailAddress" name="insmAdrDt" th:value="${item?.insmAdrDt}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="card">
-														<div class="card-body">
-															<label for="cd_Desc" class="form-label">설명</label>
-															<textarea class="form-control" id="insmDesc"
-																name="cmDesc" th:text="${item?.insmDesc}" rows="3" autocomplete="off"></textarea>
-														</div>
-													</div>
-												</div>
 												<div class="col-md-6"></div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
 															<label for="validationCustom02" class="form-label">등록일</label>
-															<input type="text" class="form-control" name="insmDateTimeReg"
-																th:value="${#dates.format(item?.insmDateTimeReg, 'yyyy/MM/dd HH:mm:ss')}"
+															<input type="text" class="form-control" name="clmDateTimeReg"
+																th:value="${#dates.format(item?.clmDateTimeReg, 'yyyy/MM/dd HH:mm:ss')}"
 																disabled>
 														</div>
 													</div>
@@ -555,8 +462,8 @@
 													<div class="card">
 														<div class="card-body">
 															<label for="validationCustom02" class="form-label">수정일</label>
-															<input type="text" class="form-control" name="insmDateTimeEdit"
-																th:value="${#dates.format(item?.insmDateTimeEdit, 'yyyy/MM/dd HH:mm:ss')}"
+															<input type="text" class="form-control" name="clmDateTimeEdit"
+																th:value="${#dates.format(item?.clmDateTimeEdit, 'yyyy/MM/dd HH:mm:ss')}"
 																readonly>
 														</div>
 													</div>
@@ -566,10 +473,10 @@
 														<div class="card-body">
 															<label for="validationCustom04" class="form-label">삭제여부<span
 																style="color: red;">*</span></label> <select class="form-select"
-																id="insmDelNY" name="insmDelNY">
+																id="clmDelNY" name="clmDelNY">
 																<option selected disabled value="">삭제 여부</option>
-																<option value="0" th:selected="${item?.insmDelNY == 0}">미삭제</option>
-																<option value="1" th:selected="${item?.insmDelNY == 1}">삭제</option>
+																<option value="0" th:selected="${item?.clmDelNY == 0}">미삭제</option>
+																<option value="1" th:selected="${item?.clmDelNY == 1}">삭제</option>
 															</select>
 														</div>
 													</div>
@@ -692,24 +599,24 @@
 
 	<script>
 		document.getElementById("btnList").onclick = function (){
-			window.location = "/xdm/v1/infra/insmember/insMemberXdmList";
+			window.location = "/xdm/v1/infra/claimmanage/ClaimManageXdmList";
 		}
 		
 		document.getElementById("btnDelete").onclick = function() {
 			let form = document.querySelector("form[name='form']");
-			form.action = "/xdm/v1/infra/insmember/insMemberXdmDele";
+			form.action = "/xdm/v1/infra/claimmanage/ClaimManageXdmDele";
 			form.submit();
 		};
 		
 		document.getElementById("btnUelete").onclick = function() {
 			let form = document.querySelector("form[name='form']");
-			form.action = "/xdm/v1/infra/insmember/insMemberXdmUele";
+			form.action = "/xdm/v1/infra/claimmanage/ClaimManageXdmUele";
 			form.submit();
 		}
 		
 		document.getElementById("btnPdt").onclick = function(){
 			let form = document.querySelector("form[name=form]");
-			form.action = "/xdm/v1/infra/insmember/insMemberXdmPdt";
+			form.action = "/xdm/v1/infra/claimmanage/ClaimManageXdmPdt";
 			form.submit();
 		}
 	</script>

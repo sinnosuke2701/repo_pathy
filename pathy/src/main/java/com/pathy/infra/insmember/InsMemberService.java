@@ -31,6 +31,7 @@ public class InsMemberService {
 		return dto;
 	}
 	
+	
 	public int update(InsMemberDto insMemberDto) {
 		 return insMemberDao.update(insMemberDto);
 	 }

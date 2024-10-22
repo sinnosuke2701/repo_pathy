@@ -19,6 +19,8 @@ public class InsMemberDto {
 	private String insmZipNum;
 	private String insmAdr;
 	private String insmAdrDt;
+	private Integer insmGender;
+	private String insmSoNum;
 //	-----
 	public String getInsmSeq() {
 		return insmSeq;
@@ -109,6 +111,18 @@ public class InsMemberDto {
 	}
 	public void setInsmAdrDt(String insmAdrDt) {
 		this.insmAdrDt = insmAdrDt;
+	}
+	public Integer getInsmGender() {
+		return insmGender;
+	}
+	public void setInsmGender(Integer insmGender) {
+		this.insmGender = insmGender;
+	}
+	public String getInsmSoNum() {
+		return insmSoNum;
+	}
+	public void setInsmSoNum(String insmSoNum) {
+		this.insmSoNum = insmSoNum;
 	}
 	
 	

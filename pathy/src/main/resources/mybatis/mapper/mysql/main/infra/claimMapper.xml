@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pathy.infra.claim.ClaimDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.pathy.infra.claim.ClaimDto" id="resultMapObj"></resultMap>
+	
+	<sql id="selectCommon">
+		from
+			claim a
+		where 1 = 1
+		<if test="shDelNY != null and !shDelNY.equals('')">And clDelNY = #{shDelNY}</if>
+		<if test="shUseNY != null and !shUseNY.equals('')">And clUseNY = #{shUseNY}</if>
+		
+		<choose>
+			<when test="shOptionDate == 1">AND a.clDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.clDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == 1">AND a.clSeq = #{shValue}</when> 
+			<when test="shOption == 2">AND clName LIKE CONCAT('%',#{shValue},'%') AND insmName = #{shValue}</when>
+			<when test="shOption == 3">AND clOrder = #{shValue}</when>
+		</choose>
+	</sql>
+		
+	<select id="selectList" resultMap="resultMapObj">
+		select aa.* from (
+			select
+				a.clSeq
+				,a.clType
+				,a.clTitle
+				,a.clDec
+				,a.clDateTimeReg
+				,a.clDateTimeEdit
+				,a.clSituation
+				,a.clDateTimeTre
+				,a.clDateTimeTreEnd
+				,a.clDateTimePay
+				,a.clPayOut
+				,a.clPayMethod
+				,a.clUseNY
+				,a.clDelNY
+				,a.claimManage_clmSeq
+				,a.customer_cmSeq
+<!-- 				,(select count(b.CodeGroup_seq) from code b where 1 = 1 and b.CodeGroup_seq = a.cgseq) as codeGroupCount -->
+		<include refid="selectCommon"></include>
+		Order By a.clmSeq desc
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+		
+	</select>
+		
+		
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon"></include>
+	</select>
+	
+	
+	<select id = "selectOne" resultMap="resultMapObj">
+		select
+			a.clSeq
+			,a.clType
+			,a.clTitle
+			,a.clDec
+			,a.clDateTimeReg
+			,a.clDateTimeEdit
+			,a.clSituation
+			,a.clDateTimeTre
+			,a.clDateTimeTreEnd
+			,a.clDateTimePay
+			,a.clPayOut
+			,a.clPayMethod
+			,a.clUseNY
+			,a.clDelNY
+			,a.claimManage_clmSeq
+			,a.customer_cmSeq
+		from
+			claim a
+		where 1 =1
+			and a.clSeq = #{clSeq}		
+	</select>
+	
+	<insert id = "insert">
+		insert into claim(
+			clType
+			,clTitle
+			,clmSituation
+			,clmDateTimeReg
+			,clmDateTimeEdit
+			,clDateTimePay
+			,clmUseNY
+			,clmDelNY
+		)values(
+    		#{clmName}
+    		,#{clmSituation}
+    		,now()
+    		,now()
+    		,#{clmUseNY}
+    		,0
+		)
+		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
+			SELECT last_Insert_id()
+		</selectKey>
+	</insert>
+		
+		
+	<update id="update">
+		update claimManage
+		set
+			clmName = #{clmName}
+			,clmSituation = #{clmSituation}
+			,clmUseNY = #{clmUseNY}
+			,clmDelNY = #{clmDelNY}
+		where 1 = 1
+			and clmSeq = #{clmSeq}
+	</update>
+		
+	<delete id="delete">
+		delete from claimManage
+		where 1=1
+			and clmSeq = #{clmSeq}
+	</delete>
+		
+	<update id="uelete">
+		update claimManage
+		set
+			clmDelNY = 1
+		where 1 = 1
+			and clmSeq = #{clmSeq}
+	</update>
+	
+	
+	</mapper>

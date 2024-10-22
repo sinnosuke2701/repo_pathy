@@ -206,7 +206,7 @@
 				<li class="breadcrumb-item breadcrumb-active" aria-current="page">Default</li>
 			</ol>
 			<!-- Breadcrumb end -->
-			<h3>insProduct</h3>
+			<h3>applicationShin</h3>
 			<!-- Content wrapper scroll start -->
 			<div class="content-wrapper-scroll">
 
@@ -224,7 +224,7 @@
 									<div class="card-title">기본정보</div>
 								</div>
 								<form class="needs-validation" novalidate id="form" name="form"
-									method="post" action="/v1/infra/insProduct/insProductXdmInst">
+									method="post" action="/v1/infra/applicationShin/applicationShinXdmUpdt">
 									<div class="card-body">
 										<div class="container-fluid">
 											<div class="row mb-3">
@@ -232,124 +232,95 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="inspName" class="form-label">코드<span
+																<label for="inscName" class="form-label">코드<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspSeq" name="inspSeq" th:value="${item?.inspSeq}" autocomplete="off" readonly placeholder="자동완성">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3"></div>
-													<div class="col-md-3"></div>
-													<div class="col-md-3"></div>
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="inspName" class="form-label">이름<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspName" name="inspName" th:value="${item?.inspName}" autocomplete="off">
+																<input type="text" class="form-control" id="shinSeq" name="shinSeq" th:value="${item?.shinSeq}" autocomplete="off" readonly placeholder="자동완성">
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="inspBojang" class="form-label">보장<span
+																<label for="insProduct_inspSeq" class="form-label">상품<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspBojang" name="inspBojang" th:value="${item?.inspBojang}" autocomplete="off">
+																<select class="form-select" id="insProduct_inspSeq" name="insProduct_inspSeq">
+																	<option value="" selected>상품 선택</option>
+																	<option th:each="listInsProduct : ${listInsProduct}" th:value="${listInsProduct.inspSeq}" th:text="${listInsProduct.inspName}" th:selected="${listInsProduct.inspSeq == item?.insProduct_inspSeq}"></option>
+																</select>
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="inspJogun" class="form-label">조건<span
+																<label for="insProduct_inspSeq" class="form-label">보험사 직원<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspJogun" name="inspJogun" th:value="${item?.inspJogun}" autocomplete="off">
+																<select class="form-select" id="insMember_insmSeq" name="insMember_insmSeq">
+																	<option value="" selected>상품 선택</option>
+																	<option th:each="listInsMember : ${listInsMember}" th:value="${listInsMember.insmSeq}" th:text="${listInsMember.insmName}" th:selected="${listInsMember.insmSeq == item?.insMember_insmSeq}"></option>
+																</select>
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="inspPrice" class="form-label">보험료<span
+																<label for="customer_cmSeq" class="form-label">고객<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspPrice" name="inspPrice" th:value="${item?.inspPrice}" autocomplete="off">
+																<select class="form-select" id="customer_cmSeq" name="customer_cmSeq">
+																	<option value="" selected>고객 선택</option>
+																	<option th:each="listCustomer : ${listCustomer}" th:value="${listCustomer.cmSeq}" th:text="${listCustomer.cmName}" th:selected="${listCustomer.cmSeq == item?.customer_cmSeq}"></option>
+																</select>
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="inspBohumDateStart" class="form-label">보험시작일<span
+																<label for="inspBojang" class="form-label">신청일<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspBohumDateStart" name="inspBohumDateStart" th:value="${item?.inspBohumDateStart}" autocomplete="off">
+																<input type="text" class="form-control" id="shinDate" name="shinDate" th:value="${item?.shinDate}" autocomplete="off">
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="inspBohumDateEnd" class="form-label">보험종료일<span
+																<label for="inscDateEnd" class="form-label">가입일<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspBohumDateEnd" name="inspBohumDateEnd" th:value="${item?.inspBohumDateEnd}" autocomplete="off">
+																<input type="text" class="form-control" id="shinDateGa" name="shinDateGa" th:value="${item?.shinDateGa}" autocomplete="off">
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="inspBojangDateStart" class="form-label">보장시작일<span
+																<label for="shinDelNy" class="form-label">삭제여부<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspBojangDateStart" name="inspBojangDateStart" th:value="${item?.inspBojangDateStart}" autocomplete="off">
+																<select class="form-select" id="shinDelNy" name="shinDelNy" disabled>
+																	<option value="">선택</option>
+																	<option value="0" th:selected="${item?.shinDelNy == 0}">미사용</option>
+																	<option value="1" th:selected="${item?.shinDelNy == 1}" >사용</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="col-3"></div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="shinDateTimeReg" class="form-label">등록일<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="shinDateTimeReg" name="shinDateTimeReg" th:value="${#dates.format(item?.shinDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}" autocomplete="off" disabled>
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="inspBojangDateEnd" class="form-label">보장종료일<span
+																<label for="inscDateTimeEdit" class="form-label">수정일<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspBojangDateEnd" name="inspBojangDateEnd" th:value="${item?.inspBojangDateEnd}" autocomplete="off">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="inspBojangDateEnd" class="form-label">필요서류<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspPaper" name="inspPaper" th:value="${item?.inspPaper}" autocomplete="off">
-															</div>
-														</div>
-													</div>
-<!-- 													<div class="col-md-3"> -->
-<!-- 														<div class="card"> -->
-<!-- 															<div class="card-body"> -->
-<!-- 																<label for="cmUseNY" class="form-label">삭제여부<span -->
-<!-- 																	style="color: red;">*</span></label> -->
-<!-- 																<select class="form-select" id="cmUseNY" name="cmUseNY"> -->
-<!-- 																	<option value="">선택</option> -->
-<!-- 																	<option value="0" th:selected="${item?.cmUseNY == 0}">미사용</option> -->
-<!-- 																	<option value="1" th:selected="${item?.cmUseNY == 1}" >사용</option> -->
-<!-- 																</select> -->
-<!-- 															</div> -->
-<!-- 														</div> -->
-<!-- 													</div> -->
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="inspDateTimeReg" class="form-label">등록일<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspDateTimeReg" name="inspDateTimeReg" th:value="${item?.inspDateTimeReg}" autocomplete="off" disabled>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="inspDateTimeEdit" class="form-label">수정일<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspDateTimeEdit" name="inspDateTimeEdit" th:value="${item?.inspDateTimeEdit}" autocomplete="off" disabled>
+																<input type="text" class="form-control" id="shinDateTimeEdit" name="shinDateTimeEdit" th:value="${#dates.format(item?.shinDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}" autocomplete="off" disabled>
 															</div>
 														</div>
 													</div>
@@ -364,21 +335,37 @@
 																	d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
 																</svg>
 														</button>
+														<button type="button" id='btnDelete' class="btn btn-white"
+															style="background-color: red;">
+															<svg xmlns="http://www.w3.org/2000/svg" width="10"
+																height="10" fill="white" class="bi bi-x-lg"
+																viewBox="0 0 16 16">
+		                                                            <path
+																	d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+		                                                        </svg>
+														</button>
+														<button type="button" id='btnUelete' class="btn btn-white"
+															style="background-color: red;">
+															<svg xmlns="http://www.w3.org/2000/svg" width="10"
+																height="10" fill="white" class="bi bi-trash"
+																viewBox="0 0 16 16">
+		                                                            <path
+																	d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+		                                                            <path
+																	d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+		                                                        </svg>
+														</button>
 													</div>
 													<div class="col"></div>
 													<div class="col"></div>
 													<div class="col">
-														<button type="button" id='btnSubmit' class="btn btn-white"
-															style="float: right;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="10"
-																height="10" fill="white" style="background-color: blue;"
-																class="bi bi-plus-square" viewBox="0 0 16 16">
-																	<path
-																	d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-																	<path
-																	d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+														<button type="button" id='btnUpdt' class="btn btn-white" style="float: right;">
+																<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" style="background-color: blue;"
+																	class="bi bi-plus-square" viewBox="0 0 16 16">
+																	<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+																	<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
 																</svg>
-														</button>
+															</button>
 													</div>
 												</div>
 											</div>
@@ -436,57 +423,26 @@
 	
 	<script>
 		document.getElementById("btnList").onclick = function (){
-			window.location = "/v1/infra/insProduct/insProductXdmList";
+			window.location = "/v1/infra/applicationShin/applicationShinXdmList";
 		}
 		
-		document.getElementById("btnSubmit").onclick = function (){
-		    
-// 		    var cmName = document.getElementById("cmName");
-// 		    var cmNameValue = document.getElementById("cmName").value.trim();
-		    
-// 		    if(cmNameValue == "" || cmNameValue == null){
-// 		    	alert("이름을 입력해주세요.");
-// 		    	cmName.focus();
-// 		    	return false;
-// 		    } else{
-// // 		    	by pass
-// 		    }
-		    
-// 		    var cmUseNY = document.getElementById("cmUseNY");
-// 		    var cmUseNYValue = document.getElementById("cmUseNY").value;
-		    
-// 		    if(cmUseNYValue == "" || cmUseNYValue == null){
-// 		    	alert("사용여부를 선택해주세요.");
-// 		    	cmUseNY.focus();
-// 		    	return false;
-// 		    } else{
-// // 		    	by pass
-// 		    }
-		    
-// 		    var cmOrder = document.getElementById("cmOrder");
-// 		    var cmOrderValue = document.getElementById("cmOrder").value.trim();
-		    
-// 		    if(cmOrderValue == "" || cmOrderValue == null){
-// 		    	alert("순서를 입력해주세요.");
-// 		    	cmOrder.focus();
-// 		    	return false;
-// 		    } else {
-// 		    	//by pass
-// 		    }
-		    
-// 		    var cmDesc = document.getElementById("cmDesc");
-// 		    var cmDescValue = document.getElementById("cmDesc");
-		    
-// 		    if(cmDescValue == "" || cmDescValue == null){
-// 		    	alert("설명을 입력해주세요.");
-// 		    	cmDesc.focus();
-// 		    	return false;
-// 		    } else {
-// 		    	//by pass
-// 		    }
+		document.getElementById("btnDelete").onclick = function() {
+			let form = document.querySelector("form[name='form']");
+			alert("aaa");
+			form.action = "/v1/infra/applicationShin/applicationShinXdmDel";
+			form.submit();
+		};
+		
+		document.getElementById("btnUelete").onclick = function() {
+			let form = document.querySelector("form[name='form']");
+			form.action = "/v1/infra/applicationShin/applicationShinXdmUel";
+			form.submit();
+		}
+		
+		document.getElementById("btnUpdt").onclick = function(){
 			let form = document.querySelector("form[name=form]");
-			form.action = "/v1/infra/insProduct/insProductXdmInst";
-			form.submit(); 
+			form.action = "/v1/infra/applicationShin/applicationShinXdmUpdt";
+			form.submit();
 		}
 	</script>
 	

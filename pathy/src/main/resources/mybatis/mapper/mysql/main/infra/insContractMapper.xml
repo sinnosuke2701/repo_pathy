@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pathy.infra.insContract.InsContractDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.pathy.infra.insContract.InsContractDto" id="resultMapObj"></resultMap>
+	
+	<select id="selectListCustomer" resultMap="resultMapObj">
+		SELECT
+			a.cmSeq
+			,a.cmName
+		FROM
+			customer AS a
+		WHERE 1 = 1
+			AND a.cmDelNy = 0
+		ORDER BY
+			a.cmSeq DESC
+	</select>
+	
+	<select id="selectListInsProduct" resultMap="resultMapObj">
+		SELECT
+			a.inspSeq
+			,a.inspName
+		FROM
+			insProduct AS a
+		WHERE 1 = 1
+			AND a.inspDelNy = 0
+		ORDER BY
+			a.inspSeq DESC
+	</select>
+	 
+	<!-- include S -->
+	<sql id="selectCommon">
+		FROM
+			insContract AS a
+		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+        LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
+		WHERE 1 = 1
+			<if test="shDelNy != null and !shDelNy.equals('')">AND inscDelNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND inscSeq = #{shValue}</when>
+				<when test="shOption == 2">AND inspName LIKE CONCAT('%', #{shValue}, '%')</when>
+				<when test="shOption == 3">AND cmName LIKE CONCAT('%', #{shValue}, '%')</when>
+			</choose>
+			<choose>
+				<when test="shOptionDate == 1">AND inscDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 2">AND inscDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			</choose>
+	</sql>
+	<!-- include E -->
+	
+	<!-- count S -->
+	<select id="selectOneCount">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	<!-- count E -->
+	
+	<!-- selectList S -->
+	<select id="selectList" resultMap="resultMapObj">
+	SELECT aa.* FROM(
+			SELECT
+				a.inscSeq
+				,a.inscDateStart
+				,a.inscDateEnd
+				,a.inscStatus
+				,a.inscBigo
+				,a.inscDelNy
+				,a.inscDateTimeReg
+				,a.inscDateTimeEdit
+				,a.insProduct_inspSeq
+				,a.customer_cmSeq
+				,b.inspName
+                ,c.cmName
+			<include refid="selectCommon" />
+			ORDER BY
+				a.inscSeq DESC
+			) aa
+			limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+	<!-- selectList E -->
+	
+	<!-- insert S -->
+	<insert id="insert">
+		INSERT INTO insContract(
+			inscDateStart
+			,inscDateEnd
+			,inscStatus
+			,inscBigo
+			,inscDelNy
+			,inscDateTimeReg
+			,inscDateTimeEdit
+			,insProduct_inspSeq
+			,customer_cmSeq
+		)
+		VALUE(
+			#{inscDateStart}
+		    ,#{inscDateEnd}
+		    ,#{inscStatus}
+		    ,#{inscBigo}
+		    ,0
+		    ,now()
+		    ,now()
+		    ,#{insProduct_inspSeq}
+		    ,#{customer_cmSeq}
+		)
+		<selectKey resultType="String" keyProperty="inscSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	<!-- insert E -->
+	
+	<!-- selectOne S -->
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.inscSeq
+			,a.inscDateStart
+			,a.inscDateEnd
+			,a.inscStatus
+			,a.inscBigo
+			,a.inscDelNy
+			,a.inscDateTimeReg
+			,a.inscDateTimeEdit
+			,a.insProduct_inspSeq
+			,a.customer_cmSeq
+			,b.inspName
+			,c.cmName
+		FROM
+			insContract AS a
+		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+        LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
+		WHERE 1 = 1
+			AND a.inscSeq = #{inscSeq}
+	</select>
+	<!-- selectOne E -->
+	
+	<!-- update S -->
+	<update id="update">
+		UPDATE insContract
+			SET
+				inscDateStart = #{inscDateStart}
+				,inscDateEnd = #{inscDateEnd}
+				,inscStatus = #{inscStatus}
+				,inscBigo = #{inscBigo}
+				,inscDelNy = 0
+				,inscDateTimeReg = now()
+				,inscDateTimeEdit = now()
+				,insProduct_inspSeq = #{insProduct_inspSeq}
+				,customer_cmSeq = #{customer_cmSeq}
+			WHERE 1 = 1
+				AND inscSeq = #{inscSeq}
+	</update>
+	<!-- update E -->
+	
+	<!-- uelete S -->
+	<update id="uelete">
+		UPDATE insContract
+			SET
+				inscDelNy = 1
+			WHERE 1 = 1
+				AND inscSeq = #{inscSeq}
+	</update>
+	<!-- uelete E -->
+	
+	<!-- delete S -->
+	<delete id="delete">
+		DELETE FROM insContract
+			WHERE 1 = 1
+			AND inscSeq = #{inscSeq}
+	</delete>
+	<!-- delete E -->
+	
+</mapper>

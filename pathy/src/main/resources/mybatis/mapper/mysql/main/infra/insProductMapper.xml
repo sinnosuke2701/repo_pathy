@@ -9,7 +9,7 @@
 	<resultMap type="com.pathy.infra.insProduct.InsProductDto" id="resultMapObj"></resultMap>
 	 
 	<!-- include S -->
-	<sql id="selectCoinspon">
+	<sql id="selectCommon">
 		FROM
 			insProduct AS a
 		WHERE 1 = 1
@@ -28,7 +28,7 @@
 	<!-- count S -->
 	<select id="selectOneCount">
 		SELECT COUNT(*)
-		<include refid="selectCoinspon" />
+		<include refid="selectCommon" />
 	</select>
 	<!-- count E -->
 	
@@ -49,7 +49,7 @@
 				,a.inspDelNy
 				,a.inspDateTimeReg
 				,a.inspDateTimeEdit
-			<include refid="selectCoinspon" />
+			<include refid="selectCommon" />
 			ORDER BY
 				a.inspSeq DESC
 			) aa

@@ -36,7 +36,6 @@ public class InsMemberController {
 	@RequestMapping(value = "/xdm/v1/infra/insmember/insMemberXdmForm")
 	public String insMemberXdmForm(Model model) {
 //		List<CustomerDto> customers = CustomerService.selectListCustomer();
-//		model.addAttribute("listCodeGroup", customers);
 		return "/xdm/v1/infra/insmember/insMemberXdmForm";
 	}
 
