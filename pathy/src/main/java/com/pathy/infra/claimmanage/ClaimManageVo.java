@@ -22,6 +22,8 @@ public class ClaimManageVo {
 			private int endPage;					//마지막 페이지 번호
 				
 			private int startRnumForMysql = 0;		//쿼리 시작 row
+			
+			private String clmDateTimeAssign;
 				
 			//---------------
 			
@@ -189,6 +191,14 @@ public class ClaimManageVo {
 
 			public void setStartRnumForMysql(int startRnumForMysql) {
 				this.startRnumForMysql = startRnumForMysql;
+			}
+
+			public String getClmDateTimeAssign() {
+				return clmDateTimeAssign;
+			}
+
+			public void setClmDateTimeAssign(String clmDateTimeAssign) {
+				this.clmDateTimeAssign = clmDateTimeAssign;
 			}
 	
 }

@@ -9,6 +9,7 @@ public class ClaimManageDto {
 	private Integer clmSituation;
 	private Date clmDateTimeReg;
 	private Date clmDateTimeEdit;
+	private Date clmDateTimeAssign;
 	private Integer clmUseNY;
 	private Integer clmDelNY;
 	private String insMember_insmSeq;
@@ -74,6 +75,12 @@ public class ClaimManageDto {
 	}
 	public void setInsmSeq(String insmSeq) {
 		this.insmSeq = insmSeq;
+	}
+	public Date getClmDateTimeAssign() {
+		return clmDateTimeAssign;
+	}
+	public void setClmDateTimeAssign(Date clmDateTimeAssign) {
+		this.clmDateTimeAssign = clmDateTimeAssign;
 	}
 	
 	

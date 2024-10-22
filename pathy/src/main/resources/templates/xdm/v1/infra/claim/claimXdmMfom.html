@@ -383,7 +383,7 @@
 				<li class="breadcrumb-item breadcrumb-active" aria-current="page">Default</li>
 			</ol>
 			<!-- Breadcrumb end -->
-			<h3>ClaimManage</h3>
+			<h3>Claim</h3>
 			<!-- Content wrapper scroll start -->
 			<div class="content-wrapper-scroll">
 
@@ -400,16 +400,16 @@
 									<div class="card-title">기본정보</div>
 								</div>
 								<form class="needs-validation" novalidate id="form" name="form"
-									method="post" action="/xdm/v1/infra/claimmanage/claimManageXdmPdt">
+									method="post" action="/xdm/v1/infra/claim/claimXdmPdt">
 									<div class="card-body">
 										<div class="container-fluid">
 											<div class="row mb-3">
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom02" class="form-label">배정 코드<span
+															<label for="clSeq" class="form-label">클레임 코드<span
 																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="clmSeq" th:value="${item?.clmSeq}" readonly>
+																class="form-control" name="clSeq" th:value="${item?.clSeq}" readonly>
 														</div>
 													</div>
 												</div>
@@ -417,31 +417,31 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom02" class="form-label">이름<span
+															<label for="clType" class="form-label">클레임 유형<span
 																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="clmName"
-																th:value="${item?.clmName}" autocomplete="off">
+																class="form-control" name="clType"
+																th:value="${item?.clType}" autocomplete="off">
 														</div>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom02" class="form-label">이름<span
+															<label for="clTitle" class="form-label">클레임 제목<span
 																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="clmName"
-																th:value="${item?.clmName}" autocomplete="off">
+																class="form-control" name="clTitle"
+																th:value="${item?.clTitle}" autocomplete="off">
 														</div>
 													</div>
 												</div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="clmUseNY" class="form-label">사용여부<span
+															<label for="clUseNY" class="form-label">사용여부<span
 																style="color: red;">*</span></label> <select class="form-select"
-																id="clmUseNY" name="clmUseNY">
-																<option value="0" th:selected="${item?.clmUseNY == 0}">미사용</option>
-																<option value="1" th:selected="${item?.clmUseNY == 1}">사용</option>
+																id="clUseNY" name="clUseNY">
+																<option value="0" th:selected="${item?.clUseNY == 0}">미사용</option>
+																<option value="1" th:selected="${item?.clUseNY == 1}">사용</option>
 															</select>
 														</div>
 													</div>
@@ -451,9 +451,39 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
+															<label for="validationCustom02" class="form-label">처리 시작일</label>
+															<input type="text" class="form-control" name="clDateTimeTre"
+																th:value="${#dates.format(item?.clDateTimeTre, 'yyyy/MM/dd HH:mm:ss')}"
+																disabled>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
+															<label for="validationCustom02" class="form-label">처리 완료일</label>
+															<input type="text" class="form-control" name="clDateTimeTreEnd"
+																th:value="${#dates.format(item?.clDateTimeTreEnd, 'yyyy/MM/dd HH:mm:ss')}"
+																readonly>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
+															<label for="validationCustom02" class="form-label">지급일</label>
+															<input type="text" class="form-control" name="clDateTimePay"
+																th:value="${#dates.format(item?.clDateTimePay, 'yyyy/MM/dd HH:mm:ss')}"
+																readonly>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
 															<label for="validationCustom02" class="form-label">등록일</label>
-															<input type="text" class="form-control" name="clmDateTimeReg"
-																th:value="${#dates.format(item?.clmDateTimeReg, 'yyyy/MM/dd HH:mm:ss')}"
+															<input type="text" class="form-control" name="clDateTimeReg"
+																th:value="${#dates.format(item?.clDateTimeReg, 'yyyy/MM/dd HH:mm:ss')}"
 																disabled>
 														</div>
 													</div>
@@ -462,8 +492,8 @@
 													<div class="card">
 														<div class="card-body">
 															<label for="validationCustom02" class="form-label">수정일</label>
-															<input type="text" class="form-control" name="clmDateTimeEdit"
-																th:value="${#dates.format(item?.clmDateTimeEdit, 'yyyy/MM/dd HH:mm:ss')}"
+															<input type="text" class="form-control" name="clDateTimeEdit"
+																th:value="${#dates.format(item?.clDateTimeEdit, 'yyyy/MM/dd HH:mm:ss')}"
 																readonly>
 														</div>
 													</div>
@@ -473,10 +503,10 @@
 														<div class="card-body">
 															<label for="validationCustom04" class="form-label">삭제여부<span
 																style="color: red;">*</span></label> <select class="form-select"
-																id="clmDelNY" name="clmDelNY">
+																id="clDelNY" name="clDelNY">
 																<option selected disabled value="">삭제 여부</option>
-																<option value="0" th:selected="${item?.clmDelNY == 0}">미삭제</option>
-																<option value="1" th:selected="${item?.clmDelNY == 1}">삭제</option>
+																<option value="0" th:selected="${item?.clDelNY == 0}">미삭제</option>
+																<option value="1" th:selected="${item?.clDelNY == 1}">삭제</option>
 															</select>
 														</div>
 													</div>
@@ -599,24 +629,24 @@
 
 	<script>
 		document.getElementById("btnList").onclick = function (){
-			window.location = "/xdm/v1/infra/claimmanage/claimManageXdmList";
+			window.location = "/xdm/v1/infra/claim/claimXdmList";
 		}
 		
 		document.getElementById("btnDelete").onclick = function() {
 			let form = document.querySelector("form[name='form']");
-			form.action = "/xdm/v1/infra/claimmanage/claimManageXdmDele";
+			form.action = "/xdm/v1/infra/claim/claimXdmDele";
 			form.submit();
 		};
 		
 		document.getElementById("btnUelete").onclick = function() {
 			let form = document.querySelector("form[name='form']");
-			form.action = "/xdm/v1/infra/claimmanage/claimManageXdmUele";
+			form.action = "/xdm/v1/infra/claim/claimXdmUele";
 			form.submit();
 		}
 		
 		document.getElementById("btnPdt").onclick = function(){
 			let form = document.querySelector("form[name=form]");
-			form.action = "/xdm/v1/infra/claimmanage/claimManageXdmPdt";
+			form.action = "/xdm/v1/infra/claim/claimXdmPdt";
 			form.submit();
 		}
 	</script>

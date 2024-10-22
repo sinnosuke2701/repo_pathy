@@ -10,46 +10,46 @@
 	
 	<sql id="selectCommon">
 		from
-			claim a
+			claim c
 		where 1 = 1
 		<if test="shDelNY != null and !shDelNY.equals('')">And clDelNY = #{shDelNY}</if>
 		<if test="shUseNY != null and !shUseNY.equals('')">And clUseNY = #{shUseNY}</if>
 		
 		<choose>
-			<when test="shOptionDate == 1">AND a.clDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-			<when test="shOptionDate == 2">AND a.clDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 1">AND c.clDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND c.clDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
 		
 		<choose>
-			<when test="shOption == 1">AND a.clSeq = #{shValue}</when> 
+			<when test="shOption == 1">AND clSeq = #{shValue}</when> 
 			<when test="shOption == 2">AND clName LIKE CONCAT('%',#{shValue},'%') AND insmName = #{shValue}</when>
 			<when test="shOption == 3">AND clOrder = #{shValue}</when>
 		</choose>
 	</sql>
 		
 	<select id="selectList" resultMap="resultMapObj">
-		select aa.* from (
+		select cc.* from (
 			select
-				a.clSeq
-				,a.clType
-				,a.clTitle
-				,a.clDec
-				,a.clDateTimeReg
-				,a.clDateTimeEdit
-				,a.clSituation
-				,a.clDateTimeTre
-				,a.clDateTimeTreEnd
-				,a.clDateTimePay
-				,a.clPayOut
-				,a.clPayMethod
-				,a.clUseNY
-				,a.clDelNY
-				,a.claimManage_clmSeq
-				,a.customer_cmSeq
+				c.clSeq
+				,c.clType
+				,c.clTitle
+				,c.clDec
+				,c.clDateTimeReg
+				,c.clDateTimeEdit
+				,c.clSituation
+				,c.clDateTimeTre
+				,c.clDateTimeTreEnd
+				,c.clDateTimePay
+				,c.clPayOut
+				,c.clPayMethod
+				,c.clUseNY
+				,c.clDelNY
+				,c.claimManage_clmSeq
+				,c.customer_cmSeq
 <!-- 				,(select count(b.CodeGroup_seq) from code b where 1 = 1 and b.CodeGroup_seq = a.cgseq) as codeGroupCount -->
 		<include refid="selectCommon"></include>
-		Order By a.clmSeq desc
-		) aa
+		Order By c.clSeq desc
+		) cc
 		limit #{rowNumToShow} offset #{startRnumForMysql}
 		
 	</select>
@@ -63,44 +63,54 @@
 	
 	<select id = "selectOne" resultMap="resultMapObj">
 		select
-			a.clSeq
-			,a.clType
-			,a.clTitle
-			,a.clDec
-			,a.clDateTimeReg
-			,a.clDateTimeEdit
-			,a.clSituation
-			,a.clDateTimeTre
-			,a.clDateTimeTreEnd
-			,a.clDateTimePay
-			,a.clPayOut
-			,a.clPayMethod
-			,a.clUseNY
-			,a.clDelNY
-			,a.claimManage_clmSeq
-			,a.customer_cmSeq
+			c.clSeq
+			,c.clType
+			,c.clTitle
+			,c.clDec
+			,c.clDateTimeReg
+			,c.clDateTimeEdit
+			,c.clSituation
+			,c.clDateTimeTre
+			,c.clDateTimeTreEnd
+			,c.clDateTimePay
+			,c.clPayOut
+			,c.clPayMethod
+			,c.clUseNY
+			,c.clDelNY
+			,c.claimManage_clmSeq
+			,c.customer_cmSeq
 		from
-			claim a
+			claim c
 		where 1 =1
-			and a.clSeq = #{clSeq}		
+			and c.clSeq = #{clSeq}		
 	</select>
 	
 	<insert id = "insert">
 		insert into claim(
 			clType
 			,clTitle
-			,clmSituation
-			,clmDateTimeReg
-			,clmDateTimeEdit
+			,clSituation
+			,clDateTimeReg
+			,clDateTimeEdit
+			,clDateTimeTre
+			,clDateTimeTreEnd
 			,clDateTimePay
-			,clmUseNY
-			,clmDelNY
+			,clPayOut
+			,clPayMethod
+			,clUseNY
+			,clDelNY
 		)values(
-    		#{clmName}
-    		,#{clmSituation}
+    		#{clType}
+    		,#{clTitle}
+    		,#{clSituation}
     		,now()
     		,now()
-    		,#{clmUseNY}
+    		,now()
+    		,now()
+    		,now()
+    		,#{clPayOut}
+    		,#{clPayMethod}
+    		,#{clUseNY}
     		,0
 		)
 		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
@@ -110,28 +120,28 @@
 		
 		
 	<update id="update">
-		update claimManage
+		update claim
 		set
-			clmName = #{clmName}
-			,clmSituation = #{clmSituation}
-			,clmUseNY = #{clmUseNY}
-			,clmDelNY = #{clmDelNY}
+			clType = #{clType}
+			,clSituation = #{clSituation}
+			,clUseNY = #{clUseNY}
+			,clDelNY = #{clDelNY}
 		where 1 = 1
-			and clmSeq = #{clmSeq}
+			and clSeq = #{clSeq}
 	</update>
 		
 	<delete id="delete">
-		delete from claimManage
+		delete from claim
 		where 1=1
-			and clmSeq = #{clmSeq}
+			and clSeq = #{clSeq}
 	</delete>
 		
 	<update id="uelete">
-		update claimManage
+		update claim
 		set
-			clmDelNY = 1
+			clDelNY = 1
 		where 1 = 1
-			and clmSeq = #{clmSeq}
+			and clSeq = #{clSeq}
 	</update>
 	
 	
