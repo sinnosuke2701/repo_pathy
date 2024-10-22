@@ -216,7 +216,7 @@ svg.className {
 							</ol>
 							<!-- Breadcrumb end -->
 
-							<h2>applicationShin</h2>
+							<h2>신청서 관리</h2>
 							<form method="post"
 								action="/v1/infra/applicationShin/applicationShinXdmList" name="formList">
 								<input type="hidden" name="thisPage" th:value="${vo.thisPage}"
@@ -532,7 +532,7 @@ svg.className {
 
 		//insert 버튼
 		document.getElementById("btnInsert").onclick = function() {
-			window.location = "/v1/infra/insProduct/insProductXdmForm";
+			window.location = "/v1/infra/applicationShin/applicationShinXdmForm";
 		}
 		//reload 버튼
 		document.getElementById("btnReload").onclick = function() {
