@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.pathy.infra.applicationShin.ApplicationShinDao">
+<mapper namespace="com.pathy.infra.applicationCheong.ApplicationCheongDao">
 	<!-- namespace = mapper 와 연결될 dao -->
 	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
 
 	<!-- resultMap : 결과를 담아줄 그으르읏 -->
-	<resultMap type="com.pathy.infra.applicationShin.ApplicationShinDto" id="resultMapObj"></resultMap>
+	<resultMap type="com.pathy.infra.applicationCheong.ApplicationCheongDto" id="resultMapObj"></resultMap>
 
 	<!-- include S -->
 	<sql id="selectCommon">
 		FROM
-			applicationShin AS a
+			applicationCheong AS a
 		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
 		LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
 		LEFT JOIN insMember AS d ON d.insmSeq = a.insMember_insmSeq
 		WHERE 1 = 1
-			<if test="shDelNy != null and !shDelNy.equals('')">AND shinDelNy = #{shDelNy}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND cheongDelNy = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1">AND shinSeq = #{shValue}</when>
+				<when test="shOption == 1">AND cheongSeq = #{shValue}</when>
 				<when test="shOption == 2">AND inspName LIKE CONCAT('%', #{shValue}, '%')</when>
 				<when test="shOption == 3">AND cmName LIKE CONCAT('%', #{shValue}, '%')</when>
 				<when test="shOption == 4">AND insmName LIKE CONCAT('%', #{shValue}, '%')</when>
 			</choose>
 			<choose>
-				<when test="shOptionDate == 1">AND shinDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-				<when test="shOptionDate == 2">AND shinDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 1">AND cheongDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 2">AND cheongDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 			</choose>
 	</sql>
 	<!-- include E -->
@@ -41,12 +41,12 @@
 	<select id="selectList" resultMap="resultMapObj">
 	SELECT aa.* FROM(
 			SELECT
-				a.shinSeq
-				,a.shinDate
-				,a.shinDateGa
-				,a.shinDelNy
-				,a.shinDateTimeReg
-				,a.shinDateTimeEdit
+				a.cheongSeq
+				,a.cheongPrice
+				,a.cheongPaper
+				,a.cheongDelNy
+				,a.cheongDateTimeReg
+				,a.cheongDateTimeEdit
 				,a.insProduct_inspSeq
 				,a.customer_cmSeq
 				,a.insMember_insmSeq
@@ -55,7 +55,7 @@
     			,d.insmName
 			<include refid="selectCommon" />
 			ORDER BY
-				a.shinSeq DESC
+				a.cheongSeq DESC
 			) aa
 			limit #{rowNumToShow} offset #{startRnumForMysql}
 	</select>
@@ -64,12 +64,12 @@
 	<!-- selectOne S -->
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			a.shinSeq
-			,a.shinDate
-			,a.shinDateGa
-			,a.shinDelNy
-			,a.shinDateTimeReg
-			,a.shinDateTimeEdit
+			a.cheongSeq
+			,a.cheongPrice
+			,a.cheongPaper
+			,a.cheongDelNy
+			,a.cheongDateTimeReg
+			,a.cheongDateTimeEdit
 			,a.insProduct_inspSeq
 			,a.customer_cmSeq
 			,a.insMember_insmSeq
@@ -77,30 +77,30 @@
    			,c.cmName
    			,d.insmName
 		FROM
-			applicationShin AS a
+			applicationCheong AS a
 		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
 		LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
 		LEFT JOIN insMember AS d ON d.insmSeq = a.insMember_insmSeq
 		WHERE 1 = 1
-			AND a.shinSeq = #{shinSeq}
+			AND a.cheongSeq = #{cheongSeq}
 	</select>
 	<!-- selectOne E -->
 	
 	<!-- insert S -->
 	<insert id="insert">
-		INSERT INTO applicationShin(
-			shinDate
-			,shinDateGa
-			,shinDelNy
-			,shinDateTimeReg
-			,shinDateTimeEdit
+		INSERT INTO applicationCheong(
+			cheongPrice
+			,cheongPaper
+			,cheongDelNy
+			,cheongDateTimeReg
+			,cheongDateTimeEdit
 			,insProduct_inspSeq
 			,customer_cmSeq
 			,insMember_insmSeq
 		)
 		VALUE(
-			#{shinDate}
-		    ,#{shinDateGa}
+			#{cheongPrice}
+		    ,#{cheongPaper}
 		    ,0
 		    ,now()
 		    ,now()
@@ -108,7 +108,7 @@
 		    ,#{customer_cmSeq}
 		    ,#{insMember_insmSeq}
 		)
-		<selectKey resultType="String" keyProperty="shinSeq" order="AFTER">
+		<selectKey resultType="String" keyProperty="cheongSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
@@ -152,36 +152,36 @@
 	
 	<!-- update S -->
 	<update id="update">
-		UPDATE applicationShin
+		UPDATE applicationCheong
 			SET
-				shinDate = #{shinDate}
-				,shinDateGa = #{shinDateGa}
-				,shinDelNy = 0
-				,shinDateTimeReg = now()
-				,shinDateTimeEdit = now()
+				cheongPrice = #{cheongPrice}
+				,cheongPaper = #{cheongPaper}
+				,cheongDelNy = 0
+				,cheongDateTimeReg = now()
+				,cheongDateTimeEdit = now()
 				,insProduct_inspSeq = #{insProduct_inspSeq}
 				,customer_cmSeq = #{customer_cmSeq}
 				,insMember_insmSeq = #{insMember_insmSeq}
 			WHERE 1 = 1
-				AND shinSeq = #{shinSeq}
+				AND cheongSeq = #{cheongSeq}
 	</update>
 	<!-- update E -->
 	
 	<!-- uelete S -->
 	<update id="uelete">
-		UPDATE applicationShin
+		UPDATE applicationCheong
 			SET
-				shinDelNy = 1
+				cheongDelNy = 1
 			WHERE 1 = 1
-				AND shinSeq = #{shinSeq}
+				AND cheongSeq = #{cheongSeq}
 	</update>
 	<!-- uelete E -->
 	
 	<!-- delete S -->
 	<delete id="delete">
-		DELETE FROM applicationShin
+		DELETE FROM applicationCheong
 			WHERE 1 = 1
-			AND shinSeq = #{shinSeq}
+			AND cheongSeq = #{cheongSeq}
 	</delete>
 	<!-- delete E -->
 	

@@ -339,12 +339,14 @@ svg.className {
 															<tr th:each="list : ${list}">
 																<td><input type="checkbox"></td>
 <!-- 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-																<td th:text="${list.inspSeq}"></td>
 																<td>
 																	<a
-																		th:href="@{/v1/infra/insProduct/insProductXdmMForm(inspSeq=${list.inspSeq})}"
-																		th:text="${list.inspName}">
+																		style="color:blue;"
+																		th:text="${list.inspSeq}"
+																		th:href="@{/v1/infra/insProduct/insProductXdmMForm(inspSeq=${list.inspSeq})}">
 																	</a>
+																</td>
+																<td th:text="${list.inspName}">
 																</td>
 																<td th:text="${list.inspBojang}"></td>
 																<td th:text="${list.inspJogun}"></td>

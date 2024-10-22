@@ -232,13 +232,13 @@ svg.className {
 													<option value="0" th:selected="${vo.shDelNy == 0}">N</option>
 													<option value="1" th:selected="${vo.shDelNy == 1}">Y</option>
 											</select></th>
-											<td><select class="form-select"
-												aria-label="Default select example" style="width: 200px;"
-												name="shUseNy" id="shUseNy">
-													<option value="" th:selected="${vo.shUseNy == null}">사용여부</option>
-													<option value="0" th:selected="${vo.shUseNy == 0}">N</option>
-													<option value="1" th:selected="${vo.shUseNy == 1}">Y</option>
-											</select></td>
+<!-- 											<td><select class="form-select" -->
+<!-- 												aria-label="Default select example" style="width: 200px;" -->
+<!-- 												name="shUseNy" id="shUseNy"> -->
+<!-- 													<option value="" th:selected="${vo.shUseNy == null}">사용여부</option> -->
+<!-- 													<option value="0" th:selected="${vo.shUseNy == 0}">N</option> -->
+<!-- 													<option value="1" th:selected="${vo.shUseNy == 1}">Y</option> -->
+<!-- 											</select></td> -->
 											<td><select class="form-select"
 												aria-label="Default select example" style="width: 200px;"
 												name="shOptionDate" id="shOptionDate">
@@ -268,7 +268,11 @@ svg.className {
 													<option value="1" th:selected="${vo.shOption == 1}">
 														코드</option>
 													<option value="2" th:selected="${vo.shOption == 2}">
-														이름</option>
+														보험상품</option>
+													<option value="3" th:selected="${vo.shOption == 2}">
+														고객</option>
+													<option value="4" th:selected="${vo.shOption == 2}">
+														보험사직원</option>
 											</select></th>
 											<td><input type="text" placeholder="검색어" name="shValue"
 												id="shValue" th:value="${vo.shValue}" autocomplete="off"
@@ -293,7 +297,7 @@ svg.className {
 													<table class="table m-0">
 														<thead>
 															<tr>
-																<th colspan='10'
+																<th colspan='9'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -316,18 +320,17 @@ svg.className {
 															<tr>
 																<td><input type="checkbox"</td>
 																<td>#</td>
-																<td>이름</td>
+																<td>보험상품</td>
+																<td>고객</td>
+																<td>보험사 직원</td>
 																<td>신청일</td>
 																<td>가입일</td>
 																<td>삭제여부</td>
 																<td>등록일</td>
 																<td>수정일</td>
-																<td>insProduct</td>
-																<td>customer</td>
-																<td>insMember</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
-																<td colspan="11" style="text-align: center;">
+																<td colspan="10" style="text-align: center;">
 																	<p class="fs-5" style="padding-top: 12px;">there
 																		are no data!</p>
 																</td>
@@ -336,22 +339,24 @@ svg.className {
 															<tr th:each="list : ${list}">
 																<td><input type="checkbox"></td>
 <!-- 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-																<td th:text="${list.shinSeq}"></td>
+																<td>
+																	<a th:href="@{/v1/infra/applicationShin/applicationShinXdmMForm(shinSeq=${list.shinSeq})}" th:text="${list.shinSeq}" style="color:blue;"></a>
+																</td>
 <!-- 																<td> -->
 <!-- 																	<a -->
 <!-- 																		th:href="@{/v1/infra/insProduct/insProductXdmMForm(inspSeq=${list.inspSeq})}" -->
 <!-- 																		th:text="${list.inspName}"> -->
 <!-- 																	</a> -->
 <!-- 																</td> -->
+																<td th:text="${list.inspName}"></td>
+																<td th:text="${list.cmName}"></td>
+																<td th:text="${list.insmName}"></td>
 																<td th:text="${list.shinDate}"></td>
 																<td th:text="${list.shinDateGa}"></td>
 																<td th:if="${list.shinDelNy eq 0}">N</td>
 																<td th:unless="${list.shinDelNy eq 0}">Y</td>
-																<td th:text="${#datex.format(list.shinDateTimeReg, 'yyyy-MM-dd HH:mm:ss)}"></td>
-																<td th:text="${#datex.format(list.shinDateTimeEdit, 'yyyy-MM-dd HH:mm:ss)}"></td>
-																<td th:text="${list.insProduct_inspSeq}"></td>
-																<td th:text="${list.customer_cmSeq}"></td>
-																<td th:text="${list.insMember_insmSeq}"></td>
+																<td th:text="${#dates.format(list.shinDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																<td th:text="${#dates.format(list.shinDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
 															</tr>
 														</tbody>
 													</table>

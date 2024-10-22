@@ -42,7 +42,8 @@
 			<if test="shDelNy != null and !shDelNy.equals('')">AND inscDelNy = #{shDelNy}</if>
 			<choose>
 				<when test="shOption == 1">AND inscSeq = #{shValue}</when>
-<!-- 				<when test="shOption == 2">AND inscName LIKE CONCAT('%', #{shValue}, '%')</when> -->
+				<when test="shOption == 2">AND inspName LIKE CONCAT('%', #{shValue}, '%')</when>
+				<when test="shOption == 3">AND cmName LIKE CONCAT('%', #{shValue}, '%')</when>
 			</choose>
 			<choose>
 				<when test="shOptionDate == 1">AND inscDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
