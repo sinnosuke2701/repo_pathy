@@ -10,7 +10,7 @@ public class InsProductVo {
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOptionDate;
-
+ 
 	// 페이징
 	private int thisPage = 1; // 현재 페이지
 	private int rowNumToShow = 5; // 화면에 보여줄 데이터 갯수

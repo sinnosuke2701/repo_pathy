@@ -20,7 +20,7 @@ public class InsProductController {
 //		날짜 필드에 시간 추가
 //		insProductVo.setShDateStart(insProductVo.getShDateStart()+" 00:00:00");			
 //		insProductVo.setShDateEnd(insProductVo.getShDateEnd()+" 23:59:59");
-		
+		 
 		// 초기값 세팅이 없는 경우 사용
 		insProductVo.setShDateStart(insProductVo.getShDateStart() == null || insProductVo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(insProductVo.getShDateStart()));
 		insProductVo.setShDateEnd(insProductVo.getShDateEnd() == null || insProductVo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(insProductVo.getShDateEnd()));
@@ -48,19 +48,13 @@ public class InsProductController {
 		return "redirect:/v1/infra/insProduct/insProductXdmList";
 	}
 	
-//	insProductXdmInstUsr
-	@RequestMapping(value="/v1/infra/insProduct/insProductXdmInstUsr")
-	public String insProductXdmInstUsr(InsProductDto insProductDto) {
-		insProductService.insertUsr(insProductDto);
-		return "redirect:/v1/infra/login/loginUsrSignIn";
-	}
 	
 //	insProductXdmMForm
 //	update - selectOne
 	@RequestMapping(value="/v1/infra/insProduct/insProductXdmMForm")
 	public String insProductXdmMForm(InsProductDto insProductDto, Model model) {
 		model.addAttribute("item", insProductService.selectOne(insProductDto));
-		return "xdm/v1/infra/insProduct/insProductXdmMForm";
+		return "/xdm/v1/infra/insProduct/insProductXdmMForm";
 	}
 	
 //	update - update

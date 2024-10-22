@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pathy.infra.qna.QnaDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.pathy.infra.qna.QnaDto" id="resultMapObj"></resultMap>
+	
+	<sql id="selectCommon">
+		from
+			qna a
+		left join
+			customer b
+		on
+			a.customer_cmSeq = b.cmSeq
+		left join
+			insMember c
+		on
+			a.insMember_insmSeq = c.insmSeq
+		WHERE 1=1	
+		<if test="shDelNY != null and !shDelNY.equals('')">And qnaDelNY = #{shDelNY}</if>
+		
+		<choose>
+			<when test="shOptionDate == 1">AND a.qnaDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.qnaDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == 1">AND cmName LIKE CONCAT('%',#{shValue},'%') AND cmName = #{shValue}</when>
+			<when test="shOption == 2">AND cmOrder = #{shValue}</when>
+			<when test="shOption == 3">AND cmId LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
+		
+	<select id="selectList" resultMap="resultMapObj">
+		select aa.* from (
+			select
+				a.qnaSeq
+				,a.qnaCategory
+				,a.qnaDelNY
+				,a.qnaDateTimeReg
+				,a.qnaDateTimeEdit
+				,a.qnaTitle
+				,a.qnaContent
+				,a.customer_cmSeq
+				,a.insMember_insmSeq
+				,b.cmSeq
+				,b.cmName
+				,c.insmSeq
+				,c.insmName
+<!-- 				,(select count(b.CodeGroup_seq) from code b where 1 = 1 and b.CodeGroup_seq = a.cgseq) as codeGroupCount -->
+		<include refid="selectCommon"></include>
+		Order By a.qnaSeq desc
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+		
+	</select>
+		
+		
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon"></include>
+	</select>
+	
+	
+	<select id = "selectOne" resultMap="resultMapObj">
+		select
+			a.qnaSeq
+			,a.qnaCategory
+			,a.qnaDelNY
+			,a.qnaDateTimeReg
+			,a.qnaDateTimeEdit
+			,a.qnaTitle
+			,a.qnaContent
+			,a.customer_cmSeq
+			,a.insMember_insmSeq
+		from
+			qna a
+		where 1 =1
+			and a.qnaSeq = #{qnaSeq}		
+	</select>
+	
+	<insert id = "insert">
+		insert into qna(
+			qnaCategory
+			,qnaDelNY
+			,qnaDateTimeReg
+			,qnaDateTimeEdit
+			,qnaTitle
+			,qnaContent
+			,customer_cmSeq
+			,insMember_insmSeq
+		)values(
+    		#{qnaCategory}
+    		,0
+    		,now()
+    		,now()
+    		,#{qnaTitle}
+    		,#{qnaContent}
+    		,#{customer_cmSeq}
+    		,#{insMember_insmSeq}
+		)
+		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
+			SELECT last_Insert_id()
+		</selectKey>
+	</insert>
+		
+		
+	<update id="update">
+		update qna
+		set
+			qnaCategory = #{qnaCategory}
+			,qnaDelNY = #{qnaDelNY}
+			,qnaTitle = #{qnaTitle}
+			,qnaContent = #{qnaContent}
+			,customer_cmSeq = #{customer_cmSeq}
+			,insMember_insmSeq = #{insMember_insmSeq}
+		where 1 = 1
+			and qnaSeq = #{qnaSeq}
+	</update>
+		
+	<delete id="delete">
+		delete from qna
+		where 1=1
+			and qnaSeq = #{qnaSeq}
+	</delete>
+		
+	<update id="uelete">
+		update qna
+		set
+			qnaDelNY = 1
+		where 1 = 1
+			and qnaSeq = #{qnaSeq}
+	</update>
+	
+	
+	</mapper>

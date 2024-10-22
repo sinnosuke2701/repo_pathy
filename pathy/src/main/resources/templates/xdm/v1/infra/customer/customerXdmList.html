@@ -579,6 +579,21 @@
                                                     <option value="1" th:selected="${vo.shUseNY == 1}">Y</option>
                                                 </select>
                                             </td>
+<!--                                             <td> -->
+<!--                                             	<select class="form-select" aria-label="Default select example" -->
+<!--                                                     style="width: 200px;" name="shGender" id="shGender"> -->
+<!-- 													<option value="" th:selected="${vo.shGender == null}">성별</option> -->
+<!-- 													<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cd_Name}" th:selected="${list.cdseq} == ${vo.shGender}"></option> -->
+<!-- 												</select> -->
+<!--                                             </td> -->
+											<td>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    style="width: 200px;" name="shGender" id="shGender">
+                                                    <option value="" th:selected="${vo.shGender == null}">성별</option>
+                                                    <option value="0" th:selected="${vo.shGender == 0}">남</option>
+                                                    <option value="1" th:selected="${vo.shGender == 1}">여</option>
+                                                </select>
+                                            </td>
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shOptionDate" id="shOptionDate">
@@ -603,10 +618,16 @@
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shOption">
                                                     <option value="" th:selected="${vo.shOption == null}">검색구분</option>
-                                                    <option value="1" th:selected="${vo.shOption == 1}">코드그룹 코드</option>
-                                                    <option value="2" th:selected="${vo.shOption == 2}">코드그룹 이름</option>
-                                                    <option value="3" th:selected="${vo.shOption == 3}">코드</option>
-                                                    <option value="4" th:selected="${vo.shOption == 4}">코드 이름</option>
+                                                    <option value="1" th:selected="${vo.shOption == 1}">이름</option>
+                                                    <option value="2" th:selected="${vo.shOption == 2}">순서</option>
+                                                    <option value="3" th:selected="${vo.shOption == 3}">아이디</option>
+                                                    <option value="4" th:selected="${vo.shOption == 4}">이메일</option>
+                                                    <option value="5" th:selected="${vo.shOption == 5}">비밀번호</option>
+                                                    <option value="6" th:selected="${vo.shOption == 6}">주민번호</option>
+                                                    <option value="7" th:selected="${vo.shOption == 7}">전화번호</option>
+                                                    <option value="8" th:selected="${vo.shOption == 8}">주소</option>
+                                                    <option value="9" th:selected="${vo.shOption == 9}">상세주소</option>
+                                                    <option value="10" th:selected="${vo.shOption == 10}">계좌번호</option>
                                                 </select>
                                             </th>
                                             <td>
@@ -652,7 +673,7 @@
                                                         	<td><input type="checkbox"</td>
                                                         	<td>#</td>
                                                             <td>이름</td>
-                                                            <td>순</td>
+                                                            <td>순서</td>
                                                             <td>성별</td>
                                                             <td>아이디</td>
                                                             <td>이메일</td>
@@ -682,7 +703,8 @@
                                                             <td th:text = "${list.cmSeq}"></td>
                                                             <td><a th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}" th:text="${list.cmName}"></a></td>
                                                             <td th:text = "${list.cmOrder}"></td>
-                                                            <td th:text = "${list.cmGender}"></td>
+                                                            <td th:if = "${list.cmGender eq 0}">남</td>
+                                                            <td th:unless = "${list.cmGender eq 0}">여</td>
                                                             <td th:text = "${list.cmId}"></td>
                                                             <td th:text = "${list.cmEmail}"></td>
                                                             <td th:text = "${list.cmPw}"></td>

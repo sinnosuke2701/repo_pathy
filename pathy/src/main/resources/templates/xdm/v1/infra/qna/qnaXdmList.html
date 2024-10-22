@@ -556,8 +556,8 @@
                             </ol>
                             <!-- Breadcrumb end -->
 
-                            <h2>InsMember</h2>
-						<form method="post" action="/xdm/v1/infra/insmember/insMemberXdmList" name="formList">
+                            <h2>Qna</h2>
+						<form method="post" action="/xdm/v1/infra/qna/qnaXdmList" name="formList">
 							<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 							<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
                                 <table>
@@ -574,11 +574,18 @@
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shUseNY" id="shUseNY">
-                                                    <option value="" th:selected="${vo.shUseNY == null}">사용여부</option>
-                                                    <option value="0" th:selected="${vo.shUseNY == 0}">N</option>
-                                                    <option value="1" th:selected="${vo.shUseNY == 1}">Y</option>
+                                                    <option value="" th:selected="${vo.shUseNY == null}">카테고리</option>
+                                                    <option value="0" th:selected="${vo.shUseNY == 0}">궁금해</option>
+                                                    <option value="1" th:selected="${vo.shUseNY == 1}">문의</option>
                                                 </select>
                                             </td>
+<!--                                             <td> -->
+<!--                                             	<select class="form-select" aria-label="Default select example" -->
+<!--                                                     style="width: 200px;" name="shGender" id="shGender"> -->
+<!-- 													<option value="" th:selected="${vo.shGender == null}">카테고리</option> -->
+<!-- 													<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cd_Name}" th:selected="${list.cdseq} == ${vo.shGender}"></option> -->
+<!-- 												</select> -->
+<!--                                             </td> -->
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shOptionDate" id="shOptionDate">
@@ -603,10 +610,9 @@
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shOption">
                                                     <option value="" th:selected="${vo.shOption == null}">검색구분</option>
-                                                    <option value="1" th:selected="${vo.shOption == 1}">코드그룹 코드</option>
-                                                    <option value="2" th:selected="${vo.shOption == 2}">코드그룹 이름</option>
-                                                    <option value="3" th:selected="${vo.shOption == 3}">코드</option>
-                                                    <option value="4" th:selected="${vo.shOption == 4}">코드 이름</option>
+                                                    <option value="1" th:selected="${vo.shOption == 1}">이름</option>
+                                                    <option value="2" th:selected="${vo.shOption == 2}">순서</option>
+                                                    <option value="3" th:selected="${vo.shOption == 3}">아이디</option>
                                                 </select>
                                             </th>
                                             <td>
@@ -633,7 +639,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='19' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='10' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -651,24 +657,15 @@
                                                         <tr>
                                                         	<td><input type="checkbox"</td>
                                                         	<td>#</td>
-                                                        	<td>직원 코드</td>
-                                                            <td>직원 이름</td>
-                                                            <td>순</td>
-                                                            <td>성별</td>
-                                                            <td>아이디</td>
-                                                            <td>이메일</td>
-                                                            <td>비밀번호</td>
-                                                            <td>주민번호</td>
-                                                            <td>전화번호</td>
-                                                            <td>설명</td>
+                                                            <td>qnaSeq</td>
+                                                            <td>고객이름</td>
+                                                            <td>직원이름</td>
+                                                            <td>카테고리</td>
+                                                            <td>제목</td>
+                                                            <td>내용</td>
                                                             <td>등록일</td>
                                                             <td>수정일</td>
-                                                            <td>사용여부</td>
                                                             <td>삭제여부</td>
-                                                            <td>우편번호</td>
-                                                            <td>주소</td>
-                                                            <td>상세주소</td>
-                                                            <td></td>
                                                         </tr>
                                                         <tr th:if="${#lists.isEmpty(list)}">
                                                         	<td colspan="20" style="text-align: center;">
@@ -678,26 +675,19 @@
                                                         
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox"></td>
+                                                        	<td></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-                                                            <td th:text = "${list.insmSeq}"></td>
-                                                            <td><a th:href="@{/xdm/v1/infra/insmember/insMemberXdmMfom(insmSeq=${list.insmSeq})}" th:text="${list.insmName}"></a></td>
-                                                            <td th:text = "${list.insmOrder}"></td>
-                                                            <td th:text = "${list.insmGender}"></td>
-                                                            <td th:text = "${list.insmId}"></td>
-                                                            <td th:text = "${list.insmEmail}"></td>
-                                                            <td th:text = "${list.insmPw}"></td>
-                                                            <td th:text = "${list.insmSoNum}"></td>
-                                                            <td th:text = "${list.insmPhone}"></td>
-                                                            <td th:text = "${list.insmDesc}"></td>
-                                                            <th th:text = "${#dates.format(list.insmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
-                                                            <td th:text = "${#dates.format(list.insmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:if = "${list.insmUseNY eq 0}">N</td>
-                                                            <td th:unless="${list.insmUseNY eq 0}">Y</td>
-                                                            <td th:if = "${list.insmDelNY eq 0}">N</td>
-                                                            <td th:unless = "${list.insmDelNY eq 0}">Y</td>
-                                                            <td th:text = "${list.insmZipNum}"></td>
-                                                            <td th:text = "${list.insmAdr}"></td>
-                                                            <td th:text = "${list.insmAdrDt}"></td>
+                                                            <td th:text = "${list.qnaSeq}"></td>
+                                                            <td th:text = "${list.cmName}"></td>
+                                                            <td th:text = "${list.insmName}"></td>
+                                                            <td th:if = "${list.qnaCategory eq 0}">짜증나</td>
+                                                            <td th:unless = "${list.qnaCategory eq 0}">문의</td>
+                                                            <td><a th:href="@{/xdm/v1/infra/qna/qnaXdmMfom(cmSeq=${list.qnaSeq})}" th:text = "${list.qnaTitle}"></a></td>
+                                                            <td th:text = "${list.qnaContent}"></td>
+                                                            <th th:text = "${#dates.format(list.qnaDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
+                                                            <td th:text = "${#dates.format(list.qnaDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                                            <td th:if = "${list.qnaDelNY eq 0}">N</td>
+                                                            <td th:unless = "${list.qnaDelNY eq 0}">Y</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -826,11 +816,8 @@
  	<script src="/xdm/v1/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
 	
 	<script>
-		
 		window.addEventListener('load', function(){
-			
 			$.datetimepicker.setLocale('ko');
-
 			$("#shDateStart, #shDateEnd").datetimepicker({
 				timepicker:false,
 				format: 'Y-m-d'
@@ -839,24 +826,23 @@
 		
 		goList = function (thisPage) {
 		    document.querySelector("input[name=thisPage]").value = thisPage;
-		    document.querySelector("form[name=formList]").action = "/xdm/v1/infra/insmember/insMemberXdmList";
+		    document.querySelector("form[name=formList]").action = "/xdm/v1/infra/qna/qnaXdmList";
 		    document.querySelector("form[name=formList]").submit();
 		}
 		
 		document.getElementById("changeRowNum").onchange = function () {
 		    document.getElementById("rowNumToShow").value = document.getElementById("changeRowNum").value;
-		    formList.action = "/xdm/v1/infra/insmember/insMemberXdmList";
+		    formList.action = "/xdm/v1/infra/qna/qnaXdmList";
 		    formList.submit();
 		}
 		
-		
 		//insert 버튼
 		document.getElementById("btnInsert").onclick = function (){
-			window.location = "/xdm/v1/infra/insmember/insMemberXdmForm";
+			window.location = "/xdm/v1/infra/qna/qnaXdmForm";
 		}
 		//reload 버튼
 		document.getElementById("btnReload").onclick = function (){
-			window.location = "/xdm/v1/infra/insmember/insMemberXdmList";
+			window.location = "/xdm/v1/infra/qna/qnaXdmList";
 		}
 	</script>
 	

@@ -123,10 +123,21 @@
     		,#{insmAdr}
     		,#{insmAdrDt}
 		)
-		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
+		<selectKey resultType="String" keyProperty="insmSeq" order="AFTER">
 			SELECT last_Insert_id()
 		</selectKey>
 	</insert>
+	
+	<select id = "selectListCodeGroup" resultMap = "resultMapObj">
+		select
+			a.insmSeq
+			,a.insmName
+		from productCg a
+		where 1=1
+			and a.insmDelNy = 0
+		order by
+			a.insmOrder desc
+	</select>
 		
 		
 	<update id="update">

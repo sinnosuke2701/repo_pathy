@@ -1,34 +1,33 @@
-package com.pathy.infra.customer;
+package com.pathy.infra.insContract;
 
-public class CustomerVo {
+public class InsContractVo {
 	
-	//검색조
-	private Integer shDelNY;
-	private Integer shUseNY;
+	// 검색조
+	private Integer shDelNy;
+	private Integer shUseNy;
 	private String shValue;
 	private Integer shOption;
-	private Integer shGender;
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOptionDate;
-		
-	//페이징
-	private int thisPage = 1;				//현재 페이지 
-	private int rowNumToShow = 5; 			//화면에 보여줄 데이터 갯수
-	private int pageNumToShow = 5;			//화면에 보여줄 페이지 수
-		
-	private int totalRows;					//총 데이터 수
-	private int totalPages;					//총 페이지 번호
-	private int startPage;					//시작 페이지 번호
-	private int endPage;					//마지막 페이지 번호
-		
-	private int startRnumForMysql = 0;		//쿼리 시작 row
-		
-	//---------------
-	
+ 
+	// 페이징
+	private int thisPage = 1; // 현재 페이지
+	private int rowNumToShow = 5; // 화면에 보여줄 데이터 갯수
+	private int pageNumToShow = 5; // 화면에 보여줄 페이지 수
+
+	private int totalRows; // 총 데이터 수
+	private int totalPages; // 총 페이지 번호
+	private int startPage; // 시작 페이지 번호
+	private int endPage; // 마지막 페이지 번호
+
+	private int startRnumForMysql = 0; // 쿼리 시작 row
+
+	// ---------------
+
 	public void setParamsPaging(int totalRows) {
-		
-//		setThisPage(3);
+
+//			setThisPage(3);
 
 		setTotalRows(totalRows);
 
@@ -45,7 +44,7 @@ public class CustomerVo {
 		if (getTotalPages() < getThisPage()) {
 			setThisPage(getTotalPages());
 		}
-		
+
 		setStartPage(((getThisPage() - 1) / getPageNumToShow()) * getPageNumToShow() + 1);
 
 		setEndPage(getStartPage() + getPageNumToShow() - 1);
@@ -53,13 +52,13 @@ public class CustomerVo {
 		if (getEndPage() > getTotalPages()) {
 			setEndPage(getTotalPages());
 		}
-		
+
 		if (thisPage == 1) {
 			setStartRnumForMysql(0);
 		} else {
-			setStartRnumForMysql((getRowNumToShow() * (getThisPage()-1)));
+			setStartRnumForMysql((getRowNumToShow() * (getThisPage() - 1)));
 		}
-		
+
 		System.out.println("thispage: " + getThisPage());
 		System.out.println("rowNumToShow: " + getRowNumToShow());
 		System.out.println("pageNumToShow: " + getPageNumToShow());
@@ -71,26 +70,28 @@ public class CustomerVo {
 		System.out.println("df" + getStartRnumForMysql());
 	}
 
-	//get , set
-	public Integer getShDelNY() {
-		return shDelNY;
+	// get , set
+	
+	public Integer getShDelNy() {
+		return shDelNy;
 	}
-
-	public void setShDelNY(Integer shDelNY) {
-		this.shDelNY = shDelNY;
+	
+	public void setShDelNy(Integer shDelNy) {
+		this.shDelNy = shDelNy;
 	}
-
-	public Integer getShUseNY() {
-		return shUseNY;
+	
+	public Integer getShUseNy() {
+		return shUseNy;
 	}
-
-	public void setShUseNY(Integer shUseNY) {
-		this.shUseNY = shUseNY;
+	
+	public void setShUseNy(Integer shUseNy) {
+		this.shUseNy = shUseNy;
 	}
 
 	public String getShValue() {
 		return shValue;
 	}
+
 
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
@@ -192,12 +193,4 @@ public class CustomerVo {
 		this.startRnumForMysql = startRnumForMysql;
 	}
 
-	public Integer getShGender() {
-		return shGender;
-	}
-
-	public void setShGender(Integer shGender) {
-		this.shGender = shGender;
-	}
-		
 }

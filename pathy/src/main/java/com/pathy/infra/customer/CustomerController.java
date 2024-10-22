@@ -17,7 +17,6 @@ public class CustomerController {
 
 	@RequestMapping(value = "/xdm/v1/infra/customer/customerXdmList")
 	public String customerXdmList(Model model ,@ModelAttribute("vo")  CustomerVo customerVo) {
-		
 //		codeVo.setSh_DateStart(codeVo.getSh_DateStart()+ " 00:00:00");
 //		codeVo.setSh_DateEnd(codeVo.getSh_DateEnd()+ " 23:59:59");
 		/* 초기값 세팅이 없는 경우 사용 */
