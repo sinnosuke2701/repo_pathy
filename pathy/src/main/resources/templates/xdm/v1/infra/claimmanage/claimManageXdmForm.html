@@ -443,6 +443,16 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
+																<label for="clmDateTimeAssign" class="form-label">배정일<span
+																	style="color: red;">*</span></label>
+																<input type="text" id="clmDateTimeAssign" name="clmDateTimeAssign" th:value="${#strings.substring(vo.clmDateTimeAssign, 0, 10)}" autocomplete="off" 
+                                                    				style="border-radius: 5px; border: 1px solid rgb(170, 176, 187);padding: 5px; box-sizing: border-box; width: 200px; height: 40px;">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
 																<label for="clmUseNY" class="form-label">사용여부<span
 																	style="color: red;">*</span></label>
 																<select class="form-select" id="clmUseNY" name="clmUseNY">
@@ -535,6 +545,17 @@
 	<script src="/xdm/v1/template/vivo/assets/js/main.js"></script>
 	
 	<script>
+	
+		window.addEventListener('load', function(){
+			
+			$.datetimepicker.setLocale('ko');
+	
+			$("#clmDateTimeAssign").datetimepicker({
+				timepicker:false,
+				custom: 'Y-m-d'
+			});
+		});
+	
 		document.getElementById("btnList").onclick = function (){
 			window.location = "/xdm/v1/infra/claimmanage/claimManageXdmList";
 		}

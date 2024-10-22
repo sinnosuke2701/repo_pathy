@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- xml에서 주석 단축키 : ctrl + shift + c -->
+<!-- namepace : mapper와 연결될 dao -->
+
+<mapper namespace="com.pathy.infra.codegroup.CodeGroupDao">
+
+	<!-- 객체와 바인딩 시켜줄 Dto -->
+	<resultMap type="com.pathy.infra.codegroup.CodeGroupDto" id="resultMapObj"></resultMap>
+	
+	<sql id="selectCommon">
+	FROM 
+		pathy.codegroup a
+	WHERE 1 = 1
+		<!--삭제여부 -->
+		<if test="shDelNy !=null and !shDelNy.equals('')">AND cgDelNy = #{shDelNy}</if>
+		<!--사용여부 -->
+		<if test="shUseNy !=null and !shUseNy.equals('')">AND cgUseNy = #{shUseNy}</if>
+		<!--날짜 검색 -->
+		<choose>
+			<when test="shOptionDate == 1">AND a.cgDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.cgDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		</choose>
+
+		<!--조건&검색어 검색 -->
+		<choose>
+			<when test="shOption == 1">AND cgSeq = #{shValue}</when>
+			<when test="shOption == 2">AND cgName LIKE CONCAT('%', #{shValue},'%')</when>
+		</choose>	
+	</sql>	
+	
+	<select id="selectOneCount">
+		SELECT COUNT(*)
+		<include refid="selectCommon"/>
+	</select>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT aa.* FROM(
+			SELECT
+				a.cgSeq,
+				a.cgName,
+				a.cgUseNy,
+				a.cgOrder,
+				a.cgDesc,
+				a.cgDelNy,
+				a.cgDateTimeReg,
+				a.cgDateTimeEdit,
+				(SELECT count(cdSeq) FROM code AS b WHERE 1 = 1 ANd b.codegroup_cgSeq = a.cgSeq) AS xcdSeqCount
+				<include refid="selectCommon"/>
+			ORDER BY
+				a.cgSeq DESC
+		)aa limit #{rowNumToShow} offset #{startRnumForMysql}
+	
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO codegroup(
+			cgName,
+			cgUseNy,
+			cgOrder,
+			cgDesc,
+			cgDelNy,
+			cgDateTimeReg,
+			cgDateTimeEdit
+		)VALUES(
+		#{cgName},
+		#{cgUseNy},
+		#{cgOrder},
+		#{cgDesc},
+		#{cgDelNy},
+		now(),
+		now()
+	)
+	<selectKey resultType="String" keyProperty="cgSeq" order="AFTER">
+				SELECT last_insert_id()
+</selectKey>
+
+	</insert>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.cgSeq,
+			a.cgName,
+			a.cgUseNy,
+			a.cgOrder,
+			a.cgDesc,
+			a.cgDelNy,
+			a.cgDateTimeReg,
+			a.cgDateTimeEdit
+		FROM
+			pathy.codegroup a
+		WHERE 1 = 1
+			AND a.cgSeq = #{cgSeq}	
+			
+	
+	</select>
+	
+	<update id="update">
+		UPDATE yuz.codegroup
+		SET
+			cgName = #{cgName},
+			cgUseNy = #{cgUseNy},
+			cgOrder = #{cgOrder},
+			cgDesc = #{cgDesc},
+			cgDelNy = #{cgDelNy}
+		WHERE 1 = 1
+			AND cgSeq = #{cgSeq}	
+	</update>
+	
+	  <update id="uelete">
+	  		UPDATE pathy.codegroup
+	  		SET
+	  			cgDelNy = 1
+	  		WHERE 1 = 1
+	  			AND cgSeq = #{cgSeq}	
+	  
+	  </update>
+	  
+	  <delete id="delete">
+	  		DELETE FROM pathy.codegroup
+	  		WHERE 1=1
+	  			AND cgSeq = #{cgSeq}
+	  </delete>
+	  
+		  <!-- for cache -->
+	<select id="selectListCachedCodeGroupArrayList" resultMap="resultMapObj">
+		SELECT 
+			cgSeq,
+			cgName
+			
+		FROM
+			pathy.codegroup
+		WHERE 1=1
+			AND cgDelNy = 0
+		    AND cgUseNy = 1
+	</select>
+
+	  
+</mapper>
