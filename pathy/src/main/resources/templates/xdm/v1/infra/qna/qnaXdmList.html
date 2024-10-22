@@ -202,7 +202,7 @@
                             </ol>
                             <!-- Breadcrumb end -->
 
-                            <h2>Qna</h2>
+                            <h2>Q&A</h2>
 						<form method="post" action="/xdm/v1/infra/qna/qnaXdmList" name="formList">
 							<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 							<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
@@ -328,9 +328,9 @@
                                                             <td th:text = "${list.insmName}"></td>
                                                             <td th:if = "${list.qnaCategory eq 0}">문의</td>
                                                             <td th:unless = "${list.qnaCategory eq 0}">짜증나</td>
-                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/qna/qnaXdmMfom(qnaSeq=${list.qnaSeq})}" th:text = "${list.qnaTitle}"></a></td>
+                                                            <th><a style="color:blue;" th:href="@{/xdm/v1/infra/qna/qnaXdmMfom(qnaSeq=${list.qnaSeq})}" th:text = "${list.qnaTitle}"></a></th>
                                                             <td th:text = "${list.qnaContent}"></td>
-                                                            <th th:text = "${#dates.format(list.qnaDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
+                                                            <td th:text = "${#dates.format(list.qnaDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${#dates.format(list.qnaDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if = "${list.qnaDelNy eq 0}">N</td>
                                                             <td th:unless = "${list.qnaDelNy eq 0}">Y</td>

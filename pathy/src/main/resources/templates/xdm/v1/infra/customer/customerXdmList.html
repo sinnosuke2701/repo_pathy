@@ -206,7 +206,7 @@
                             </ol>
                             <!-- Breadcrumb end -->
 
-                            <h2>Customer</h2>
+                            <h2>고객</h2>
 						<form method="post" action="/xdm/v1/infra/customer/customerXdmList" name="formList">
 							<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 							<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
@@ -351,7 +351,7 @@
                                                         	<td><input type="checkbox" id="item-checkbox"></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
                                                             <td th:text = "${list.cmSeq}"></td>
-                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}" th:text="${list.cmName}"></a></td>
+                                                            <th><a style="color:blue;" th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}" th:text="${list.cmName}"></a></th>
                                                             <td th:text = "${list.cmOrder}"></td>
                                                             <td th:if = "${list.cmGender eq 0}">남</td>
                                                             <td th:unless = "${list.cmGender eq 0}">여</td>
@@ -361,7 +361,7 @@
                                                             <td th:text = "${list.cmSoNum}"></td>
                                                             <td th:text = "${list.cmPhone}"></td>
                                                             <td th:text = "${list.cmDesc}"></td>
-                                                            <th th:text = "${#dates.format(list.cmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
+                                                            <td th:text = "${#dates.format(list.cmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${#dates.format(list.cmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if = "${list.cmUseNy eq 0}">N</td>
                                                             <td th:unless="${list.cmUseNy eq 0}">Y</td>

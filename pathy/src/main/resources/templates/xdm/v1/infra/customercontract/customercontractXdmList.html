@@ -206,7 +206,7 @@
                             </ol>
                             <!-- Breadcrumb end -->
 
-                            <h2>CustomerContract</h2>
+                            <h2>고객계약관리</h2>
 						<form method="post" action="/xdm/v1/infra/customercontract/customercontractXdmList" name="formList">
 							<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 							<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
@@ -318,11 +318,11 @@
                                                         	<td><input type="checkbox" id="item-checkbox"></td>
                                                         	<td></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" th:text="${list.cmcSeq}"></a></td>
+                                                            <th><a style="color:blue;" th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" th:text="${list.cmcSeq}"></a></th>
                                                             <td th:text = "${list.cmName}"></td>
                                                             <td th:text = "${list.inspName}"></td>
-                                                            <th th:text = "${#dates.format(list.cmcDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
-                                                            <th th:text = "${#dates.format(list.cmcDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></th>
+                                                            <td th:text = "${#dates.format(list.cmcDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                                            <td th:text = "${#dates.format(list.cmcDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${#dates.format(list.cmcDateTimeEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if = "${list.cmcStatus eq 0}">시작</td>
                                                             <td th:unless = "${list.cmcStatus eq 0}">종료</td>
