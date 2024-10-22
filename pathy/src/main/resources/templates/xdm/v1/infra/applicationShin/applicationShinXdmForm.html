@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Meta -->
+<meta name="description"
+	content="Vivo - Responsive Bootstrap 5 Dashboard Template">
+<meta name="author" content="Bootstrap Gallery" />
+<link rel="canonical" href="https://www.bootstrap.gallery/">
+<meta property="og:url" content="https://www.bootstrap.gallery">
+<meta property="og:title"
+	content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+<meta property="og:description"
+	content="Marketplace for Bootstrap Admin Dashboards">
+<meta property="og:type" content="Website">
+<meta property="og:site_name" content="Bootstrap Gallery">
+<link rel="shortcut icon"
+	href="/xdm/v1/template/vivo/assets/images/favicon.svg">
+  
+<!-- Title -->
+<title>Vivo Admin Template - Admin Dashboard</title>
+
+
+<!-- *************
+			************ Common Css Files *************
+		************ -->
+
+<!-- Animated css -->
+<link rel="stylesheet"
+	href="/xdm/v1/template/vivo/assets/css/animate.css">
+
+<!-- Bootstrap font icons css -->
+<link rel="stylesheet"
+	href="/xdm/v1/template/vivo/assets/fonts/bootstrap/bootstrap-icons.css">
+
+<!-- Main css -->
+<link rel="stylesheet"
+	href="/xdm/v1/template/vivo/assets/css/main.min.css">
+
+
+<!-- *************
+			************ Vendor Css Files *************
+		************ -->
+
+<!-- Scrollbar CSS -->
+<link rel="stylesheet"
+	href="/xdm/v1/template/vivo/vendor/overlay-scroll/OverlayScrollbars.min.css">
+<style>
+.card-body, .mb-3, .col-xl-12, .col-sm-6, .col-3, .col-2, .col-12,
+	.form-group, .form-control, .form-select {
+	margin: 0px;
+	/* 여백을 0으로 설정 */
+	padding: 0;
+	/* 패딩을 0으로 설정 */
+}
+
+.table th, .table td {
+	padding: 1px;
+	/* 테이블 셀의 패딩을 줄임 */
+}
+
+.mb-3 {
+	margin-bottom: 10px;
+	/* 클래스 mb-3의 아래쪽 여백을 줄임 */
+}
+
+.card-body .was-validated label, .card-body .was-validated .form-control,
+	.card-body .was-validated .form-select {
+	margin-bottom: 0px;
+	/* 각 요소의 아래쪽 여백을 줄임 */
+}
+
+.form-group {
+	margin-bottom: 10px;
+	/* 폼 그룹의 아래쪽 여백을 줄임 */
+}
+</style>
+</head>
+
+<body>
+
+	<!-- Loading wrapper start -->
+	<!-- <div id="loading-wrapper">
+			<div class="spinner">
+                <div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+				<div class="line4"></div>
+				<div class="line5"></div>
+				<div class="line6"></div>
+            </div>
+		</div> -->
+	<!-- Loading wrapper end -->
+
+	<!-- Page wrapper start -->
+	<div class="page-wrapper">
+
+		<!-- Sidebar wrapper start -->
+		<th:block th:replace="~{/xdm/v1/infra/include/nav :: nav}"></th:block>
+		<!-- Sidebar wrapper end -->
+
+		<!-- *************
+				************ Main container start *************
+			************* -->
+		<div class="main-container">
+
+			<!-- Page header starts -->
+			<div class="page-header">
+
+				<div class="toggle-sidebar" id="toggle-sidebar">
+					<i class="bi bi-list"></i>
+				</div>
+
+
+
+				<!-- Header actions ccontainer start -->
+				<div class="header-actions-container">
+
+					<!-- Search container start -->
+					<div class="search-container">
+
+						<!-- Search input group start -->
+						<div class="input-group">
+							<input type="text" class="form-control"
+								placeholder="Search anything">
+							<button class="btn" type="button">
+								<i class="bi bi-search"></i>
+							</button>
+						</div>
+						<!-- Search input group end -->
+
+					</div>
+					<!-- Search container end -->
+
+					<!-- Leads start -->
+					<a href="orders.html" class="leads d-none d-xl-flex">
+						<div class="lead-details">
+							You have <span class="count"> 21 </span> new leads
+						</div> <span class="lead-icon"><i
+							class="bi bi-bell-fill animate__animated animate__swing animate__infinite infinite"></i><b
+							class="dot animate__animated animate__heartBeat animate__infinite"></b></span>
+					</a>
+					<!-- Leads end -->
+
+					<!-- Header actions start -->
+					<ul class="header-actions">
+						<li class="dropdown d-none d-md-block"><a href="#"
+							id="countries" data-toggle="dropdown" aria-haspopup="true"> <img
+								src="/xdm/v1/template/vivo/assets/images/flags/1x1/gb.svg"
+								class="flag-img" alt="AI Admin Dashboards" />
+						</a>
+							<div class="dropdown-menu dropdown-menu-end mini"
+								aria-labelledby="countries">
+								<div class="country-container">
+									<a href="index.html"> <img
+										src="/xdm/v1/template/vivo/assets/images/flags/1x1/us.svg"
+										alt="Clean Admin Dashboards" />
+									</a> <a href="index.html"> <img
+										src="/xdm/v1/template/vivo/assets/images/flags/1x1/in.svg"
+										alt="Google Dashboards" />
+									</a> <a href="index.html"> <img
+										src="/xdm/v1/template/vivo/assets/images/flags/1x1/br.svg"
+										alt="Admin Panels" />
+									</a> <a href="index.html"> <img
+										src="/xdm/v1/template/vivo/assets/images/flags/1x1/tr.svg"
+										alt="Modern Dashboards" />
+									</a> <a href="index.html"> <img
+										src="/xdm/v1/template/vivo/assets/images/flags/1x1/ca.svg"
+										alt="Best Admin Dashboards" />
+									</a>
+								</div>
+							</div></li>
+						<li class="dropdown"><a href="#" id="userSettings"
+							class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+								<span class="user-name d-none d-md-block">Abigale Heaney</span>
+								<span class="avatar"> <img
+									src="/xdm/v1/template/vivo/assets/images/user.png"
+									alt="Admin Templates"> <span class="status online"></span>
+							</span>
+						</a>
+							<div class="dropdown-menu dropdown-menu-end"
+								aria-labelledby="userSettings">
+								<div class="header-profile-actions">
+									<a href="profile.html">Profile</a> <a
+										href="account-settings.html">Settings</a> <a href="login.html">Logout</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!-- Header actions end -->
+				</div>
+				<!-- Header actions ccontainer end -->
+
+			</div>
+			<!-- Page header ends -->
+			<!-- Breadcrumb start -->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><i class="bi bi-house"></i> <a
+					href="index.html">Page 1</a></li>
+				<li class="breadcrumb-item">Page 2</li>
+				<li class="breadcrumb-item breadcrumb-active" aria-current="page">Default</li>
+			</ol>
+			<!-- Breadcrumb end -->
+			<h3>applicationShin</h3>
+			<!-- Content wrapper scroll start -->
+			<div class="content-wrapper-scroll">
+
+				<!-- Content wrapper start -->
+				<div class="content-wrapper">
+
+					<!-- Row start -->
+					<div class="row mb-3">
+						<div class="col-sm-12 col-12">
+
+
+							<!-- Card start -->
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">기본정보</div>
+								</div>
+								<form class="needs-validation" novalidate id="form" name="form"
+									method="post" action="/v1/infra/applicationShin/applicationShinXdmInst">
+									<div class="card-body">
+										<div class="container-fluid">
+											<div class="row mb-3">
+												<div class="row mb-3">
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="inscName" class="form-label">코드<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="shinSeq" name="shinSeq" th:value="${item?.shinSeq}" autocomplete="off" readonly placeholder="자동완성">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="insProduct_inspSeq" class="form-label">상품<span
+																	style="color: red;">*</span></label>
+																<select class="form-select" id="insProduct_inspSeq" name="insProduct_inspSeq">
+																	<option value="" selected>상품 선택</option>
+																	<option th:each="listInsProduct : ${listInsProduct}" th:value="${listInsProduct.inspSeq}" th:text="${listInsProduct.inspName}"></option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="insProduct_inspSeq" class="form-label">보험사 직원<span
+																	style="color: red;">*</span></label>
+																<select class="form-select" id="insMember_insmSeq" name="insMember_insmSeq">
+																	<option value="" selected>상품 선택</option>
+																	<option th:each="listInsMember : ${listInsMember}" th:value="${listInsMember.insmSeq}" th:text="${listInsMember.insmName}"></option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="customer_cmSeq" class="form-label">고객<span
+																	style="color: red;">*</span></label>
+																<select class="form-select" id="customer_cmSeq" name="customer_cmSeq">
+																	<option value="" selected>고객 선택</option>
+																	<option th:each="listCustomer : ${listCustomer}" th:value="${listCustomer.cmSeq}" th:text="${listCustomer.cmName}"></option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="inspBojang" class="form-label">신청일<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="shinDate" name="shinDate" th:value="${item?.shinDate}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="inscDateEnd" class="form-label">가입일<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="shinDateGa" name="shinDateGa" th:value="${item?.shinDateGa}" autocomplete="off">
+															</div>
+														</div>
+													</div>
+<!-- 													<div class="col-md-3"> -->
+<!-- 														<div class="card"> -->
+<!-- 															<div class="card-body"> -->
+<!-- 																<label for="inscDelNy" class="form-label">삭제여부<span -->
+<!-- 																	style="color: red;">*</span></label> -->
+<!-- 																<select class="form-select" id="inscDelNy" name="inscDelNy"> -->
+<!-- 																	<option value="">선택</option> -->
+<!-- 																	<option value="0" th:selected="${item?.inscDelNy == 0}">미사용</option> -->
+<!-- 																	<option value="1" th:selected="${item?.inscDelNy == 1}" >사용</option> -->
+<!-- 																</select> -->
+<!-- 															</div> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="inscDateTimeReg" class="form-label">등록일<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="shinDateTimeReg" name="shinDateTimeReg" th:value="${item?.shinDateTimeReg}" autocomplete="off" disabled>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<label for="inscDateTimeEdit" class="form-label">수정일<span
+																	style="color: red;">*</span></label>
+																<input type="text" class="form-control" id="shinDateTimeEdit" name="shinDateTimeEdit" th:value="${item?.shinDateTimeEdit}" autocomplete="off" disabled>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row mb-3">
+													<div class="col">
+														<button type="button" id='btnList' class="btn btn-white">
+															<svg xmlns="http://www.w3.org/2000/svg" width="16"
+																height="16" fill="black" style="background-color: white;"
+																class="bi bi-list-ul" viewBox="0 0 16 16">
+																	<path fill-rule="evenodd"
+																	d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+																</svg>
+														</button>
+													</div>
+													<div class="col"></div>
+													<div class="col"></div>
+													<div class="col">
+														<button type="button" id='btnSubmit' class="btn btn-white"
+															style="float: right;">
+															<svg xmlns="http://www.w3.org/2000/svg" width="10"
+																height="10" fill="white" style="background-color: blue;"
+																class="bi bi-plus-square" viewBox="0 0 16 16">
+																	<path
+																	d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+																	<path
+																	d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+																</svg>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+								<!-- Row end -->
+							</div>
+						</div>
+						<!-- Card end -->
+					</div>
+				</div>
+				<!-- Row end -->
+			</div>
+			<!-- Content wrapper end -->
+
+			<!-- App Footer start -->
+			<div class="app-footer">
+				<span>© Bootstrap Gallery 2023</span>
+			</div>
+			<!-- App footer end -->
+
+		</div>
+		<!-- Content wrapper scroll end -->
+
+	</div>
+	<!-- *************
+				************ Main container end *************
+			************* -->
+
+	</div>
+	<!-- Page wrapper end -->
+
+	<!-- *************
+			************ Required JavaScript Files *************
+		************* -->
+	<!-- Required jQuery first, then Bootstrap Bundle JS -->
+	<script src="/xdm/v1/template/vivo/assets/js/jquery.min.js"></script>
+	<script src="/xdm/v1/template/vivo/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="/xdm/v1/template/vivo/assets/js/modernizr.js"></script>
+	<script src="/xdm/v1/template/vivo/assets/js/moment.js"></script>
+
+	<!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+	<!-- Overlay Scroll JS -->
+	<script
+		src="/xdm/v1/template/vivo/vendor/overlay-scroll/jquery.overlayScrollbars.min.js"></script>
+	<script
+		src="/xdm/v1/template/vivo/vendor/overlay-scroll/custom-scrollbar.js"></script>
+
+	<!-- Main Js Required -->
+	<script src="/xdm/v1/template/vivo/assets/js/main.js"></script>
+	
+	<script>
+		document.getElementById("btnList").onclick = function (){
+			window.location = "/v1/infra/applicationShin/applicationShinXdmList";
+		}
+		
+		document.getElementById("btnSubmit").onclick = function (){
+		    
+// 		    var cmName = document.getElementById("cmName");
+// 		    var cmNameValue = document.getElementById("cmName").value.trim();
+		    
+// 		    if(cmNameValue == "" || cmNameValue == null){
+// 		    	alert("이름을 입력해주세요.");
+// 		    	cmName.focus();
+// 		    	return false;
+// 		    } else{
+// // 		    	by pass
+// 		    }
+		    
+// 		    var cmUseNY = document.getElementById("cmUseNY");
+// 		    var cmUseNYValue = document.getElementById("cmUseNY").value;
+		    
+// 		    if(cmUseNYValue == "" || cmUseNYValue == null){
+// 		    	alert("사용여부를 선택해주세요.");
+// 		    	cmUseNY.focus();
+// 		    	return false;
+// 		    } else{
+// // 		    	by pass
+// 		    }
+		    
+// 		    var cmOrder = document.getElementById("cmOrder");
+// 		    var cmOrderValue = document.getElementById("cmOrder").value.trim();
+		    
+// 		    if(cmOrderValue == "" || cmOrderValue == null){
+// 		    	alert("순서를 입력해주세요.");
+// 		    	cmOrder.focus();
+// 		    	return false;
+// 		    } else {
+// 		    	//by pass
+// 		    }
+		    
+// 		    var cmDesc = document.getElementById("cmDesc");
+// 		    var cmDescValue = document.getElementById("cmDesc");
+		    
+// 		    if(cmDescValue == "" || cmDescValue == null){
+// 		    	alert("설명을 입력해주세요.");
+// 		    	cmDesc.focus();
+// 		    	return false;
+// 		    } else {
+// 		    	//by pass
+// 		    }
+			let form = document.querySelector("form[name=form]");
+			form.action = "/v1/infra/applicationShin/applicationShinXdmInst";
+			form.submit(); 
+		}
+	</script>
+	
+</body>
+
+</html>

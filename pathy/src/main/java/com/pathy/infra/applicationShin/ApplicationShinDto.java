@@ -8,11 +8,18 @@ public class ApplicationShinDto {
 	private String shinDate;
 	private String shinDateGa;
 	private Integer shinDelNy;
-	private Date shinDateTImeReg;
+	private Date shinDateTimeReg;
 	private Date shinDateTimeEdit;
 	private String insProduct_inspSeq;
 	private String customer_cmSeq;
 	private String insMember_insmSeq;
+	
+	private String inspSeq;
+	private String inspName;
+	private String cmSeq;
+	private String cmName;
+	private String insmSeq;
+	private String insmName;
 	
 	
 	public String getShinSeq() {
@@ -39,11 +46,11 @@ public class ApplicationShinDto {
 	public void setShinDelNy(Integer shinDelNy) {
 		this.shinDelNy = shinDelNy;
 	}
-	public Date getShinDateTImeReg() {
-		return shinDateTImeReg;
+	public Date getShinDateTimeReg() {
+		return shinDateTimeReg;
 	}
-	public void setShinDateTImeReg(Date shinDateTImeReg) {
-		this.shinDateTImeReg = shinDateTImeReg;
+	public void setShinDateTimeReg(Date shinDateTimeReg) {
+		this.shinDateTimeReg = shinDateTimeReg;
 	}
 	public Date getShinDateTimeEdit() {
 		return shinDateTimeEdit;
@@ -68,6 +75,42 @@ public class ApplicationShinDto {
 	}
 	public void setInsMember_insmSeq(String insMember_insmSeq) {
 		this.insMember_insmSeq = insMember_insmSeq;
+	}
+	public String getInspSeq() {
+		return inspSeq;
+	}
+	public void setInspSeq(String inspSeq) {
+		this.inspSeq = inspSeq;
+	}
+	public String getCmSeq() {
+		return cmSeq;
+	}
+	public void setCmSeq(String cmSeq) {
+		this.cmSeq = cmSeq;
+	}
+	public String getInsmSeq() {
+		return insmSeq;
+	}
+	public void setInsmSeq(String insmSeq) {
+		this.insmSeq = insmSeq;
+	}
+	public String getInspName() {
+		return inspName;
+	}
+	public void setInspName(String inspName) {
+		this.inspName = inspName;
+	}
+	public String getCmName() {
+		return cmName;
+	}
+	public void setCmName(String cmName) {
+		this.cmName = cmName;
+	}
+	public String getInsmName() {
+		return insmName;
+	}
+	public void setInsmName(String insmName) {
+		this.insmName = insmName;
 	}
 
 }

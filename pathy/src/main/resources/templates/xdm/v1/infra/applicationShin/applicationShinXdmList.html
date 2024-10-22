@@ -293,7 +293,7 @@ svg.className {
 													<table class="table m-0">
 														<thead>
 															<tr>
-																<th colspan='10'
+																<th colspan='9'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -316,18 +316,17 @@ svg.className {
 															<tr>
 																<td><input type="checkbox"</td>
 																<td>#</td>
-																<td>이름</td>
+																<td>보험상품</td>
+																<td>고객</td>
+																<td>보험사 직원</td>
 																<td>신청일</td>
 																<td>가입일</td>
 																<td>삭제여부</td>
 																<td>등록일</td>
 																<td>수정일</td>
-																<td>insProduct</td>
-																<td>customer</td>
-																<td>insMember</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
-																<td colspan="11" style="text-align: center;">
+																<td colspan="10" style="text-align: center;">
 																	<p class="fs-5" style="padding-top: 12px;">there
 																		are no data!</p>
 																</td>
@@ -336,22 +335,24 @@ svg.className {
 															<tr th:each="list : ${list}">
 																<td><input type="checkbox"></td>
 <!-- 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-																<td th:text="${list.shinSeq}"></td>
+																<td>
+																	<a th:href="@{/v1/infra/applicationShin/applicationShinXdmMForm(shinSeq=${list.shinSeq})}" th:text="${list.shinSeq}"></a>
+																</td>
 <!-- 																<td> -->
 <!-- 																	<a -->
 <!-- 																		th:href="@{/v1/infra/insProduct/insProductXdmMForm(inspSeq=${list.inspSeq})}" -->
 <!-- 																		th:text="${list.inspName}"> -->
 <!-- 																	</a> -->
 <!-- 																</td> -->
+																<td th:text="${list.inspName}"></td>
+																<td th:text="${list.cmName}"></td>
+																<td th:text="${list.insmName}"></td>
 																<td th:text="${list.shinDate}"></td>
 																<td th:text="${list.shinDateGa}"></td>
 																<td th:if="${list.shinDelNy eq 0}">N</td>
 																<td th:unless="${list.shinDelNy eq 0}">Y</td>
-																<td th:text="${#datex.format(list.shinDateTimeReg, 'yyyy-MM-dd HH:mm:ss)}"></td>
-																<td th:text="${#datex.format(list.shinDateTimeEdit, 'yyyy-MM-dd HH:mm:ss)}"></td>
-																<td th:text="${list.insProduct_inspSeq}"></td>
-																<td th:text="${list.customer_cmSeq}"></td>
-																<td th:text="${list.insMember_insmSeq}"></td>
+																<td th:text="${#dates.format(list.shinDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																<td th:text="${#dates.format(list.shinDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
 															</tr>
 														</tbody>
 													</table>
