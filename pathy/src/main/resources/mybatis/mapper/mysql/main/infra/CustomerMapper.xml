@@ -12,11 +12,9 @@
 		from
 			Customer a
 		where 1 = 1
-		<if test="shDelNY != null and !shDelNY.equals('')">AND cmDelNY = #{shDelNY}</if>
+		<if test="shDelNY != null and !shDelNY.equals('')">AND cmDelNy = #{shDelNY}</if>
 		<if test="shGender != null and !shGender.equals('')">AND cmGender = #{shGender}</if>
-		
-		<if test="shDelNY != null and !shDelNY.equals('')">And cmDelNY = #{shDelNY}</if>
-		<if test="shUseNY != null and !shUseNY.equals('')">And cmUseNY = #{shUseNY}</if>
+		<if test="shUseNY != null and !shUseNY.equals('')">And cmUseNy = #{shUseNY}</if>
 		
 		<choose>
 			<when test="shOptionDate == 1">AND a.cmDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
@@ -53,8 +51,8 @@
 				,a.cmDesc
 				,a.cmDateTimeReg
 				,a.cmDateTimeEdit
-				,a.cmUseNY
-				,a.cmDelNY
+				,a.cmUseNy
+				,a.cmDelNy
 				,a.cmZipNum
 				,a.cmAdr
 				,a.cmAdrDt
@@ -89,8 +87,8 @@
 			,a.cmDesc
 			,a.cmDateTimeReg
 			,a.cmDateTimeEdit
-			,a.cmUseNY
-			,a.cmDelNY
+			,a.cmUseNy
+			,a.cmDelNy
 			,a.cmZipNum
 			,a.cmAdr
 			,a.cmAdrDt
@@ -115,8 +113,8 @@
 			,cmDesc
 			,cmDateTimeReg
 			,cmDateTimeEdit
-			,cmUseNY
-			,cmDelNY
+			,cmUseNy
+			,cmDelNy
 			,cmZipNum
 			,cmAdr
 			,cmAdrDt
@@ -161,8 +159,8 @@
 			,cmPhone = #{cmPhone}
 			,cmDesc = #{cmDesc}
 			,cmId = #{cmId}
-			,cmUseNY = #{cmUseNY}
-			,cmDelNY = 0
+			,cmUseNy = #{cmUseNy}
+			,cmDelNy = 0
 			,cmZipNum = #{cmZipNum}
 			,cmAdr = #{cmAdr}
 			,cmAdrDt = #{cmAdrDt}
@@ -181,7 +179,7 @@
 	<update id="uelete">
 		update customer
 		set
-			cmDelNY = 1
+			cmDelNy = 1
 		where 1 = 1
 			and cmSeq = #{cmSeq}
 	</update>

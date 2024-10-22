@@ -717,10 +717,10 @@
                                                             <td th:text = "${list.cmDesc}"></td>
                                                             <th th:text = "${#dates.format(list.cmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.cmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:if = "${list.cmUseNY eq 0}">N</td>
-                                                            <td th:unless="${list.cmUseNY eq 0}">Y</td>
-                                                            <td th:if = "${list.cmDelNY eq 0}">N</td>
-                                                            <td th:unless = "${list.cmDelNY eq 0}">Y</td>
+                                                            <td th:if = "${list.cmUseNy eq 0}">N</td>
+                                                            <td th:unless="${list.cmUseNy eq 0}">Y</td>
+                                                            <td th:if = "${list.cmDelNy eq 0}">N</td>
+                                                            <td th:unless = "${list.cmDelNy eq 0}">Y</td>
                                                             <td th:text = "${list.cmZipNum}"></td>
                                                             <td th:text = "${list.cmAdr}"></td>
                                                             <td th:text = "${list.cmAdrDt}"></td>

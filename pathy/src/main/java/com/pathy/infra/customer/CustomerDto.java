@@ -16,8 +16,8 @@ public class CustomerDto {
 	private String cmDesc;
 	private Date cmDateTimeReg;
 	private Date cmDateTimeEdit;
-	private Integer cmUseNY;
-	private Integer cmDelNY;
+	private Integer cmUseNy;
+	private Integer cmDelNy;
 	private String cmZipNum;
 	private String cmAdr;
 	private String cmAdrDt;
@@ -96,18 +96,6 @@ public class CustomerDto {
 	public void setCmDateTimeEdit(Date cmDateTimeEdit) {
 		this.cmDateTimeEdit = cmDateTimeEdit;
 	}
-	public Integer getCmUseNY() {
-		return cmUseNY;
-	}
-	public void setCmUseNY(Integer cmUseNY) {
-		this.cmUseNY = cmUseNY;
-	}
-	public Integer getCmDelNY() {
-		return cmDelNY;
-	}
-	public void setCmDelNY(Integer cmDelNY) {
-		this.cmDelNY = cmDelNY;
-	}
 	public String getCmZipNum() {
 		return cmZipNum;
 	}
@@ -137,6 +125,18 @@ public class CustomerDto {
 	}
 	public void setCmBank(String cmBank) {
 		this.cmBank = cmBank;
+	}
+	public Integer getCmUseNy() {
+		return cmUseNy;
+	}
+	public void setCmUseNy(Integer cmUseNy) {
+		this.cmUseNy = cmUseNy;
+	}
+	public Integer getCmDelNy() {
+		return cmDelNy;
+	}
+	public void setCmDelNy(Integer cmDelNy) {
+		this.cmDelNy = cmDelNy;
 	}
 	
 }

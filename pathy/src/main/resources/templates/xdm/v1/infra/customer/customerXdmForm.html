@@ -492,12 +492,12 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="cmUseNY" class="form-label">사용여부<span
+																<label for="cmUseNy" class="form-label">사용여부<span
 																	style="color: red;">*</span></label>
-																<select class="form-select" id="cmUseNY" name="cmUseNY">
+																<select class="form-select" id="cmUseNy" name="cmUseNy">
 																	<option value="">선택</option>
-																	<option value="0" th:selected="${item?.cmUseNY == 0}">미사용</option>
-																	<option value="1" th:selected="${item?.cmUseNY == 1}" >사용</option>
+																	<option value="0" th:selected="${item?.cmUseNy == 0}">미사용</option>
+																	<option value="1" th:selected="${item?.cmUseNy == 1}" >사용</option>
 																</select>
 															</div>
 														</div>
@@ -655,12 +655,12 @@
 // 		    	by pass
 		    }
 		    
-		    var cmUseNY = document.getElementById("cmUseNY");
-		    var cmUseNYValue = document.getElementById("cmUseNY").value;
+		    var cmUseNy = document.getElementById("cmUseNy");
+		    var cmUseNyValue = document.getElementById("cmUseNy").value;
 		    
-		    if(cmUseNYValue == "" || cmUseNYValue == null){
+		    if(cmUseNyValue == "" || cmUseNyValue == null){
 		    	alert("사용여부를 선택해주세요.");
-		    	cmUseNY.focus();
+		    	cmUseNy.focus();
 		    	return false;
 		    } else{
 // 		    	by pass

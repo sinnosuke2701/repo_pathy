@@ -20,7 +20,7 @@
 		on
 			a.insMember_insmSeq = c.insmSeq
 		WHERE 1=1	
-		<if test="shDelNY != null and !shDelNY.equals('')">And qnaDelNY = #{shDelNY}</if>
+		<if test="shDelNY != null and !shDelNY.equals('')">And qnaDelNy = #{shDelNY}</if>
 		<if test="shCategory != null and !shCategory.equals('')">And qnaCategory = #{shCategory}</if>
 		
 		<choose>
@@ -41,7 +41,7 @@
 			select
 				a.qnaSeq
 				,a.qnaCategory
-				,a.qnaDelNY
+				,a.qnaDelNy
 				,a.qnaDateTimeReg
 				,a.qnaDateTimeEdit
 				,a.qnaTitle
@@ -71,7 +71,7 @@
 		select
 			a.qnaSeq
 			,a.qnaCategory
-			,a.qnaDelNY
+			,a.qnaDelNy
 			,a.qnaDateTimeReg
 			,a.qnaDateTimeEdit
 			,a.qnaTitle
@@ -87,7 +87,7 @@
 	<insert id = "insert">
 		insert into qna(
 			qnaCategory
-			,qnaDelNY
+			,qnaDelNy
 			,qnaDateTimeReg
 			,qnaDateTimeEdit
 			,qnaTitle
@@ -132,7 +132,7 @@
 		update qna
 		set
 			qnaCategory = #{qnaCategory}
-			,qnaDelNY = #{qnaDelNY}
+			,qnaDelNy = #{qnaDelNy}
 			,qnaTitle = #{qnaTitle}
 			,qnaContent = #{qnaContent}
 			,customer_cmSeq = #{customer_cmSeq}
@@ -150,7 +150,7 @@
 	<update id="uelete">
 		update qna
 		set
-			qnaDelNY = 1
+			qnaDelNy = 1
 		where 1 = 1
 			and qnaSeq = #{qnaSeq}
 	</update>

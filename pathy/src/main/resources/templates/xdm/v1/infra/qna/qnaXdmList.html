@@ -686,8 +686,8 @@
                                                             <td th:text = "${list.qnaContent}"></td>
                                                             <th th:text = "${#dates.format(list.qnaDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.qnaDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:if = "${list.qnaDelNY eq 0}">N</td>
-                                                            <td th:unless = "${list.qnaDelNY eq 0}">Y</td>
+                                                            <td th:if = "${list.qnaDelNy eq 0}">N</td>
+                                                            <td th:unless = "${list.qnaDelNy eq 0}">Y</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

@@ -6,7 +6,7 @@ public class QnaDto {
 	
 	private String qnaSeq;
 	private Integer qnaCategory;
-	private Integer qnaDelNY;
+	private Integer qnaDelNy;
 	private Date qnaDateTimeReg;
 	private Date qnaDateTimeEdit;
 	private String qnaTitle;
@@ -33,12 +33,6 @@ public class QnaDto {
 	}
 	public void setQnaCategory(Integer qnaCategory) {
 		this.qnaCategory = qnaCategory;
-	}
-	public Integer getQnaDelNY() {
-		return qnaDelNY;
-	}
-	public void setQnaDelNY(Integer qnaDelNY) {
-		this.qnaDelNY = qnaDelNY;
 	}
 	public Date getQnaDateTimeReg() {
 		return qnaDateTimeReg;
@@ -99,6 +93,12 @@ public class QnaDto {
 	}
 	public void setInsmName(String insmName) {
 		this.insmName = insmName;
+	}
+	public Integer getQnaDelNy() {
+		return qnaDelNy;
+	}
+	public void setQnaDelNy(Integer qnaDelNy) {
+		this.qnaDelNy = qnaDelNy;
 	}
 	
 }
