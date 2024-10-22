@@ -243,7 +243,7 @@
 															<div class="card-body">
 																<label for="insProduct_inspSeq" class="form-label">상품<span
 																	style="color: red;">*</span></label>
-																<select class="form-select" id="insProduct_inspSeq" name="insProduct_inspSeq" disabled>
+																<select class="form-select" id="insProduct_inspSeq" name="insProduct_inspSeq">
 																	<option value="" selected>상품 선택</option>
 																	<option th:each="listInsProduct : ${listInsProduct}" th:value="${listInsProduct.inspSeq}" th:text="${listInsProduct.inspName}" th:selected="${listInsProduct.inspSeq == item?.insProduct_inspSeq}"></option>
 																</select>
@@ -255,7 +255,7 @@
 															<div class="card-body">
 																<label for="insProduct_inspSeq" class="form-label">보험사 직원<span
 																	style="color: red;">*</span></label>
-																<select class="form-select" id="insMember_insmSeq" name="insMember_insmSeq" disabled>
+																<select class="form-select" id="insMember_insmSeq" name="insMember_insmSeq">
 																	<option value="" selected>상품 선택</option>
 																	<option th:each="listInsMember : ${listInsMember}" th:value="${listInsMember.insmSeq}" th:text="${listInsMember.insmName}" th:selected="${listInsMember.insmSeq == item?.insMember_insmSeq}"></option>
 																</select>
@@ -267,7 +267,7 @@
 															<div class="card-body">
 																<label for="customer_cmSeq" class="form-label">고객<span
 																	style="color: red;">*</span></label>
-																<select class="form-select" id="customer_cmSeq" name="customer_cmSeq" disabled>
+																<select class="form-select" id="customer_cmSeq" name="customer_cmSeq">
 																	<option value="" selected>고객 선택</option>
 																	<option th:each="listCustomer : ${listCustomer}" th:value="${listCustomer.cmSeq}" th:text="${listCustomer.cmName}" th:selected="${listCustomer.cmSeq == item?.customer_cmSeq}"></option>
 																</select>
@@ -297,7 +297,7 @@
 															<div class="card-body">
 																<label for="shinDelNy" class="form-label">삭제여부<span
 																	style="color: red;">*</span></label>
-																<select class="form-select" id="shinDelNy" name="shinDelNy">
+																<select class="form-select" id="shinDelNy" name="shinDelNy" disabled>
 																	<option value="">선택</option>
 																	<option value="0" th:selected="${item?.shinDelNy == 0}">미사용</option>
 																	<option value="1" th:selected="${item?.shinDelNy == 1}" >사용</option>

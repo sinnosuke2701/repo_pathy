@@ -232,13 +232,13 @@ svg.className {
 													<option value="0" th:selected="${vo.shDelNy == 0}">N</option>
 													<option value="1" th:selected="${vo.shDelNy == 1}">Y</option>
 											</select></th>
-											<td><select class="form-select"
-												aria-label="Default select example" style="width: 200px;"
-												name="shUseNy" id="shUseNy">
-													<option value="" th:selected="${vo.shUseNy == null}">사용여부</option>
-													<option value="0" th:selected="${vo.shUseNy == 0}">N</option>
-													<option value="1" th:selected="${vo.shUseNy == 1}">Y</option>
-											</select></td>
+<!-- 											<td><select class="form-select" -->
+<!-- 												aria-label="Default select example" style="width: 200px;" -->
+<!-- 												name="shUseNy" id="shUseNy"> -->
+<!-- 													<option value="" th:selected="${vo.shUseNy == null}">사용여부</option> -->
+<!-- 													<option value="0" th:selected="${vo.shUseNy == 0}">N</option> -->
+<!-- 													<option value="1" th:selected="${vo.shUseNy == 1}">Y</option> -->
+<!-- 											</select></td> -->
 											<td><select class="form-select"
 												aria-label="Default select example" style="width: 200px;"
 												name="shOptionDate" id="shOptionDate">
@@ -268,7 +268,9 @@ svg.className {
 													<option value="1" th:selected="${vo.shOption == 1}">
 														코드</option>
 													<option value="2" th:selected="${vo.shOption == 2}">
-														이름</option>
+														보험상품</option>
+													<option value="3" th:selected="${vo.shOption == 2}">
+														고객</option>
 											</select></th>
 											<td><input type="text" placeholder="검색어" name="shValue"
 												id="shValue" th:value="${vo.shValue}" autocomplete="off"
@@ -316,6 +318,8 @@ svg.className {
 															<tr>
 																<td><input type="checkbox"</td>
 																<td>#</td>
+																<td>보험상품</td>
+																<td>고객</td>
 																<td>시작일</td>
 																<td>종료일</td>
 																<td>진행상태</td>
@@ -323,8 +327,6 @@ svg.className {
 																<td>삭제여부</td>
 																<td>등록일</td>
 																<td>수정일</td>
-																<td>insProduct</td>
-																<td>customer</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
 																<td colspan="10" style="text-align: center;">
@@ -338,11 +340,13 @@ svg.className {
 <!-- 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
 <!-- 																<td th:text="${list.inscSeq}"></td> -->
 																<td>
-																	<a
+																	<a	style="color:blue;"
 																		th:href="@{/v1/infra/insContract/insContractXdmMForm(inscSeq=${list.inscSeq})}"
 																		th:text="${list.inscSeq}">
 																	</a>
 																</td>
+																<td th:text="${list.inspName}"></td>
+																<td th:text="${list.cmName}"></td>
 																<td th:text="${list.inscDateStart}"></td>
 																<td th:text="${list.inscDateEnd}"></td>
 																<td th:text="${list.inscStatus}"></td>
@@ -351,8 +355,6 @@ svg.className {
 																<td th:unless="${list.inscDelNy eq 0}">Y</td>
 																<td th:text="${#dates.format(list.inscDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
 																<td th:text="${#dates.format(list.inscDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td th:text="${list.inspName}"></td>
-																<td th:text="${list.cmName}"></td>
 															</tr>
 														</tbody>
 													</table>

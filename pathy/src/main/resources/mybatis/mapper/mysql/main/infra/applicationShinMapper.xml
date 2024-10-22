@@ -19,6 +19,9 @@
 			<if test="shDelNy != null and !shDelNy.equals('')">AND shinDelNy = #{shDelNy}</if>
 			<choose>
 				<when test="shOption == 1">AND shinSeq = #{shValue}</when>
+				<when test="shOption == 2">AND inspName LIKE CONCAT('%', #{shValue}, '%')</when>
+				<when test="shOption == 3">AND cmName LIKE CONCAT('%', #{shValue}, '%')</when>
+				<when test="shOption == 4">AND insmName LIKE CONCAT('%', #{shValue}, '%')</when>
 			</choose>
 			<choose>
 				<when test="shOptionDate == 1">AND shinDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
@@ -156,6 +159,9 @@
 				,shinDelNy = 0
 				,shinDateTimeReg = now()
 				,shinDateTimeEdit = now()
+				,insProduct_inspSeq = #{insProduct_inspSeq}
+				,customer_cmSeq = #{customer_cmSeq}
+				,insMember_insmSeq = #{insMember_insmSeq}
 			WHERE 1 = 1
 				AND shinSeq = #{shinSeq}
 	</update>
