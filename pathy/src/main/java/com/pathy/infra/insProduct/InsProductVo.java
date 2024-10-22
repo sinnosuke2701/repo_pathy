@@ -71,19 +71,18 @@ public class InsProductVo {
 	}
 
 	// get , set
-	
 	public Integer getShDelNy() {
 		return shDelNy;
 	}
-	
+
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
 	}
-	
+
 	public Integer getShUseNy() {
 		return shUseNy;
 	}
-	
+
 	public void setShUseNy(Integer shUseNy) {
 		this.shUseNy = shUseNy;
 	}
@@ -91,7 +90,6 @@ public class InsProductVo {
 	public String getShValue() {
 		return shValue;
 	}
-
 
 	public void setShValue(String shValue) {
 		this.shValue = shValue;

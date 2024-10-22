@@ -11,6 +11,14 @@
 	<sql id="selectCommon">
 		from
 			customerContract a
+		left join 
+			insProduct b
+		on
+			 a.insProduct_inspSeq = b.inspSeq
+		left join
+			customer c
+		on
+			a.customer_cmSeq = c.cmSeq
 		where 1 = 1
 		<if test="shDelNY != null and !shDelNY.equals('')">AND cmDelNY = #{shDelNY}</if>
 		<if test="shGender != null and !shGender.equals('')">AND cmGender = #{shGender}</if>
@@ -41,28 +49,19 @@
 	<select id="selectList" resultMap="resultMapObj">
 		select aa.* from (
 			select
-				a.cmSeq
-				,a.cmName
-				,a.cmOrder
-				,a.cmGender
-				,a.cmId
-				,a.cmEmail
-				,a.cmPw
-				,a.cmSoNum
-				,a.cmPhone
-				,a.cmDesc
-				,a.cmDateTimeReg
-				,a.cmDateTimeEdit
-				,a.cmUseNY
-				,a.cmDelNY
-				,a.cmZipNum
-				,a.cmAdr
-				,a.cmAdrDt
-				,a.cmAcc
-				,a.cmBank
-<!-- 				,(select count(b.CodeGroup_seq) from code b where 1 = 1 and b.CodeGroup_seq = a.cgseq) as codeGroupCount -->
+				a.cmcSeq
+				,a.cmcDelNY
+				,a.cmcDateTimeReg
+				,a.cmcDateTimeEdit
+				,a.cmcDateTimeEnd
+				,a.insproduct_inspSeq
+				,a.customer_cmSeq
+				,b.inspSeq
+				,b.inspName
+				,c.cmSeq
+				,c.cmName
 		<include refid="selectCommon"></include>
-		Order By a.cmSeq desc
+		Order By a.cmcSeq desc
 		) aa
 		limit #{rowNumToShow} offset #{startRnumForMysql}
 		
@@ -77,105 +76,72 @@
 	
 	<select id = "selectOne" resultMap="resultMapObj">
 		select
-			a.cmSeq
-			,a.cmName
-			,a.cmOrder
-			,a.cmGender
-			,a.cmId
-			,a.cmEmail
-			,a.cmPw
-			,a.cmSoNum
-			,a.cmPhone
-			,a.cmDesc
-			,a.cmDateTimeReg
-			,a.cmDateTimeEdit
-			,a.cmUseNY
-			,a.cmDelNY
-			,a.cmZipNum
-			,a.cmAdr
-			,a.cmAdrDt
-			,a.cmAcc
-			,a.cmBank
+			a.cmcSeq
+			,a.cmcDelNY
+			,a.cmcDateTimeReg
+			,a.cmcDateTimeEdit
+			,a.cmcDateTimeEnd
+			,a.insproduct_inspSeq
+			,a.customer_cmSeq
 		from
 			customerContract a
 		where 1 =1
-			and a.cmSeq = #{cmSeq}		
+			and a.cmcSeq = #{cmcSeq}		
 	</select>
 	
 	<insert id = "insert">
 		insert into customerContract(
-			cmName
-			,cmOrder
-			,cmGender
-			,cmId
-			,cmEmail
-			,cmPw
-			,cmSoNum
-			,cmPhone
-			,cmDesc
-			,cmDateTimeReg
-			,cmDateTimeEdit
-			,cmUseNY
-			,cmDelNY
-			,cmZipNum
-			,cmAdr
-			,cmAdrDt
-			,cmAcc
-			,cmBank
+			a.cmcDelNY
+			,a.cmcDateTimeReg
+			,a.cmcDateTimeEdit
+			,a.cmcDateTimeEnd
+			,a.insproduct_inspSeq
+			,a.customer_cmSeq
 		)values(
-    		#{cmName}
-    		,#{cmOrder}
-    		,#{cmGender}
-    		,#{cmId}
-    		,#{cmEmail}
-    		,#{cmPw}
-    		,#{cmSoNum}
-    		,#{cmPhone}
-    		,#{cmDesc}
+    		0
     		,now()
     		,now()
-    		,1
-    		,0
-    		,#{cmZipNum}
-    		,#{cmAdr}
-    		,#{cmAdrDt}
-    		,#{cmAcc}
-    		,#{cmBank}
+    		,now()
+    		,#{insproduct_inspSeq}
+    		,#{customer_cmSeq}
 		)
-		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
+		<selectKey resultType="String" keyProperty="cmcSeq" order="AFTER">
 			SELECT last_Insert_id()
 		</selectKey>
 	</insert>
 		
+		<select id="selectListCustomer" resultMap="resultMapObj">
+		select
+			a.cmSeq as customer_cmSeq
+			,a.cmName
+		from
+			Customer a
+		where 1=1
+	</select>
+		
+	<select id="selectListInsProduct" resultMap="resultMapObj">
+		select
+			a.inspSeq as insProduct_inspSeq
+			,a.inspName
+		from
+			insProduct a
+		where 1=1
+	</select>
 		
 	<update id="update">
 		update customerContract
 		set
-			cmName = #{cmName}
-			,cmOrder = #{cmOrder}
-			,cmGender = #{cmGender}
-			,cmId = #{cmId}
-			,cmEmail = #{cmEmail}
-			,cmPw = #{cmPw}
-			,cmSoNum = #{cmSoNum}
-			,cmPhone = #{cmPhone}
-			,cmDesc = #{cmDesc}
-			,cmId = #{cmId}
-			,cmUseNY = #{cmUseNY}
-			,cmDelNY = 0
-			,cmZipNum = #{cmZipNum}
-			,cmAdr = #{cmAdr}
-			,cmAdrDt = #{cmAdrDt}
-			,cmAcc = #{cmAcc}
-			,cmBank = #{cmBank}
+			cmcDelNY = #{cmcDelNY}
+			,insproduct_inspSeq = #{insproduct_inspSeq}
+			,customer_cmSeq = #{customer_cmSeq}
 		where 1 = 1
-			and cmSeq = #{cmSeq}
+			and cmcSeq = #{cmcSeq}
 	</update>
 		
 	<delete id="delete">
 		delete from customerContract
 		where 1=1
-			and cmSeq = #{cmSeq}
+			and cmcSeq = #{cmcSeq}
 	</delete>
 		
 	<update id="uelete">
@@ -183,7 +149,7 @@
 		set
 			cmDelNY = 1
 		where 1 = 1
-			and cmSeq = #{cmSeq}
+			and cmcSeq = #{cmcSeq}
 	</update>
 	
 	

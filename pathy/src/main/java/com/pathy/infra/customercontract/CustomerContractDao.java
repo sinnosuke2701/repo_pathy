@@ -24,7 +24,7 @@ public interface CustomerContractDao {
 	
     public List<CustomerContractDto> selectListCachedCodeArrayList();
 
-	public List<CustomerContractDto> selectListInsMember();
+	public List<CustomerContractDto> selectListInsProduct();
 
 	public List<CustomerContractDto> selectListCustomer();
 }

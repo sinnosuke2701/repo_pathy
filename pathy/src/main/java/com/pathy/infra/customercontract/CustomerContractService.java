@@ -39,8 +39,8 @@ public class CustomerContractService {
 		return customerContractDao.selectListCustomer();
 	}
 	
-	public List<CustomerContractDto> selectListInsMember(){
-		return customerContractDao.selectListInsMember();
+	public List<CustomerContractDto> selectListInsProduct(){
+		return customerContractDao.selectListInsProduct();
 	}
 	
 	public int uelete (CustomerContractDto customerContractDto) {

@@ -674,7 +674,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                        	<td><input type="checkbox"</td>
+                                                        	<td><input type="checkbox" id="checkAll"></td>
                                                         	<td>#</td>
                                                             <td>이름</td>
                                                             <td>순서</td>
@@ -702,7 +702,7 @@
                                                         </tr>
                                                         
                                                         <tr th:each="list : ${list}">
-                                                        	<td><input type="checkbox"></td>
+                                                        	<td><input type="checkbox" id="item-checkbox"></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
                                                             <td th:text = "${list.cmSeq}"></td>
                                                             <td><a th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}" th:text="${list.cmName}"></a></td>
@@ -745,7 +745,7 @@
 
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <button type="button" id='seobin' class="btn btn-white"
+                                                    <button type="button" id='btnDelete' class="btn btn-white"
                                                         style="background-color: red;">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
                                                             fill="white" class="bi bi-x-lg" viewBox="0 0 16 16">
@@ -856,11 +856,27 @@
  	<script src="/xdm/v1/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
 	
 	<script>
-		
-		window.addEventListener('load', function(){
-			
-			$.datetimepicker.setLocale('ko');
+        document.getElementById('btnDelete').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.item-checkbox');
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    checkbox.closest('tr').remove(); // 체크된 항목의 부모 <tr> 삭제
+                }
+            });
+        });
 
+        // 전체 선택 체크박스 기능
+        document.getElementById('checkAll').addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('.item-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+        });
+    </script>
+	
+	<script>
+		window.addEventListener('load', function(){
+			$.datetimepicker.setLocale('ko');
 			$("#shDateStart, #shDateEnd").datetimepicker({
 				timepicker:false,
 				format: 'Y-m-d'

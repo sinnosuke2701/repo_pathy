@@ -68,10 +68,10 @@ public class CustomerController {
 		return "redirect:/xdm/v1/infra/customer/customerXdmList";
 	}
 	
-	@RequestMapping(value = "/xdm/v1/infra/index/indexXdmView")
-	public String indexXdmView(CustomerDto customerDto) {
-		CustomerService.uelete(customerDto);
-		return "redirect:/xdm/v1/infra/index/indexXdmView";
-	}
+//	@RequestMapping(value = "/xdm/v1/infra/index/indexXdmView")
+//	public String indexXdmView(CustomerDto customerDto) {
+//		CustomerService.uelete(customerDto);
+//		return "redirect:/xdm/v1/infra/index/indexXdmView";
+//	}
 	
 }
