@@ -575,27 +575,12 @@
                                                     <option value="1" th:selected="${vo.shDelNY == 1}">Y</option>
                                                 </select>
                                             </th>
-                                            <td>
-                                                <select class="form-select" aria-label="Default select example"
-                                                    style="width: 200px;" name="shUseNY" id="shUseNY">
-                                                    <option value="" th:selected="${vo.shUseNY == null}">사용여부</option>
-                                                    <option value="0" th:selected="${vo.shUseNY == 0}">N</option>
-                                                    <option value="1" th:selected="${vo.shUseNY == 1}">Y</option>
-                                                </select>
-                                            </td>
-<!--                                             <td> -->
-<!--                                             	<select class="form-select" aria-label="Default select example" -->
-<!--                                                     style="width: 200px;" name="shGender" id="shGender"> -->
-<!-- 													<option value="" th:selected="${vo.shGender == null}">성별</option> -->
-<!-- 													<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cd_Name}" th:selected="${list.cdseq} == ${vo.shGender}"></option> -->
-<!-- 												</select> -->
-<!--                                             </td> -->
 											<td>
                                                 <select class="form-select" aria-label="Default select example"
-                                                    style="width: 200px;" name="shGender" id="shGender">
-                                                    <option value="" th:selected="${vo.shGender == null}">성별</option>
-                                                    <option value="0" th:selected="${vo.shGender == 0}">남</option>
-                                                    <option value="1" th:selected="${vo.shGender == 1}">여</option>
+                                                    style="width: 200px;" name="shStatus" id="shStatus">
+                                                    <option value="" th:selected="${vo.shStatus == null}">진행상태</option>
+                                                    <option value="0" th:selected="${vo.shStatus == 0}">시작</option>
+                                                    <option value="1" th:selected="${vo.shStatus == 1}">종료</option>
                                                 </select>
                                             </td>
                                             <td>
@@ -622,16 +607,8 @@
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shOption">
                                                     <option value="" th:selected="${vo.shOption == null}">검색구분</option>
-                                                    <option value="1" th:selected="${vo.shOption == 1}">이름</option>
-                                                    <option value="2" th:selected="${vo.shOption == 2}">순서</option>
-                                                    <option value="3" th:selected="${vo.shOption == 3}">아이디</option>
-                                                    <option value="4" th:selected="${vo.shOption == 4}">이메일</option>
-                                                    <option value="5" th:selected="${vo.shOption == 5}">비밀번호</option>
-                                                    <option value="6" th:selected="${vo.shOption == 6}">주민번호</option>
-                                                    <option value="7" th:selected="${vo.shOption == 7}">전화번호</option>
-                                                    <option value="8" th:selected="${vo.shOption == 8}">주소</option>
-                                                    <option value="9" th:selected="${vo.shOption == 9}">상세주소</option>
-                                                    <option value="10" th:selected="${vo.shOption == 10}">계좌번호</option>
+                                                    <option value="1" th:selected="${vo.shOption == 1}">고객이름</option>
+                                                    <option value="2" th:selected="${vo.shOption == 2}">상품이름</option>
                                                 </select>
                                             </th>
                                             <td>
@@ -658,7 +635,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='8' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='9' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -682,17 +659,18 @@
                                                             <td>등록일</td>
                                                             <td>수정일</td>
                                                             <td>종료일</td>
+                                                            <td>진행상태</td>
                                                             <td>삭제여부</td>
                                                         </tr>
                                                         <tr th:if="${#lists.isEmpty(list)}">
-                                                        	<td colspan="7" style="text-align: center;">
+                                                        	<td colspan="10" style="text-align: center;">
                                                         		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
                                                         	</td>
                                                         </tr>
                                                         
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox" id="item-checkbox"></td>
-                                                        	<td>?</td>
+                                                        	<td></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
                                                             <td><a th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" th:text="${list.cmcSeq}"></a></td>
                                                             <td th:text = "${list.cmName}"></td>
@@ -700,8 +678,10 @@
                                                             <th th:text = "${#dates.format(list.cmcDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <th th:text = "${#dates.format(list.cmcDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.cmcDateTimeEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:if = "${list.cmcDelNY eq 0}">N</td>
-                                                            <td th:unless = "${list.cmcDelNY eq 0}">Y</td>
+                                                            <td th:if = "${list.cmcStatus eq 0}">시작</td>
+                                                            <td th:unless = "${list.cmcStatus eq 0}">종료</td>
+                                                            <td th:if = "${list.cmcDelNy eq 0}">N</td>
+                                                            <td th:unless = "${list.cmcDelNy eq 0}">Y</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

@@ -20,11 +20,9 @@
 		on
 			a.customer_cmSeq = c.cmSeq
 		where 1 = 1
-		<if test="shDelNY != null and !shDelNY.equals('')">AND cmDelNY = #{shDelNY}</if>
-		<if test="shGender != null and !shGender.equals('')">AND cmGender = #{shGender}</if>
+		<if test="shDelNY != null and !shDelNY.equals('')">AND cmcDelNY = #{shDelNY}</if>
+		<if test="shStatus != null and !shStatus.equals('')">AND cmcStatus = #{shStatus}</if>
 		
-		<if test="shDelNY != null and !shDelNY.equals('')">And cmDelNY = #{shDelNY}</if>
-		<if test="shUseNY != null and !shUseNY.equals('')">And cmUseNY = #{shUseNY}</if>
 		
 		<choose>
 			<when test="shOptionDate == 1">AND a.cmDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
@@ -32,17 +30,8 @@
 		</choose>
 		
 		<choose>
-			<when test="shOption == 1">AND cmName LIKE CONCAT('%',#{shValue},'%') AND cmName = #{shValue}</when>
-			<when test="shOption == 2">AND cmOrder = #{shValue}</when>
-			<when test="shOption == 3">AND cmId LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 4">AND cmEmail LIKE CONCAT('%',#{shValue},'%') AND cmEmail = #{shValue}</when>
-			<when test="shOption == 5">AND cmPw LIKE CONCAT('%',#{shValue},'%') AND cmPw = #{shValue}</when>
-			<when test="shOption == 6">AND cmSoNum LIKE CONCAT('%',#{shValue},'%') AND cmSoNum = #{shValue}</when>
-			<when test="shOption == 7">AND cmPhone LIKE CONCAT('%',#{shValue},'%') AND cmPhone = #{shValue}</when>
-			<when test="shOption == 8">AND cmAdr LIKE CONCAT('%',#{shValue},'%') AND cmAdr = #{shValue}</when>
-			<when test="shOption == 9">AND cmAdrDt LIKE CONCAT('%',#{shValue},'%') AND cmAdrDt = #{shValue}</when>
-			<when test="shOption == 10">AND cmAcc LIKE CONCAT('%',#{shValue},'%') AND cmAcc = #{shValue}</when>
-			 
+			<when test="shOption == 1">AND cmName = #{shValue}</when>
+			<when test="shOption == 2">AND inspName = #{shValue}</when>
 		</choose>
 	</sql>
 		
@@ -50,18 +39,19 @@
 		select aa.* from (
 			select
 				a.cmcSeq
-				,a.cmcDelNY
+				,a.cmcDelNy
 				,a.cmcDateTimeReg
 				,a.cmcDateTimeEdit
 				,a.cmcDateTimeEnd
-				,a.insproduct_inspSeq
+				,a.cmcStatus
+				,a.insProduct_inspSeq
 				,a.customer_cmSeq
 				,b.inspSeq
 				,b.inspName
 				,c.cmSeq
 				,c.cmName
 		<include refid="selectCommon"></include>
-		Order By a.cmcSeq desc
+		Order By c.cmSeq desc
 		) aa
 		limit #{rowNumToShow} offset #{startRnumForMysql}
 		
@@ -77,11 +67,12 @@
 	<select id = "selectOne" resultMap="resultMapObj">
 		select
 			a.cmcSeq
-			,a.cmcDelNY
+			,a.cmcDelNy
 			,a.cmcDateTimeReg
 			,a.cmcDateTimeEdit
 			,a.cmcDateTimeEnd
-			,a.insproduct_inspSeq
+			,a.cmcStatus
+			,a.insProduct_inspSeq
 			,a.customer_cmSeq
 		from
 			customerContract a
@@ -91,18 +82,20 @@
 	
 	<insert id = "insert">
 		insert into customerContract(
-			a.cmcDelNY
-			,a.cmcDateTimeReg
-			,a.cmcDateTimeEdit
-			,a.cmcDateTimeEnd
-			,a.insproduct_inspSeq
-			,a.customer_cmSeq
+			cmcDelNy
+			,cmcDateTimeReg
+			,cmcDateTimeEdit
+			,cmcDateTimeEnd
+			,cmcStatus
+			,insProduct_inspSeq
+			,customer_cmSeq
 		)values(
     		0
     		,now()
     		,now()
     		,now()
-    		,#{insproduct_inspSeq}
+    		,#{cmcStatus}
+    		,#{insProduct_inspSeq}
     		,#{customer_cmSeq}
 		)
 		<selectKey resultType="String" keyProperty="cmcSeq" order="AFTER">
@@ -131,8 +124,9 @@
 	<update id="update">
 		update customerContract
 		set
-			cmcDelNY = #{cmcDelNY}
-			,insproduct_inspSeq = #{insproduct_inspSeq}
+			cmcDelNy = #{cmcDelNy}
+			,cmcStatus = #{cmcStatus}
+			,insProduct_inspSeq = #{insProduct_inspSeq}
 			,customer_cmSeq = #{customer_cmSeq}
 		where 1 = 1
 			and cmcSeq = #{cmcSeq}
@@ -147,7 +141,7 @@
 	<update id="uelete">
 		update customerContract
 		set
-			cmDelNY = 1
+			cmcDelNy = 1
 		where 1 = 1
 			and cmcSeq = #{cmcSeq}
 	</update>

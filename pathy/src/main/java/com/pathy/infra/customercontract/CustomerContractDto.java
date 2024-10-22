@@ -5,10 +5,11 @@ import java.util.Date;
 public class CustomerContractDto {
 	
 	private String cmcSeq;
-	private Integer cmcDelNY;
+	private Integer cmcDelNy;
 	private Date cmcDateTimeReg;
 	private Date cmcDateTimeEdit;
 	private Date cmcDateTimeEnd;
+	private Integer cmcStatus;
 	private String insProduct_inspSeq;
 	private String customer_cmSeq;
 	
@@ -24,12 +25,6 @@ public class CustomerContractDto {
 	}
 	public void setCmcSeq(String cmcSeq) {
 		this.cmcSeq = cmcSeq;
-	}
-	public Integer getCmcDelNY() {
-		return cmcDelNY;
-	}
-	public void setCmcDelNY(Integer cmcDelNY) {
-		this.cmcDelNY = cmcDelNY;
 	}
 	public Date getCmcDateTimeReg() {
 		return cmcDateTimeReg;
@@ -84,6 +79,18 @@ public class CustomerContractDto {
 	}
 	public void setInspName(String inspName) {
 		this.inspName = inspName;
+	}
+	public Integer getCmcStatus() {
+		return cmcStatus;
+	}
+	public void setCmcStatus(Integer cmcStatus) {
+		this.cmcStatus = cmcStatus;
+	}
+	public Integer getCmcDelNy() {
+		return cmcDelNy;
+	}
+	public void setCmcDelNy(Integer cmcDelNy) {
+		this.cmcDelNy = cmcDelNy;
 	}
 	
 }

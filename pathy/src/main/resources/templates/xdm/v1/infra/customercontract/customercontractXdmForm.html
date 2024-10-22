@@ -401,7 +401,7 @@
 									<div class="card-title">기본정보</div>
 								</div>
 								<form class="needs-validation" novalidate id="form" name="form"
-									method="post" action="/xdm/v1/infra/qna/qnaXdmInst">
+									method="post" action="/xdm/v1/infra/customercontract/customercontractXdmInst">
 									<div class="card-body">
 										<div class="container-fluid">
 											<div class="row mb-3">
@@ -423,7 +423,7 @@
 																<label for="insProduct_inspSeq" class="form-label">상품 이름</label>
 																<select class="form-select" id="insProduct_inspSeq" name="insProduct_inspSeq">
 																	<option value="">선택</option>
-																	<option th:each = "List : ${listinsProduct}" th:value = "${List.insProduct_inspSeq}" th:text="${List.inspName}">사용</option>
+																	<option th:each = "List : ${listInsProduct}" th:value = "${List.insProduct_inspSeq}" th:text="${List.inspName}">사용</option>
 																</select>
 															</div>
 														</div>
@@ -431,26 +431,17 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="cmUseNY" class="form-label">카테고리<span
+																<label for="cmcStatus" class="form-label">진행상태<span
 																	style="color: red;">*</span></label>
-																<select class="form-select" id="qnaCategory" name="qnaCategory">
+																<select class="form-select" id="cmcStatus" name="cmcStatus">
 																	<option value="">선택</option>
-																	<option value="0" th:selected="${item?.qnaCategory == 0}">문의</option>
-																	<option value="1" th:selected="${item?.qnaCategory == 1}">짜증나</option>
+																	<option value="0" th:selected="${item?.cmcStatus == 0}">시작</option>
+																	<option value="1" th:selected="${item?.cmcStatus == 1}">종료</option>
 																</select>
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3"></div>
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="qnaTitle" class="form-label">제목<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="qnaTitle" name="qnaTitle" th:value="${item?.qnaTitle}" autocomplete="off">
-															</div>
-														</div>
-													</div>
 												<div class="col-md-9"></div>
 												<div class="row mb-3">
 													<div class="col">
@@ -534,35 +525,13 @@
 	
 	<script>
 		document.getElementById("btnList").onclick = function (){
-			window.location = "/xdm/v1/infra/qna/qnaXdmList";
+			window.location = "/xdm/v1/infra/customercontract/customercontractXdmList";
 		}
 		
 		document.getElementById("btnSubmit").onclick = function (){
 		    
-		    var qnaTitle = document.getElementById("qnaTitle");
-		    var qnaTitleValue = document.getElementById("qnaTitle").value.trim();
-		    
-		    if(qnaTitleValue == "" || qnaTitleValue == null){
-		    	alert("이름을 입력해주세요.");
-		    	qnaTitle.focus();
-		    	return false;
-		    } else{
-// 		    	by pass
-		    }
-		    
-		    var qnaContent = document.getElementById("qnaContent");
-		    var qnaContentValue = document.getElementById("qnaContent").value;
-		    
-		    if(qnaContentValue == "" || qnaContentValue == null){
-		    	alert("사용여부를 선택해주세요.");
-		    	qnaContent.focus();
-		    	return false;
-		    } else{
-// 		    	by pass
-		    }
-		    
 			let form = document.querySelector("form[name=form]");
-			form.action = "/xdm/v1/infra/qna/qnaXdmInst";
+			form.action = "/xdm/v1/infra/customercontract/customercontractXdmInst";
 			form.submit(); 
 		}
 	</script>

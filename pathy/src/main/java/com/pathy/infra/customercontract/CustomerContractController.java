@@ -35,25 +35,30 @@ public class CustomerContractController {
 //			List<CustomerDto> customers = CustomerService.selectListCustomer();
 //			model.addAttribute("listCodeGroup", customers);
 			 
-			List<CustomerContractDto> insmembers = customerContractService.selectListInsProduct();
-			model.addAttribute("listInsMember", insmembers);
+			List<CustomerContractDto> insproducts = customerContractService.selectListInsProduct();
+			model.addAttribute("listInsProduct", insproducts);
 			
 			List<CustomerContractDto> customers = customerContractService.selectListCustomer();
 			model.addAttribute("listCustomer", customers);
 			return "/xdm/v1/infra/customercontract/customercontractXdmForm";
 		}
 
-		@RequestMapping(value = "/xdm/v1/infra/customercontract/customerXdmInst")
+		@RequestMapping(value = "/xdm/v1/infra/customercontract/customercontractXdmInst")
 		public String customercontractXdmInst(CustomerContractDto customerContractDto) {
-
 			customerContractService.insert(customerContractDto);
-
 			return "redirect:/xdm/v1/infra/customercontract/customercontractXdmList";
 		}
 
 		@RequestMapping(value = "/xdm/v1/infra/customercontract/customercontractXdmMfom")
 		public String customercontractXdmMfom(CustomerContractDto customerContractDto, Model model) {
 			model.addAttribute("item", customerContractService.selectOne(customerContractDto));
+			
+			List<CustomerContractDto> insproducts = customerContractService.selectListInsProduct();
+			model.addAttribute("listInsProduct", insproducts);
+			
+			List<CustomerContractDto> customers = customerContractService.selectListCustomer();
+			model.addAttribute("listCustomer", customers);
+			
 			return "/xdm/v1/infra/customercontract/customercontractXdmMfom";
 		}
 

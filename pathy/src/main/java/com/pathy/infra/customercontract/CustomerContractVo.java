@@ -7,6 +7,7 @@ public class CustomerContractVo {
 		private String shValue;
 		private Integer shOption;
 		private Integer shGender;
+		private Integer shStatus;
 		private String shDateStart;
 		private String shDateEnd;
 		private Integer shOptionDate;
@@ -197,6 +198,14 @@ public class CustomerContractVo {
 
 		public void setShGender(Integer shGender) {
 			this.shGender = shGender;
+		}
+
+		public Integer getShStatus() {
+			return shStatus;
+		}
+
+		public void setShStatus(Integer shStatus) {
+			this.shStatus = shStatus;
 		}
 		
 }
