@@ -351,7 +351,7 @@
                                                         	<td><input type="checkbox" id="item-checkbox"></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
                                                             <td th:text = "${list.cmSeq}"></td>
-                                                            <td><a th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}" th:text="${list.cmName}"></a></td>
+                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}" th:text="${list.cmName}"></a></td>
                                                             <td th:text = "${list.cmOrder}"></td>
                                                             <td th:if = "${list.cmGender eq 0}">남</td>
                                                             <td th:unless = "${list.cmGender eq 0}">여</td>

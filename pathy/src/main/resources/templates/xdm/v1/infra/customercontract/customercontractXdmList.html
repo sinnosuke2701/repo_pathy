@@ -318,7 +318,7 @@
                                                         	<td><input type="checkbox" id="item-checkbox"></td>
                                                         	<td></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-                                                            <td><a th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" th:text="${list.cmcSeq}"></a></td>
+                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" th:text="${list.cmcSeq}"></a></td>
                                                             <td th:text = "${list.cmName}"></td>
                                                             <td th:text = "${list.inspName}"></td>
                                                             <th th:text = "${#dates.format(list.cmcDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
