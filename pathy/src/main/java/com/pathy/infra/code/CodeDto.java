@@ -18,7 +18,7 @@ public class CodeDto {
 	private Date cdDateTimeReg;
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date cdDateTimeEdit;
-	private String codegroup_cgSeq;
+	private String codeGroup_cgSeq;
 	//codegroup에서 가져올 데이터 추가 &getter/setter 다시 하기
 
 	private String cgSeq;
@@ -66,8 +66,8 @@ public class CodeDto {
 		return cdDateTimeEdit;
 	}
 
-	public String getCodegroup_cgSeq() {
-		return codegroup_cgSeq;
+	public String getCodeGroup_cgSeq() {
+		return codeGroup_cgSeq;
 	}
 
 	public String getCgSeq() {
@@ -118,10 +118,10 @@ public class CodeDto {
 		this.cdDateTimeEdit = cdDateTimeEdit;
 	}
 
-	public void setCodegroup_cgSeq(String codegroup_cgSeq) {
-		this.codegroup_cgSeq = codegroup_cgSeq;
+	public void setCodeGroup_cgSeq(String codeGroup_cgSeq) {
+		this.codeGroup_cgSeq = codeGroup_cgSeq;
 	}
-
+ 
 	public void setCgSeq(String cgSeq) {
 		this.cgSeq = cgSeq;
 	}

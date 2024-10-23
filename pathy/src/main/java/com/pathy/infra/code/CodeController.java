@@ -20,23 +20,17 @@ public class CodeController {
 	@RequestMapping(value="/xdm/v1/infra/code/codeXdmList")
 	public String codeXdmList(@ModelAttribute("vo") CodeVo codeVo,Model model){
 		
-
-		
 		// 초기값 세팅이 없는 경우 사용
-				codeVo.setShDateStart(codeVo.getShDateStart() == null || codeVo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(codeVo.getShDateStart()));
-				codeVo.setShDateEnd(codeVo.getShDateEnd() == null || codeVo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(codeVo.getShDateEnd()));
-		
+		codeVo.setShDateStart(codeVo.getShDateStart() == null || codeVo.getShDateStart() == "" ? null : UtilDateTime.add00TimeString(codeVo.getShDateStart()));
+		codeVo.setShDateEnd(codeVo.getShDateEnd() == null || codeVo.getShDateEnd() == "" ? null : UtilDateTime.add59TimeString(codeVo.getShDateEnd()));
 		
 		// paging
 		codeVo.setParamsPaging(codeService.selectOneCount(codeVo));
 		
 		if (codeVo.getTotalRows() > 0) {
 			model.addAttribute("list", codeService.selectList(codeVo));
-
 		}
-
 		return "/xdm/v1/infra/code/codeXdmList";
-		
 		}
 	
 	// Form
@@ -94,10 +88,6 @@ public class CodeController {
 			codeService.delete(codeDto);
 			return "redirect:/xdm/v1/infra/code/codeXdmList";
 		}
-		
-	
-
-		
 }
 
 

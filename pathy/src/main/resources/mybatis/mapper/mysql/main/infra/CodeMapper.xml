@@ -9,7 +9,7 @@
 		FROM 
 			pathy.code AS b
 			JOIN codegroup AS a
-				ON a.cgSeq = b.codegroup_cgSeq
+				ON a.cgSeq = b.codeGroup_cgSeq
 		WHERE 1 = 1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND cdDelNy = #{shDelNy}</if>
 			<if test="shUseNy != null and !shUseNy.equals('')">AND cdUseNy = #{shUseNy}</if>
@@ -39,9 +39,10 @@
 		    b.cdDelNy,
 		    b.cdDateTimeReg,
 		    b.cdDateTimeEdit,
-		    b.codegroup_cgSeq,
+		    b.codeGroup_cgSeq,
 		    a.cgName,
-		     (SELECT COUNT(cdSeq) FROM pathy.code AS b WHERE b.cdSeq = b.cdSeq) AS xcdSeqCount
+		    a.cgSeq
+<!-- 		     (SELECT COUNT(cdSeq) FROM pathy.code AS b WHERE b.cdSeq = b.cdSeq) AS xcdSeqCount -->
 			<include refid="selectCommon"/>
 			ORDER BY
 				b.cdSeq DESC
@@ -50,7 +51,7 @@
 <!-- //code에 codegroup 연결 -->
 	<select id="selectListCodeGroup" resultMap="resultMapObj">
 		SELECT
-			a.cgSeq,
+			a.cgSeq as codeGroup_cgSeq,
 			a.cgName
 		FROM
 			codegroup a
@@ -72,7 +73,7 @@
 		cdDelNy,
 		cdDateTimeReg,
 		cdDateTimeEdit,
-		codegroup_cgSeq
+		codeGroup_cgSeq
 		)VALUES(
 		#{cdName},
 		#{cdUseNy},
@@ -81,7 +82,7 @@
 		0,
 		now(),
 		now(),
-		#{codegroup_cgSeq}
+		#{codeGroup_cgSeq}
 		)
 <!-- 		<selectKey resultType="String" KeyProperty="ifcdSeq" order="AFTER"> -->
 <!-- 			SELECT last_insert_id() -->
@@ -99,7 +100,7 @@
 			b.cdDelNy,
 			b.cdDateTimeReg,
 			b.cdDateTimeEdit,
-			b.codegroup_cgSeq
+			b.codeGroup_cgSeq
 		FROM
 			pathy.code b
 		WHERE 1 = 1
@@ -116,7 +117,7 @@
 			cdDesc = #{cdDesc},
 			cdDelNy = 0,
 			cdDateTimeEdit = now(),
-			codegroup_cgSeq = #{codegroup_cgSeq}
+			codeGroup_cgSeq = #{codeGroup_cgSeq}
 		WHERE 1 = 1
 			AND cdSeq = #{cdSeq}	
 		</update>
@@ -145,7 +146,7 @@
 			SELECT 
 				cdSeq,
 				cdName,
-				codegroup_cgSeq
+				codeGroup_cgSeq
 			FROM
 				pathy.code
 			WHERE 1=1
