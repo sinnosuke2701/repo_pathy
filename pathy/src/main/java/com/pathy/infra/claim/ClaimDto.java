@@ -23,6 +23,9 @@ public class ClaimDto {
 	
 	private String cmSeq;
 	private String cmName;
+	
+	private String clmSeq;
+	private Integer clmSituation;
 //	-----
 	public String getClSeq() {
 		return clSeq;
@@ -131,6 +134,18 @@ public class ClaimDto {
 	}
 	public void setCmName(String cmName) {
 		this.cmName = cmName;
+	}
+	public String getClmSeq() {
+		return clmSeq;
+	}
+	public void setClmSeq(String clmSeq) {
+		this.clmSeq = clmSeq;
+	}
+	public Integer getClmSituation() {
+		return clmSituation;
+	}
+	public void setClmSituation(Integer clmSituation) {
+		this.clmSituation = clmSituation;
 	}
 	
 	

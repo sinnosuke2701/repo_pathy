@@ -297,10 +297,13 @@
                                                         <tr>
                                                         	<td><input type="checkbox"</td>
                                                         	<td>#</td>
+                                                        	<td>고객 코드</td>
+                                                        	<td>고객 이름</td>
                                                         	<td>클레임 코드</td>
                                                             <td>클레임 유형</td>
                                                             <td>클레임 제목</td>
                                                             <td>클레임 현황</td>
+                                                            <td>클레임 배정상황</td>
                                                             <td>접수일</td>
                                                             <td>수정일</td>
                                                             <td>처리 시작일</td>
@@ -321,10 +324,13 @@
                                                         	<td><input type="checkbox"></td>
                                                         	<td></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
+                                                            <td th:text = "${list.cmSeq}"></td>
+                                                            <td th:text = "${list.cmName}"></td>
                                                             <td th:text = "${list.clSeq}"></td>
                                                             <td th:text = "${list.clType}"></td>
                                                             <td><a style="color:blue;" th:href="@{/xdm/v1/infra/claim/claimXdmMfom(clSeq=${list.clSeq})}" th:text="${list.clTitle}"></a></td>
                                                             <td th:text = "${list.clSituation}"></td>
+                                                            <td th:text = "${list.clmSituation}"></td>
                                                             <th th:text = "${#dates.format(list.clDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.clDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <th th:text = "${#dates.format(list.clDateTimeTre, 'yyyy-MM-dd HH:mm:ss')}"></th>
