@@ -313,9 +313,10 @@
                                                         
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox"></td>
-                                                        	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td>
+<!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
+															<td></td>
                                                             <td th:text = "${list.clmSeq}"></td>
-                                                            <td><a th:href="@{/xdm/v1/infra/claimmanage/claimManageXdmMfom(clmSeq=${list.clmSeq})}" th:text="${list.clmName}"></a></td>
+                                                            <td><a th:href="@{/xdm/v1/infra/claimmanage/claimManageXdmMfom(clmSeq=${list.clmSeq})}" th:text="${list.insmName}"></a></td>
                                                             <td th:text = "${list.clmSituation}"></td>
                                                             <th th:text = "${#dates.format(list.clmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.clmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
