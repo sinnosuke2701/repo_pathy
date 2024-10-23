@@ -202,7 +202,7 @@
                             </ol>
                             <!-- Breadcrumb end -->
 
-                            <h2>Claim</h2>
+                            <h2>클레임</h2>
 						<form method="post" action="/xdm/v1/infra/claim/claimXdmList" name="formList">
 							<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 							<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
@@ -319,22 +319,23 @@
                                                         
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox"></td>
-                                                        	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td>
+                                                        	<td></td>
+<!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
                                                             <td th:text = "${list.clSeq}"></td>
                                                             <td th:text = "${list.clType}"></td>
-                                                            <td><a th:href="@{/xdm/v1/infra/claim/claimXdmMfom(clSeq=${list.clSeq})}" th:text="${list.clTitle}"></a></td>
+                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/claim/claimXdmMfom(clSeq=${list.clSeq})}" th:text="${list.clTitle}"></a></td>
                                                             <td th:text = "${list.clSituation}"></td>
                                                             <th th:text = "${#dates.format(list.clDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.clDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <th th:text = "${#dates.format(list.clDateTimeTre, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.clDateTimeTreEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${#dates.format(list.clDateTimePay, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                                            <td th:text = "${list.clPayOut}"></td>
+                                                            <td th:text = "${list.clPayMethod}"></td>
                                                             <td th:if = "${list.clUseNY eq 0}">N</td>
                                                             <td th:unless="${list.clUseNY eq 0}">Y</td>
                                                             <td th:if = "${list.clDelNY eq 0}">N</td>
                                                             <td th:unless = "${list.clDelNY eq 0}">Y</td>
-                                                            <td th:text = "${list.clPayOut}"></td>
-                                                            <td th:text = "${list.clPayMethod}"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

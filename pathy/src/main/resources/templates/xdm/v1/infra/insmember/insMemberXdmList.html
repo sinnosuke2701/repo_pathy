@@ -325,7 +325,7 @@
                                                         	<td></td>
 <!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
                                                             <td th:text = "${list.insmSeq}"></td>
-                                                            <td><a th:href="@{/xdm/v1/infra/insmember/insMemberXdmMfom(insmSeq=${list.insmSeq})}" th:text="${list.insmName}"></a></td>
+                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/insmember/insMemberXdmMfom(insmSeq=${list.insmSeq})}" th:text="${list.insmName}"></a></td>
                                                             <td th:text = "${list.insmOrder}"></td>
                                                             <td th:text = "${list.insmGender}"></td>
                                                             <td th:text = "${list.insmId}"></td>

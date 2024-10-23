@@ -98,6 +98,7 @@
 		insert into claim(
 			clType
 			,clTitle
+			,clDec
 			,clSituation
 			,clDateTimeReg
 			,clDateTimeEdit
@@ -108,9 +109,12 @@
 			,clPayMethod
 			,clUseNY
 			,clDelNY
+			,claimManage_clmSeq
+            ,customer_cmSeq
 		)values(
     		#{clType}
     		,#{clTitle}
+    		,#{clDec}
     		,#{clSituation}
     		,now()
     		,now()
@@ -121,6 +125,8 @@
     		,#{clPayMethod}
     		,#{clUseNY}
     		,0
+    		,#{clmSeq}
+    		,#{cmSeq}
 		)
 		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
 			SELECT last_Insert_id()
