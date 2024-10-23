@@ -236,7 +236,15 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-9"></div>
+												<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
+															<label for="cmName" class="form-label">고객 이름<span
+																style="color: red;">*</span></label> <input type="text"
+																class="form-control" name="cmName" th:value="${item?.cmName}" readonly>
+														</div>
+													</div>
+												</div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
@@ -269,8 +277,6 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-9"></div>
-												<div class="col-md-6"></div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
@@ -325,7 +331,7 @@
 													<div class="card">
 														<div class="card-body">
 															<label for="validationCustom04" class="form-label">삭제여부<span
-																style="color: red;">*</span></label> <select class="form-select"
+																style="color: red;">*</span></label> <select disabled class="form-select"
 																id="clDelNY" name="clDelNY">
 																<option selected disabled value="">삭제 여부</option>
 																<option value="0" th:selected="${item?.clDelNY == 0}">미삭제</option>

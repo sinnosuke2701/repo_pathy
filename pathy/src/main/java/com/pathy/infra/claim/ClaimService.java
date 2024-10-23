@@ -33,6 +33,10 @@ public class ClaimService {
 	public List<ClaimDto> selectListCustomer() {
 		return claimDao.selectListCustomer();
 	}
+	
+	public List<ClaimDto> selectListClaimManage() {
+		return claimDao.selectListClaimManage();
+	}
 		
 	public ClaimDto selectOne(ClaimDto claimDto){
 		ClaimDto dto = claimDao.selectOne(claimDto);

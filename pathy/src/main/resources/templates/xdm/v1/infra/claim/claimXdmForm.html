@@ -256,6 +256,18 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
+																<label for="customer_cmSeq" class="form-label">배정 상황<span
+																	style="color: red;">*</span></label>
+																<select name = "claimManage_clmSeq" class="form-select" id="customer_cmSeq" >
+																	<option value ="">선택하세요</option>
+																	<option th:each="list : ${claimManage}" th:value="${list.clmSeq}" th:text="${list.clmSituation}"></option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
 																<label for="clType" class="form-label fs--1">클레임 유형 <span class="text-danger fs-0">*</span></label>
 																<select id="clType" name="clType" class="form-select">
 																	<option value="">선택하세요</option>
@@ -324,7 +336,6 @@
 															</div>
 														</div>
 													</div>
-													<div class="col-md-6"></div>
 												<div class="col-md-6">
 												    <div class="card">
 												        <div class="card-body">

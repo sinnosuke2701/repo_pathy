@@ -22,6 +22,8 @@ public interface ClaimDao {
 	
 	public List<ClaimDto> selectListCustomer();
 	
+	public List<ClaimDto> selectListClaimManage();
+	
 	public int uelete (ClaimDto claimeDto);
 	
 	public int delete(ClaimDto claimeDto);

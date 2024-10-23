@@ -57,14 +57,14 @@
 	
 	<select id = "selectOne" resultMap="resultMapObj">
 		select
-			a.clmSeq
-				,b.clmName
-				,b.clmSituation
-				,b.insmDateTimeReg
-				,b.insmDateTimeEdit
-				,b.clmDateTimeAssign
-				,b.insmUseNY
-				,b.insmDelNY
+			b.clmSeq
+			,b.clmName
+			,b.clmSituation
+			,b.clmDateTimeReg
+			,b.clmDateTimeEdit
+			,b.clmDateTimeAssign
+			,b.clmUseNY
+			,b.clmDelNY
 		from
 			claimManage b
 		where 1 =1
