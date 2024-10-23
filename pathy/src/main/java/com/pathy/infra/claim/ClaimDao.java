@@ -20,6 +20,8 @@ public interface ClaimDao {
 	
 	public List<ClaimDto> selectListInsMember();
 	
+	public List<ClaimDto> selectListCustomer();
+	
 	public int uelete (ClaimDto claimeDto);
 	
 	public int delete(ClaimDto claimeDto);

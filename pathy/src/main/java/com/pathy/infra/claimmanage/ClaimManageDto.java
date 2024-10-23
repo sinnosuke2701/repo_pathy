@@ -15,6 +15,9 @@ public class ClaimManageDto {
 	private String insMember_insmSeq;
 	private String insmName;
 	private String insmSeq;
+	
+	private String cmSeq;
+	private String cmName;
 //	-----
 	public String getClmSeq() {
 		return clmSeq;
@@ -81,6 +84,18 @@ public class ClaimManageDto {
 	}
 	public void setClmDateTimeAssign(Date clmDateTimeAssign) {
 		this.clmDateTimeAssign = clmDateTimeAssign;
+	}
+	public String getCmSeq() {
+		return cmSeq;
+	}
+	public void setCmSeq(String cmSeq) {
+		this.cmSeq = cmSeq;
+	}
+	public String getCmName() {
+		return cmName;
+	}
+	public void setCmName(String cmName) {
+		this.cmName = cmName;
 	}
 	
 	

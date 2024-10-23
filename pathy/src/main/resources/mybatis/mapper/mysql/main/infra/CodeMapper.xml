@@ -108,14 +108,14 @@
 	</select>
 <!--         //	테이터 수정(update) -->
 		<update id="update">
-		UPDATE code
+		UPDATE pathy.code
 		SET
 			cdName = #{cdName},
 			cdUseNy = #{cdUseNy},
 			cdOrder = #{cdOrder},
 			cdDesc = #{cdDesc},
 			cdDelNy = 0,
-			cdEdit = now(),
+			cdDateTimeEdit = now(),
 			codegroup_cgSeq = #{codegroup_cgSeq}
 		WHERE 1 = 1
 			AND cdSeq = #{cdSeq}	

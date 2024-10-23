@@ -34,12 +34,12 @@ public class ClaimManageController {
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/claimmanage/claimManageXdmForm")
-	public String claimManageXdmForm(Model model, @ModelAttribute("vo") ClaimManageVo claimManageVo) {
+	public String claimManageXdmForm(Model model) {
 //		List<CustomerDto> customers = CustomerService.selectListCustomer();
 //		model.addAttribute("listCodeGroup", customers);
-		claimManageVo.setClmDateTimeAssign(claimManageVo.getClmDateTimeAssign() == null || claimManageVo.getClmDateTimeAssign() == "" ? null : UtilDateTime.add00TimeString(claimManageVo.getClmDateTimeAssign()));
 		
 		model.addAttribute("listInsMember", claimManageService.selectListInsMember());
+		model.addAttribute("customer", claimManageService.selectListCustomer());
 		return "/xdm/v1/infra/claimmanage/claimManageXdmForm";
 	}
 

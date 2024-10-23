@@ -383,123 +383,108 @@
 			</ol>
 			<!-- Breadcrumb end -->
 			<h3>Code Mfom</h3>
-			<!-- Content wrapper scroll start -->
-			<div class="content-wrapper-scroll">
-
-				<!-- Content wrapper start -->
-				<div class="content-wrapper">
-
-					<!-- Row start -->
-					<div class="row mb-3">
-						<div class="col-sm-12 col-12">
-
-
-							<!-- Card start -->
-							<div class="card">
-								<div class="card-header">
-									<div class="card-title">기본정보</div>
-								</div>
-								<form class="needs-validation" novalidate id="form" name="form"
-									method="post" action="/xdm/v1/infra/code/codeXdmInst">
-									<div class="card-body">
-										<div class="container-fluid">
-
-											<div class="row mb-3">
-												<div class="col-md-3">
-													<label for="code" class="form-label mb-2">Seq <font
-														color="red"><strong>*</strong></font>
-													</label> <input type="text" class="form-control" id="cdSeq"
-														name="cdSeq" placeholder="자동생성"
-														style="background-color: lightgray;" disabled>
-												</div>
-												<div class="col-md-3">
-													<label for="codegroup_cgSeq" class="form-label">코드그룹 번호<span
-														style="color: red;">*</span></label> <input type="text"
-														class="form-control" id="codegroup_cgSeq" name="codegroup_cgSeq"
-														th:value="${item?.codegroup_cgSeq}" autocomplete="off" required >
-													<div class="invalid-feedback">이름을 입력해 주세요</div>
-												</div>
-												<div class="col-md-3">
-													<label for="cdName" class="form-label">이름<span
-														style="color: red;">*</span></label> <input type="text"
-														class="form-control" id="cdName" name="cdName"
-														th:value="${item?.cdName}" autocomplete="off">
-												</div>
-												<div class="col-md-3">
-													<label for="cdOrder" class="form-label">순서<span
-														style="color: red;">*</span>
-													</label> <input type="text" class="form-control" id="cdOrder"
-														name="cdOrder" th:value="${item?.cdOrder}"
-														autocomplete="off">
-												</div>
-												</div>
-											<div class="row mb-3">
-											<div class="col-md-3">
-													<label for="cdUseNy" class="form-label">사용여부<span
-														style="color: red;">*</span></label> <select class="form-select"
-														id="cdUseNy" name="cdUseNy">
-														<option value="">선택</option>
-														<option value="0" th:selected="${item?.cdUseNy == 0}">미사용</option>
-														<option value="1" th:selected="${item?.cdUseNy == 1}">사용</option>
-													</select>
-												</div>
-											</div>
-												<div class="col-md-6 mb-3">
-													<label for="cdDesc" class="form-label">설명</label>
-													<textarea class="form-control" id="cdDesc" name="cdDesc"
-														th:value="${item?.cdDesc}" rows="5" autocomplete="off"></textarea>
-												</div>
-											</div>
-											<div class="row mb-3">
-												<div class="col-md-3">
-													<label for="cdDelNy" class="form-label">삭제여부<span
-														style="color: red;">*</span></label> <select class="form-select"
-														id="cdDelNy" name="cdDelNy" disabled>
-														<option value="">선택</option>
-														<option value="0" th:selected="${item?.cdDelNy == 0}">N</option>
-														<option value="1" th:selected="${item?.cdDelNy == 1}">Y</option>
-													</select>
-												</div>
-												<div class="col-md-3">
-													<label class="form-label">등록날짜</label> <input
-														type="datetime" class="form-control" name="cdDateTimeReg"
-														th:value="${#dates.format(item?.cdDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"
-														disabled>
-												</div>
-												<div class="col-sm-12 col-md-6 col-lg-3">
-													<label class="form-label">수정날짜</label> <input
-														type="datetime" class="form-control" name="cdDateTimeEdit"
-														th:value="${#dates.format(item?.cdDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"
-														disabled>
-												</div>
-											</div>
-										</div>
-										<div class="row g-2">
-											<div class="col">
-												<a href="/xdm/v1/infra/code/codeXdmList"
-													class="btn btn-outline-dark" id="btnList"> <i
-													class="bi bi-list-ul"></i>
-												</a>
-												<!--  DELETE  -->
-												<button type="button" class="btn btn-danger" id="btnDelete">
-													<i class="bi bi-x-lg icon_color_change"></i>
-												</button>
-												<!--  UELETE  -->
-												<button type="button" class="btn btn-danger" id="btnUelete"
-													data-bs-toggle="modal" data-bs-target="#varticalycentered">
-													<i class="bi bi-trash-fill icon_color_change"></i>
-												</button>
-											</div>
-											<div class="col d-flex justify-content-end">
-												<button type="submit" class="btn btn-primary">
-													<i class="bi bi-server"></i>
-												</button>
-											</div>
-										</div>
-									</div>
-							</div>
-						</div>
-						</form>
+			  <section class="section">
+      <div class="row">
+        <div class="col">
+          <div class="card card-1 " >
+            <div class="card-body border">
+              <h5 class="card-title">기본정보</h5>
+        <form name="form" class="row g-3" method="post" action="/xdm/v1/infra/code/codeXdmUpdt">
+          <div class="row g-2">
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                  <label for="code" class="form-label mb-0">코드 번호 <font color="red"><strong>*</strong></font></label>
+                  <input type="text" class="form-control" id="cdSeq" name="cdSeq" th:value="${item?.cdSeq}" placeholder="자동생성" style="background-color:#E9ECEF;" readonly>
+                </div>
+                 <div class="col-sm-12 col-md-6 col-lg-3">
+                    <label class="form-label mb-0">코드그룹 번호 <font color="red"><strong>*</strong></font></label>
+                    <select class="form-select" name="codegroup_cgSeq" id="codegroup_cgSeq"
+                    	style="padding: .375rem .75rem;">
+                                <option value="">코드 그룹 번호</option>
+                                <option th:each="list:${listCodeGroup}"
+                                        th:value="${list.codegroup_cgSeq}" th:text="${list.cgName}"
+                                        th:selected="${list.cgSeq == item?.codegroup_cgSeq}">
+                                </option>
+                              </select>
+                   		</div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                  <label for="calidationCustom01" class="form-label mb-0">코드 이름</label>
+                  <input type="text" class="form-control"  name="cdName" th:value="${item?.cdName}" placeholder="코드그룹 이름" >
+                  
+                </div>
+              
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <label class="form-label mb-0">사용여부 <font color="red"><strong>*</strong></font></label>
+                    <select class="form-select" id="cdUseNy" name="cdUseNy" required>
+                                <option selected disabled>사용여부</option>
+                                <option value="1" th:selected="${item?.cdUseNy == 1}">Y</option>
+                                <option value="0" th:selected="${item?.cdUseNy == 0}">N</option>
+                              </select>
+                  </div>
+                  </div>
+                  <div class="row g-2">
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                    <label for="validationCustom01" class="form-label mb-0">순서<font color="red"><strong>*</strong></font></label>
+                     <select class="form-select" id="cdOrder" name="cdOrder" required>
+                                <option selected disable value="">순서</option>
+                                <option value="1" th:selected="${item?.cdOrder == 1}">1</option>
+                                <option value="2" th:selected="${item?.cdOrder == 2}">2</option>
+                                <option value="3" th:selected="${item?.cdOrder == 3}">3</option>
+                                <option value="4" th:selected="${item?.cdOrder == 4}">4</option>
+                                <option value="5" th:selected="${item?.cdOrder == 5}">5</option>
+                                <option value="6" th:selected="${item?.cdOrder == 6}">6</option>
+                        </select>
+                        <div class="invalid-feedback">순서를 선택해주세요</div>
+                  </div>
+                
+                  </div>
+                  <div class="row g-2">
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                      <label  class="form-label mb-0">설명</label>
+                      <textarea class="form-control" name="cdDesc" id="cdDesc" th:text="${item?.cdDesc}" rows="3"></textarea>
+                    </div>
+                    </div>
+                  <div class="row g-2"> 
+                   <div class="col-sm-12 col-md-6 col-lg-3">삭제여부
+                    <label for="validationCustom01" class="form-label mb-0"></label>
+                    <select class="form-select" name="cdDelNy" id="cdDelNy" disabled>
+                                <option value="1" th:selected="${item?.cdDelNy == 1}">Y</option>
+                                <option value="0" th:selected="${item?.cdDelNy == 0}">N</option>
+                              </select>
+                  </div>
+                  <div class="col-sm-12 col-md-6 col-lg-3">
+                  <label class="form-label mb-0">등록날짜</label>
+                  <input type="datetime" class="form-control" name="cdDateTimeReg" id="cdDateTimeReg"
+                  		th:value="${#dates.format(item?.cdDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                  <label class="form-label mb-0">수정날짜</label>
+                  <input type="datetime" class="form-control" name="cdDateTimeEdit" id="cdDateTimeEdit" 
+                  		th:value="${#dates.format(item?.cdDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}" disabled>
+                </div>
+                </div>
+                    
+						 <div class="row g-2">
+						  <div class="col">
+						    <a href="/xdm/v1/infra/code/codeXdmList" class="btn btn-outline-dark" id="btnList">
+						      <i class="bi bi-list-ul"></i>
+						    </a>
+						    <!--  DELETE  -->
+						  <button type="button" class="btn btn-danger" id="btnDelete">
+						  	<i class="bi bi-x-lg icon_color_change"></i>
+						  </button>
+						   <!--  UELETE  -->
+						  <button type="button" class="btn btn-danger" id="btnUelete"
+						  	data-bs-toggle="modal" data-bs-target="#varticalycentered">
+						  	<i class="bi bi-trash-fill icon_color_change"></i>
+						  </button>
+						  </div>
+						  <div class="col d-flex justify-content-end">
+						    <button type="submit" class="btn btn-primary">
+						      <i class="bi bi-server"></i>
+						  </button>
+						    </div>
+						  </div>
+				 	</form>
 						<!-- Row end -->
 					</div>
 				</div>
@@ -549,143 +534,28 @@
 	<!-- Main Js Required -->
 	<script src="/xdm/v1/template/vivo/assets/js/main.js"></script>
 
-	<script>
-		document.getElementById("btnList").onclick = function (){
-			window.location = "/xdm/v1/infra/code/codeXdmList";
-		}
-		
-		document.getElementById("btnSubmit").onclick = function (){
-		    
-		    var cdName = document.getElementById("cdName");
-		    var cdNameValue = document.getElementById("cdName").value.trim();
-		    
-		    if(cdNameValue == "" || cdNameValue == null){
-		    	alert("이름을 입력해주세요.");
-		    	cdName.focus();
-		    	return false;
-		    } else{
-// 		    	by pass
-		    }
-		    
-		    var cdUseNy = document.getElementById("cdUseNy");
-		    var cdUseyValue = document.getElementById("cdUseNy").value;
-		    
-		    if(cdUseNyValue == "" || cdUseNyValue == null){
-		    	alert("사용여부를 선택해주세요.");
-		    	cdUseNy.focus();
-		    	return false;
-		    } else{
-// 		    	by pass
-		    }
-		    
-		    var cdOrder = document.getElementById("cdOrder");
-		    var cdOrderValue = document.getElementById("cdOrder").value.trim();
-		    
-		    if(cdOrderValue == "" || cdOrderValue == null){
-		    	alert("순서를 입력해주세요.");
-		    	cdOrder.focus();
-		    	return false;
-		    } else {
-		    	//by pass
-		    }
-		    
-// 		    var cmDesc = document.getElementById("cmDesc");
-// 		    var cmDescValue = document.getElementById("cmDesc");
-		    
-// 		    if(cmDescValue == "" || cmDescValue == null){
-// 		    	alert("설명을 입력해주세요.");
-// 		    	cmDesc.focus();
-// 		    	return false;
-// 		    } else {
-// 		    	//by pass
-// 		    }
-			let form = document.querySelector("form[name=form]");
-			form.action = "/xdm/v1/infra/code/codeXdmInst";
-			form.submit(); 
-		}
-	</script>
-	<!-- kakao 우편번호 Start -->
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript">
-	    function sample6_execDaumPostcode() {
-	        new daum.Postcode({
-	            oncomplete: function(data) {
-	                var addr = '';
-	                var extraAddr = '';
-	
-	                if (data.userSelectedType === 'R') {
-	                    addr = data.roadAddress;
-	                } else {
-	                    addr = data.jibunAddress;
-	                }
-	
-	                // 위도 경도 요청 추가
-	                var REST_API_KEY = '4a9a79871cbda231acbe5307768f4f50'; // API 키
-	                fetch(`https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURIComponent(addr)}`, {
-	                    method: 'GET',
-	                    headers: {
-	                        'Authorization': `KakaoAK ${REST_API_KEY}`
-	                    }
-	                })
-	                .then(response => response.json())
-	                .then(data => {
-	                    if (data.documents.length > 0) {
-	                        var latitude = data.documents[0].y; // 위도
-	                        var longitude = data.documents[0].x; // 경도
-	                        document.getElementById('latitude').value = latitude;
-	                        document.getElementById('longitude').value = longitude;
-	                        console.log(`위도: ${latitude}, 경도: ${longitude}`);
-	                    } else {
-	                        console.log('위도와 경도를 찾을 수 없습니다.');
-	                    }
-	                })
-	                .catch(error => console.error('API 요청 에러:', error));
-	
-	                // 기존 코드 계속 실행
-	                if (data.userSelectedType === 'R') {
-	                    // ... (기존 코드)
-	                    
-		                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-		                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-		                    addr = data.roadAddress;
-		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-		                    addr = data.jibunAddress;
-		                }
-		             	// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-		                if(data.userSelectedType === 'R'){
-		                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-		                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-		                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-		                        extraAddr += data.bname;
-		                    }
-		                    // 건물명이 있고, 공동주택일 경우 추가한다.
-		                    if(data.buildingName !== '' && data.apartment === 'Y'){
-		                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-		                    }
-		                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-		                    if(extraAddr !== ''){
-		                        extraAddr = ' (' + extraAddr + ')';
-		                    }
-		                    // 조합된 참고항목을 해당 필드에 넣는다.
-		                    document.getElementById("sample6_address").value = extraAddr;
-		                
-		                } else {
-		                    document.getElementById("sample6_address").value = '';
-		                }
-	                    
-	                } else {
-	                    document.getElementById("sample6_address").value = '';
-	                }
-	
-	                document.getElementById('sample6_postcode').value = data.zonecode;
-	                document.getElementById("sample6_address").value = addr;
-	                document.getElementById("sample6_detailAddress").focus();
-	            }
-	        }).open();
-	    }
-	</script>
-	<!-- kakao 우편번호 End -->
+<!-- 	by developers -->
+ <script>
+  
+//uelete
+ document.getElementById("btnUelete").onclick = function() {
+     console.log("UELETE 버튼 클릭됨"); // 수정됨: 콘솔 로그 추가
+     alert("UELETE 확인");
+     let form = document.querySelector("form[name=form]");
+     form.action = "/xdm/v1/infra/code/codeXdmUelete";
+     form.submit();
+ }
+
+ // delete
+ document.getElementById("btnDelete").onclick = function() {
+     console.log("DELETE 버튼 클릭됨"); // 수정됨: 콘솔 로그 추가
+     alert("DELETE 확인");
+     let form = document.querySelector("form[name=form]");
+     form.action = "/xdm/v1/infra/code/codeXdmDelete";
+     form.submit();
+ }
+  	
+  </script>	
 </body>
 
 </html>

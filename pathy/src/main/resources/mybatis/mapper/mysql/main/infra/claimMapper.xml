@@ -85,6 +85,15 @@
 			and c.clSeq = #{clSeq}		
 	</select>
 	
+	<select id = "selectListCustomer" resultMap = "resultMapObj">
+		select
+			a.cmSeq
+			,a.cmName
+		from customer a
+		where 1=1
+			and a.cmDelNy = 0
+	</select>
+	
 	<insert id = "insert">
 		insert into claim(
 			clType
