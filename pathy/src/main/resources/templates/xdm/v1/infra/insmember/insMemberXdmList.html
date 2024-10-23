@@ -202,7 +202,7 @@
                             </ol>
                             <!-- Breadcrumb end -->
 
-                            <h2>InsMember</h2>
+                            <h2>보험사 직원</h2>
 						<form method="post" action="/xdm/v1/infra/insmember/insMemberXdmList" name="formList">
 							<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
 							<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
@@ -303,7 +303,6 @@
                                                             <td>성별</td>
                                                             <td>아이디</td>
                                                             <td>이메일</td>
-                                                            <td>비밀번호</td>
                                                             <td>주민번호</td>
                                                             <td>전화번호</td>
                                                             <td>설명</td>
@@ -331,7 +330,6 @@
                                                             <td th:text = "${list.insmGender}"></td>
                                                             <td th:text = "${list.insmId}"></td>
                                                             <td th:text = "${list.insmEmail}"></td>
-                                                            <td th:text = "${list.insmPw}"></td>
                                                             <td th:text = "${list.insmSoNum}"></td>
                                                             <td th:text = "${list.insmPhone}"></td>
                                                             <td th:text = "${list.insmDesc}"></td>
