@@ -327,10 +327,12 @@
                                                             <td th:text = "${list.cmSeq}"></td>
                                                             <td th:text = "${list.cmName}"></td>
                                                             <td th:text = "${list.clSeq}"></td>
-                                                            <td th:text = "${list.clType}"></td>
+                                                            <td th:if = "${list.clType eq 1}">신청</td>
+                                                            <td th:if="${list.clType eq 2}">청구</td>
                                                             <td><a style="color:blue;" th:href="@{/xdm/v1/infra/claim/claimXdmMfom(clSeq=${list.clSeq})}" th:text="${list.clTitle}"></a></td>
-                                                            <td th:text = "${list.clSituation}"></td>
-                                                            <td th:text = "${list.clmSituation}"></td>
+                                                            <td th:if="${list.clSituation != null}" th:text="${@codeService.selectOneCachedCode(list.clSituation)}" class="gender align-middle"></td>
+                                                            <td th:unless="${list.clSituation != null}" class="gender align-middle"></td>
+                                                            <td th:text = "${list.clmSituation}"></td>	
                                                             <th th:text = "${#dates.format(list.clDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.clDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <th th:text = "${#dates.format(list.clDateTimeTre, 'yyyy-MM-dd HH:mm:ss')}"></th>

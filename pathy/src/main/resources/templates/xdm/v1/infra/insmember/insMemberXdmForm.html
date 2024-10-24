@@ -250,9 +250,12 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="insmGender" class="form-label">성별(이건 나중에 ㅇㅇ int로 입력 ㄱㄱ)<span
+																<label for="insmGender" class="form-label">성별<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="insmGender" name="insmGender" th:value="${item?.insmGender}" autocomplete="off">
+																<select class="form-select" id="insmGender" name="insmGender">
+																	<option value="">선택</option>
+																	<option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.insmGender}"></option>
+																</select>
 															</div>
 														</div>
 													</div>

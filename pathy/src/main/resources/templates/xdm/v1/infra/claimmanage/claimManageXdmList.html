@@ -317,7 +317,8 @@
 															<td></td>
                                                             <td th:text = "${list.clmSeq}"></td>
                                                             <td><a style="color:blue;" th:href="@{/xdm/v1/infra/claimmanage/claimManageXdmMfom(clmSeq=${list.clmSeq})}" th:text="${list.insmName}"></a></td>
-                                                            <td th:text = "${list.clmSituation}"></td>
+                                                            <td th:if="${list.clmSituation != null}" th:text="${@codeService.selectOneCachedCode(list.clmSituation)}" class="gender align-middle"></td>
+                                                            <td th:unless="${list.clmSituation != null}" class="gender align-middle"></td>	
                                                             <th th:text = "${#dates.format(list.clmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.clmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if = "${list.clmUseNY eq 0}">N</td>

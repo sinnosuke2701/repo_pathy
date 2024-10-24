@@ -286,7 +286,11 @@
 															<div class="card-body">
 																<label for="inscStatus" class="form-label">진행상태<span
 																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inscStatus" name="inscStatus" th:value="${item?.inscStatus}" autocomplete="off">
+<!-- 																<input type="text" class="form-control" id="inscStatus" name="inscStatus" th:value="${item?.inscStatus}" autocomplete="off"> -->
+																<select class="form-select" id="inscStatus" name="inscStatus">
+																	<option value="">진행상태</option>
+																	<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.inscStatus}"></option>
+																</select>
 															</div>
 														</div>
 													</div>
