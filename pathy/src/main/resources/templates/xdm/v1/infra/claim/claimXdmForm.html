@@ -294,7 +294,7 @@
 																	style="color: red;">*</span></label>
 																<select class="form-select" id="clSituation" name="clSituation">
 																	<option value="">선택</option>
-																	<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.clSituation}">미처리</option>
+																	<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.clSituation}"></option>
 																</select>
 															</div>
 														</div>

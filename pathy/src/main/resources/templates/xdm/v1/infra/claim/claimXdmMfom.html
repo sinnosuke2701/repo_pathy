@@ -258,10 +258,11 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="clTitle" class="form-label">클레임 제목<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="clTitle"
-																th:value="${item?.clTitle}" autocomplete="off">
+															<label for="clSituation" class="form-label">진행상태<span
+																style="color: red;">*</span></label> <select class="form-select"
+																id="clSituation" name="clSituation">
+																<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.clSituation}"></option>
+															</select>
 														</div>
 													</div>
 												</div>
