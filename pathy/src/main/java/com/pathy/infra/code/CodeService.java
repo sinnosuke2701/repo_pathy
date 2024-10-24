@@ -73,10 +73,10 @@ public class CodeService {
 		}
 		
 		// codeGroup의 seq 번호를 받고 해당하는 code의 내용을 List로 출력
-		public static List<CodeDto> selectListCachedCode(String B_codegroup_ifcgSeq){
+		public static List<CodeDto> selectListCachedCode(String codegroup_cgSeq){
 			List<CodeDto> rt = new ArrayList<CodeDto>();
 			for(CodeDto codeRow : CodeDto.cachedCodeArrayList) {
-				if (codeRow.getCgSeq().equals(B_codegroup_ifcgSeq)) {
+				if (codeRow.getCodeGroup_cgSeq().equals(codegroup_cgSeq)) {
 					rt.add(codeRow);
 				} else {
 					// by pass
