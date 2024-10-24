@@ -67,7 +67,6 @@
 				,a.inscDateStart
 				,a.inscDateEnd
 				,a.inscStatus
-				,a.inscBigo
 				,a.inscDelNy
 				,a.inscDateTimeReg
 				,a.inscDateTimeEdit
@@ -89,7 +88,6 @@
 			inscDateStart
 			,inscDateEnd
 			,inscStatus
-			,inscBigo
 			,inscDelNy
 			,inscDateTimeReg
 			,inscDateTimeEdit
@@ -100,7 +98,6 @@
 			#{inscDateStart}
 		    ,#{inscDateEnd}
 		    ,#{inscStatus}
-		    ,#{inscBigo}
 		    ,0
 		    ,now()
 		    ,now()
@@ -120,7 +117,6 @@
 			,a.inscDateStart
 			,a.inscDateEnd
 			,a.inscStatus
-			,a.inscBigo
 			,a.inscDelNy
 			,a.inscDateTimeReg
 			,a.inscDateTimeEdit
@@ -144,7 +140,6 @@
 				inscDateStart = #{inscDateStart}
 				,inscDateEnd = #{inscDateEnd}
 				,inscStatus = #{inscStatus}
-				,inscBigo = #{inscBigo}
 				,inscDelNy = 0
 				,inscDateTimeReg = now()
 				,inscDateTimeEdit = now()

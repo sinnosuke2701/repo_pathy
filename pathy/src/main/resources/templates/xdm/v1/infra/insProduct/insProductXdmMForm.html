@@ -280,42 +280,6 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="inspBohumDateStart" class="form-label">보험시작일<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspBohumDateStart" name="inspBohumDateStart" th:value="${item?.inspBohumDateStart}" autocomplete="off">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="inspBohumDateEnd" class="form-label">보험종료일<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspBohumDateEnd" name="inspBohumDateEnd" th:value="${item?.inspBohumDateEnd}" autocomplete="off">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="inspBojangDateStart" class="form-label">보장시작일<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspBojangDateStart" name="inspBojangDateStart" th:value="${item?.inspBojangDateStart}" autocomplete="off">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
-																<label for="inspBojangDateEnd" class="form-label">보장종료일<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="inspBojangDateEnd" name="inspBojangDateEnd" th:value="${item?.inspBojangDateEnd}" autocomplete="off">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3">
-														<div class="card">
-															<div class="card-body">
 																<label for="inspBojangDateEnd" class="form-label">필요서류<span
 																	style="color: red;">*</span></label>
 																<input type="text" class="form-control" id="inspPaper" name="inspPaper" th:value="${item?.inspPaper}" autocomplete="off">
@@ -327,7 +291,7 @@
 															<div class="card-body">
 																<label for="inspdelNy" class="form-label">삭제여부<span
 																	style="color: red;">*</span></label>
-																<select class="form-select" id="inspdelNy" name="inspdelNy">
+																<select class="form-select" id="inspdelNy" name="inspdelNy" disabled>
 																	<option value="">선택</option>
 																	<option value="0" th:selected="${item?.inspDelNy == 0}">N</option>
 																	<option value="1" th:selected="${item?.inspDelNy == 1}" >Y</option>

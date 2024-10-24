@@ -9,10 +9,6 @@ public class InsProductDto {
 	private String inspBojang;
 	private String inspJogun;
 	private String inspPrice;
-	private String inspBohumDateStart;
-	private String inspBohumDateEnd;
-	private String inspBojangDateStart;
-	private String inspBojangDateEnd;
 	private String inspPaper;
 	private Integer inspDelNy;
 	private Date inspDateTimeReg;
@@ -48,30 +44,6 @@ public class InsProductDto {
 	}
 	public void setInspPrice(String inspPrice) {
 		this.inspPrice = inspPrice;
-	}
-	public String getInspBohumDateStart() {
-		return inspBohumDateStart;
-	}
-	public void setInspBohumDateStart(String inspBohumDateStart) {
-		this.inspBohumDateStart = inspBohumDateStart;
-	}
-	public String getInspBohumDateEnd() {
-		return inspBohumDateEnd;
-	}
-	public void setInspBohumDateEnd(String inspBohumDateEnd) {
-		this.inspBohumDateEnd = inspBohumDateEnd;
-	}
-	public String getInspBojangDateStart() {
-		return inspBojangDateStart;
-	}
-	public void setInspBojangDateStart(String inspBojangDateStart) {
-		this.inspBojangDateStart = inspBojangDateStart;
-	}
-	public String getInspBojangDateEnd() {
-		return inspBojangDateEnd;
-	}
-	public void setInspBojangDateEnd(String inspBojangDateEnd) {
-		this.inspBojangDateEnd = inspBojangDateEnd;
 	}
 	public String getInspPaper() {
 		return inspPaper;

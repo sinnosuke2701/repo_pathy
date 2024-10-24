@@ -8,7 +8,6 @@ public class InsContractDto {
 	private String inscDateStart;
 	private String inscDateEnd;
 	private Integer inscStatus;
-	private String inscBigo;
 	private Integer inscDelNy;
 	private Date inscDateTimeReg;
 	private Date inscDateTimeEdit;
@@ -44,12 +43,6 @@ public class InsContractDto {
 	}
 	public void setInscStatus(Integer inscStatus) {
 		this.inscStatus = inscStatus;
-	}
-	public String getInscBigo() {
-		return inscBigo;
-	}
-	public void setInscBigo(String inscBigo) {
-		this.inscBigo = inscBigo;
 	}
 	public Integer getInscDelNy() {
 		return inscDelNy;
