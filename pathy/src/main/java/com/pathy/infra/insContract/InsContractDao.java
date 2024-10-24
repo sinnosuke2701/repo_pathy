@@ -34,5 +34,5 @@ public interface InsContractDao {
 
 //	paging
 	public int selectOneCount(InsContractVo insContractVo);
-
+	
 }
