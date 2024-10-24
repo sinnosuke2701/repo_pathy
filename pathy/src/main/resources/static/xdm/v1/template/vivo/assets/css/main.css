@@ -16912,3 +16912,9 @@ select:-webkit-autofill:focus {
   padding-right: 10px;
   padding-left: 10px;
 }
+
+/************* scroll *************/	
+        .list-scroll {
+		  overflow-x: auto; /* 가로 스크롤바 활성화 */
+		  white-space: nowrap; /* 자식 요소들이 한 줄로 나열되도록 설정 */
+		}

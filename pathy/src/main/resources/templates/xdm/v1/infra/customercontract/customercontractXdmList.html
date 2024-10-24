@@ -1,79 +1,9 @@
 <!doctype html>
 <html lang="ko">
 
-<head>
-    <style>
-        hr {
-            background: black;
-            border: 0;
-        }
-    </style>
-    <style>
-        svg.className {
-            width: 100px;
-            height: 100px;
-            color: limegreen;
-            }
-        .list-scroll {
-		  overflow-x: auto; /* 가로 스크롤바 활성화 */
-		  white-space: nowrap; /* 자식 요소들이 한 줄로 나열되도록 설정 */
-		}
-    </style>
-
-    <script>
-        function deleteSelectedRows() {
-            //테이블 요소를 가져옵니다.
-            var table = document.getElementById('basicExample');
-            var checkboxes = table.querySelectorAll('tbody input[type="checkbox"]:checked');
-
-            // 체크된 각 행을 삭제합니다.
-            checkboxes.forEach(function (checkbox) {
-                var row = checkbox.closest('tr');
-                row.remove();
-            });
-        }
-    </script>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Meta -->
-    <meta name="description" content="Vivo - Responsive Bootstrap 5 Dashboard Template">
-    <meta name="author" content="Bootstrap Gallery">
-    <link rel="shortcut icon" href="/xdm/v1/template/vivo/assets/images/favicon.svg">
-
-    <!-- Title -->
-    <title>Vivo Admin Template - Admin Dashboard</title>
-
-
-    <!-- *************
-         ************ Common Css Files *************
-      ************ -->
-    <!-- Animated css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/animate.css">
-
-    <!-- Bootstrap font icons css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/fonts/bootstrap/bootstrap-icons.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/main.min.css">
-
-	<!-- datetimepicker css -->
-	<link rel="stylesheet" href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
-
-    <!-- *************
-         ************ Vendor Css Files *************
-      ************ -->
-
-    <!-- Scrollbar CSS -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/overlay-scroll/OverlayScrollbars.min.css">
-
-    <!-- Data Tables -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5.css" />
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5-custom.css" />
-
-</head>
+<!-- Head Start -->
+<th:block th:replace="~{/xdm/v1/infra/include/head :: head}"></th:block>
+<!-- Head End -->
 
 <body>
 
@@ -324,8 +254,8 @@
                                                             <td th:text = "${#dates.format(list.cmcDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${#dates.format(list.cmcDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${#dates.format(list.cmcDateTimeEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:if = "${list.cmcStatus eq 0}">시작</td>
-                                                            <td th:unless = "${list.cmcStatus eq 0}">종료</td>
+                                                            <td th:if="${list.cmcStatus != null}" th:text="${@codeService.selectOneCachedCode(list.cmcStatus)}" ></td>
+															<td th:unless="${list.cmcStatus != null}" class="cmcStatus align-middle"></td>
                                                             <td th:if = "${list.cmcDelNy eq 0}">N</td>
                                                             <td th:unless = "${list.cmcDelNy eq 0}">Y</td>
                                                         </tr>

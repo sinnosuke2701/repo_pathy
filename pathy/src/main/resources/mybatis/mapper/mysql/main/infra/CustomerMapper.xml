@@ -26,12 +26,11 @@
 			<when test="shOption == 2">AND cmOrder = #{shValue}</when>
 			<when test="shOption == 3">AND cmId LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND cmEmail LIKE CONCAT('%',#{shValue},'%') AND cmEmail = #{shValue}</when>
-			<when test="shOption == 5">AND cmPw LIKE CONCAT('%',#{shValue},'%') AND cmPw = #{shValue}</when>
-			<when test="shOption == 6">AND cmSoNum LIKE CONCAT('%',#{shValue},'%') AND cmSoNum = #{shValue}</when>
-			<when test="shOption == 7">AND cmPhone LIKE CONCAT('%',#{shValue},'%') AND cmPhone = #{shValue}</when>
-			<when test="shOption == 8">AND cmAdr LIKE CONCAT('%',#{shValue},'%') AND cmAdr = #{shValue}</when>
-			<when test="shOption == 9">AND cmAdrDt LIKE CONCAT('%',#{shValue},'%') AND cmAdrDt = #{shValue}</when>
-			<when test="shOption == 10">AND cmAcc LIKE CONCAT('%',#{shValue},'%') AND cmAcc = #{shValue}</when>
+			<when test="shOption == 5">AND cmSoNum LIKE CONCAT('%',#{shValue},'%') AND cmSoNum = #{shValue}</when>
+			<when test="shOption == 6">AND cmPhone LIKE CONCAT('%',#{shValue},'%') AND cmPhone = #{shValue}</when>
+			<when test="shOption == 7">AND cmAdr LIKE CONCAT('%',#{shValue},'%') AND cmAdr = #{shValue}</when>
+			<when test="shOption == 8">AND cmAdrDt LIKE CONCAT('%',#{shValue},'%') AND cmAdrDt = #{shValue}</when>
+			<when test="shOption == 9">AND cmAcc LIKE CONCAT('%',#{shValue},'%') AND cmAcc = #{shValue}</when>
 			 
 		</choose>
 	</sql>

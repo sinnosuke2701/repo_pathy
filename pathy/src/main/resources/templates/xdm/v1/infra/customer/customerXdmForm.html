@@ -250,23 +250,15 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="cmGender" class="form-label">성별(이건 나중에 ㅇㅇ int로 입력 ㄱㄱ)<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="cmGender" name="cmGender" th:value="${item?.cmGender}" autocomplete="off">
+																<label for="cmGender" class="form-label fs--1">성별<span class="text-danger fs-0">*</span></label>
+																	<select id="cmGender" name="cmcStatus" class="form-select">
+																		<option value="">선택하세요</option>
+																		<option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.cmGender}"></option>
+																	</select>	
+																</div>						
 															</div>
 														</div>
 													</div>
-<!-- 													<div class="col-md-3"> -->
-<!-- 														<div class="card"> -->
-<!-- 															<div class="card-body"> -->
-<!-- 																<label for="cmGender" class="form-label fs--1">성별 <span class="text-danger fs-0">*</span></label> -->
-<!-- 																<select id="cmGender" name="cmGender" class="form-select"> -->
-<!-- 																	<option value="">선택하세요</option> -->
-<!-- 																	<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cdName}" th:selected="${list.cdseq} == ${item?.cmGender}"></option> -->
-<!-- 																</select>	 -->
-<!-- 															</div>						 -->
-<!-- 														</div> -->
-<!-- 													</div> -->
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
@@ -343,35 +335,34 @@
 															</div>
 														</div>
 													</div>
-													<div class="col-md-3"></div>
 													<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+														<div class="card">
+															<div class="card-body">
+																<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<input type="text" class="form-control" id="sample6_postcode" name="cmZipNum" placeholder="우편번호" autocomplete="off">
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<input type="text" class="form-control" id="sample6_postcode" name="cmZipNum" placeholder="우편번호" autocomplete="off">
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<input type="text" class="form-control" id="sample6_address" name="cmAdr" placeholder="주소" autocomplete="off">
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<input type="text" class="form-control" id="sample6_address" name="cmAdr" placeholder="주소" autocomplete="off">
+															</div>
 														</div>
 													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<input type="text" class="form-control" id="sample6_detailAddress" name="cmAdrDt" placeholder="상세주소" autocomplete="off">
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
+																<input type="text" class="form-control" id="sample6_detailAddress" name="cmAdrDt" placeholder="상세주소" autocomplete="off">
+															</div>
 														</div>
 													</div>
-												</div>
 													<div class="col-md-6">
 													    <div class="card">
 													        <div class="card-body">
@@ -380,22 +371,20 @@
 													        </div>
 													    </div>
 													</div>
-												<div class="row mb-3">
-													<div class="col">
-														<button type="button" id='btnList' class="btn btn-white">
-															<svg xmlns="http://www.w3.org/2000/svg" width="16"
-																height="16" fill="black" style="background-color: white;"
-																class="bi bi-list-ul" viewBox="0 0 16 16">
-																	<path fill-rule="evenodd"
-																	d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+													<div class="row mb-3">
+														<div class="col">
+															<button type="button" id='btnList' class="btn btn-white">
+																<svg xmlns="http://www.w3.org/2000/svg" width="16"
+																	height="16" fill="black" style="background-color: white;"
+																	class="bi bi-list-ul" viewBox="0 0 16 16">
+																	<path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
 																</svg>
-														</button>
-													</div>
-													<div class="col"></div>
-													<div class="col"></div>
-													<div class="col">
-														<button type="button" id='btnSubmit' class="btn btn-white"
-															style="float: right;">
+														</div>
+														<div class="col"></div>
+														<div class="col"></div>
+														<div class="col">
+															<button type="button" id='btnSubmit' class="btn btn-white"
+																style="float: right;">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10"
 																height="10" fill="white" style="background-color: blue;"
 																class="bi bi-plus-square" viewBox="0 0 16 16">
@@ -597,5 +586,4 @@
 	</script>
 <!-- kakao 우편번호 End -->
 </body>
-
 </html>

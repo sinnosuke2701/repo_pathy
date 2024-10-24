@@ -265,14 +265,12 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom04" class="form-label">카테고리<span
-																style="color: red;">*</span></label> 
-																<select class="form-select" id="qnaCategory" name="qnaCategory">
-																<option selected disabled value="">카테고리</option>
-																<option value="0" th:selected="${item?.qnaCategory == 0}">문의</option>
-																<option value="1" th:selected="${item?.qnaCategory == 1}">짜증나</option>
-															</select>
-														</div>
+															<label for="qnaCategory" class="form-label fs--1">카테고리<span class="text-danger fs-0">*</span></label>
+															<select id="qnaCategory" name="qnaCategory" class="form-select">
+																<option value="" readonly>선택하세요</option>
+																<option th:each="list : ${@codeService.selectListCachedCode(3)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.qnaCategory}"></option>
+															</select>	
+														</div>						
 													</div>
 												</div>
 												<div class="col-md-3">

@@ -1,79 +1,9 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <style>
-        hr {
-            background: black;
-            border: 0;
-        }
-    </style>
-    <style>
-        svg.className {
-            width: 100px;
-            height: 100px;
-            color: limegreen;
-            }
-        .list-scroll {
-		  overflow-x: auto; /* 가로 스크롤바 활성화 */
-		  white-space: nowrap; /* 자식 요소들이 한 줄로 나열되도록 설정 */
-		}
-    </style>
-
-    <script>
-        function deleteSelectedRows() {
-            //테이블 요소를 가져옵니다.
-            var table = document.getElementById('basicExample');
-            var checkboxes = table.querySelectorAll('tbody input[type="checkbox"]:checked');
-
-            // 체크된 각 행을 삭제합니다.
-            checkboxes.forEach(function (checkbox) {
-                var row = checkbox.closest('tr');
-                row.remove();
-            });
-        }
-    </script>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Meta -->
-    <meta name="description" content="Vivo - Responsive Bootstrap 5 Dashboard Template">
-    <meta name="author" content="Bootstrap Gallery">
-    <link rel="shortcut icon" href="/xdm/v1/template/vivo/assets/images/favicon.svg">
-
-    <!-- Title -->
-    <title>Vivo Admin Template - Admin Dashboard</title>
-
-
-    <!-- *************
-         ************ Common Css Files *************
-      ************ -->
-    <!-- Animated css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/animate.css">
-
-    <!-- Bootstrap font icons css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/fonts/bootstrap/bootstrap-icons.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/main.min.css">
-
-	<!-- datetimepicker css -->
-	<link rel="stylesheet" href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
-
-    <!-- *************
-         ************ Vendor Css Files *************
-      ************ -->
-
-    <!-- Scrollbar CSS -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/overlay-scroll/OverlayScrollbars.min.css">
-
-    <!-- Data Tables -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5.css" />
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5-custom.css" />
-
-</head>
+<!-- Head Start -->
+<th:block th:replace="~{/xdm/v1/infra/include/head :: head}"></th:block>
+<!-- Head End -->
 
 <body>
 
@@ -229,20 +159,12 @@
                                                     <option value="1" th:selected="${vo.shUseNY == 1}">Y</option>
                                                 </select>
                                             </td>
-<!--                                             <td> -->
-<!--                                             	<select class="form-select" aria-label="Default select example" -->
-<!--                                                     style="width: 200px;" name="shGender" id="shGender"> -->
-<!-- 													<option value="" th:selected="${vo.shGender == null}">성별</option> -->
-<!-- 													<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cd_Name}" th:selected="${list.cdseq} == ${vo.shGender}"></option> -->
-<!-- 												</select> -->
-<!--                                             </td> -->
-											<td>
-                                                <select class="form-select" aria-label="Default select example"
+                                            <td>
+                                            	<select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shGender" id="shGender">
-                                                    <option value="" th:selected="${vo.shGender == null}">성별</option>
-                                                    <option value="0" th:selected="${vo.shGender == 0}">남</option>
-                                                    <option value="1" th:selected="${vo.shGender == 1}">여</option>
-                                                </select>
+													<option value="" th:selected="${vo.shGender == null}">성별</option>
+													<option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shGender}"></option>
+												</select>
                                             </td>
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
@@ -272,12 +194,11 @@
                                                     <option value="2" th:selected="${vo.shOption == 2}">순서</option>
                                                     <option value="3" th:selected="${vo.shOption == 3}">아이디</option>
                                                     <option value="4" th:selected="${vo.shOption == 4}">이메일</option>
-                                                    <option value="5" th:selected="${vo.shOption == 5}">비밀번호</option>
-                                                    <option value="6" th:selected="${vo.shOption == 6}">주민번호</option>
-                                                    <option value="7" th:selected="${vo.shOption == 7}">전화번호</option>
-                                                    <option value="8" th:selected="${vo.shOption == 8}">주소</option>
-                                                    <option value="9" th:selected="${vo.shOption == 9}">상세주소</option>
-                                                    <option value="10" th:selected="${vo.shOption == 10}">계좌번호</option>
+                                                    <option value="5" th:selected="${vo.shOption == 5}">주민번호</option>
+                                                    <option value="6" th:selected="${vo.shOption == 6}">전화번호</option>
+                                                    <option value="7" th:selected="${vo.shOption == 7}">주소</option>
+                                                    <option value="8" th:selected="${vo.shOption == 8}">상세주소</option>
+                                                    <option value="9" th:selected="${vo.shOption == 9}">계좌번호</option>
                                                 </select>
                                             </th>
                                             <td>
@@ -304,7 +225,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='19' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='17' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -322,56 +243,50 @@
                                                         <tr>
                                                         	<td><input type="checkbox" id="checkAll"></td>
                                                         	<td>#</td>
+                                                        	<td>Seq</td>
                                                             <td>이름</td>
-                                                            <td>순서</td>
                                                             <td>성별</td>
                                                             <td>아이디</td>
                                                             <td>이메일</td>
-                                                            <td>비밀번호</td>
                                                             <td>주민번호</td>
                                                             <td>전화번호</td>
-                                                            <td>설명</td>
-                                                            <td>등록일</td>
-                                                            <td>수정일</td>
-                                                            <td>사용여부</td>
-                                                            <td>삭제여부</td>
                                                             <td>우편번호</td>
                                                             <td>주소</td>
                                                             <td>상세주소</td>
                                                             <td>계좌번호</td>
                                                             <td>은행</td>
+                                                            <td>등록일</td>
+                                                            <td>수정일</td>
+                                                            <td>사용여부</td>
+                                                            <td>삭제여부</td>
                                                         </tr>
                                                         <tr th:if="${#lists.isEmpty(list)}">
                                                         	<td colspan="20" style="text-align: center;">
                                                         		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
                                                         	</td>
                                                         </tr>
-                                                        
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox" id="item-checkbox"></td>
-<!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
+                                                        	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
                                                             <td th:text = "${list.cmSeq}"></td>
                                                             <th><a style="color:blue;" th:href="@{/xdm/v1/infra/customer/customerXdmMfom(cmSeq=${list.cmSeq})}" th:text="${list.cmName}"></a></th>
-                                                            <td th:text = "${list.cmOrder}"></td>
-                                                            <td th:if = "${list.cmGender eq 0}">남</td>
-                                                            <td th:unless = "${list.cmGender eq 0}">여</td>
+                                                            <td th:if="${list.cmGender != null}" th:text="${@codeService.selectOneCachedCode(list.cmGender)}" class="cmGender align-middle"></td>
+															<td th:unless="${list.cmGender != null}" class="cmGender align-middle"></td>
                                                             <td th:text = "${list.cmId}"></td>
                                                             <td th:text = "${list.cmEmail}"></td>
-                                                            <td th:text = "${list.cmPw}"></td>
                                                             <td th:text = "${list.cmSoNum}"></td>
                                                             <td th:text = "${list.cmPhone}"></td>
-                                                            <td th:text = "${list.cmDesc}"></td>
+                                                            <td th:text = "${list.cmZipNum}"></td>
+                                                            <td th:text = "${list.cmAdr}"></td>
+                                                            <td th:text = "${list.cmAdrDt}"></td>
+                                                            <td th:text = "${list.cmAcc}"></td>
+                                                            <td th:text = "${list.cmBank}"></td>
                                                             <td th:text = "${#dates.format(list.cmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${#dates.format(list.cmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if = "${list.cmUseNy eq 0}">N</td>
                                                             <td th:unless="${list.cmUseNy eq 0}">Y</td>
                                                             <td th:if = "${list.cmDelNy eq 0}">N</td>
                                                             <td th:unless = "${list.cmDelNy eq 0}">Y</td>
-                                                            <td th:text = "${list.cmZipNum}"></td>
-                                                            <td th:text = "${list.cmAdr}"></td>
-                                                            <td th:text = "${list.cmAdrDt}"></td>
-                                                            <td th:text = "${list.cmAcc}"></td>
-                                                            <td th:text = "${list.cmBank}"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -494,31 +409,12 @@
 
     <!-- Custom Data tables -->
     <script src="/xdm/v1/template/vivo/vendor/datatables/custom/custom-datatables.js"></script>
-
+	
     <!-- Main Js Required -->
     <script src="/xdm/v1/template/vivo/assets/js/main.js"></script>
     
     <!-- by developer -->
  	<script src="/xdm/v1/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
-	
-	<script>
-        document.getElementById('btnDelete').addEventListener('click', function() {
-            const checkboxes = document.querySelectorAll('.item-checkbox');
-            checkboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    checkbox.closest('tr').remove(); // 체크된 항목의 부모 <tr> 삭제
-                }
-            });
-        });
-
-        // 전체 선택 체크박스 기능
-        document.getElementById('checkAll').addEventListener('change', function() {
-            const checkboxes = document.querySelectorAll('.item-checkbox');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
-        });
-    </script>
 	
 	<script>
 		window.addEventListener('load', function(){

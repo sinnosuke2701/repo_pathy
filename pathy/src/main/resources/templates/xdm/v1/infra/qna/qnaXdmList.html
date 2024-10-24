@@ -1,75 +1,9 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <style>
-        hr {
-            background: black;
-            border: 0;
-        }
-    </style>
-    <style>
-        svg.className {
-            width: 100px;
-            height: 100px;
-            color: limegreen;
-        }
-    </style>
-
-    <script>
-        function deleteSelectedRows() {
-            //테이블 요소를 가져옵니다.
-            var table = document.getElementById('basicExample');
-            var checkboxes = table.querySelectorAll('tbody input[type="checkbox"]:checked');
-
-            // 체크된 각 행을 삭제합니다.
-            checkboxes.forEach(function (checkbox) {
-                var row = checkbox.closest('tr');
-                row.remove();
-            });
-        }
-    </script>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Meta -->
-    <meta name="description" content="Vivo - Responsive Bootstrap 5 Dashboard Template">
-    <meta name="author" content="Bootstrap Gallery">
-    <link rel="shortcut icon" href="/xdm/v1/template/vivo/assets/images/favicon.svg">
-
-    <!-- Title -->
-    <title>Vivo Admin Template - Admin Dashboard</title>
-
-
-    <!-- *************
-         ************ Common Css Files *************
-      ************ -->
-    <!-- Animated css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/animate.css">
-
-    <!-- Bootstrap font icons css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/fonts/bootstrap/bootstrap-icons.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/main.min.css">
-
-	<!-- datetimepicker css -->
-	<link rel="stylesheet" href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
-
-    <!-- *************
-         ************ Vendor Css Files *************
-      ************ -->
-
-    <!-- Scrollbar CSS -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/overlay-scroll/OverlayScrollbars.min.css">
-
-    <!-- Data Tables -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5.css" />
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5-custom.css" />
-
-</head>
+<!-- Head Start -->
+<th:block th:replace="~{/xdm/v1/infra/include/head :: head}"></th:block>
+<!-- Head End -->
 
 <body>
 
@@ -218,20 +152,12 @@
                                                 </select>
                                             </th>
                                             <td>
-                                                <select class="form-select" aria-label="Default select example"
+                                            	<select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shCategory" id="shCategory">
-                                                    <option value="" th:selected="${vo.shUseNY == null}">카테고리</option>
-                                                    <option value="0" th:selected="${vo.shCategory == 0}">문의</option>
-                                                    <option value="1" th:selected="${vo.shCategory == 1}">짜증나</option>
-                                                </select>
+													<option value="" th:selected="${vo.shCategory == null}">카테고리</option>
+													<option th:each="list : ${@codeService.selectListCachedCode(3)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shCategory}"></option>
+												</select>
                                             </td>
-<!--                                             <td> -->
-<!--                                             	<select class="form-select" aria-label="Default select example" -->
-<!--                                                     style="width: 200px;" name="shGender" id="shGender"> -->
-<!-- 													<option value="" th:selected="${vo.shGender == null}">카테고리</option> -->
-<!-- 													<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdseq}" th:text="${list.cd_Name}" th:selected="${list.cdseq} == ${vo.shGender}"></option> -->
-<!-- 												</select> -->
-<!--                                             </td> -->
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shOptionDate" id="shOptionDate">
@@ -326,8 +252,8 @@
                                                             <td th:text = "${list.qnaSeq}"></td>
                                                             <td th:text = "${list.cmName}"></td> 
                                                             <td th:text = "${list.insmName}"></td>
-                                                            <td th:if = "${list.qnaCategory eq 0}">문의</td>
-                                                            <td th:unless = "${list.qnaCategory eq 0}">짜증나</td>
+                                                            <td th:if="${list.qnaCategory != null}" th:text="${@codeService.selectOneCachedCode(list.qnaCategory)}" ></td>
+															<td th:unless="${list.qnaCategory != null}" class="qnaCategory align-middle"></td>
                                                             <th><a style="color:blue;" th:href="@{/xdm/v1/infra/qna/qnaXdmMfom(qnaSeq=${list.qnaSeq})}" th:text = "${list.qnaTitle}"></a></th>
                                                             <td th:text = "${list.qnaContent}"></td>
                                                             <td th:text = "${#dates.format(list.qnaDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>

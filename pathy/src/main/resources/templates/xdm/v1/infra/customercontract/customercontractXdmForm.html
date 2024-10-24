@@ -260,14 +260,12 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="cmcStatus" class="form-label">진행상태<span
-																	style="color: red;">*</span></label> <select
-																	class="form-select" id="cmcStatus" name="cmcStatus">
-																	<option value="">선택</option>
-																	<option value="0" th:selected="${item?.cmcStatus == 0}">시작</option>
-																	<option value="1" th:selected="${item?.cmcStatus == 1}">종료</option>
-																</select>
-															</div>
+																<label for="cmcStatus" class="form-label fs--1">진행상태<span class="text-danger fs-0">*</span></label>
+																<select id="cmcStatus" name="cmcStatus" class="form-select">
+																	<option value="">선택하세요</option>
+																	<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.cmcStatus}"></option>
+																</select>	
+															</div>						
 														</div>
 													</div>
 													<div class="col-md-3"></div>
