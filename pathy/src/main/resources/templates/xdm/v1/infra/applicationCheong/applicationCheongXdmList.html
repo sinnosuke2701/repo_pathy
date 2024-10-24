@@ -297,7 +297,7 @@ svg.className {
 													<table class="table m-0">
 														<thead>
 															<tr>
-																<th colspan='9'
+																<th colspan='10'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -331,7 +331,7 @@ svg.className {
 																<td>수정일</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
-																<td colspan="10" style="text-align: center;">
+																<td colspan="11" style="text-align: center;">
 																	<p class="fs-5" style="padding-top: 12px;">there
 																		are no data!</p>
 																</td>
@@ -339,7 +339,7 @@ svg.className {
 
 															<tr th:each="list : ${list}">
 																<td><input type="checkbox"></td>
-<!-- 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
+																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
 																<td th:text="${list.cheongSeq}"></td>
 																<td>
 																	<a th:href="@{/v1/infra/applicationCheong/applicationCheongXdmMForm(cheongSeq=${list.cheongSeq})}" th:text="${list.inspName}" style="color:blue;"></a>
