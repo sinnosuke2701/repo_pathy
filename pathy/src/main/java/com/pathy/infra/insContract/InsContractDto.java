@@ -106,5 +106,6 @@ public class InsContractDto {
 		this.cmSeq = cmSeq;
 	}
 	
+	
 
 }
