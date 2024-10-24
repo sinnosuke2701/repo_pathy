@@ -295,7 +295,7 @@ svg.className {
 													<table class="table m-0">
 														<thead>
 															<tr>
-																<th colspan='10'
+																<th colspan='11'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -318,6 +318,7 @@ svg.className {
 															<tr>
 																<td><input type="checkbox"</td>
 																<td>#</td>
+																<td>코드</td>
 																<td>보험상품</td>
 																<td>고객</td>
 																<td>시작일</td>
@@ -329,7 +330,7 @@ svg.className {
 																<td>수정일</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
-																<td colspan="11" style="text-align: center;">
+																<td colspan="12" style="text-align: center;">
 																	<p class="fs-5" style="padding-top: 12px;">there
 																		are no data!</p>
 																</td>
@@ -337,19 +338,21 @@ svg.className {
 
 															<tr th:each="list : ${list}">
 																<td><input type="checkbox"></td>
-<!-- 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-<!-- 																<td th:text="${list.inscSeq}"></td> -->
+																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
+																<td th:text="${list.inscSeq}">
+																</td>
 																<td>
 																	<a	style="color:blue;"
 																		th:href="@{/v1/infra/insContract/insContractXdmMForm(inscSeq=${list.inscSeq})}"
-																		th:text="${list.inscSeq}">
+																		th:text="${list.inspName}"
+																		>
 																	</a>
 																</td>
-																<td th:text="${list.inspName}"></td>
 																<td th:text="${list.cmName}"></td>
 																<td th:text="${list.inscDateStart}"></td>
 																<td th:text="${list.inscDateEnd}"></td>
-																<td th:text="${list.inscStatus}"></td>
+																<td th:if="${list.inscStatus != null}" th:text="${@codeService.selectOneCachedCode(list.inscStatus)}"></td>
+																<td th:unless="${list.inscStatus != null}"></td>
 																<td th:text="${list.inscBigo}"></td>
 																<td th:if="${list.inscDelNy eq 0}">N</td>
 																<td th:unless="${list.inscDelNy eq 0}">Y</td>

@@ -293,7 +293,7 @@ svg.className {
 													<table class="table m-0">
 														<thead>
 															<tr>
-																<th colspan='13'
+																<th colspan='14'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -316,6 +316,7 @@ svg.className {
 															<tr>
 																<td><input type="checkbox"</td>
 																<td>#</td>
+																<td>코드</td>
 																<td>이름</td>
 																<td>보장내용</td>
 																<td>가입조건</td>
@@ -330,7 +331,7 @@ svg.className {
 																<td>수정일</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
-																<td colspan="14" style="text-align: center;">
+																<td colspan="15" style="text-align: center;">
 																	<p class="fs-5" style="padding-top: 12px;">there
 																		are no data!</p>
 																</td>
@@ -338,7 +339,7 @@ svg.className {
 
 															<tr th:each="list : ${list}">
 																<td><input type="checkbox"></td>
-<!-- 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
+																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
 																<td th:text="${list.inspSeq}"></td>
 																<td>
 																	<a style="color:blue;" th:text="${list.inspName}" th:href="@{/v1/infra/insProduct/insProductXdmMForm(inspSeq=${list.inspSeq})}"></a>
