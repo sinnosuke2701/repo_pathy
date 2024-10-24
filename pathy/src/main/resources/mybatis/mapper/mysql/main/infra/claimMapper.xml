@@ -10,7 +10,8 @@
 	
 	<sql id="selectCommon">
 		from
-			claim c
+			claim c left join customer a on a.cmSeq = c.customer_cmSeq
+			left join claimManage b on b.clmSeq = c.claimManage_clmSeq
 		where 1 = 1
 		<if test="shDelNY != null and !shDelNY.equals('')">And clDelNY = #{shDelNY}</if>
 		<if test="shUseNY != null and !shUseNY.equals('')">And clUseNY = #{shUseNY}</if>
@@ -46,6 +47,10 @@
 				,c.clDelNY
 				,c.claimManage_clmSeq
 				,c.customer_cmSeq
+				,a.cmSeq
+				,a.cmName
+				,b.clmSeq
+				,b.clmSituation
 <!-- 				,(select count(b.CodeGroup_seq) from code b where 1 = 1 and b.CodeGroup_seq = a.cgseq) as codeGroupCount -->
 		<include refid="selectCommon"></include>
 		Order By c.clSeq desc
@@ -94,6 +99,15 @@
 			and a.cmDelNy = 0
 	</select>
 	
+	<select id = "selectListClaimManage" resultMap = "resultMapObj">
+		select
+			b.clmSeq
+			,b.clmSituation
+		from claimManage b
+		where 1=1
+			and b.clmDelNy = 0
+	</select>
+	
 	<insert id = "insert">
 		insert into claim(
 			clType
@@ -125,8 +139,8 @@
     		,#{clPayMethod}
     		,#{clUseNY}
     		,0
-    		,#{clmSeq}
-    		,#{cmSeq}
+    		,#{claimManage_clmSeq}
+    		,#{customer_cmSeq}
 		)
 		<selectKey resultType="String" keyProperty="cmSeq" order="AFTER">
 			SELECT last_Insert_id()

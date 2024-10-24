@@ -39,6 +39,8 @@ public class ClaimController {
 //		model.addAttribute("listCodeGroup", customers);
 		model.addAttribute("customer", claimService.selectListCustomer());
 		
+		model.addAttribute("claimManage", claimService.selectListClaimManage());
+		
 		return "/xdm/v1/infra/claim/claimXdmForm";
 	}
 
