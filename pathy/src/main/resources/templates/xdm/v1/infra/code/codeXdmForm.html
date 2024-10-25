@@ -218,6 +218,7 @@
 
 
 							<!-- Card start -->
+							<!-- Card start -->
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">기본정보</div>
@@ -235,19 +236,25 @@
 														style="background-color: lightgray;" disabled>
 												</div>
 												<div class="col-md-3">
-													<label for="CodeGroup_seq" class="form-label">코드그룹</label>
-													<select class="form-select" id="codeGroup_cgSeq" name="codeGroup_cgSeq">
-														<option value="">선택</option>
-														<option th:each = "List : ${listCodeGroup}" th:value = "${List.codeGroup_cgSeq}" th:text="${List.cgName}" >사용</option>
-													</select>
-												</div>
+                    <label class="form-label">코드그룹<font color="red"><strong>*</strong></font></label>
+                    <select class="form-select"  name="codeGroup_cgSeq" id="codeGroup_cgSeq"
+                    	style="padding: .375rem .75rem;" >
+                                <option value="">코드그룹</option>
+                                <option th:each = "list : ${listCodeGroup}"
+                                        th:value ="${list.cgSeq}" 
+                                        th:text="${list.cgName}"
+                                        
+                                </option>
+                              </select>
+                              <div class="invalid-feedback">코드그룹 번호를 선택해주세요.</div>
+                   		</div>
 												<div class="col-md-3">
 													<label for="cdName" class="form-label">이름<span
 														style="color: red;">*</span></label> <input type="text"
 														class="form-control" id="cdName" name="cdName"
 														th:value="${item?.cdName}" autocomplete="off" required>
-													<div class="invalid-feedback">이름을 입력해 주세요</div>
-												</div>
+												 <div class="invalid-feedback">이름을 입력해 주세요</div>
+												 </div>
 												<div class="col-md-3">
 													<label for="cdDelNy" class="form-label">순서<span
 														style="color: red;">*</span></label> <select class="form-select "
@@ -259,11 +266,10 @@
 														<option value="2" th:selected="${item?.cdOrder == 4}">4</option>
 														<option value="2" th:selected="${item?.cdOrder == 5}">5</option>
 													</select>
-													<div class="invalid-feedback">순서를 선택해 주세요</div>
-												</div>
-											</div>
-											<div class="row mb-3">
-												<div class="col-md-3">
+												 <div class="invalid-feedback">순서를 선택해 주세요</div>
+												 </div>
+												 <div class="row mb-3">
+											<div class="col-md-3">
 													<label for="cdUseNy" class="form-label">사용여부<span
 														style="color: red;">*</span></label> <select class="form-select"
 														id="cdUseNy" name="cdUseNy" required>
@@ -273,7 +279,8 @@
 													</select>
 													<div class="invalid-feedback">사용여부를 선택해 주세요</div>
 												</div>
-
+											
+											
 												<div class="col-md-3">
 													<label for="cdDelNy" class="form-label">삭제여부<span
 														style="color: red;">*</span></label> <select class="form-select"
@@ -289,45 +296,45 @@
 												<div class="col-md-6">
 													<label for="cdDesc" class="form-label">설명</label>
 													<textarea class="form-control" id="cdDesc" name="cdDesc"
-														th:value="${item?.cdDesc}" rows="5" autocomplete="off"></textarea>
+														th:value="${item?.cdDesc}" rows="5" autocomplete="off" ></textarea>
 												</div>
 											</div>
-										<div class="row mb-3">
-											<div class="col-md-3">
-												<label class="form-label mb-0">등록날짜</label> <input
-													type="datetime" class="form-control" name="cdDateTimeReg"
-													th:value="${#dates.format(item?.cdDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"
-													disabled>
+											<div class="row mb-3">
+												<div class="col-md-3">
+													<label class="form-label mb-0">등록날짜</label> <input
+														type="datetime" class="form-control" name="cdDateTimeReg"
+														th:value="${#dates.format(item?.cdDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"
+														disabled>
+												</div>
+												<div class="col-sm-12 col-md-6 col-lg-3">
+													<label class="form-label mb-0">수정날짜</label> <input
+														type="datetime" class="form-control" name="cdDateTimeEdit"
+														th:value="${#dates.format(item?.cdDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"
+														disabled>
+												</div>
 											</div>
-											<div class="col-md-3">
-												<label class="form-label mb-0">수정날짜</label> <input
-													type="datetime" class="form-control" name="cdDateTimeEdit"
-													th:value="${#dates.format(item?.cdDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"
-													disabled>
-											</div>
 										</div>
-									</div>
-									<div class="row g-2">
-										<div class="col">
-											<a href="http://localhost:8080/xdm/v1/infra/code/codeXdmList"
-												class="btn btn-outline-dark"> <i class="bi bi-list-ul"></i>
-											</a>
-										</div>
-										<div class="col d-flex justify-content-end">
-
-											<button type="submit" id="btnSubmit" class="btn btn-primary">
-												<i class="bi bi-server"></i>
-											</button>
-										</div>
+										 <div class="row g-2">
+						  <div class="col">
+						    <a href="http://localhost:8080/xdm/v1/infra/code/codeXdmList" class="btn btn-outline-dark">
+						      <i class="bi bi-list-ul"></i>
+						    </a>
+						  </div>
+						  <div class="col d-flex justify-content-end">
+						   
+						    <button type="submit" id="btnSubmit" class="btn btn-primary">
+						      <i class="bi bi-server"></i>
+						    </button>
+						  </div>
+						</div>
 									</div>
 							</div>
 						</div>
+						</form>
+						<!-- Row end -->
 					</div>
-					</form>
-					<!-- Row end -->
 				</div>
-			</div>
-			<!-- Card end -->
+				<!-- Card end -->
 		</div>
 	</div>
 	<!-- Row end -->
