@@ -59,7 +59,6 @@
 			AND a.cgDelNy = 0
 		ORDER BY
 			a.cgOrder DESC			
-	
 	</select>	
 	
 	
