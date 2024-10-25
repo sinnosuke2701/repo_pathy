@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pathy.infra.index.IndexDao">
+	<!-- namespace = mapper 와 연결될 dao -->
+	<!-- xml 에서 주석 단축키 : ctrl + shift + C -->
+
+	<!-- resultMap : 결과를 담아줄 그으르읏 -->
+	<resultMap type="com.pathy.infra.index.IndexDto" id="resultMapObj"></resultMap>
+	
+	<select id="selectOneCountCustomer" resultType="Integer">
+		SELECT COUNT(*)
+		FROM customer
+	</select>
+	
+	<select id="selectOneCountInsMember" resultType="Integer">
+		SELECT COUNT(*)
+		FROM insMember
+	</select>
+	
+	<select id="selectOneCountInsProduct" resultType="Integer">
+		SELECT COUNT(*)
+		FROM insProduct
+	</select>
+	
+	<select id="selectOneCountInsContract" resultType="Integer">
+		SELECT COUNT(*)
+		FROM insContract 
+	</select>
+	
+	<select id="selectOneCountCustomerContract" resultType="Integer">
+		SELECT COUNT(*)
+		FROM customerContract 
+	</select>
+	
+	<select id="selectOneCountApplicationShin" resultType="Integer">
+		SELECT COUNT(*)
+		FROM applicationShin
+	</select>
+	
+	<select id="selectOneCountApplicationCheong" resultType="Integer">
+		SELECT COUNT(*)
+		FROM applicationCheong
+	</select>
+	
+	<select id="selectOneCountClaim" resultType="Integer">
+		SELECT COUNT(*)
+		FROM claim
+	</select>
+	
+	<select id="selectOneCountClaimManage" resultType="Integer">
+		SELECT COUNT(*)
+		FROM claimManage
+	</select>
+	
+	<select id="selectOneCountQna" resultType="Integer">
+		SELECT COUNT(*)
+		FROM qna
+	</select>
+	
+</mapper>
