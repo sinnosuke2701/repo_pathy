@@ -54,6 +54,9 @@ public class ClaimManageController {
 	@RequestMapping(value = "/xdm/v1/infra/claimmanage/claimManageXdmMfom")
 	public String claimManageXdmMfom(ClaimManageDto claimManageDto, Model model) {
 		model.addAttribute("item", claimManageService.selectOne(claimManageDto));
+		
+		model.addAttribute("insmember", claimManageService.selectListInsMember());
+		
 		return "/xdm/v1/infra/claimmanage/claimManageXdmMfom";
 	}
 

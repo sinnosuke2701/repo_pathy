@@ -240,10 +240,23 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom02" class="form-label">직원 이름<span
-																style="color: red;">*</span></label> <input readonly type="text"
-																class="form-control" name="clmName"
-																th:value="${item?.clmName}" autocomplete="off">
+															<label for="insMember_insmSeq" class="form-label">배정 직원 이름<span
+																style="color: red;">*</span></label>
+															<select name = "insMember_insmSeq" class="form-select" id="validationCustom04" >
+																<option value ="">선택하세요</option>
+																<option th:each="list : ${listInsMember}" th:value="${list.insmSeq}" th:text="${list.insmName}" th:selected="${list.insmSeq} == ${item?.insmSeq}"></option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
+															<label for="clmSituation" class="form-label">배정상태<span
+																style="color: red;">*</span></label> <select class="form-select"
+																id="clmSituation" name="clmSituation">
+																<option th:each="list : ${@codeService.selectListCachedCode(3)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.clmSituation}"></option>
+															</select>
 														</div>
 													</div>
 												</div>
@@ -259,7 +272,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-6"></div>
+												<div class="col-md-3"></div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">

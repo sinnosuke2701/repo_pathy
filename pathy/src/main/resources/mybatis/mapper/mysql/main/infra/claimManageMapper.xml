@@ -11,6 +11,8 @@
 	<sql id="selectCommon">
 		from
 			claimManage b left join insMember a on a.insmSeq = b.insMember_insmSeq
+						  left join claim c on c.claimManage_clmSeq = b.clmSeq
+						  left join customer f on f.cmSeq = c.customer_cmSeq
 		where 1 = 1
 		<if test="shDelNY != null and !shDelNY.equals('')">And clmDelNY = #{shDelNY}</if>
 		<if test="shUseNY != null and !shUseNY.equals('')">And clmUseNY = #{shUseNY}</if>
@@ -40,6 +42,11 @@
 				,b.clmDelNY
 				,b.insMember_insmSeq
 				,a.insmName
+				,c.clSeq
+				,c.clTitle
+				,c.customer_cmSeq
+				,f.cmSeq
+				,f.cmName
 <!-- 				,(select count(b.CodeGroup_seq) from code b where 1 = 1 and b.CodeGroup_seq = a.cgseq) as codeGroupCount -->
 		<include refid="selectCommon"></include>
 		Order By b.clmSeq desc

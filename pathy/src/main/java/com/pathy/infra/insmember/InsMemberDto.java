@@ -21,6 +21,7 @@ public class InsMemberDto {
 	private String insmAdrDt;
 	private Integer insmGender;
 	private String insmSoNum;
+	private Integer insmClmNy;
 //	-----
 	public String getInsmSeq() {
 		return insmSeq;
@@ -123,6 +124,12 @@ public class InsMemberDto {
 	}
 	public void setInsmSoNum(String insmSoNum) {
 		this.insmSoNum = insmSoNum;
+	}
+	public Integer getInsmClmNy() {
+		return insmClmNy;
+	}
+	public void setInsmClmNy(Integer insmClmNy) {
+		this.insmClmNy = insmClmNy;
 	}
 	
 	
