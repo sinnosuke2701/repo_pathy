@@ -293,7 +293,7 @@ svg.className {
 													<table class="table m-0">
 														<thead>
 															<tr>
-																<th colspan='14'
+																<th colspan='10'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -321,17 +321,13 @@ svg.className {
 																<td>보장내용</td>
 																<td>가입조건</td>
 																<td>보험료</td>
-																<td>보험시작일</td>
-																<td>보험종료일</td>
-																<td>보장시작일</td>
-																<td>보장종료일</td>
 																<td>필요서류</td>
 																<td>삭제여부</td>
 																<td>등록일</td>
 																<td>수정일</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
-																<td colspan="15" style="text-align: center;">
+																<td colspan="11" style="text-align: center;">
 																	<p class="fs-5" style="padding-top: 12px;">there
 																		are no data!</p>
 																</td>
@@ -347,10 +343,6 @@ svg.className {
 																<td th:text="${list.inspBojang}"></td>
 																<td th:text="${list.inspJogun}"></td>
 																<td th:text="${list.inspPrice}"></td>
-																<td th:text="${list.inspBohumDateStart}"></td>
-																<td th:text="${list.inspBohumDateEnd}"></td>
-																<td th:text="${list.inspBojangDateStart}"></td>
-																<td th:text="${list.inspBojangDateEnd}"></td>
 																<td th:text="${list.inspPaper}"></td>
 																<td th:if="${list.inspDelNy eq 0}">N</td>
 																<td th:unless="${list.inspDelNy eq 0}">Y</td>

@@ -1,75 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <style>
-        hr {
-            background: black;
-            border: 0;
-        }
-    </style>
-    <style>
-        svg.className {
-            width: 100px;
-            height: 100px;
-            color: limegreen;
-        }
-    </style>
-
-    <script>
-        function deleteSelectedRows() {
-            //테이블 요소를 가져옵니다.
-            var table = document.getElementById('basicExample');
-            var checkboxes = table.querySelectorAll('tbody input[type="checkbox"]:checked');
-
-            // 체크된 각 행을 삭제합니다.
-            checkboxes.forEach(function (checkbox) {
-                var row = checkbox.closest('tr');
-                row.remove();
-            });
-        }
-    </script>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Meta -->
-    <meta name="description" content="Vivo - Responsive Bootstrap 5 Dashboard Template">
-    <meta name="author" content="Bootstrap Gallery">
-    <link rel="shortcut icon" href="/xdm/v1/template/vivo/assets/images/favicon.svg">
-
-    <!-- Title -->
-    <title>Vivo Admin Template - Admin Dashboard</title>
-
-
-    <!-- *************
-         ************ Common Css Files *************
-      ************ -->
-    <!-- Animated css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/animate.css">
-
-    <!-- Bootstrap font icons css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/fonts/bootstrap/bootstrap-icons.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/main.min.css">
-
-	<!-- datetimepicker css -->
-	<link rel="stylesheet" href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
-
-    <!-- *************
-         ************ Vendor Css Files *************
-      ************ -->
-
-    <!-- Scrollbar CSS -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/overlay-scroll/OverlayScrollbars.min.css">
-
-    <!-- Data Tables -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5.css" />
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5-custom.css" />
-
-</head>
+<th:block th:replace="~{/xdm/v1/infra/include/head :: head}"></th:block>
 
 <body>
 
@@ -279,7 +211,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='18' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='13' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -305,26 +237,21 @@
                                                             <td>이메일</td>
                                                             <td>주민번호</td>
                                                             <td>전화번호</td>
-                                                            <td>설명</td>
-                                                            <td>등록일</td>
-                                                            <td>수정일</td>
                                                             <td>사용여부</td>
                                                             <td>삭제여부</td>
-                                                            <td>우편번호</td>
-                                                            <td>주소</td>
-                                                            <td>상세주소</td>
+                                                            <td>등록일</td>
+                                                            <td>수정일</td>
                                                         </tr>
                                                         <tr th:if="${#lists.isEmpty(list)}">
-                                                        	<td colspan="20" style="text-align: center;">
+                                                        	<td colspan="14" style="text-align: center;">
                                                         		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
                                                         	</td>
                                                         </tr>
                                                         
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox"></td>
-                                                        	<td></td>
-<!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
-                                                            <td th:text = "${list.insmSeq}"></td>
+                                                        	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
+                                                            <td th:text = "${list.insmSeq}" class="align-middle"></td>
                                                             <td><a style="color:blue;" th:href="@{/xdm/v1/infra/insmember/insMemberXdmMfom(insmSeq=${list.insmSeq})}" th:text="${list.insmName}"></a></td>
                                                             <td th:text = "${list.insmOrder}"></td>
                                                             <td th:text = "${list.insmGender}"></td>
@@ -332,16 +259,12 @@
                                                             <td th:text = "${list.insmEmail}"></td>
                                                             <td th:text = "${list.insmSoNum}"></td>
                                                             <td th:text = "${list.insmPhone}"></td>
-                                                            <td th:text = "${list.insmDesc}"></td>
-                                                            <th th:text = "${#dates.format(list.insmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
-                                                            <td th:text = "${#dates.format(list.insmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if = "${list.insmUseNY eq 0}">N</td>
                                                             <td th:unless="${list.insmUseNY eq 0}">Y</td>
                                                             <td th:if = "${list.insmDelNY eq 0}">N</td>
                                                             <td th:unless = "${list.insmDelNY eq 0}">Y</td>
-                                                            <td th:text = "${list.insmZipNum}"></td>
-                                                            <td th:text = "${list.insmAdr}"></td>
-                                                            <td th:text = "${list.insmAdrDt}"></td>
+                                                            <th th:text = "${#dates.format(list.insmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
+                                                            <td th:text = "${#dates.format(list.insmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

@@ -230,7 +230,7 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom02" class="form-label">seq<span
+															<label for="validationCustom02" class="form-label">직원 코드<span
 																style="color: red;">*</span></label> <input type="text"
 																class="form-control" name="insmSeq" th:value="${item?.insmSeq}" readonly>
 														</div>
@@ -241,7 +241,7 @@
 													<div class="card">
 														<div class="card-body">
 															<label for="validationCustom02" class="form-label">이름<span
-																style="color: red;">*</span></label> <input type="text"
+																style="color: red;">*</span></label> <input readonly type="text"
 																class="form-control" name="insmName"
 																th:value="${item?.insmName}" autocomplete="off">
 														</div>
@@ -251,7 +251,7 @@
 													<div class="card">
 														<div class="card-body">
 															<label for="validationCustom02" class="form-label">성별<span
-																style="color: red;">*</span></label> <input type="text"
+																style="color: red;">*</span></label> <input readonly type="text"
 																class="form-control" name="insmGender"
 																th:value="${item?.insmGender}" autocomplete="off">
 														</div>
@@ -274,16 +274,6 @@
 																style="color: red;">*</span></label> <input type="text"
 																class="form-control" name="insmEmail"
 																th:value="${item?.insmEmail}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">비밀번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="insmPw"
-																th:value="${item?.insmPw}" autocomplete="off">
 														</div>
 													</div>
 												</div>
@@ -320,40 +310,6 @@
 													</div>
 												</div>
 												<div class="col-md-9"></div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">우편번호<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" id="sample6_postcode" name="insmZipNum" th:value="${item?.insmZipNum}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">주소<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" id="sample6_address" name="insmAdr" th:value="${item?.insmAdr}" autocomplete="off">
-														</div>
-													</div>
-												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">상세주소<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" id="sample6_detailAddress" name="insmAdrDt" th:value="${item?.insmAdrDt}" autocomplete="off">
-														</div>
-													</div>
-												</div>
 												<div class="col-md-6">
 													<div class="card">
 														<div class="card-body">
@@ -388,7 +344,7 @@
 													<div class="card">
 														<div class="card-body">
 															<label for="validationCustom04" class="form-label">삭제여부<span
-																style="color: red;">*</span></label> <select class="form-select"
+																style="color: red;">*</span></label> <select disabled class="form-select"
 																id="insmDelNY" name="insmDelNY">
 																<option selected disabled value="">삭제 여부</option>
 																<option value="0" th:selected="${item?.insmDelNY == 0}">미삭제</option>
