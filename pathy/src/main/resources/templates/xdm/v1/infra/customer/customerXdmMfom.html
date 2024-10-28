@@ -201,9 +201,10 @@
 			<!-- Breadcrumb start -->
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="bi bi-house"></i> <a
-					href="index.html">Page 1</a></li>
-				<li class="breadcrumb-item">Page 2</li>
-				<li class="breadcrumb-item breadcrumb-active" aria-current="page">Default</li>
+					href="/v1/infra/index/indexXdmView">Index</a></li>
+				<li class="breadcrumb-item"><i class="bi bi-house"></i> <a
+					href="/xdm/v1/infra/customer/customerXdmList">고객 리스트</a></li>
+				<li class="breadcrumb-item breadcrumb-active" aria-current="page">고객 수정</li>
 			</ol>
 			<!-- Breadcrumb end -->
 			<h3>고객</h3>
@@ -264,7 +265,6 @@
 															<select id="cmGender" name="cmGender" class="form-select">
 																<option value="">선택하세요</option>
 																<option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.cmGender}"></option>
-<!-- 																<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.clSituation}">미처리</option> -->
 															</select>	
 														</div>						
 													</div>
@@ -343,10 +343,12 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="validationCustom02" class="form-label">은행<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="cmBank" th:value="${item?.cmBank}" autocomplete="off">
-														</div>
+															<label for="cmBank" class="form-label fs--1">은행<span class="text-danger fs-0">*</span></label>
+															<select id="cmBank" name="cmBank" class="form-select">
+																<option value="">선택하세요</option>
+																<option th:each="list : ${@codeService.selectListCachedCode(4)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.cmBank}"></option>
+															</select>	
+														</div>						
 													</div>
 												</div>
 												<div class="col-md-6"></div>

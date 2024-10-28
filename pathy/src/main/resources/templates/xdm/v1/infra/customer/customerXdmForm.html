@@ -329,12 +329,16 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<label for="cmBank" class="form-label">은행(이건 나중에 ㅇㅇ int로 입력 ㄱㄱ)<span
-																	style="color: red;">*</span></label>
-																<input type="text" class="form-control" id="cmBank" name="cmBank" th:value="${item?.cmBank}" autocomplete="off">
+																<label for="cmBank" class="form-label fs--1">은행<span class="text-danger fs-0">*</span></label>
+																	<select id="cmBank" name="cmBank" class="form-select">
+																		<option value="">선택하세요</option>
+																		<option th:each="list : ${@codeService.selectListCachedCode(4)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.cmBank}"></option>
+																	</select>	
+																</div>						
 															</div>
 														</div>
 													</div>
+													<div class="row">
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
@@ -345,21 +349,27 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<input type="text" class="form-control" id="sample6_postcode" name="cmZipNum" placeholder="우편번호" autocomplete="off">
+																<label for="validationCustom02" class="form-label">우편번호<span
+																	style="color: red;">*</span></label> <input type="text"
+																	class="form-control" id="sample6_postcode" name="cmZipNum" th:value="${item?.cmZipNum}" autocomplete="off">
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<input type="text" class="form-control" id="sample6_address" name="cmAdr" placeholder="주소" autocomplete="off">
+																<label for="validationCustom02" class="form-label">주소<span
+																	style="color: red;">*</span></label> <input type="text"
+																	class="form-control" id="sample6_address" name="cmAdr" th:value="${item?.cmAdr}" autocomplete="off">
 															</div>
 														</div>
 													</div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
-																<input type="text" class="form-control" id="sample6_detailAddress" name="cmAdrDt" placeholder="상세주소" autocomplete="off">
+																<label for="validationCustom02" class="form-label">상세주소<span
+																	style="color: red;">*</span></label> <input type="text"
+																	class="form-control" id="sample6_detailAddress" name="cmAdrDt" th:value="${item?.cmAdrDt}" autocomplete="off">
 															</div>
 														</div>
 													</div>

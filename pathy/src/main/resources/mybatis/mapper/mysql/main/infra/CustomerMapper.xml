@@ -13,8 +13,8 @@
 			Customer a
 		where 1 = 1
 		<if test="shDelNY != null and !shDelNY.equals('')">AND cmDelNy = #{shDelNY}</if>
-		<if test="shGender != null and !shGender.equals('')">AND cmGender = #{shGender}</if>
 		<if test="shUseNY != null and !shUseNY.equals('')">And cmUseNy = #{shUseNY}</if>
+		<if test="shBank != null and !shBank.equals('')">AND cmBank = #{shBank}</if>
 		
 		<choose>
 			<when test="shOptionDate == 1">AND a.cmDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
