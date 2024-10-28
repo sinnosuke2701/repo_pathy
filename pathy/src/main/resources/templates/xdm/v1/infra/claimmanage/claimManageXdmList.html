@@ -279,7 +279,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='19' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='8' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -298,15 +298,17 @@
                                                         	<td><input type="checkbox"</td>
                                                         	<td>#</td>
                                                         	<td>배정 코드</td>
-                                                            <td>배정 직원 이름</td>
+                                                        	<td>클레임 요청 고객</td>
+                                                        	<td>클레임 제목</td>
                                                             <td>배정 현황</td>
+                                                            <td>배정 직원 이름</td>
                                                             <td>등록일</td>
                                                             <td>수정일</td>
                                                             <td>사용여부</td>
                                                             <td>삭제여부</td>
                                                         </tr>
                                                         <tr th:if="${#lists.isEmpty(list)}">
-                                                        	<td colspan="20" style="text-align: center;">
+                                                        	<td colspan="9" style="text-align: center;">
                                                         		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
                                                         	</td>
                                                         </tr>
@@ -315,9 +317,11 @@
                                                         	<td><input type="checkbox"></td>
                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
                                                             <td th:text = "${list.clmSeq}"></td>
-                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/claimmanage/claimManageXdmMfom(clmSeq=${list.clmSeq})}" th:text="${list.insmName}"></a></td>
+                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/claimmanage/claimManageXdmMfom(clmSeq=${list.clmSeq})}" th:text="${list.cmName}"></a></td>
+                                                            <td th:text = "${list.clTitle}"></td>
                                                             <td th:if="${list.clmSituation != null}" th:text="${@codeService.selectOneCachedCode(list.clmSituation)}" class="gender align-middle"></td>
                                                             <td th:unless="${list.clmSituation != null}" class="gender align-middle"></td>	
+                                                            <td th:text = "${list.insmName}"></td>
                                                             <th th:text = "${#dates.format(list.clmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.clmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if = "${list.clmUseNY eq 0}">N</td>

@@ -97,7 +97,7 @@
 	</select>
 	
 	<update id="update">
-		UPDATE yuz.codegroup
+		UPDATE pathy.codegroup
 		SET
 			cgName = #{cgName},
 			cgUseNy = #{cgUseNy},

@@ -300,6 +300,17 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
+															<label for="insmClmNy" class="form-label">배정상태<span
+																style="color: red;">*</span></label> <select class="form-select"
+																id="insmClmNy" name="insmClmNy">
+																<option th:each="list : ${@codeService.selectListCachedCode(3)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.insmClmNy}"></option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="card">
+														<div class="card-body">
 															<label for="cd_UseNY" class="form-label">사용여부<span
 																style="color: red;">*</span></label> <select class="form-select"
 																id="cd_UseNY" name="insmUseNY">
