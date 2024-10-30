@@ -251,9 +251,12 @@
 													<div class="card">
 														<div class="card-body">
 															<label for="validationCustom02" class="form-label">성별<span
-																style="color: red;">*</span></label> <input readonly type="text"
-																class="form-control" name="insmGender"
-																th:value="${item?.insmGender}" autocomplete="off">
+																style="color: red;">*</span>
+															</label>
+															<select class="form-select"
+																id="insmGender" name="insmGender">
+																<option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.insmGender}"></option>
+															</select>
 														</div>
 													</div>
 												</div>

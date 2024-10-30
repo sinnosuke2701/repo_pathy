@@ -253,7 +253,8 @@
                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
                                                             <td th:text = "${list.insmSeq}" class="align-middle"></td>
                                                             <td><a style="color:blue;" th:href="@{/xdm/v1/infra/insmember/insMemberXdmMfom(insmSeq=${list.insmSeq})}" th:text="${list.insmName}"></a></td>
-                                                            <td th:text = "${list.insmGender}"></td>
+                                                            <td th:if="${list.insmGender != null}" th:text="${@codeService.selectOneCachedCode(list.insmGender)}"></td>
+	                              							<td th:unless="${list.insmGender != null}"></td>
                                                             <td th:text = "${list.insmId}"></td>
                                                             <td th:text = "${list.insmEmail}"></td>
                                                             <td th:text = "${list.insmSoNum}"></td>
