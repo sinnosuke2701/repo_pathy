@@ -128,7 +128,6 @@
 			clmName = #{clmName}
 			,clmSituation = #{clmSituation}
 			,clmUseNY = #{clmUseNY}
-			,clmDelNY = #{clmDelNY}
 		where 1 = 1
 			and clmSeq = #{clmSeq}
 	</update>

@@ -157,7 +157,6 @@
 			,insmPhone = #{insmPhone}
 			,insmDesc = #{insmDesc}
 			,insmUseNY = #{insmUseNY}
-			,insmDelNY = #{insmDelNY}
 			,insmClmNy = #{insmClmNy}
 			,insmZipNum = #{insmZipNum}
 			,insmAdr = #{insmAdr}

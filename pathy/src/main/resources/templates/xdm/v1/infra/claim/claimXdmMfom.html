@@ -248,10 +248,12 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="clType" class="form-label">클레임 유형<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="clType"
-																th:value="${item?.clType}" autocomplete="off">
+															<label for="clType" class="form-label">사용여부<span
+																style="color: red;">*</span></label> <select class="form-select"
+																id="clType" name="clType">
+																<option value="1" th:selected="${item?.clType == 1}">신청</option>
+																<option value="2" th:selected="${item?.clType == 2}">청구</option>
+															</select>
 														</div>
 													</div>
 												</div>

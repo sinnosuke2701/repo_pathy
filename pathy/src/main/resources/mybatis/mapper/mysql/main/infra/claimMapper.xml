@@ -15,6 +15,9 @@
 		where 1 = 1
 		<if test="shDelNY != null and !shDelNY.equals('')">And clDelNY = #{shDelNY}</if>
 		<if test="shUseNY != null and !shUseNY.equals('')">And clUseNY = #{shUseNY}</if>
+		<if test="shType != null and !shType.equals('')">And clType = #{shType}</if>
+		<if test="shSituation != null and !shSituation.equals('')">And clSituation = #{shSituation}</if>
+		<if test="shmSituation != null and !shmSituation.equals('')">And clmSituation = #{shmSituation}</if>
 		
 		<choose>
 			<when test="shOptionDate == 1">AND c.clDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
@@ -23,8 +26,9 @@
 		
 		<choose>
 			<when test="shOption == 1">AND clSeq = #{shValue}</when> 
-			<when test="shOption == 2">AND clName LIKE CONCAT('%',#{shValue},'%') AND insmName = #{shValue}</when>
-			<when test="shOption == 3">AND clOrder = #{shValue}</when>
+			<when test="shOption == 2">AND clTitle LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND cmSeq = #{shValue}</when>
+			<when test="shOption == 4">AND cmName LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
 	</sql>
 		
@@ -154,7 +158,6 @@
 			clType = #{clType}
 			,clSituation = #{clSituation}
 			,clUseNY = #{clUseNY}
-			,clDelNY = #{clDelNY}
 		where 1 = 1
 			and clSeq = #{clSeq}
 	</update>
