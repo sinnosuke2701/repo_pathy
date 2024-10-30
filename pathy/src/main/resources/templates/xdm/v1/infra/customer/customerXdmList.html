@@ -160,6 +160,13 @@
                                             </td>
                                             <td>
                                             	<select class="form-select" aria-label="Default select example"
+                                                    style="width: 200px;" name="shGender" id="shGender">
+													<option value="" th:selected="${vo.shGender == null}">성별</option>
+													<option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shGender}"></option>
+												</select>
+                                            </td>
+                                            <td>
+                                            	<select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shBank" id="shBank">
 													<option value="" th:selected="${vo.shBank == null}">은행</option>
 													<option th:each="list : ${@codeService.selectListCachedCode(4)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shBank}"></option>
