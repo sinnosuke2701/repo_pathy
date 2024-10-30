@@ -229,7 +229,7 @@
                                                         <tr>
                                                         	<td><input type="checkbox" id="checkAll"></td>
                                                         	<td>#</td>
-                                                        	<td>Seq</td>
+                                                        	<td>코드</td>
                                                         	<td>고객이름</td>
                                                         	<td>상품이름</td>
                                                             <td>등록일</td>
@@ -247,8 +247,8 @@
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox" id="item-checkbox"></td>
                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
-                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" th:text="${list.cmcSeq}"></a></td>
-                                                            <td th:text = "${list.cmName}"></td>
+                                                            <td th:text="${list.cmcSeq}"></td>
+                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" th:text = "${list.cmName}"></a></td>
                                                             <td th:text = "${list.inspName}"></td>
                                                             <td th:text = "${#dates.format(list.cmcDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${#dates.format(list.cmcDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
