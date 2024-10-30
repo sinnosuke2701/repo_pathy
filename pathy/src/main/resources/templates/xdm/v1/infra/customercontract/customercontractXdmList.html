@@ -228,7 +228,7 @@
                                                         <tr>
                                                         	<td><input type="checkbox" id="checkAll"></td>
                                                         	<td>#</td>
-                                                        	<td>Seq</td>
+                                                        	<td>코드</td>
                                                         	<td>고객이름</td>
                                                         	<td>상품이름</td>
                                                             <td>진행상태</td>
@@ -241,12 +241,12 @@
                                                         		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
                                                         	</td>
                                                         </tr>
-                                                        
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox" id="item-checkbox"></td>
                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
                                                             <td th:text="${list.cmcSeq}"></td>
                                                             <td><a th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" style="color:blue;" th:text = "${list.cmName}"></a></td>
+                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" th:text = "${list.cmName}"></a></td>
                                                             <td th:text = "${list.inspName}"></td>
                                                             <td th:if="${list.cmcStatus != null}" th:text="${@codeService.selectOneCachedCode(list.cmcStatus)}" ></td>
 															<td th:unless="${list.cmcStatus != null}" class="cmcStatus align-middle"></td>
