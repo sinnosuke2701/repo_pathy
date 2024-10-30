@@ -153,13 +153,12 @@
 													<option value="0" th:selected="${vo.shDelNy == 0}">N</option>
 													<option value="1" th:selected="${vo.shDelNy == 1}">Y</option>
 											</select></th>
-<!-- 											<td><select class="form-select" -->
-<!-- 												aria-label="Default select example" style="width: 200px;" -->
-<!-- 												name="shUseNy" id="shUseNy"> -->
-<!-- 													<option value="" th:selected="${vo.shUseNy == null}">사용여부</option> -->
-<!-- 													<option value="0" th:selected="${vo.shUseNy == 0}">N</option> -->
-<!-- 													<option value="1" th:selected="${vo.shUseNy == 1}">Y</option> -->
-<!-- 											</select></td> -->
+											<th><select class="form-select"
+												aria-label="Default select example" style="width: 200px;"
+												name="shStatus" id="shStatus">
+													<option value="" th:selected="${vo.shStatus == null}">진행상태</option>
+													<option th:each="list:${@codeService.selectListCachedCode(2)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shStatus}">
+											</select></th>
 											<td><select class="form-select"
 												aria-label="Default select example" style="width: 200px;"
 												name="shOptionDate" id="shOptionDate">
