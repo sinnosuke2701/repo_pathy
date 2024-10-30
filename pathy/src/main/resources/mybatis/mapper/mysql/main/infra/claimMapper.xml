@@ -94,9 +94,10 @@
 			and c.clSeq = #{clSeq}		
 	</select>
 	
+	
 	<select id = "selectListCustomer" resultMap = "resultMapObj">
 		select
-			a.cmSeq
+			a.cmSeq as customer_cmSeq
 			,a.cmName
 		from customer a
 		where 1=1
