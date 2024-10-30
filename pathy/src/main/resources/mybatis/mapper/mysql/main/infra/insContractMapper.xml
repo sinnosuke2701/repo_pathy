@@ -40,6 +40,7 @@
         LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
 		WHERE 1 = 1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND inscDelNy = #{shDelNy}</if>
+			<if test="shStatus != null and !shStatus.equals('')">AND inscStatus = #{shStatus}</if>
 			<choose>
 				<when test="shOption == 1">AND inscSeq = #{shValue}</when>
 				<when test="shOption == 2">AND inspName LIKE CONCAT('%', #{shValue}, '%')</when>

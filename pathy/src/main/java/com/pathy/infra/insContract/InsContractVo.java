@@ -10,6 +10,7 @@ public class InsContractVo {
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOptionDate;
+	private Integer shStatus;
  
 	// 페이징
 	private int thisPage = 1; // 현재 페이지
@@ -127,6 +128,14 @@ public class InsContractVo {
 
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
+	}
+
+	public Integer getShStatus() {
+		return shStatus;
+	}
+
+	public void setShStatus(Integer shStatus) {
+		this.shStatus = shStatus;
 	}
 
 	public int getThisPage() {
