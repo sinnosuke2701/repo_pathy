@@ -224,8 +224,8 @@
                     	style="padding: .375rem .75rem;">
                                 <option value="">코드 그룹 번호</option>
                                 <option th:each="list:${listCodeGroup}"
-                                        th:value="${list.codeGroup_cgSeq}" th:text="${list.cgName}"
-                                        th:selected="${list.codeGroup_cgSeq == item?.codeGroup_cgSeq}">
+                                        th:value="${list.cgSeq}" th:text="${list.cgName}"
+                                        th:selected="${list.cgSeq == item?.codeGroup_cgSeq}">
                                 </option>
                               </select>
                    		</div>

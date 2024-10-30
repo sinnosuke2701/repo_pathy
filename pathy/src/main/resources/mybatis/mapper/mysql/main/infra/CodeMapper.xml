@@ -39,10 +39,14 @@
 		    b.cdDelNy,
 		    b.cdDateTimeReg,
 		    b.cdDateTimeEdit,
-		    b.codeGroup_cgSeq,
 		    a.cgName,
-		    a.cgSeq
-<!-- 		     (SELECT COUNT(cdSeq) FROM pathy.code AS b WHERE b.cdSeq = b.cdSeq) AS xcdSeqCount -->
+		    a.cgSeq,
+		     (SELECT 
+		     	COUNT(cdSeq) 
+		     FROM 
+		    	pathy.code AS b 
+		     WHERE 1 = 1 
+		     	AND b.codeGroup_cgSeq = a.cgSeq) AS xcdSeqCount
 			<include refid="selectCommon"/>
 			ORDER BY
 				b.cdSeq DESC
@@ -51,7 +55,7 @@
 <!-- //code에 codegroup 연결 -->
 	<select id="selectListCodeGroup" resultMap="resultMapObj">
 		SELECT
-			a.cgSeq as codeGroup_cgSeq,
+			a.cgSeq,
 			a.cgName
 		FROM
 			codegroup a
@@ -65,23 +69,23 @@
 <!-- //	데이터 입력(insert) -->
 	<insert id="insert">
 		INSERT INTO code(
-		cdName,
-		cdUseNy,
-		cdOrder,
-		cdDesc,
-		cdDelNy,
-		cdDateTimeReg,
-		cdDateTimeEdit,
-		codeGroup_cgSeq
+			cdName,
+			cdUseNy,
+			cdOrder,
+			cdDesc,
+			cdDelNy,
+			cdDateTimeReg,
+			cdDateTimeEdit,
+			codeGroup_cgSeq
 		)VALUES(
-		#{cdName},
-		#{cdUseNy},
-		#{cdOrder},
-		#{cdDesc},
-		0,
-		now(),
-		now(),
-		#{codeGroup_cgSeq}
+			#{cdName},
+			#{cdUseNy},
+			#{cdOrder},
+			#{cdDesc},
+			0,
+			now(),
+			now(),
+			#{codeGroup_cgSeq}
 		)
 <!-- 		<selectKey resultType="String" KeyProperty="ifcdSeq" order="AFTER"> -->
 <!-- 			SELECT last_insert_id() -->
@@ -108,13 +112,12 @@
 	</select>
 <!--         //	테이터 수정(update) -->
 		<update id="update">
-		UPDATE pathy.code
+		UPDATE code
 		SET
 			cdName = #{cdName},
 			cdUseNy = #{cdUseNy},
 			cdOrder = #{cdOrder},
 			cdDesc = #{cdDesc},
-			cdDelNy = 0,
 			cdDateTimeEdit = now(),
 			codeGroup_cgSeq = #{codeGroup_cgSeq}
 		WHERE 1 = 1

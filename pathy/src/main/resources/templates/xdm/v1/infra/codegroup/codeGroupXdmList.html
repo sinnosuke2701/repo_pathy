@@ -292,7 +292,7 @@ svg.className {
 													<table class="table m-0">
 														<thead>
 															<tr>
-																<th colspan='8'
+																<th colspan='7'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -317,7 +317,6 @@ svg.className {
 																<td style="text-align: center;">#(Seq)</td>
 																<td style="text-align: center;">이름</td>
 																<td style="text-align: center;">순서</td>
-																<td style="text-align: center;">설명</td>
 																<td style="text-align: center;">사용여부</td>
 																<td style="text-align: center;">삭제여부</td>
 																<td style="text-align: center;">등록일</td>
@@ -333,12 +332,11 @@ svg.className {
 																<td style="text-align: center;"><input
 																	type="checkbox"></td>
 																<td style="text-align: center;" th:text="${list.cgSeq}"></td>
-																<td style="text-align: center;"><a
+																<td style="text-align: center;"><a style="color:blue;"
 																	th:href="@{/xdm/v1/infra/codegroup/codeGroupXdmMfom(cgSeq=${list.cgSeq})}"
 																	th:text="${list.cgName}"></a></td>
 																<td style="text-align: center;"
 																	th:text="${list.cgOrder}"></td>
-																<td style="text-align: center;" th:text="${list.cgDesc}"></td>
 																<td style="text-align: center;"
 																	th:if="${list.cgUseNy eq 0}">N</td>
 																<td style="text-align: center;"

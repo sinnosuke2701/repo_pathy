@@ -290,9 +290,9 @@ svg.className {
 											<div class="card-body">
 												<div class="table-responsive">
 													<table class="table m-0">
-														<thead>
+															<thead>
 															<tr>
-																<th colspan='9'
+																<th colspan='8'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -318,7 +318,6 @@ svg.className {
 																<td style="text-align: center;">코드그룹Seq</td>
 																<td style="text-align: center;">이름</td>
 																<td style="text-align: center;">순서</td>
-																<td style="text-align: center;">설명</td>
 																<td style="text-align: center;">사용여부</td>
 																<td style="text-align: center;">삭제여부</td>
 																<td style="text-align: center;">등록일</td>
@@ -337,12 +336,11 @@ svg.className {
 																<td th:text="${list.codeGroup_cgSeq}"
 																	style="text-align: center;">
 																</td>
-																<td style="text-align: center;"><a
+																<td style="text-align: center;"><a  style="color:blue;"
 																	th:href="@{/xdm/v1/infra/code/codeXdmMfom(cdSeq=${list.cdSeq})}"
 																	th:text="${list.cdName}"></a></td>
 																<td style="text-align: center;"
 																	th:text="${list.cdOrder}"></td>
-																<td style="text-align: center;" th:text="${list.cdDesc}"></td>
 																<td style="text-align: center;"
 																	th:if="${list.cdUseNy eq 0}">N</td>
 																<td style="text-align: center;"
