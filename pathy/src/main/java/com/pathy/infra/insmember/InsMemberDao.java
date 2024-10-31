@@ -24,5 +24,9 @@ public interface InsMemberDao {
 	public int delete(InsMemberDto insMemberDto);
 	
     public List<InsMemberDto> selectListCachedCodeArrayList();
+    
+    public InsMemberDto selectOneId(InsMemberDto insMeberDto);
+    
+    public InsMemberDto selectOneLogin(InsMemberDto insMeberDto);
 	
 }

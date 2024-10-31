@@ -179,5 +179,29 @@
 			and insmSeq = #{insmSeq}
 	</update>
 	
+	<select id="selectOneId" resultMap="resultMapObj">
+		select
+			a.insmId
+		from 
+			insMember a
+		where 1 = 1
+			and insmId = #{insmId}
+	</select>
+	
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		select
+			a.insmseq
+			,a.insmName
+			,a.insmId
+			,a.insmEmail
+			,a.insmPw
+			,a.insmSoNum
+			,a.insmPhone
+		from 
+			insMember a
+		where 1 = 1
+			and insmId = #{insmId}
+			and insmPw = #{insmPw}
+	</select>
 	
 	</mapper>

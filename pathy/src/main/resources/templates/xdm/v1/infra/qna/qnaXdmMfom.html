@@ -282,16 +282,16 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-3">
-													<div class="card">
-														<div class="card-body">
-															<label for="validationCustom02" class="form-label">내용<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="qnaContent" th:value="${item?.qnaContent}" autocomplete="off">
-														</div>
+												<div class="row">
+													<div class="col-md-6">
+													    <div class="card">
+													        <div class="card-body">
+													            <label for="cg_Desc" class="form-label">설명</label>
+													            <textarea class="form-control" id="qnaContent" name="qnaContent" th:text="${item?.qnaContent}" rows="5"></textarea>
+													        </div>
+													    </div>
 													</div>
 												</div>
-												<div class="col-md-6"></div>
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
