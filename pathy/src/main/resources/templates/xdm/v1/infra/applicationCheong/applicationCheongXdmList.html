@@ -1,86 +1,7 @@
 <!doctype html>
 <html lang="en" >
 
-<head>
-<style>
-hr {
-	background: black;
-	border: 0;
-}
-</style>
-<style>
-svg.className {
-	width: 100px;
-	height: 100px;
-	color: limegreen;
-}
-</style>
- 
-<script>
-	function deleteSelectedRows() {
-		//테이블 요소를 가져옵니다.
-		var table = document.getElementById('basicExample');
-		var checkboxes = table
-				.querySelectorAll('tbody input[type="checkbox"]:checked');
-
-		// 체크된 각 행을 삭제합니다.
-		checkboxes.forEach(function(checkbox) {
-			var row = checkbox.closest('tr');
-			row.remove();
-		});
-	}
-</script>
-
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Meta -->
-<meta name="description"
-	content="Vivo - Responsive Bootstrap 5 Dashboard Template">
-<meta name="author" content="Bootstrap Gallery">
-<link rel="shortcut icon"
-	href="/xdm/v1/template/vivo/assets/images/favicon.svg">
-
-<!-- Title -->
-<title>Vivo Admin Template - Admin Dashboard</title>
-
-
-<!-- *************
-         ************ Common Css Files *************
-      ************ -->
-<!-- Animated css -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/assets/css/animate.css">
-
-<!-- Bootstrap font icons css -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/assets/fonts/bootstrap/bootstrap-icons.css">
-
-<!-- Main css -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/assets/css/main.min.css">
-
-<!-- datetimepicker css -->
-<link rel="stylesheet"
-	href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
-
-<!-- *************
-         ************ Vendor Css Files *************
-      ************ -->
-
-<!-- Scrollbar CSS -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/vendor/overlay-scroll/OverlayScrollbars.min.css">
-
-<!-- Data Tables -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5.css" />
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5-custom.css" />
-
-</head>
+<th:block th:replace="~{/xdm/v1/infra/include/head :: head}"></th:block>
 
 <body>
 
@@ -216,7 +137,7 @@ svg.className {
 							</ol>
 							<!-- Breadcrumb end -->
 
-							<h2>청구서 관리</h2>
+							<h2>보험금청구 관리</h2>
 							<form method="post"
 								action="/v1/infra/applicationCheong/applicationCheongXdmList" name="formList">
 								<input type="hidden" name="thisPage" th:value="${vo.thisPage}"
@@ -232,13 +153,12 @@ svg.className {
 													<option value="0" th:selected="${vo.shDelNy == 0}">N</option>
 													<option value="1" th:selected="${vo.shDelNy == 1}">Y</option>
 											</select></th>
-<!-- 											<td><select class="form-select" -->
-<!-- 												aria-label="Default select example" style="width: 200px;" -->
-<!-- 												name="shUseNy" id="shUseNy"> -->
-<!-- 													<option value="" th:selected="${vo.shUseNy == null}">사용여부</option> -->
-<!-- 													<option value="0" th:selected="${vo.shUseNy == 0}">N</option> -->
-<!-- 													<option value="1" th:selected="${vo.shUseNy == 1}">Y</option> -->
-<!-- 											</select></td> -->
+											<td><select class="form-select"
+												aria-label="Default select example" style="width: 200px;"
+												name="shCheongStatus" id="shCheongStatus">
+													<option value="" th:selected="${vo.shCheongStatus == null}">청구진행상태</option>
+													<option th:each="list : ${@codeService.selectListCachedCode(6)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shCheongStatus}"></option>
+											</select></td>
 											<td><select class="form-select"
 												aria-label="Default select example" style="width: 200px;"
 												name="shOptionDate" id="shOptionDate">
@@ -297,7 +217,7 @@ svg.className {
 													<table class="table m-0">
 														<thead>
 															<tr>
-																<th colspan='10'
+																<th colspan='11'
 																	style="width: 140px; padding-right: 0px;"><span
 																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
 																</th>
@@ -325,13 +245,14 @@ svg.className {
 																<td>고객</td>
 																<td>보험사 직원</td>
 																<td>청구금액</td>
+																<td>청구진행상태</td>
 																<td>필요서류</td>
-																<td>삭제여부</td>
 																<td>등록일</td>
 																<td>수정일</td>
+																<td>삭제여부</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
-																<td colspan="11" style="text-align: center;">
+																<td colspan="12" style="text-align: center;">
 																	<p class="fs-5" style="padding-top: 12px;">there
 																		are no data!</p>
 																</td>
@@ -347,11 +268,13 @@ svg.className {
 																<td th:text="${list.cmName}"></td>
 																<td th:text="${list.insmName}"></td>
 																<td th:text="${list.cheongPrice}"></td>
+																<td th:if="${list.cheongStatus != null}" th:text="${@codeService.selectOneCachedCode(list.cheongStatus)}"></td>
+																<td th:unless="${list.cheongStatus != null}"></td>
 																<td th:text="${list.cheongPaper}"></td>
-																<td th:if="${list.cheongDelNy eq 0}">N</td>
-																<td th:unless="${list.cheongDelNy eq 0}">Y</td>
 																<td th:text="${#dates.format(list.cheongDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
 																<td th:text="${#dates.format(list.cheongDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																<td th:if="${list.cheongDelNy eq 0}">N</td>
+																<td th:unless="${list.cheongDelNy eq 0}">Y</td>
 															</tr>
 														</tbody>
 													</table>

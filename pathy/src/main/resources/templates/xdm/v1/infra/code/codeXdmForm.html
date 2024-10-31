@@ -236,18 +236,17 @@
 														style="background-color: lightgray;" disabled>
 												</div>
 												<div class="col-md-3">
-                    <label class="form-label">코드그룹<font color="red"><strong>*</strong></font></label>
-                    <select class="form-select"  name="codeGroup_cgSeq" id="codeGroup_cgSeq"
-                    	style="padding: .375rem .75rem;" >
-                                <option value="">코드그룹</option>
-                                <option th:each = "list : ${listCodeGroup}"
-                                        th:value ="${list.cgSeq}" 
-                                        th:text="${list.cgName}"
-                                        
-                                </option>
-                              </select>
-                              <div class="invalid-feedback">코드그룹 번호를 선택해주세요.</div>
-                   		</div>
+							                    	<label class="form-label">코드그룹<font color="red"><strong>*</strong></font></label>
+							                   		<select class="form-select"  name="codeGroup_cgSeq" id="codeGroup_cgSeq"
+							                    			style="padding: .375rem .75rem;" >
+							                            <option value="">코드그룹</option>
+							                            <option th:each = "list : ${listCodeGroup}"
+							                            		th:value ="${list.codeGroup_cgSeq}" 
+							                                    th:text="${list.cgName}"
+							                            </option>
+							                         </select>
+							                              <div class="invalid-feedback">코드그룹 번호를 선택해주세요.</div>
+							                   		</div>
 												<div class="col-md-3">
 													<label for="cdName" class="form-label">이름<span
 														style="color: red;">*</span></label> <input type="text"

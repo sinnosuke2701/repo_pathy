@@ -10,6 +10,7 @@ public class InsProductVo {
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOptionDate;
+	private String shBojangOption;
  
 	// 페이징
 	private int thisPage = 1; // 현재 페이지
@@ -125,6 +126,14 @@ public class InsProductVo {
 
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
+	}
+
+	public String getShBojangOption() {
+		return shBojangOption;
+	}
+
+	public void setShBojangOption(String shBojangOption) {
+		this.shBojangOption = shBojangOption;
 	}
 
 	public int getThisPage() {

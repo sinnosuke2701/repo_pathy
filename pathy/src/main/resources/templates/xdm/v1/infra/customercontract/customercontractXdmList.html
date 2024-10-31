@@ -152,12 +152,11 @@
                                                 </select>
                                             </th>
 											<td>
-                                                <select class="form-select" aria-label="Default select example"
+                                            	<select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shStatus" id="shStatus">
-                                                    <option value="" th:selected="${vo.shStatus == null}">진행상태</option>
-                                                    <option value="0" th:selected="${vo.shStatus == 0}">시작</option>
-                                                    <option value="1" th:selected="${vo.shStatus == 1}">종료</option>
-                                                </select>
+													<option value="" th:selected="${vo.shStatus == null}">진행상태</option>
+													<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shStatus}"></option>
+												</select>
                                             </td>
                                             <td>
                                                 <select class="form-select" aria-label="Default select example"
@@ -178,7 +177,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr>  
                                             <th>
                                                 <select class="form-select" aria-label="Default select example"
                                                     style="width: 200px;" name="shOption">
@@ -211,7 +210,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='9' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='8' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -225,43 +224,40 @@
                                     	                    </th>
                                                 		</tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr>
+                                                    <tbody> 
+                                                        <tr> 
                                                         	<td><input type="checkbox" id="checkAll"></td>
                                                         	<td>#</td>
                                                         	<td>코드</td>
                                                         	<td>고객이름</td>
                                                         	<td>상품이름</td>
-                                                            <td>등록일</td>
-                                                            <td>수정일</td>
-                                                            <td>종료일</td>
                                                             <td>진행상태</td>
+                                                            <td>등록일</td>
+                                                            <td>종료일</td>
                                                             <td>삭제여부</td>
                                                         </tr>
                                                         <tr th:if="${#lists.isEmpty(list)}">
-                                                        	<td colspan="10" style="text-align: center;">
-                                                        		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
+                                                        	<td colspan="9" style="text-align: center;">
+                                                        		<p class="fs-5" style="padding-top: 12px;">there are no data!!</p>
                                                         	</td>
                                                         </tr>
-                                                        
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox" id="item-checkbox"></td>
                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
                                                             <td th:text="${list.cmcSeq}"></td>
-                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" th:text = "${list.cmName}"></a></td>
+                                                            <td><a th:href="@{/xdm/v1/infra/customercontract/customercontractXdmMfom(cmcSeq=${list.cmcSeq})}" style="color:blue;" th:text = "${list.cmName}"></a></td>
                                                             <td th:text = "${list.inspName}"></td>
-                                                            <td th:text = "${#dates.format(list.cmcDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:text = "${#dates.format(list.cmcDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:text = "${#dates.format(list.cmcDateTimeEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if="${list.cmcStatus != null}" th:text="${@codeService.selectOneCachedCode(list.cmcStatus)}" ></td>
 															<td th:unless="${list.cmcStatus != null}" class="cmcStatus align-middle"></td>
+                                                            <td th:text = "${#dates.format(list.cmcDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                                            <td th:text = "${#dates.format(list.cmcDateTimeEnd, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if = "${list.cmcDelNy eq 0}">N</td>
                                                             <td th:unless = "${list.cmcDelNy eq 0}">Y</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            </div>
+                                        </div>
                                             
 
                                             <!--페이지네이션 시작-->

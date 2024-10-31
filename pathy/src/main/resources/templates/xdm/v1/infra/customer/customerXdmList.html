@@ -129,10 +129,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
                                     <i class="bi bi-house"></i>
-                                    <a href="index.html">Page 1</a>
+                                    <a href="/v1/infra/index/indexXdmView">Index</a>
                                 </li>
-                                <li class="breadcrumb-item">Page 2</li>
-                                <li class="breadcrumb-item breadcrumb-active" aria-current="page">Default</li>
+                                <li class="breadcrumb-item">고객</li>
                             </ol>
                             <!-- Breadcrumb end -->
 
@@ -164,6 +163,13 @@
                                                     style="width: 200px;" name="shGender" id="shGender">
 													<option value="" th:selected="${vo.shGender == null}">성별</option>
 													<option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shGender}"></option>
+												</select>
+                                            </td>
+                                            <td>
+                                            	<select class="form-select" aria-label="Default select example"
+                                                    style="width: 200px;" name="shBank" id="shBank">
+													<option value="" th:selected="${vo.shBank == null}">은행</option>
+													<option th:each="list : ${@codeService.selectListCachedCode(4)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shBank}"></option>
 												</select>
                                             </td>
                                             <td>
@@ -253,8 +259,8 @@
                                                             <td>우편번호</td>
                                                             <td>주소</td>
                                                             <td>상세주소</td>
-                                                            <td>계좌번호</td>
                                                             <td>은행</td>
+                                                            <td>계좌번호</td>
                                                             <td>등록일</td>
                                                             <td>수정일</td>
                                                             <td>사용여부</td>
@@ -274,13 +280,14 @@
 															<td th:unless="${list.cmGender != null}" class="cmGender align-middle"></td>
                                                             <td th:text = "${list.cmId}"></td>
                                                             <td th:text = "${list.cmEmail}"></td>
-                                                            <td th:text = "${list.cmSoNum}"></td>
+                                                            <td th:text="${list.cmSoNum.substring(0, 8) + '******'}"></td>
                                                             <td th:text = "${list.cmPhone}"></td>
                                                             <td th:text = "${list.cmZipNum}"></td>
                                                             <td th:text = "${list.cmAdr}"></td>
                                                             <td th:text = "${list.cmAdrDt}"></td>
+                                                            <td th:if="${list.cmBank != null}" th:text="${@codeService.selectOneCachedCode(list.cmBank)}" class="cmBank align-middle"></td>
+															<td th:unless="${list.cmBank != null}" class="cmGender align-middle"></td>
                                                             <td th:text = "${list.cmAcc}"></td>
-                                                            <td th:text = "${list.cmBank}"></td>
                                                             <td th:text = "${#dates.format(list.cmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${#dates.format(list.cmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:if = "${list.cmUseNy eq 0}">N</td>
@@ -326,7 +333,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="col-md-8"></div>
-                                                <div class="col-md-2 ">
+                                                <div class="col-md-2">
                                                     <button type="button" id='seobin' class="btn btn-white"
                                                         style="background-color: green; ">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

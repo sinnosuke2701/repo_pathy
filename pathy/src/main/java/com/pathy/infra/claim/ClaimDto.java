@@ -8,6 +8,7 @@ public class ClaimDto {
 	private Integer clType;
 	private String clTitle;
 	private String clDec;
+	private String clTreDesc;
 	private Date clDateTimeReg;
 	private Date clDateTimeEdit;
 	private Integer clSituation;
@@ -146,6 +147,12 @@ public class ClaimDto {
 	}
 	public void setClmSituation(Integer clmSituation) {
 		this.clmSituation = clmSituation;
+	}
+	public String getClTreDesc() {
+		return clTreDesc;
+	}
+	public void setClTreDesc(String clTreDesc) {
+		this.clTreDesc = clTreDesc;
 	}
 	
 	

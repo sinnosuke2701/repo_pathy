@@ -45,4 +45,12 @@ public class InsMemberService {
 		return insMemberDao.delete(insMemberDto);
 	}
 	
+	public InsMemberDto selectOneId(InsMemberDto insMemberDto) {
+		return insMemberDao.selectOneId(insMemberDto);
+	}
+	
+	public InsMemberDto selectOneLogin(InsMemberDto memberDto) {
+		return insMemberDao.selectOneLogin(memberDto);
+	}
+	
 }

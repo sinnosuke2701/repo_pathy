@@ -8,6 +8,7 @@ public class CustomerVo {
 	private String shValue;
 	private Integer shOption;
 	private Integer shGender;
+	private Integer shBank;
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOptionDate;
@@ -198,6 +199,14 @@ public class CustomerVo {
 
 	public void setShGender(Integer shGender) {
 		this.shGender = shGender;
+	}
+
+	public Integer getShBank() {
+		return shBank;
+	}
+
+	public void setShBank(Integer shBank) {
+		this.shBank = shBank;
 	}
 		
 }

@@ -239,9 +239,12 @@
 												<div class="col-md-3">
 													<div class="card">
 														<div class="card-body">
-															<label for="cmName" class="form-label">고객 이름<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="cmName" th:value="${item?.cmName}" readonly>
+															<label for="customer_cmSeq" class="form-label">고객 이름<span
+																style="color: red;">*</span></label>
+															<select disabled name = "customer_cmSeq" class="form-select" id="customer_cmSeq" >
+																<option value ="">선택하세요</option>
+																<option th:each="list : ${customer}" th:value="${list.customer_cmSeq}" th:text="${list.cmName}" th:selected="${list.customer_cmSeq} == ${item?.customer_cmSeq}"></option>
+															</select>
 														</div>
 													</div>
 												</div>
@@ -249,9 +252,11 @@
 													<div class="card">
 														<div class="card-body">
 															<label for="clType" class="form-label">클레임 유형<span
-																style="color: red;">*</span></label> <input type="text"
-																class="form-control" name="clType"
-																th:value="${item?.clType}" autocomplete="off">
+																style="color: red;">*</span></label> <select class="form-select"
+																id="clType" name="clType">
+																<option value="1" th:selected="${item?.clType == 1}">신청</option>
+																<option value="2" th:selected="${item?.clType == 2}">청구</option>
+															</select>
 														</div>
 													</div>
 												</div>
@@ -305,6 +310,22 @@
 															<input type="text" class="form-control" name="clDateTimePay"
 																th:value="${#dates.format(item?.clDateTimePay, 'yyyy/MM/dd HH:mm:ss')}"
 																readonly>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="card">
+														<div class="card-body">
+															<label class="form-label">클레임 내용</label>
+															<textarea name = "clDec" th:text="${item?.clDec}" class="form-control" rows="5"></textarea>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="card">
+														<div class="card-body">
+															<label class="form-label">클레임 처리 내용</label>
+															<textarea name = "clTreDesc" th:text="${item?.clTreDesc}" class="form-control" rows="5"></textarea>
 														</div>
 													</div>
 												</div>

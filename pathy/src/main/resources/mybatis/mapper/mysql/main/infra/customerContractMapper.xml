@@ -25,8 +25,8 @@
 		
 		
 		<choose>
-			<when test="shOptionDate == 1">AND a.cmDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-			<when test="shOptionDate == 2">AND a.cmDateTimeEdit BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 1">AND a.cmcDateTimeReg BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			<when test="shOptionDate == 2">AND a.cmcDateTimeEnd BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 		</choose>
 		
 		<choose>

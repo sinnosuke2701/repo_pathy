@@ -1,86 +1,7 @@
 <!doctype html>
 <html lang="en" >
 
-<head>
-<style>
-hr {
-	background: black;
-	border: 0;
-}
-</style>
-<style>
-svg.className {
-	width: 100px;
-	height: 100px;
-	color: limegreen;
-}
-</style>
- 
-<script>
-	function deleteSelectedRows() {
-		//테이블 요소를 가져옵니다.
-		var table = document.getElementById('basicExample');
-		var checkboxes = table
-				.querySelectorAll('tbody input[type="checkbox"]:checked');
-
-		// 체크된 각 행을 삭제합니다.
-		checkboxes.forEach(function(checkbox) {
-			var row = checkbox.closest('tr');
-			row.remove();
-		});
-	}
-</script>
-
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Meta -->
-<meta name="description"
-	content="Vivo - Responsive Bootstrap 5 Dashboard Template">
-<meta name="author" content="Bootstrap Gallery">
-<link rel="shortcut icon"
-	href="/xdm/v1/template/vivo/assets/images/favicon.svg">
-
-<!-- Title -->
-<title>Vivo Admin Template - Admin Dashboard</title>
-
-
-<!-- *************
-         ************ Common Css Files *************
-      ************ -->
-<!-- Animated css -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/assets/css/animate.css">
-
-<!-- Bootstrap font icons css -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/assets/fonts/bootstrap/bootstrap-icons.css">
-
-<!-- Main css -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/assets/css/main.min.css">
-
-<!-- datetimepicker css -->
-<link rel="stylesheet"
-	href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
-
-<!-- *************
-         ************ Vendor Css Files *************
-      ************ -->
-
-<!-- Scrollbar CSS -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/vendor/overlay-scroll/OverlayScrollbars.min.css">
-
-<!-- Data Tables -->
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5.css" />
-<link rel="stylesheet"
-	href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5-custom.css" />
-
-</head>
+<th:block th:replace="~{/xdm/v1/infra/include/head :: head}"></th:block>
 
 <body>
 
@@ -216,7 +137,7 @@ svg.className {
 							</ol>
 							<!-- Breadcrumb end -->
 
-							<h2>신청서 관리</h2>
+							<h2>가입신청 관리</h2>
 							<form method="post"
 								action="/v1/infra/applicationShin/applicationShinXdmList" name="formList">
 								<input type="hidden" name="thisPage" th:value="${vo.thisPage}"
@@ -269,9 +190,9 @@ svg.className {
 														코드</option>
 													<option value="2" th:selected="${vo.shOption == 2}">
 														보험상품</option>
-													<option value="3" th:selected="${vo.shOption == 2}">
+													<option value="3" th:selected="${vo.shOption == 3}">
 														고객</option>
-													<option value="4" th:selected="${vo.shOption == 2}">
+													<option value="4" th:selected="${vo.shOption == 4}">
 														보험사직원</option>
 											</select></th>
 											<td><input type="text" placeholder="검색어" name="shValue"
@@ -326,9 +247,9 @@ svg.className {
 																<td>보험사 직원</td>
 																<td>신청일</td>
 																<td>가입일</td>
-																<td>삭제여부</td>
 																<td>등록일</td>
 																<td>수정일</td>
+																<td>삭제여부</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
 																<td colspan="11" style="text-align: center;">
@@ -348,10 +269,10 @@ svg.className {
 																<td th:text="${list.insmName}"></td>
 																<td th:text="${list.shinDate}"></td>
 																<td th:text="${list.shinDateGa}"></td>
-																<td th:if="${list.shinDelNy eq 0}">N</td>
-																<td th:unless="${list.shinDelNy eq 0}">Y</td>
 																<td th:text="${#dates.format(list.shinDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
 																<td th:text="${#dates.format(list.shinDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																<td th:if="${list.shinDelNy eq 0}">N</td>
+																<td th:unless="${list.shinDelNy eq 0}">Y</td>
 															</tr>
 														</tbody>
 													</table>

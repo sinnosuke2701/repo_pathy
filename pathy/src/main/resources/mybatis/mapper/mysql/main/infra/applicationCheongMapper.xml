@@ -17,6 +17,7 @@
 		LEFT JOIN insMember AS d ON d.insmSeq = a.insMember_insmSeq
 		WHERE 1 = 1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND cheongDelNy = #{shDelNy}</if>
+			<if test="shCheongStatus != null and !shCheongStatus.equals('')">AND cheongStatus = #{shCheongStatus}</if>
 			<choose>
 				<when test="shOption == 1">AND cheongSeq = #{shValue}</when>
 				<when test="shOption == 2">AND inspName LIKE CONCAT('%', #{shValue}, '%')</when>
@@ -44,6 +45,7 @@
 				a.cheongSeq
 				,a.cheongPrice
 				,a.cheongPaper
+				,a.cheongStatus
 				,a.cheongDelNy
 				,a.cheongDateTimeReg
 				,a.cheongDateTimeEdit
@@ -67,6 +69,7 @@
 			a.cheongSeq
 			,a.cheongPrice
 			,a.cheongPaper
+			,a.cheongStatus
 			,a.cheongDelNy
 			,a.cheongDateTimeReg
 			,a.cheongDateTimeEdit
@@ -91,6 +94,7 @@
 		INSERT INTO applicationCheong(
 			cheongPrice
 			,cheongPaper
+			,cheongStatus
 			,cheongDelNy
 			,cheongDateTimeReg
 			,cheongDateTimeEdit
@@ -101,6 +105,7 @@
 		VALUE(
 			#{cheongPrice}
 		    ,#{cheongPaper}
+		    ,#{cheongStatus}
 		    ,0
 		    ,now()
 		    ,now()
@@ -156,6 +161,7 @@
 			SET
 				cheongPrice = #{cheongPrice}
 				,cheongPaper = #{cheongPaper}
+				,cheongStatus = #{cheongStatus}
 				,cheongDelNy = 0
 				,cheongDateTimeReg = now()
 				,cheongDateTimeEdit = now()

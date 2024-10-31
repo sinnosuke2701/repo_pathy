@@ -244,7 +244,7 @@
 																style="color: red;">*</span></label>
 															<select name = "insMember_insmSeq" class="form-select" id="validationCustom04" >
 																<option value ="">선택하세요</option>
-																<option th:each="list : ${listInsMember}" th:value="${list.insmSeq}" th:text="${list.insmName}" th:selected="${list.insmSeq} == ${item?.insmSeq}"></option>
+																<option th:each="list : ${insmember}" th:value="${list.insMember_insmSeq}" th:text="${list.insmName}" th:selected="${list.insMember_insmSeq} == ${item?.insMember_insmSeq}"></option>
 															</select>
 														</div>
 													</div>
@@ -297,7 +297,7 @@
 													<div class="card">
 														<div class="card-body">
 															<label for="validationCustom04" class="form-label">삭제여부<span
-																style="color: red;">*</span></label> <select class="form-select"
+																style="color: red;">*</span></label> <select disabled class="form-select"
 																id="clmDelNY" name="clmDelNY">
 																<option selected disabled value="">삭제 여부</option>
 																<option value="0" th:selected="${item?.clmDelNY == 0}">미삭제</option>

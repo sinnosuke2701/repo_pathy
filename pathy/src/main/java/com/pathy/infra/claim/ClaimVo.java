@@ -10,6 +10,9 @@ public class ClaimVo {
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOptionDate;
+	private Integer shType;
+	private Integer shSituation;
+	private Integer shmSituation;
 		
 	//페이징
 	private int thisPage = 1;				//현재 페이지 
@@ -189,6 +192,30 @@ public class ClaimVo {
 
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+
+	public Integer getShType() {
+		return shType;
+	}
+
+	public void setShType(Integer shType) {
+		this.shType = shType;
+	}
+
+	public Integer getShSituation() {
+		return shSituation;
+	}
+
+	public void setShSituation(Integer shSituation) {
+		this.shSituation = shSituation;
+	}
+
+	public Integer getShmSituation() {
+		return shmSituation;
+	}
+
+	public void setShmSituation(Integer shmSituation) {
+		this.shmSituation = shmSituation;
 	}
 	
 }
