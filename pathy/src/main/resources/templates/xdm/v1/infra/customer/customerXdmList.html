@@ -280,7 +280,7 @@
 															<td th:unless="${list.cmGender != null}" class="cmGender align-middle"></td>
                                                             <td th:text = "${list.cmId}"></td>
                                                             <td th:text = "${list.cmEmail}"></td>
-                                                            <td th:text = "${list.cmSoNum}"></td>
+                                                            <td th:text="${list.cmSoNum.substring(0, 8) + '******'}"></td>
                                                             <td th:text = "${list.cmPhone}"></td>
                                                             <td th:text = "${list.cmZipNum}"></td>
                                                             <td th:text = "${list.cmAdr}"></td>
