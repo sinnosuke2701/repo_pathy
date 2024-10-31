@@ -20,7 +20,6 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer{
 //							"/xdm/**",
 							"/xdm/v1/infra/index/signinXdmView",
 							"/xdm/v1/infra/member/signinXdmProc"
-							
 			);	
 			
 		}
