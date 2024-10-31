@@ -99,7 +99,7 @@
 										<h6 class="mt-2 text-black" th:text="${session.sessNameXdm}"></h6>
 										<a href="profile.html">Profile</a>
 										<a href="account-settings.html">Settings</a>
-										<a th:if="${session.sessNameXdm == null}" th:href="@{/xdm/v1/infra/member/signinXdmForm}" >login</a>
+										<a th:if="${session.sessNameXdm == null}" th:href="@{/xdm/v1/infra/index/signinXdmView}" >login</a>
 										<a th:unless="${session.sessNameXdm == null}" id="btnLogout" href="">Logout</a>
 									</div>
 								</div>
@@ -583,7 +583,7 @@
 					,type: "post"
 					,url: "/signoutXdmProc"
 					,success: function(response) {
-								location.href = "/xdm/v1/infra/member/signinXdmForm";
+								location.href = "/xdm/v1/infra/index/signinXdmView";
 					}
 					,error : function(jqXHR, textStatus, errorThrown){
 						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
