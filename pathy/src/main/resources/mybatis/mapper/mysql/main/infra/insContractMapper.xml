@@ -144,8 +144,6 @@
 				,inscDelNy = 0
 				,inscDateTimeReg = now()
 				,inscDateTimeEdit = now()
-				,insProduct_inspSeq = #{insProduct_inspSeq}
-				,customer_cmSeq = #{customer_cmSeq}
 			WHERE 1 = 1
 				AND inscSeq = #{inscSeq}
 	</update>
