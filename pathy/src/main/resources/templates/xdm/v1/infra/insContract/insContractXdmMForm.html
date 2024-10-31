@@ -145,7 +145,7 @@
 									<div class="card-title">기본정보</div>
 								</div>
 								<form class="needs-validation" novalidate id="form" name="form"
-									method="post" action="/v1/infra/insContract/insContractXdmInst">
+									method="post" action="/xdm/v1/infra/insContract/insContractXdmInst">
 									<div class="card-body">
 										<div class="container-fluid">
 											<div class="row mb-3">
@@ -347,25 +347,25 @@
 	
 	<script>
 		document.getElementById("btnList").onclick = function (){
-			window.location = "/v1/infra/insContract/insContractXdmList";
+			window.location = "/xdm/v1/infra/insContract/insContractXdmList";
 		}
 		
 		document.getElementById("btnDelete").onclick = function() {
 			let form = document.querySelector("form[name='form']");
 			alert("aaa");
-			form.action = "/v1/infra/insContract/insContractXdmDel";
+			form.action = "/xdm/v1/infra/insContract/insContractXdmDel";
 			form.submit();
 		};
 		
 		document.getElementById("btnUelete").onclick = function() {
 			let form = document.querySelector("form[name='form']");
-			form.action = "/v1/infra/insContract/insContractXdmUel";
+			form.action = "/xdm/v1/infra/insContract/insContractXdmUel";
 			form.submit();
 		}
 		
 		document.getElementById("btnUpdt").onclick = function(){
 			let form = document.querySelector("form[name=form]");
-			form.action = "/v1/infra/insContract/insContractXdmUpdt";
+			form.action = "/xdm/v1/infra/insContract/insContractXdmUpdt";
 			form.submit();
 		}
 	</script>

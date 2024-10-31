@@ -139,7 +139,7 @@
 
 							<h2>가입신청 관리</h2>
 							<form method="post"
-								action="/v1/infra/applicationShin/applicationShinXdmList" name="formList">
+								action="/xdm/v1/infra/applicationShin/applicationShinXdmList" name="formList">
 								<input type="hidden" name="thisPage" th:value="${vo.thisPage}"
 									default="1" /> <input type="hidden" id="rowNumToShow"
 									name="rowNumToShow" th:value="${vo.rowNumToShow}" />
@@ -263,7 +263,7 @@
 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
 																<td th:text="${list.shinSeq}"></td>
 																<td>
-																	<a th:href="@{/v1/infra/applicationShin/applicationShinXdmMForm(shinSeq=${list.shinSeq})}" th:text="${list.inspName}" style="color:blue;"></a>
+																	<a th:href="@{/xdm/v1/infra/applicationShin/applicationShinXdmMForm(shinSeq=${list.shinSeq})}" th:text="${list.inspName}" style="color:blue;"></a>
 																</td>
 																<td th:text="${list.cmName}"></td>
 																<td th:text="${list.insmName}"></td>
@@ -435,24 +435,24 @@
 
 		goList = function(thisPage) {
 			document.querySelector("input[name=thisPage]").value = thisPage;
-			document.querySelector("form[name=formList]").action = "/v1/infra/applicationShin/applicationShinXdmList";
+			document.querySelector("form[name=formList]").action = "/xdm/v1/infra/applicationShin/applicationShinXdmList";
 			document.querySelector("form[name=formList]").submit();
 		}
 
 		document.getElementById("changeRowNum").onchange = function() {
 			document.getElementById("rowNumToShow").value = document
 					.getElementById("changeRowNum").value;
-			formList.action = "/v1/infra/applicationShin/applicationShinXdmList";
+			formList.action = "/xdm/v1/infra/applicationShin/applicationShinXdmList";
 			formList.submit();
 		}
 
 		//insert 버튼
 		document.getElementById("btnInsert").onclick = function() {
-			window.location = "/v1/infra/applicationShin/applicationShinXdmForm";
+			window.location = "/xdm/v1/infra/applicationShin/applicationShinXdmForm";
 		}
 		//reload 버튼
 		document.getElementById("btnReload").onclick = function() {
-			window.location = "/v1/infra/applicationShin/applicationShinXdmList";
+			window.location = "/xdm/v1/infra/applicationShin/applicationShinXdmList";
 		}
 	</script>
 

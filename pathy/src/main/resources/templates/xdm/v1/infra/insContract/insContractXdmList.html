@@ -139,7 +139,7 @@
 
 							<h2>보험계약관리</h2>
 							<form method="post"
-								action="/v1/infra/insContract/insContractXdmList" name="formList">
+								action="/xdm/v1/infra/insContract/insContractXdmList" name="formList">
 								<input type="hidden" name="thisPage" th:value="${vo.thisPage}"
 									default="1" /> <input type="hidden" id="rowNumToShow"
 									name="rowNumToShow" th:value="${vo.rowNumToShow}" />
@@ -263,7 +263,7 @@
 																	</td>
 																	<td>
 																		<a	style="color:blue;"
-																			th:href="@{/v1/infra/insContract/insContractXdmMForm(inscSeq=${list.inscSeq})}"
+																			th:href="@{/xdm/v1/infra/insContract/insContractXdmMForm(inscSeq=${list.inscSeq})}"
 																			th:text="${list.inspName}"
 																			>
 																		</a>
@@ -440,24 +440,24 @@
 
 		goList = function(thisPage) {
 			document.querySelector("input[name=thisPage]").value = thisPage;
-			document.querySelector("form[name=formList]").action = "/v1/infra/insContract/insContractXdmList";
+			document.querySelector("form[name=formList]").action = "/xdm/v1/infra/insContract/insContractXdmList";
 			document.querySelector("form[name=formList]").submit();
 		}
 
 		document.getElementById("changeRowNum").onchange = function() {
 			document.getElementById("rowNumToShow").value = document
 					.getElementById("changeRowNum").value;
-			formList.action = "/v1/infra/insContract/insContractXdmList";
+			formList.action = "/xdm/v1/infra/insContract/insContractXdmList";
 			formList.submit();
 		}
 
 		//insert 버튼
 		document.getElementById("btnInsert").onclick = function() {
-			window.location = "/v1/infra/insContract/insContractXdmForm";
+			window.location = "/xdm/v1/infra/insContract/insContractXdmForm";
 		}
 		//reload 버튼
 		document.getElementById("btnReload").onclick = function() {
-			window.location = "/v1/infra/insContract/insContractXdmList";
+			window.location = "/xdm/v1/infra/insContract/insContractXdmList";
 		}
 	</script>
 

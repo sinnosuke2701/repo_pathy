@@ -14,7 +14,7 @@ public class ApplicationShinController {
 	@Autowired
 	ApplicationShinService applicationShinService;
 	
-	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmList")
+	@RequestMapping(value="/xdm/v1/infra/applicationShin/applicationShinXdmList")
 	public String applicationXdmList(@ModelAttribute("vo") ApplicationShinVo applicationShinVo, Model model) {
 		
 // 초기값 세팅이 없는 경우 사용
@@ -29,7 +29,7 @@ public class ApplicationShinController {
 		return "/xdm/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
-	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmForm")
+	@RequestMapping(value="/xdm/v1/infra/applicationShin/applicationShinXdmForm")
 	public String applicationShinXdmForm(Model model, ApplicationShinDto applicationShinDto) {
 		model.addAttribute("item", applicationShinService.selectOne(applicationShinDto));
 		model.addAttribute("listInsProduct", applicationShinService.selectListInsProduct());
@@ -38,13 +38,13 @@ public class ApplicationShinController {
 		return "/xdm/v1/infra/applicationShin/applicationShinXdmForm";
 	}
 	
-	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmInst")
+	@RequestMapping(value="/xdm/v1/infra/applicationShin/applicationShinXdmInst")
 	public String applicationShinXdmInst(ApplicationShinDto applicationShinDto) {
 		applicationShinService.insert(applicationShinDto);
-		return "redirect:/v1/infra/applicationShin/applicationShinXdmList";
+		return "redirect:/xdm/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
-	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmMForm")
+	@RequestMapping(value="/xdm/v1/infra/applicationShin/applicationShinXdmMForm")
 	public String applicationShinXdmMForm(Model model, ApplicationShinDto applicationShinDto) {
 		model.addAttribute("item", applicationShinService.selectOne(applicationShinDto));
 		model.addAttribute("listInsProduct", applicationShinService.selectListInsProduct());
@@ -54,25 +54,25 @@ public class ApplicationShinController {
 	}
 	
 //	update - update
-	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmUpdt")
+	@RequestMapping(value="/xdm/v1/infra/applicationShin/applicationShinXdmUpdt")
 	public String applicationShinXdmUpdt(ApplicationShinDto applicationShinDto) {
 		applicationShinService.update(applicationShinDto);
 		System.out.println("update");
-		return "redirect:/v1/infra/applicationShin/applicationShinXdmList";
+		return "redirect:/xdm/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
 //	uelete
-	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmUel")
+	@RequestMapping(value="/xdm/v1/infra/applicationShin/applicationShinXdmUel")
 	public String applicationShinXdmUel(ApplicationShinDto applicationShinDto) {
 		applicationShinService.uelete(applicationShinDto);
-		return "redirect:/v1/infra/applicationShin/applicationShinXdmList";
+		return "redirect:/xdm/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
 //	delete
 	@RequestMapping(value="/v1/infra/applicationShin/applicationShinXdmDel")
 	public String applicationShinXdmDel(ApplicationShinDto applicationShinDto) {
 		applicationShinService.delete(applicationShinDto);
-		return "redirect:/v1/infra/applicationShin/applicationShinXdmList";
+		return "redirect:/xdm/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
 

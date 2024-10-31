@@ -15,7 +15,7 @@ public class InsContractController {
 	InsContractService insContractService;
 	
 //	insContractXdmList
-	@RequestMapping(value="/v1/infra/insContract/insContractXdmList")
+	@RequestMapping(value="/xdm/v1/infra/insContract/insContractXdmList")
 	public String insContractXdmList(@ModelAttribute("vo") InsContractVo insContractVo, Model model) {
 //		날짜 필드에 시간 추가
 //		insContractVo.setShDateStart(insContractVo.getShDateStart()+" 00:00:00");			
@@ -36,7 +36,7 @@ public class InsContractController {
 	}
 	
 //	insContractXdmForm
-	@RequestMapping(value="/v1/infra/insContract/insContractXdmForm")
+	@RequestMapping(value="/xdm/v1/infra/insContract/insContractXdmForm")
 	public String insContractXdmForm(InsContractVo insContractVo, Model model) {
 		model.addAttribute("listInsProduct", insContractService.selectListInsProduct());
 		model.addAttribute("listCustomer", insContractService.selectListCustomer());
@@ -44,16 +44,16 @@ public class InsContractController {
 	}
 	
 //	insContractXdmInst
-	@RequestMapping(value="/v1/infra/insContract/insContractXdmInst")
+	@RequestMapping(value="/xdm/v1/infra/insContract/insContractXdmInst")
 	public String insContractXdmInst(InsContractDto insContractDto) {
 		insContractService.insert(insContractDto);
-		return "redirect:/v1/infra/insContract/insContractXdmList";
+		return "redirect:/xdm/v1/infra/insContract/insContractXdmList";
 	}
 	
 	
 //	insContractXdmMForm
 //	update - selectOne
-	@RequestMapping(value="/v1/infra/insContract/insContractXdmMForm")
+	@RequestMapping(value="/xdm/v1/infra/insContract/insContractXdmMForm")
 	public String insContractXdmMForm(InsContractDto insContractDto, Model model) {
 		model.addAttribute("item", insContractService.selectOne(insContractDto));
 		model.addAttribute("listInsProduct", insContractService.selectListInsProduct());
@@ -62,25 +62,25 @@ public class InsContractController {
 	}
 	
 //	update - update
-	@RequestMapping(value="/v1/infra/insContract/insContractXdmUpdt")
+	@RequestMapping(value="/xdm/v1/infra/insContract/insContractXdmUpdt")
 	public String insContractXdmUpdt(InsContractDto insContractDto) {
 		insContractService.update(insContractDto);
 		System.out.println("update");
-		return "redirect:/v1/infra/insContract/insContractXdmList";
+		return "redirect:/xdm/v1/infra/insContract/insContractXdmList";
 	}
 	
 //	uelete
-	@RequestMapping(value="/v1/infra/insContract/insContractXdmUel")
+	@RequestMapping(value="/xdm/v1/infra/insContract/insContractXdmUel")
 	public String insContractXdmUel(InsContractDto insContractDto) {
 		insContractService.uelete(insContractDto);
-		return "redirect:/v1/infra/insContract/insContractXdmList";
+		return "redirect:/xdm/v1/infra/insContract/insContractXdmList";
 	}
 	
 //	delete
-	@RequestMapping(value="/v1/infra/insContract/insContractXdmDel")
+	@RequestMapping(value="/xdm/v1/infra/insContract/insContractXdmDel")
 	public String insContractXdmDel(InsContractDto insContractDto) {
 		insContractService.delete(insContractDto);
-		return "redirect:/v1/infra/insContract/insContractXdmList";
+		return "redirect:/xdm/v1/infra/insContract/insContractXdmList";
 	}
 
 }

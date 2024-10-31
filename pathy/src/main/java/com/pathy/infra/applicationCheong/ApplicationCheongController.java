@@ -14,7 +14,7 @@ public class ApplicationCheongController {
 	@Autowired
 	ApplicationCheongService applicationCheongService;
 	
-	@RequestMapping(value="/v1/infra/applicationCheong/applicationCheongXdmList")
+	@RequestMapping(value="/xdm/v1/infra/applicationCheong/applicationCheongXdmList")
 	public String applicationXdmList(@ModelAttribute("vo") ApplicationCheongVo applicationCheongVo, Model model) {
 		
 // 초기값 세팅이 없는 경우 사용
@@ -29,7 +29,7 @@ public class ApplicationCheongController {
 		return "/xdm/v1/infra/applicationCheong/applicationCheongXdmList";
 	}
 	
-	@RequestMapping(value="/v1/infra/applicationCheong/applicationCheongXdmForm")
+	@RequestMapping(value="/xdm/v1/infra/applicationCheong/applicationCheongXdmForm")
 	public String applicationCheongXdmForm(Model model, ApplicationCheongDto applicationCheongDto) {
 		model.addAttribute("item", applicationCheongService.selectOne(applicationCheongDto));
 		model.addAttribute("listInsProduct", applicationCheongService.selectListInsProduct());
@@ -38,13 +38,13 @@ public class ApplicationCheongController {
 		return "/xdm/v1/infra/applicationCheong/applicationCheongXdmForm";
 	}
 	
-	@RequestMapping(value="/v1/infra/applicationCheong/applicationCheongXdmInst")
+	@RequestMapping(value="/xdm/v1/infra/applicationCheong/applicationCheongXdmInst")
 	public String applicationCheongXdmInst(ApplicationCheongDto applicationCheongDto) {
 		applicationCheongService.insert(applicationCheongDto);
-		return "redirect:/v1/infra/applicationCheong/applicationCheongXdmList";
+		return "redirect:/xdm/v1/infra/applicationCheong/applicationCheongXdmList";
 	}
 	
-	@RequestMapping(value="/v1/infra/applicationCheong/applicationCheongXdmMForm")
+	@RequestMapping(value="/xdm/v1/infra/applicationCheong/applicationCheongXdmMForm")
 	public String applicationCheongXdmMForm(Model model, ApplicationCheongDto applicationCheongDto) {
 		model.addAttribute("item", applicationCheongService.selectOne(applicationCheongDto));
 		model.addAttribute("listInsProduct", applicationCheongService.selectListInsProduct());
@@ -54,22 +54,22 @@ public class ApplicationCheongController {
 	}
 	
 //	update - update
-	@RequestMapping(value="/v1/infra/applicationCheong/applicationCheongXdmUpdt")
+	@RequestMapping(value="/xdm/v1/infra/applicationCheong/applicationCheongXdmUpdt")
 	public String applicationCheongXdmUpdt(ApplicationCheongDto applicationCheongDto) {
 		applicationCheongService.update(applicationCheongDto);
 		System.out.println("update");
-		return "redirect:/v1/infra/applicationCheong/applicationCheongXdmList";
+		return "redirect:/xdm/v1/infra/applicationCheong/applicationCheongXdmList";
 	}
 	
 //	uelete
-	@RequestMapping(value="/v1/infra/applicationCheong/applicationCheongXdmUel")
+	@RequestMapping(value="/xdm/v1/infra/applicationCheong/applicationCheongXdmUel")
 	public String applicationCheongXdmUel(ApplicationCheongDto applicationCheongDto) {
 		applicationCheongService.uelete(applicationCheongDto);
-		return "redirect:/v1/infra/applicationCheong/applicationCheongXdmList";
+		return "redirect:/xdm/v1/infra/applicationCheong/applicationCheongXdmList";
 	}
 	
 //	delete
-	@RequestMapping(value="/v1/infra/applicationCheong/applicationCheongXdmDel")
+	@RequestMapping(value="/xdm/v1/infra/applicationCheong/applicationCheongXdmDel")
 	public String applicationCheongXdmDel(ApplicationCheongDto applicationCheongDto) {
 		applicationCheongService.delete(applicationCheongDto);
 		return "redirect:/v1/infra/applicationCheong/applicationCheongXdmList";
