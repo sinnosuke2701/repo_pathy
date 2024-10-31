@@ -345,6 +345,22 @@
 			window.location = "/xdm/v1/infra/qna/qnaXdmList";
 		}
 	</script>
+	<script>
+			document.getElementById("btnLogout").onclick = function(){
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/signoutXdmProc"
+					,success: function(response) {
+								location.href = "/xdm/v1/infra/index/signinXdmView";
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+			}
+	</script>
 	
 </body>
 

@@ -381,6 +381,24 @@
 	    }
 	</script>
 <!-- kakao 우편번호 End -->
+<!-- logout Start -->
+	<script>
+			document.getElementById("btnLogout").onclick = function(){
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/signoutXdmProc"
+					,success: function(response) {
+								location.href = "/xdm/v1/infra/index/signinXdmView";
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+			}
+	</script>
+<!-- logout End -->
 </body>
 
 </html>
