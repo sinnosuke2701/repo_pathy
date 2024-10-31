@@ -145,7 +145,7 @@
 									<div class="card-title">기본정보</div>
 								</div>
 								<form class="needs-validation" novalidate id="form" name="form"
-									method="post" action="/v1/infra/applicationCheong/applicationCheongXdmInst">
+									method="post" action="/xdm/v1/infra/applicationCheong/applicationCheongXdmInst">
 									<div class="card-body">
 										<div class="container-fluid">
 											<div class="row mb-3">
@@ -327,7 +327,7 @@
 	
 	<script>
 		document.getElementById("btnList").onclick = function (){
-			window.location = "/v1/infra/applicationCheong/applicationCheongXdmList";
+			window.location = "/xdm/v1/infra/applicationCheong/applicationCheongXdmList";
 		}
 		
 		document.getElementById("btnSubmit").onclick = function (){
@@ -376,7 +376,7 @@
 // 		    	//by pass
 // 		    }
 			let form = document.querySelector("form[name=form]");
-			form.action = "/v1/infra/applicationCheong/applicationCheongXdmInst";
+			form.action = "/xdm/v1/infra/applicationCheong/applicationCheongXdmInst";
 			form.submit(); 
 		}
 	</script>

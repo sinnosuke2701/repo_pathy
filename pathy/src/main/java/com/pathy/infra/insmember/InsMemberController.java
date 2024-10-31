@@ -75,11 +75,6 @@ public class InsMemberController {
 		return "redirect:/xdm/v1/infra/insmember/insMemberXdmList";
 	}
 	
-	@RequestMapping(value = "/xdm/v1/infra/index/indexXdmView")
-	public String indexXdmView(InsMemberDto InsMemberDto) {
-		return "/xdm/v1/infra/index/indexXdmView";
-	}
-	
 	@RequestMapping(value = "/xdm/v1/infra/index/signinXdmView")
 	public String signinXdmView(InsMemberDto InsMemberDto) {
 		return "/xdm/v1/infra/index/signinXdmView";

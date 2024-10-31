@@ -15,7 +15,7 @@ public class InsProductController {
 	InsProductService insProductService;
 	
 //	insProductXdmList
-	@RequestMapping(value="/v1/infra/insProduct/insProductXdmList")
+	@RequestMapping(value="/xdm/v1/infra/insProduct/insProductXdmList")
 	public String insProductXdmList(@ModelAttribute("vo") InsProductVo insProductVo, Model model) {
 //		날짜 필드에 시간 추가
 //		insProductVo.setShDateStart(insProductVo.getShDateStart()+" 00:00:00");			
@@ -36,47 +36,47 @@ public class InsProductController {
 	}
 	
 //	insProductXdmForm
-	@RequestMapping(value="/v1/infra/insProduct/insProductXdmForm")
+	@RequestMapping(value="/xdm/v1/infra/insProduct/insProductXdmForm")
 	public String insProductXdmForm() {
 		return "/xdm/v1/infra/insProduct/insProductXdmForm";
 	}
 	
 //	insProductXdmInst
-	@RequestMapping(value="/v1/infra/insProduct/insProductXdmInst")
+	@RequestMapping(value="/xdm/v1/infra/insProduct/insProductXdmInst")
 	public String insProductXdmInst(InsProductDto insProductDto) {
 		insProductService.insert(insProductDto);
-		return "redirect:/v1/infra/insProduct/insProductXdmList";
+		return "redirect:/xdm/v1/infra/insProduct/insProductXdmList";
 	}
 	
 	
 //	insProductXdmMForm
 //	update - selectOne
-	@RequestMapping(value="/v1/infra/insProduct/insProductXdmMForm")
+	@RequestMapping(value="/xdm/v1/infra/insProduct/insProductXdmMForm")
 	public String insProductXdmMForm(InsProductDto insProductDto, Model model) {
 		model.addAttribute("item", insProductService.selectOne(insProductDto));
 		return "/xdm/v1/infra/insProduct/insProductXdmMForm";
 	}
 	
 //	update - update
-	@RequestMapping(value="/v1/infra/insProduct/insProductXdmUpdt")
+	@RequestMapping(value="/xdm/v1/infra/insProduct/insProductXdmUpdt")
 	public String insProductXdmUpdt(InsProductDto insProductDto) {
 		insProductService.update(insProductDto);
 		System.out.println("update");
-		return "redirect:/v1/infra/insProduct/insProductXdmList";
+		return "redirect:/xdm/v1/infra/insProduct/insProductXdmList";
 	}
 	
 //	uelete
-	@RequestMapping(value="/v1/infra/insProduct/insProductXdmUel")
+	@RequestMapping(value="/xdm/v1/infra/insProduct/insProductXdmUel")
 	public String insProductXdmUel(InsProductDto insProductDto) {
 		insProductService.uelete(insProductDto);
-		return "redirect:/v1/infra/insProduct/insProductXdmList";
+		return "redirect:/xdm/v1/infra/insProduct/insProductXdmList";
 	}
 	
 //	delete
-	@RequestMapping(value="/v1/infra/insProduct/insProductXdmDel")
+	@RequestMapping(value="/xdm/v1/infra/insProduct/insProductXdmDel")
 	public String insProductXdmDel(InsProductDto insProductDto) {
 		insProductService.delete(insProductDto);
-		return "redirect:/v1/infra/insProduct/insProductXdmList";
+		return "redirect:/xdm/v1/infra/insProduct/insProductXdmList";
 	}
 	
 }

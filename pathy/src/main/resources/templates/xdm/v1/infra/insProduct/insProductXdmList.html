@@ -139,7 +139,7 @@
 
 							<h2>보험상품</h2>
 							<form method="post"
-								action="/v1/infra/insProduct/insProductXdmList" name="formList">
+								action="/xdm/v1/infra/insProduct/insProductXdmList" name="formList">
 								<input type="hidden" name="thisPage" th:value="${vo.thisPage}"
 									default="1" /> <input type="hidden" id="rowNumToShow"
 									name="rowNumToShow" th:value="${vo.rowNumToShow}" />
@@ -252,7 +252,7 @@
 																<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
 																<td th:text="${list.inspSeq}"></td>
 																<td>
-																	<a style="color:blue;" th:text="${list.inspName}" th:href="@{/v1/infra/insProduct/insProductXdmMForm(inspSeq=${list.inspSeq})}"></a>
+																	<a style="color:blue;" th:text="${list.inspName}" th:href="@{/xdm/v1/infra/insProduct/insProductXdmMForm(inspSeq=${list.inspSeq})}"></a>
 																</td>
 																<td th:text="${list.inspBojang}"></td>
 																<td th:text="${list.inspJogun}"></td>
@@ -424,24 +424,24 @@
 
 		goList = function(thisPage) {
 			document.querySelector("input[name=thisPage]").value = thisPage;
-			document.querySelector("form[name=formList]").action = "/v1/infra/insProduct/insProductXdmList";
+			document.querySelector("form[name=formList]").action = "/xdm/v1/infra/insProduct/insProductXdmList";
 			document.querySelector("form[name=formList]").submit();
 		}
 
 		document.getElementById("changeRowNum").onchange = function() {
 			document.getElementById("rowNumToShow").value = document
 					.getElementById("changeRowNum").value;
-			formList.action = "/v1/infra/insProduct/insProductXdmList";
+			formList.action = "/xdm/v1/infra/insProduct/insProductXdmList";
 			formList.submit();
 		}
 
 		//insert 버튼
 		document.getElementById("btnInsert").onclick = function() {
-			window.location = "/v1/infra/insProduct/insProductXdmForm";
+			window.location = "/xdm/v1/infra/insProduct/insProductXdmForm";
 		}
 		//reload 버튼
 		document.getElementById("btnReload").onclick = function() {
-			window.location = "/v1/infra/insProduct/insProductXdmList";
+			window.location = "/xdm/v1/infra/insProduct/insProductXdmList";
 		}
 	</script>
 
