@@ -10,6 +10,7 @@ public class ApplicationCheongVo {
 	private String shDateStart;
 	private String shDateEnd;
 	private Integer shOptionDate;
+	private Integer shCheongStatus;
 
 	// 페이징
 	private int thisPage = 1; // 현재 페이지
@@ -126,6 +127,14 @@ public class ApplicationCheongVo {
 
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
+	}
+
+	public Integer getShCheongStatus() {
+		return shCheongStatus;
+	}
+
+	public void setShCheongStatus(Integer shCheongStatus) {
+		this.shCheongStatus = shCheongStatus;
 	}
 
 	public int getThisPage() {

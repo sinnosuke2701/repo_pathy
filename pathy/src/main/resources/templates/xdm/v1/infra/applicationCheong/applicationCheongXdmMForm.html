@@ -127,7 +127,7 @@
 				<li class="breadcrumb-item breadcrumb-active" aria-current="page">Default</li>
 			</ol>
 			<!-- Breadcrumb end -->
-			<h3>청구서 수정</h3>
+			<h3>보험금청구서 수정</h3>
 			<!-- Content wrapper scroll start -->
 			<div class="content-wrapper-scroll">
 
@@ -207,6 +207,18 @@
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">
+																<label for="cheongPrice" class="form-label">청구진행상태<span
+																	style="color: red;">*</span></label>
+																<select class="form-select" id="cheongStatus" name="cheongStatus">
+																	<option value="">청구진행상태</option>
+																	<option th:each="list : ${@codeService.selectListCachedCode(6)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${item?.cheongStatus}"></option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body">
 																<label for="cheongPaper" class="form-label">필요서류<span
 																	style="color: red;">*</span></label>
 																<input type="text" class="form-control" id="cheongPaper" name="cheongPaper" th:value="${item?.cheongPaper}" autocomplete="off">
@@ -226,7 +238,6 @@
 															</div>
 														</div>
 													</div>
-													<div class="col-3"></div>
 													<div class="col-md-3">
 														<div class="card">
 															<div class="card-body">

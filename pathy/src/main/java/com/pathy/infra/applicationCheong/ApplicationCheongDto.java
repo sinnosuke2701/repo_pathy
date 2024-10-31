@@ -6,6 +6,7 @@ public class ApplicationCheongDto {
 	
 	private String cheongSeq;
 	private String cheongPrice;
+	private Integer cheongStatus;
 	private Integer cheongDelNy;
 	private String cheongPaper;
 	private Date cheongDateTimeReg;
@@ -33,6 +34,12 @@ public class ApplicationCheongDto {
 	}
 	public void setCheongPrice(String cheongPrice) {
 		this.cheongPrice = cheongPrice;
+	}
+	public Integer getCheongStatus() {
+		return cheongStatus;
+	}
+	public void setCheongStatus(Integer cheongStatus) {
+		this.cheongStatus = cheongStatus;
 	}
 	public Integer getCheongDelNy() {
 		return cheongDelNy;

@@ -247,9 +247,9 @@
 																<td>보험사 직원</td>
 																<td>신청일</td>
 																<td>가입일</td>
-																<td>삭제여부</td>
 																<td>등록일</td>
 																<td>수정일</td>
+																<td>삭제여부</td>
 															</tr>
 															<tr th:if="${#lists.isEmpty(list)}">
 																<td colspan="11" style="text-align: center;">
@@ -269,10 +269,10 @@
 																<td th:text="${list.insmName}"></td>
 																<td th:text="${list.shinDate}"></td>
 																<td th:text="${list.shinDateGa}"></td>
-																<td th:if="${list.shinDelNy eq 0}">N</td>
-																<td th:unless="${list.shinDelNy eq 0}">Y</td>
 																<td th:text="${#dates.format(list.shinDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
 																<td th:text="${#dates.format(list.shinDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																<td th:if="${list.shinDelNy eq 0}">N</td>
+																<td th:unless="${list.shinDelNy eq 0}">Y</td>
 															</tr>
 														</tbody>
 													</table>
