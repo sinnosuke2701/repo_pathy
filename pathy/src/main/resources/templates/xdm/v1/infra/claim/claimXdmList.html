@@ -239,7 +239,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='17' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='16' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -271,19 +271,17 @@
                                                             <td>지급일</td>
                                                             <td>지급 금액</td>
                                                             <td>지급 방법</td>
-                                                            <td>사용여부</td>
-                                                            <td>삭제여부</td>
+                                                            <td>삭제 여부</td>
                                                         </tr>
                                                         <tr th:if="${#lists.isEmpty(list)}">
-                                                        	<td colspan="18" style="text-align: center;">
+                                                        	<td colspan="17" style="text-align: center;">
                                                         		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
                                                         	</td>
                                                         </tr>
                                                         
                                                         <tr th:each="list : ${list}">
                                                         	<td><input type="checkbox"></td>
-                                                        	<td></td>
-<!--                                                         	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + ListStat.index)}"></td> -->
+                                                        	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}"></td>
                                                             <td th:text = "${list.cmSeq}"></td>
                                                             <td><a style="color:blue;" th:href="@{/xdm/v1/infra/claim/claimXdmMfom(clSeq=${list.clSeq})}" th:text="${list.cmName}"></a></td>
                                                             <td th:text = "${list.clSeq}"></td>
@@ -301,8 +299,6 @@
                                                             <td th:text = "${#dates.format(list.clDateTimePay, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                                             <td th:text = "${list.clPayOut}"></td>
                                                             <td th:text = "${list.clPayMethod}"></td>
-                                                            <td th:if = "${list.clUseNY eq 0}">N</td>
-                                                            <td th:unless="${list.clUseNY eq 0}">Y</td>
                                                             <td th:if = "${list.clDelNY eq 0}">N</td>
                                                             <td th:unless = "${list.clDelNY eq 0}">Y</td>
                                                         </tr>

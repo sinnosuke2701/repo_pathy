@@ -279,7 +279,7 @@
                                                 <table class="table m-0">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan='10' style="width: 140px; padding-right:0px;">
+                                                            <th colspan='9' style="width: 140px; padding-right:0px;">
                                                       	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
                                                            	</th>
 	                                           	            <th style="width: 140px; padding-right:0px;">
@@ -304,11 +304,10 @@
                                                             <td>배정 직원 이름</td>
                                                             <td>등록일</td>
                                                             <td>수정일</td>
-                                                            <td>사용여부</td>
                                                             <td>삭제여부</td>
                                                         </tr>
                                                         <tr th:if="${#lists.isEmpty(list)}">
-                                                        	<td colspan="11" style="text-align: center;">
+                                                        	<td colspan="10" style="text-align: center;">
                                                         		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
                                                         	</td>
                                                         </tr>
@@ -324,8 +323,6 @@
                                                             <td th:text = "${list.insmName}"></td>
                                                             <th th:text = "${#dates.format(list.clmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
                                                             <td th:text = "${#dates.format(list.clmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                            <td th:if = "${list.clmUseNY eq 0}">N</td>
-                                                            <td th:unless="${list.clmUseNY eq 0}">Y</td>
                                                             <td th:if = "${list.clmDelNY eq 0}">N</td>
                                                             <td th:unless = "${list.clmDelNY eq 0}">Y</td>
                                                         </tr>

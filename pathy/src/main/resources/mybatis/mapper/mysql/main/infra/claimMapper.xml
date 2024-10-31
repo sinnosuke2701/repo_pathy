@@ -39,6 +39,7 @@
 				,c.clType
 				,c.clTitle
 				,c.clDec
+				,c.clTreDesc
 				,c.clDateTimeReg
 				,c.clDateTimeEdit
 				,c.clSituation
@@ -76,6 +77,7 @@
 			,c.clType
 			,c.clTitle
 			,c.clDec
+			,c.clTreDesc
 			,c.clDateTimeReg
 			,c.clDateTimeEdit
 			,c.clSituation
@@ -118,6 +120,7 @@
 			clType
 			,clTitle
 			,clDec
+			,clTreDesc
 			,clSituation
 			,clDateTimeReg
 			,clDateTimeEdit
@@ -134,6 +137,7 @@
     		#{clType}
     		,#{clTitle}
     		,#{clDec}
+    		,#{clTreDesc}
     		,#{clSituation}
     		,now()
     		,now()
@@ -157,6 +161,8 @@
 		update claim
 		set
 			clType = #{clType}
+			,clDec = #{clDec}
+			,clTreDesc = #{clTreDesc}
 			,clSituation = #{clSituation}
 			,clUseNY = #{clUseNY}
 		where 1 = 1
