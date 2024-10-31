@@ -39,6 +39,7 @@
 		    b.cdDelNy,
 		    b.cdDateTimeReg,
 		    b.cdDateTimeEdit,
+		    b.codeGroup_cgSeq,
 		    a.cgName,
 		    a.cgSeq,
 		     (SELECT 

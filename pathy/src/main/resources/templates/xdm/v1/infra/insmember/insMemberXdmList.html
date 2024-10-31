@@ -207,70 +207,72 @@
                                 <div class="col-sm-12 col-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table m-0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th colspan='13' style="width: 140px; padding-right:0px;">
-                                                      	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
-                                                           	</th>
-	                                           	            <th style="width: 140px; padding-right:0px;">
-	                                           	            	<select class="form-select" aria-label="Default select example"
-            	                                                        style="width: 140px; padding-right:0px;" id="changeRowNum" name="changeRowNum">
-                	                                                    <option value="5" th:selected="${vo.rowNumToShow eq 5}">5</option>
-                    	                                                <option value="10" th:selected="${vo.rowNumToShow eq 10}">10</option>
-                        	                                            <option value="15" th:selected="${vo.rowNumToShow eq 15}">15</option>
-                            	                                        <option value="20" th:selected="${vo.rowNumToShow eq 20}">20</option>
-                                    	                        </select>
-                                    	                    </th>
-                                                		</tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                        	<td><input type="checkbox"</td>
-                                                        	<td>#</td>
-                                                        	<td>직원 코드</td>
-                                                            <td>직원 이름</td>
-                                                            <td>성별</td>
-                                                            <td>아이디</td>
-                                                            <td>이메일</td>
-                                                            <td>주민번호</td>
-                                                            <td>전화번호</td>
-                                                            <td>배정 여부</td>
-                                                            <td>사용여부</td>
-                                                            <td>삭제여부</td>
-                                                            <td>등록일</td>
-                                                            <td>수정일</td>
-                                                        </tr>
-                                                        <tr th:if="${#lists.isEmpty(list)}">
-                                                        	<td colspan="14" style="text-align: center;">
-                                                        		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
-                                                        	</td>
-                                                        </tr>
-                                                        
-                                                        <tr th:each="list : ${list}">
-                                                        	<td><input type="checkbox"></td>
-                                                        	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
-                                                            <td th:text = "${list.insmSeq}" class="align-middle"></td>
-                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/insmember/insMemberXdmMfom(insmSeq=${list.insmSeq})}" th:text="${list.insmName}"></a></td>
-                                                            <td th:if="${list.insmGender != null}" th:text="${@codeService.selectOneCachedCode(list.insmGender)}"></td>
-	                              							<td th:unless="${list.insmGender != null}"></td>
-                                                            <td th:text = "${list.insmId}"></td>
-                                                            <td th:text = "${list.insmEmail}"></td>
-                                                            <td th:text = "${list.insmSoNum}"></td>
-                                                            <td th:text = "${list.insmPhone}"></td>
-                                                            <td th:if="${list.insmClmNy eq 8}">Y</td>
-                                                            <td th:unless="${list.insmClmNy eq 8}" class="gender align-middle">N</td>	
-                                                            <td th:if = "${list.insmUseNY eq 0}">N</td>
-                                                            <td th:unless="${list.insmUseNY eq 0}">Y</td>
-                                                            <td th:if = "${list.insmDelNY eq 0}">N</td>
-                                                            <td th:unless = "${list.insmDelNY eq 0}">Y</td>
-                                                            <th th:text = "${#dates.format(list.insmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
-                                                            <td th:text = "${#dates.format(list.insmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                        	<div class="list-scroll">
+	                                            <div class="table-responsive">
+	                                                <table class="table m-0">
+	                                                    <thead>
+	                                                        <tr>
+	                                                            <th colspan='13' style="width: 140px; padding-right:0px;">
+	                                                      	    	<span class="fs-5" th:text= "'Total:  '+${vo.totalRows}"></span>
+	                                                           	</th>
+		                                           	            <th style="width: 140px; padding-right:0px;">
+		                                           	            	<select class="form-select" aria-label="Default select example"
+	            	                                                        style="width: 140px; padding-right:0px;" id="changeRowNum" name="changeRowNum">
+	                	                                                    <option value="5" th:selected="${vo.rowNumToShow eq 5}">5</option>
+	                    	                                                <option value="10" th:selected="${vo.rowNumToShow eq 10}">10</option>
+	                        	                                            <option value="15" th:selected="${vo.rowNumToShow eq 15}">15</option>
+	                            	                                        <option value="20" th:selected="${vo.rowNumToShow eq 20}">20</option>
+	                                    	                        </select>
+	                                    	                    </th>
+	                                                		</tr>
+	                                                    </thead>
+	                                                    <tbody>
+	                                                        <tr>
+	                                                        	<td><input type="checkbox"</td>
+	                                                        	<td>#</td>
+	                                                        	<td>직원 코드</td>
+	                                                            <td>직원 이름</td>
+	                                                            <td>성별</td>
+	                                                            <td>아이디</td>
+	                                                            <td>이메일</td>
+	                                                            <td>주민번호</td>
+	                                                            <td>전화번호</td>
+	                                                            <td>배정 여부</td>
+	                                                            <td>사용여부</td>
+	                                                            <td>삭제여부</td>
+	                                                            <td>등록일</td>
+	                                                            <td>수정일</td>
+	                                                        </tr>
+	                                                        <tr th:if="${#lists.isEmpty(list)}">
+	                                                        	<td colspan="14" style="text-align: center;">
+	                                                        		<p class="fs-5" style="padding-top: 12px;">there are no data!</p>
+	                                                        	</td>
+	                                                        </tr>
+	                                                        
+	                                                        <tr th:each="list : ${list}">
+	                                                        	<td><input type="checkbox"></td>
+	                                                        	<td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
+	                                                            <td th:text = "${list.insmSeq}" class="align-middle"></td>
+	                                                            <td><a style="color:blue;" th:href="@{/xdm/v1/infra/insmember/insMemberXdmMfom(insmSeq=${list.insmSeq})}" th:text="${list.insmName}"></a></td>
+	                                                            <td th:if="${list.insmGender != null}" th:text="${@codeService.selectOneCachedCode(list.insmGender)}"></td>
+		                              							<td th:unless="${list.insmGender != null}"></td>
+	                                                            <td th:text = "${list.insmId}"></td>
+	                                                            <td th:text = "${list.insmEmail}"></td>
+	                                                            <td th:text = "${list.insmSoNum}"></td>
+	                                                            <td th:text = "${list.insmPhone}"></td>
+	                                                            <td th:if="${list.insmClmNy eq 8}">Y</td>
+	                                                            <td th:unless="${list.insmClmNy eq 8}" class="gender align-middle">N</td>	
+	                                                            <td th:if = "${list.insmUseNY eq 0}">N</td>
+	                                                            <td th:unless="${list.insmUseNY eq 0}">Y</td>
+	                                                            <td th:if = "${list.insmDelNY eq 0}">N</td>
+	                                                            <td th:unless = "${list.insmDelNY eq 0}">Y</td>
+	                                                            <th th:text = "${#dates.format(list.insmDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></th>
+	                                                            <td th:text = "${#dates.format(list.insmDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+	                                                        </tr>
+	                                                    </tbody>
+	                                                </table>
+	                                            </div>
+	                                        </div>
 
                                             <!--페이지네이션 시작-->
                                             <div aria-label="...">

@@ -1,75 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <style>
-        hr {
-            background: black;
-            border: 0;
-        }
-    </style>
-    <style>
-        svg.className {
-            width: 100px;
-            height: 100px;
-            color: limegreen;
-        }
-    </style>
-
-    <script>
-        function deleteSelectedRows() {
-            //테이블 요소를 가져옵니다.
-            var table = document.getElementById('basicExample');
-            var checkboxes = table.querySelectorAll('tbody input[type="checkbox"]:checked');
-
-            // 체크된 각 행을 삭제합니다.
-            checkboxes.forEach(function (checkbox) {
-                var row = checkbox.closest('tr');
-                row.remove();
-            });
-        }
-    </script>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Meta -->
-    <meta name="description" content="Vivo - Responsive Bootstrap 5 Dashboard Template">
-    <meta name="author" content="Bootstrap Gallery">
-    <link rel="shortcut icon" href="/xdm/v1/template/vivo/assets/images/favicon.svg">
-
-    <!-- Title -->
-    <title>Vivo Admin Template - Admin Dashboard</title>
-
-
-    <!-- *************
-         ************ Common Css Files *************
-      ************ -->
-    <!-- Animated css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/animate.css">
-
-    <!-- Bootstrap font icons css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/fonts/bootstrap/bootstrap-icons.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/assets/css/main.min.css">
-
-	<!-- datetimepicker css -->
-	<link rel="stylesheet" href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
-
-    <!-- *************
-         ************ Vendor Css Files *************
-      ************ -->
-
-    <!-- Scrollbar CSS -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/overlay-scroll/OverlayScrollbars.min.css">
-
-    <!-- Data Tables -->
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5.css" />
-    <link rel="stylesheet" href="/xdm/v1/template/vivo/vendor/datatables/dataTables.bs5-custom.css" />
-
-</head>
+<th:block th:replace="~{/xdm/v1/infra/include/head :: head}"></th:block>
 
 <body>
 
@@ -104,79 +36,7 @@
                 <div class="toggle-sidebar" id="toggle-sidebar"><i class="bi bi-list"></i></div>
 
                 <!-- Header actions ccontainer start -->
-                <div class="header-actions-container">
-
-                    <!-- Search container start -->
-                    <div class="search-container">
-
-                        <!-- Search input group start -->
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search anything">
-                            <button class="btn" type="button">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-                        <!-- Search input group end -->
-
-                    </div>
-                    <!-- Search container end -->
-
-                    <!-- Leads start -->
-                    <a href="orders.html" class="leads d-none d-xl-flex">
-                        <div class="lead-details">You have <span class="count"> 21 </span> new leads </div>
-                        <span class="lead-icon"><i
-                                class="bi bi-bell-fill animate__animated animate__swing animate__infinite infinite"></i><b
-                                class="dot animate__animated animate__heartBeat animate__infinite"></b></span>
-                    </a>
-                    <!-- Leads end -->
-
-                    <!-- Header actions start -->
-                    <ul class="header-actions">
-                        <li class="dropdown d-none d-md-block">
-                            <a href="#" id="countries" data-toggle="dropdown" aria-haspopup="true">
-                                <img src="/xdm/v1/template/vivo/assets/images/flags/1x1/gb.svg" class="flag-img" alt="AI Admin Dashboards" />
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end mini" aria-labelledby="countries">
-                                <div class="country-container">
-                                    <a href="index.html">
-                                        <img src="/xdm/v1/template/vivo/assets/images/flags/1x1/us.svg" alt="Clean Admin Dashboards" />
-                                    </a>
-                                    <a href="index.html">
-                                        <img src="/xdm/v1/template/vivo/assets/images/flags/1x1/in.svg" alt="Google Dashboards" />
-                                    </a>
-                                    <a href="index.html">
-                                        <img src="/xdm/v1/template/vivo/assets/images/flags/1x1/br.svg" alt="Admin Panels" />
-                                    </a>
-                                    <a href="index.html">
-                                        <img src="/xdm/v1/template/vivo/assets/images/flags/1x1/tr.svg" alt="Modern Dashboards" />
-                                    </a>
-                                    <a href="index.html">
-                                        <img src="/xdm/v1/template/vivo/assets/images/flags/1x1/ca.svg" alt="Best Admin Dashboards" />
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown"
-                                aria-haspopup="true">
-                                <span class="user-name d-none d-md-block">Abigale Heaney</span>
-                                <span class="avatar">
-                                    <img src="/xdm/v1/template/vivo/assets/images/user.png" alt="Admin Templates">
-                                    <span class="status online"></span>
-                                </span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
-                                <div class="header-profile-actions">
-                                    <a href="profile.html">Profile</a>
-                                    <a href="account-settings.html">Settings</a>
-                                    <a href="login.html">Logout</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- Header actions end -->
-
-                </div>
+                <th:block th:replace="~{/xdm/v1/infra/include/header :: header}"></th:block>
                 <!-- Header actions ccontainer end -->
 
             </div>
