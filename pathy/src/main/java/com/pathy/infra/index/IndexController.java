@@ -11,7 +11,7 @@ public class IndexController {
 	@Autowired
 	IndexService indexService;
 	
-	@RequestMapping(value="/v1/infra/index/indexXdmView")
+	@RequestMapping(value="/xdm/v1/infra/index/indexXdmView")
 	public String indexXdmView(Model model) {
 		model.addAttribute("countInsMember", indexService.selectOneCountInsMember());
 		model.addAttribute("countCustomer", indexService.selectOneCountCustomer());
