@@ -157,7 +157,7 @@
 												aria-label="Default select example" style="width: 200px;"
 												name="shCheongStatus" id="shCheongStatus">
 													<option value="" th:selected="${vo.shCheongStatus == null}">청구진행상태</option>
-													<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${cdSeq}"></option>
+													<option th:each="list : ${@codeService.selectListCachedCode(6)}" th:value="${list.cdSeq}" th:text="${list.cdName}" th:selected="${list.cdSeq} == ${vo.shCheongStatus}"></option>
 											</select></td>
 											<td><select class="form-select"
 												aria-label="Default select example" style="width: 200px;"
