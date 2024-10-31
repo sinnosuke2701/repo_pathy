@@ -137,76 +137,78 @@
 									<div class="col-sm-12 col-12">
 										<div class="card">
 											<div class="card-body">
-												<div class="table-responsive">
-													<table class="table m-0">
-														<thead>
-															<tr>
-																<th colspan='9'
-																	style="width: 140px; padding-right: 0px;"><span
-																	class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
-																</th>
-																<th style="width: 140px; padding-right: 0px;"><select
-																	class="form-select" aria-label="Default select example"
-																	style="width: 140px; padding-right: 0px;"
-																	id="changeRowNum" name="changeRowNum">
-																		<option value="5"
-																			th:selected="${vo.rowNumToShow eq 5}">5</option>
-																		<option value="10"
-																			th:selected="${vo.rowNumToShow eq 10}">10</option>
-																		<option value="15"
-																			th:selected="${vo.rowNumToShow eq 15}">15</option>
-																		<option value="20"
-																			th:selected="${vo.rowNumToShow eq 20}">20</option>
-																</select></th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td><input type="checkbox"</td>
-																<td style="text-align: center;">#(Seq)</td>
-																<td style="text-align: center;">코드그룹Seq</td>
-																<td style="text-align: center;">이름</td>
-																<td style="text-align: center;">순서</td>
-																<td style="text-align: center;">설명</td>
-																<td style="text-align: center;">사용여부</td>
-																<td style="text-align: center;">삭제여부</td>
-																<td style="text-align: center;">등록일</td>
-																<td style="text-align: center;">수정일</td>
-															</tr>
-															<tr th:if="${#lists.isEmpty(list)}">
-																<td colspan="20" style="text-align: center;">
-																	<p class="fs-5" style="padding-top: 12px;">there
-																		are no data!</p>
-																</td>
-															</tr>
-															<tr th:each="list : ${list}">
-																<td style="text-align: center;"><input
-																	type="checkbox"></td>
-																<td style="text-align: center;" th:text="${list.cdSeq}"></td>
-																<td th:text="${list.codeGroup_cgSeq}"
-																	style="text-align: center;">
-																</td>
-																<td style="text-align: center;"><a
-																	th:href="@{/xdm/v1/infra/code/codeXdmMfom(cdSeq=${list.cdSeq})}"
-																	th:text="${list.cdName}"></a></td>
-																<td style="text-align: center;"
-																	th:text="${list.cdOrder}"></td>
-																<td style="text-align: center;" th:text="${list.cdDesc}"></td>
-																<td style="text-align: center;"
-																	th:if="${list.cdUseNy eq 0}">N</td>
-																<td style="text-align: center;"
-																	th:unless="${list.cdUseNy eq 0}">Y</td>
-																<td style="text-align: center;"
-																	th:if="${list.cdDelNy eq 0}">N</td>
-																<td style="text-align: center;"
-																	th:unless="${list.cdDelNy eq 0}">Y</td>
-																<td style="text-align: center;"
-																	th:text="${#dates.format(list.cdDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
-																<td style="text-align: center;"
-																	th:text="${#dates.format(list.cdDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
-															</tr>
-														</tbody>
-													</table>
+												<div class="list-scroll">
+													<div class="table-responsive">
+														<table class="table m-0">
+															<thead>
+																<tr>
+																	<th colspan='9'
+																		style="width: 140px; padding-right: 0px;"><span
+																		class="fs-5" th:text="'Total:  '+${vo.totalRows}"></span>
+																	</th>
+																	<th style="width: 140px; padding-right: 0px;"><select
+																		class="form-select" aria-label="Default select example"
+																		style="width: 140px; padding-right: 0px;"
+																		id="changeRowNum" name="changeRowNum">
+																			<option value="5"
+																				th:selected="${vo.rowNumToShow eq 5}">5</option>
+																			<option value="10"
+																				th:selected="${vo.rowNumToShow eq 10}">10</option>
+																			<option value="15"
+																				th:selected="${vo.rowNumToShow eq 15}">15</option>
+																			<option value="20"
+																				th:selected="${vo.rowNumToShow eq 20}">20</option>
+																	</select></th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td><input type="checkbox"</td>
+																	<td style="text-align: center;">#(Seq)</td>
+																	<td style="text-align: center;">코드그룹Seq</td>
+																	<td style="text-align: center;">이름</td>
+																	<td style="text-align: center;">순서</td>
+																	<td style="text-align: center;">설명</td>
+																	<td style="text-align: center;">사용여부</td>
+																	<td style="text-align: center;">삭제여부</td>
+																	<td style="text-align: center;">등록일</td>
+																	<td style="text-align: center;">수정일</td>
+																</tr>
+																<tr th:if="${#lists.isEmpty(list)}">
+																	<td colspan="20" style="text-align: center;">
+																		<p class="fs-5" style="padding-top: 12px;">there
+																			are no data!</p>
+																	</td>
+																</tr>
+																<tr th:each="list : ${list}">
+																	<td style="text-align: center;"><input
+																		type="checkbox"></td>
+																	<td style="text-align: center;" th:text="${list.cdSeq}"></td>
+																	<td th:text="${list.codeGroup_cgSeq}"
+																		style="text-align: center;">
+																	</td>
+																	<td style="text-align: center;"><a
+																		th:href="@{/xdm/v1/infra/code/codeXdmMfom(cdSeq=${list.cdSeq})}"
+																		th:text="${list.cdName}"></a></td>
+																	<td style="text-align: center;"
+																		th:text="${list.cdOrder}"></td>
+																	<td style="text-align: center;" th:text="${list.cdDesc}"></td>
+																	<td style="text-align: center;"
+																		th:if="${list.cdUseNy eq 0}">N</td>
+																	<td style="text-align: center;"
+																		th:unless="${list.cdUseNy eq 0}">Y</td>
+																	<td style="text-align: center;"
+																		th:if="${list.cdDelNy eq 0}">N</td>
+																	<td style="text-align: center;"
+																		th:unless="${list.cdDelNy eq 0}">Y</td>
+																	<td style="text-align: center;"
+																		th:text="${#dates.format(list.cdDateTimeReg, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																	<td style="text-align: center;"
+																		th:text="${#dates.format(list.cdDateTimeEdit, 'yyyy-MM-dd HH:mm:ss')}"></td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
 												</div>
 
 												<!--페이지네이션 시작-->
