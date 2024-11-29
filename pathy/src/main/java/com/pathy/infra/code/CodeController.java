@@ -37,7 +37,7 @@ public class CodeController {
 //		    model.addAttribute("vo", codeVo);
 		}
 
-		return "/xdm/v1/infra/code/codeXdmList";
+		return "xdm/v1/infra/code/codeXdmList";
 		
 		
 //		for(CodeDto codedto : codeDto) {
@@ -51,7 +51,7 @@ public class CodeController {
 //			System.out.print(codedto.getIfcdEdit() + " | ");
 //			System.out.println(codedto.getCodegroupIfcgSeq() + " | ");
 //		}	
-//		return "/xdm/v1/infra/code/codeXdmList";	
+//		return "xdm/v1/infra/code/codeXdmList";	
 //			
 		}
 	
@@ -65,7 +65,7 @@ public class CodeController {
 		
 		//불러온 코드그룹 정보를 codeXdmForm에 전달해주어야함
 		model.addAttribute("listCodeGroup", codeService.selectListCodeGroup());
-		return "/xdm/v1/infra/code/codeXdmForm";
+		return "xdm/v1/infra/code/codeXdmForm";
 	}
 	
 	//Inst
@@ -87,7 +87,7 @@ public class CodeController {
 			
 			//불러온 코드그룹 정보를 codeXdmForm.html에 전달함
              model.addAttribute("listCodeGroup", codeService.selectListCodeGroup()); 			
-		return "/xdm/v1/infra/code/codeXdmMfom";
+		return "xdm/v1/infra/code/codeXdmMfom";
 		}
 		
 		//Updt - update

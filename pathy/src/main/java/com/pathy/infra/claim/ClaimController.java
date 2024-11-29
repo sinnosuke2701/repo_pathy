@@ -30,7 +30,7 @@ public class ClaimController {
 		List<ClaimDto> customers = claimService.selectList(claimVo);
 		model.addAttribute("list", customers);
 
-		return "/xdm/v1/infra/claim/claimXdmList";
+		return "xdm/v1/infra/claim/claimXdmList";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/claim/claimXdmForm")
@@ -41,7 +41,7 @@ public class ClaimController {
 		
 		model.addAttribute("claimManage", claimService.selectListClaimManage());
 		
-		return "/xdm/v1/infra/claim/claimXdmForm";
+		return "xdm/v1/infra/claim/claimXdmForm";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/claim/claimXdmInst")
@@ -58,7 +58,7 @@ public class ClaimController {
 		
 		model.addAttribute("customer", claimService.selectListCustomer());
 		
-		return "/xdm/v1/infra/claim/claimXdmMfom";
+		return "xdm/v1/infra/claim/claimXdmMfom";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/claim/claimXdmPdt")

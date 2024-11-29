@@ -25,7 +25,7 @@ public class QnaController {
 		
 		List<QnaDto> qnas = qnaService.selectList(qnaVo);
 		model.addAttribute("list", qnas);
-		return "/xdm/v1/infra/qna/qnaXdmList";
+		return "xdm/v1/infra/qna/qnaXdmList";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/qna/qnaXdmForm")
@@ -35,7 +35,7 @@ public class QnaController {
 		
 		List<QnaDto> insmembers = qnaService.selectListInsMember();
 		model.addAttribute("listInsMember", insmembers);
-		return "/xdm/v1/infra/qna/qnaXdmForm";
+		return "xdm/v1/infra/qna/qnaXdmForm";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/qna/qnaXdmInst")
@@ -53,7 +53,7 @@ public class QnaController {
 		
 		List<QnaDto> customers = qnaService.selectListCustomer();
 		model.addAttribute("listCustomer", customers);
-		return "/xdm/v1/infra/qna/qnaXdmMfom";
+		return "xdm/v1/infra/qna/qnaXdmMfom";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/qna/qnaXdmPdt")

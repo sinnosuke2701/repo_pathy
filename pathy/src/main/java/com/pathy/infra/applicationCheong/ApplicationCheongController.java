@@ -26,7 +26,7 @@ public class ApplicationCheongController {
 		if(applicationCheongVo.getTotalRows() > 0) {
 			model.addAttribute("list", applicationCheongService.selectList(applicationCheongVo));
 		}
-		return "/xdm/v1/infra/applicationCheong/applicationCheongXdmList";
+		return "xdm/v1/infra/applicationCheong/applicationCheongXdmList";
 	}
 	
 	@RequestMapping(value="/xdm/v1/infra/applicationCheong/applicationCheongXdmForm")
@@ -35,7 +35,7 @@ public class ApplicationCheongController {
 		model.addAttribute("listInsProduct", applicationCheongService.selectListInsProduct());
 		model.addAttribute("listCustomer", applicationCheongService.selectListInsCustomer());
 		model.addAttribute("listInsMember", applicationCheongService.selectListInsMember());
-		return "/xdm/v1/infra/applicationCheong/applicationCheongXdmForm";
+		return "xdm/v1/infra/applicationCheong/applicationCheongXdmForm";
 	}
 	
 	@RequestMapping(value="/xdm/v1/infra/applicationCheong/applicationCheongXdmInst")
@@ -50,7 +50,7 @@ public class ApplicationCheongController {
 		model.addAttribute("listInsProduct", applicationCheongService.selectListInsProduct());
 		model.addAttribute("listCustomer", applicationCheongService.selectListInsCustomer());
 		model.addAttribute("listInsMember", applicationCheongService.selectListInsMember());
-		return "/xdm/v1/infra/applicationCheong/applicationCheongXdmMForm";
+		return "xdm/v1/infra/applicationCheong/applicationCheongXdmMForm";
 	}
 	
 //	update - update

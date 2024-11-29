@@ -27,7 +27,7 @@ public class CustomerContractController {
 			List<CustomerContractDto> customercontracts = customerContractService.selectList(customerContractVo);
 			model.addAttribute("list", customercontracts);
 
-			return "/xdm/v1/infra/customercontract/customercontractXdmList";
+			return "xdm/v1/infra/customercontract/customercontractXdmList";
 		}
 
 		@RequestMapping(value = "/xdm/v1/infra/customercontract/customercontractXdmForm")
@@ -40,7 +40,7 @@ public class CustomerContractController {
 			
 			List<CustomerContractDto> customers = customerContractService.selectListCustomer();
 			model.addAttribute("listCustomer", customers);
-			return "/xdm/v1/infra/customercontract/customercontractXdmForm";
+			return "xdm/v1/infra/customercontract/customercontractXdmForm";
 		}
 
 		@RequestMapping(value = "/xdm/v1/infra/customercontract/customercontractXdmInst")
@@ -59,7 +59,7 @@ public class CustomerContractController {
 			List<CustomerContractDto> customers = customerContractService.selectListCustomer();
 			model.addAttribute("listCustomer", customers);
 			
-			return "/xdm/v1/infra/customercontract/customercontractXdmMfom";
+			return "xdm/v1/infra/customercontract/customercontractXdmMfom";
 		}
 
 		@RequestMapping(value = "/xdm/v1/infra/customercontract/customercontractXdmPdt")
