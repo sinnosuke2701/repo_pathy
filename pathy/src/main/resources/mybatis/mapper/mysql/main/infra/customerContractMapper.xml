@@ -81,7 +81,7 @@
 	</select>
 	
 	<insert id = "insert">
-		insert into customerContract(
+		insert into customercontract(
 			cmcDelNy
 			,cmcDateTimeReg
 			,cmcDateTimeEdit
