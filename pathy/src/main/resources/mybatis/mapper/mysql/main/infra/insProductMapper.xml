@@ -11,7 +11,7 @@
 	<!-- include S -->
 	<sql id="selectCommon">
 		FROM
-			insProduct AS a
+			insproduct AS a
 		WHERE 1 = 1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND inspDelNy = #{shDelNy}</if>
 			<choose>
@@ -55,7 +55,7 @@
 	
 	<!-- insert S -->
 	<insert id="insert">
-		INSERT INTO insProduct(
+		INSERT INTO insproduct(
 			inspName
 			,inspBojang
 			,inspJogun
@@ -94,7 +94,7 @@
 			,a.inspDateTimeReg
 			,a.inspDateTimeEdit
 		FROM
-			insProduct AS a
+			insproduct AS a
 		WHERE 1 = 1
 			AND a.inspSeq = #{inspSeq}
 	</select>
@@ -102,7 +102,7 @@
 	
 	<!-- update S -->
 	<update id="update">
-		UPDATE insProduct
+		UPDATE insproduct
 			SET
 				inspName = #{inspName}
 				,inspBojang = #{inspBojang}
@@ -119,7 +119,7 @@
 	
 	<!-- uelete S -->
 	<update id="uelete">
-		UPDATE insProduct
+		UPDATE insproduct
 			SET
 				inspDelNy = 1
 			WHERE 1 = 1
@@ -129,7 +129,7 @@
 	
 	<!-- delete S -->
 	<delete id="delete">
-		DELETE FROM insProduct
+		DELETE FROM insproduct
 			WHERE 1 = 1
 			AND inspSeq = #{inspSeq}
 	</delete>

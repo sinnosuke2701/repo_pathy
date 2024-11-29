@@ -10,7 +10,7 @@
 	
 	<sql id="selectCommon">
 		from
-			insMember a
+			insmember a
 		where 1 = 1
 		<if test="shDelNY != null and !shDelNY.equals('')">And insmDelNY = #{shDelNY}</if>
 		<if test="shUseNY != null and !shUseNY.equals('')">And insmUseNY = #{shUseNY}</if>
@@ -84,13 +84,13 @@
 			,a.insmAdr
 			,a.insmAdrDt
 		from
-			insMember a
+			insmember a
 		where 1 =1
 			and a.insmSeq = #{insmSeq}		
 	</select>
 	
 	<insert id = "insert">
-		insert into insMember(
+		insert into insmember(
 			insmName
 			,insmOrder
 			,insmGender
@@ -136,7 +136,7 @@
 		select
 			a.insmSeq
 			,a.insmName
-		from productCg a
+		from insmember a
 		where 1=1
 			and a.insmDelNy = 0
 		order by
@@ -145,7 +145,7 @@
 		
 		
 	<update id="update">
-		update insMember
+		update insmember
 		set
 			insmName = #{insmName}
 			,insmOrder = #{insmOrder}
@@ -166,13 +166,13 @@
 	</update>
 		
 	<delete id="delete">
-		delete from insMember
+		delete from insmember
 		where 1=1
 			and insmSeq = #{insmSeq}
 	</delete>
 		
 	<update id="uelete">
-		update insMember
+		update insmember
 		set
 			insmDelNY = 1
 		where 1 = 1
@@ -183,7 +183,7 @@
 		select
 			a.insmId
 		from 
-			insMember a
+			insmember a
 		where 1 = 1
 			and insmId = #{insmId}
 	</select>
@@ -198,7 +198,7 @@
 			,a.insmSoNum
 			,a.insmPhone
 		from 
-			insMember a
+			insmember a
 		where 1 = 1
 			and insmId = #{insmId}
 			and insmPw = #{insmPw}

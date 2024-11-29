@@ -10,7 +10,7 @@
 	
 	<sql id="selectCommon">
 		from
-			claimManage b left join insMember a on a.insmSeq = b.insMember_insmSeq
+			claimmanage b left join insmember a on a.insmSeq = b.insMember_insmSeq
 						  left join claim c on c.claimManage_clmSeq = b.clmSeq
 						  left join customer f on f.cmSeq = c.customer_cmSeq
 		where 1 = 1
@@ -74,13 +74,13 @@
 			,b.clmDelNY
 			,b.insMember_insmSeq
 		from
-			claimManage b
+			claimmanage b
 		where 1 =1
 			and b.clmSeq = #{clmSeq}		
 	</select>
 	
 	<insert id = "insert">
-		insert into claimManage(
+		insert into claimmanage(
 			clmName
 			,clmSituation
 			,clmDateTimeReg
@@ -108,7 +108,7 @@
 		select
 			a.insmSeq as insMember_insmSeq
 			,a.insmName
-		from insMember a
+		from insmember a
 		where 1=1
 			and a.insmDelNy = 0
 	</select>
@@ -124,7 +124,7 @@
 		
 		
 	<update id="update">
-		update claimManage
+		update claimmanage
 		set
 			clmName = #{clmName}
 			,clmSituation = #{clmSituation}
@@ -135,13 +135,13 @@
 	</update>
 		
 	<delete id="delete">
-		delete from claimManage
+		delete from claimmanage
 		where 1=1
 			and clmSeq = #{clmSeq}
 	</delete>
 		
 	<update id="uelete">
-		update claimManage
+		update claimmanage
 		set
 			clmDelNY = 1
 		where 1 = 1

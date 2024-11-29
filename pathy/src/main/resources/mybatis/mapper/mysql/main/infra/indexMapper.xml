@@ -15,32 +15,32 @@
 	
 	<select id="selectOneCountInsMember" resultType="Integer">
 		SELECT COUNT(*)
-		FROM insMember
+		FROM insmember
 	</select>
 	
 	<select id="selectOneCountInsProduct" resultType="Integer">
 		SELECT COUNT(*)
-		FROM insProduct
+		FROM insproduct
 	</select>
 	
 	<select id="selectOneCountInsContract" resultType="Integer">
 		SELECT COUNT(*)
-		FROM insContract 
+		FROM inscontract 
 	</select>
 	
 	<select id="selectOneCountCustomerContract" resultType="Integer">
 		SELECT COUNT(*)
-		FROM customerContract 
+		FROM customercontract 
 	</select>
 	
 	<select id="selectOneCountApplicationShin" resultType="Integer">
 		SELECT COUNT(*)
-		FROM applicationShin
+		FROM applicationshin
 	</select>
 	
 	<select id="selectOneCountApplicationCheong" resultType="Integer">
 		SELECT COUNT(*)
-		FROM applicationCheong
+		FROM applicationcheong
 	</select>
 	
 	<select id="selectOneCountClaim" resultType="Integer">
@@ -50,7 +50,7 @@
 	
 	<select id="selectOneCountClaimManage" resultType="Integer">
 		SELECT COUNT(*)
-		FROM claimManage
+		FROM claimmanage
 	</select>
 	
 	<select id="selectOneCountQna" resultType="Integer">

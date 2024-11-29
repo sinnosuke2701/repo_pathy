@@ -10,9 +10,9 @@
 	
 	<sql id="selectCommon">
 		from
-			customerContract a
+			customercontract a
 		left join 
-			insProduct b
+			insproduct b
 		on
 			 a.insProduct_inspSeq = b.inspSeq
 		left join
@@ -75,7 +75,7 @@
 			,a.insProduct_inspSeq
 			,a.customer_cmSeq
 		from
-			customerContract a
+			customercontract a
 		where 1 =1
 			and a.cmcSeq = #{cmcSeq}		
 	</select>
@@ -108,7 +108,7 @@
 			a.cmSeq as customer_cmSeq
 			,a.cmName
 		from
-			Customer a
+			customer a
 		where 1=1
 	</select>
 		
@@ -117,12 +117,12 @@
 			a.inspSeq as insProduct_inspSeq
 			,a.inspName
 		from
-			insProduct a
+			insproduct a
 		where 1=1
 	</select>
 		
 	<update id="update">
-		update customerContract
+		update customercontract
 		set
 			cmcDelNy = #{cmcDelNy}
 			,cmcStatus = #{cmcStatus}
@@ -133,13 +133,13 @@
 	</update>
 		
 	<delete id="delete">
-		delete from customerContract
+		delete from customercontract
 		where 1=1
 			and cmcSeq = #{cmcSeq}
 	</delete>
 		
 	<update id="uelete">
-		update customerContract
+		update customercontract
 		set
 			cmcDelNy = 1
 		where 1 = 1

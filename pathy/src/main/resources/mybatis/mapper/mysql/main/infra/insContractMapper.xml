@@ -25,7 +25,7 @@
 			a.inspSeq
 			,a.inspName
 		FROM
-			insProduct AS a
+			insproduct AS a
 		WHERE 1 = 1
 			AND a.inspDelNy = 0
 		ORDER BY
@@ -35,8 +35,8 @@
 	<!-- include S -->
 	<sql id="selectCommon">
 		FROM
-			insContract AS a
-		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+			inscontract AS a
+		LEFT JOIN insproduct AS b ON b.inspSeq = a.insProduct_inspSeq
         LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
 		WHERE 1 = 1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND inscDelNy = #{shDelNy}</if>
@@ -85,7 +85,7 @@
 	
 	<!-- insert S -->
 	<insert id="insert">
-		INSERT INTO insContract(
+		INSERT INTO inscontract(
 			inscDateStart
 			,inscDateEnd
 			,inscStatus
@@ -126,8 +126,8 @@
 			,b.inspName
 			,c.cmName
 		FROM
-			insContract AS a
-		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+			inscontract AS a
+		LEFT JOIN insproduct AS b ON b.inspSeq = a.insProduct_inspSeq
         LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
 		WHERE 1 = 1
 			AND a.inscSeq = #{inscSeq}
@@ -136,7 +136,7 @@
 	
 	<!-- update S -->
 	<update id="update">
-		UPDATE insContract
+		UPDATE inscontract
 			SET
 				inscDateStart = #{inscDateStart}
 				,inscDateEnd = #{inscDateEnd}
@@ -151,7 +151,7 @@
 	
 	<!-- uelete S -->
 	<update id="uelete">
-		UPDATE insContract
+		UPDATE inscontract
 			SET
 				inscDelNy = 1
 			WHERE 1 = 1
@@ -161,7 +161,7 @@
 	
 	<!-- delete S -->
 	<delete id="delete">
-		DELETE FROM insContract
+		DELETE FROM inscontract
 			WHERE 1 = 1
 			AND inscSeq = #{inscSeq}
 	</delete>

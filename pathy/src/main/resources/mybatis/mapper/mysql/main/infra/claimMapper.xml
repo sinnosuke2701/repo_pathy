@@ -11,7 +11,7 @@
 	<sql id="selectCommon">
 		from
 			claim c left join customer a on a.cmSeq = c.customer_cmSeq
-			left join claimManage b on b.clmSeq = c.claimManage_clmSeq
+			left join claimmanage b on b.clmSeq = c.claimManage_clmSeq
 		where 1 = 1
 		<if test="shDelNY != null and !shDelNY.equals('')">And clDelNY = #{shDelNY}</if>
 		<if test="shUseNY != null and !shUseNY.equals('')">And clUseNY = #{shUseNY}</if>
@@ -110,7 +110,7 @@
 		select
 			b.clmSeq
 			,b.clmSituation
-		from claimManage b
+		from claimmanage b
 		where 1=1
 			and b.clmDelNy = 0
 	</select>

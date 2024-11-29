@@ -11,10 +11,10 @@
 	<!-- include S -->
 	<sql id="selectCommon">
 		FROM
-			applicationShin AS a
-		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+			applicationshin AS a
+		LEFT JOIN insproduct AS b ON b.inspSeq = a.insProduct_inspSeq
 		LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
-		LEFT JOIN insMember AS d ON d.insmSeq = a.insMember_insmSeq
+		LEFT JOIN insmember AS d ON d.insmSeq = a.insMember_insmSeq
 		WHERE 1 = 1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND shinDelNy = #{shDelNy}</if>
 			<choose>
@@ -77,10 +77,10 @@
    			,c.cmName
    			,d.insmName
 		FROM
-			applicationShin AS a
-		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+			applicationshin AS a
+		LEFT JOIN insproduct AS b ON b.inspSeq = a.insProduct_inspSeq
 		LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
-		LEFT JOIN insMember AS d ON d.insmSeq = a.insMember_insmSeq
+		LEFT JOIN insmember AS d ON d.insmSeq = a.insMember_insmSeq
 		WHERE 1 = 1
 			AND a.shinSeq = #{shinSeq}
 	</select>
@@ -88,7 +88,7 @@
 	
 	<!-- insert S -->
 	<insert id="insert">
-		INSERT INTO applicationShin(
+		INSERT INTO applicationshin(
 			shinDate
 			,shinDateGa
 			,shinDelNy
@@ -119,7 +119,7 @@
 			a.inspSeq
 			,a.inspName
 		FROM
-			insProduct AS a
+			insproduct AS a
 		WHERE 1 = 1
 			AND a.inspDelNy = 0
 		ORDER BY
@@ -143,7 +143,7 @@
 			a.insmSeq
 			,a.insmName
 		FROM
-			insMember AS a
+			insmember AS a
 		WHERE 1 = 1
 			AND a.insmDelNy = 0
 		ORDER BY
@@ -152,7 +152,7 @@
 	
 	<!-- update S -->
 	<update id="update">
-		UPDATE applicationShin
+		UPDATE applicationshin
 			SET
 				shinDate = #{shinDate}
 				,shinDateGa = #{shinDateGa}
@@ -169,7 +169,7 @@
 	
 	<!-- uelete S -->
 	<update id="uelete">
-		UPDATE applicationShin
+		UPDATE applicationshin
 			SET
 				shinDelNy = 1
 			WHERE 1 = 1
@@ -179,7 +179,7 @@
 	
 	<!-- delete S -->
 	<delete id="delete">
-		DELETE FROM applicationShin
+		DELETE FROM applicationshin
 			WHERE 1 = 1
 			AND shinSeq = #{shinSeq}
 	</delete>

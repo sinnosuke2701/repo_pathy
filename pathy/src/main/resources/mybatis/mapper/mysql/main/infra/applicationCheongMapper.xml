@@ -11,10 +11,10 @@
 	<!-- include S -->
 	<sql id="selectCommon">
 		FROM
-			applicationCheong AS a
-		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+			applicationcheong AS a
+		LEFT JOIN insproduct AS b ON b.inspSeq = a.insProduct_inspSeq
 		LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
-		LEFT JOIN insMember AS d ON d.insmSeq = a.insMember_insmSeq
+		LEFT JOIN insmember AS d ON d.insmSeq = a.insMember_insmSeq
 		WHERE 1 = 1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND cheongDelNy = #{shDelNy}</if>
 			<if test="shCheongStatus != null and !shCheongStatus.equals('')">AND cheongStatus = #{shCheongStatus}</if>
@@ -80,10 +80,10 @@
    			,c.cmName
    			,d.insmName
 		FROM
-			applicationCheong AS a
-		LEFT JOIN insProduct AS b ON b.inspSeq = a.insProduct_inspSeq
+			applicationcheong AS a
+		LEFT JOIN insproduct AS b ON b.inspSeq = a.insProduct_inspSeq
 		LEFT JOIN customer AS c ON c.cmSeq = a.customer_cmSeq
-		LEFT JOIN insMember AS d ON d.insmSeq = a.insMember_insmSeq
+		LEFT JOIN insmember AS d ON d.insmSeq = a.insMember_insmSeq
 		WHERE 1 = 1
 			AND a.cheongSeq = #{cheongSeq}
 	</select>
@@ -91,7 +91,7 @@
 	
 	<!-- insert S -->
 	<insert id="insert">
-		INSERT INTO applicationCheong(
+		INSERT INTO applicationcheong(
 			cheongPrice
 			,cheongPaper
 			,cheongStatus
@@ -124,7 +124,7 @@
 			a.inspSeq
 			,a.inspName
 		FROM
-			insProduct AS a
+			insproduct AS a
 		WHERE 1 = 1
 			AND a.inspDelNy = 0
 		ORDER BY
@@ -148,7 +148,7 @@
 			a.insmSeq
 			,a.insmName
 		FROM
-			insMember AS a
+			insmember AS a
 		WHERE 1 = 1
 			AND a.insmDelNy = 0
 		ORDER BY
@@ -157,7 +157,7 @@
 	
 	<!-- update S -->
 	<update id="update">
-		UPDATE applicationCheong
+		UPDATE applicationcheong
 			SET
 				cheongPrice = #{cheongPrice}
 				,cheongPaper = #{cheongPaper}
@@ -175,7 +175,7 @@
 	
 	<!-- uelete S -->
 	<update id="uelete">
-		UPDATE applicationCheong
+		UPDATE applicationcheong
 			SET
 				cheongDelNy = 1
 			WHERE 1 = 1
@@ -185,7 +185,7 @@
 	
 	<!-- delete S -->
 	<delete id="delete">
-		DELETE FROM applicationCheong
+		DELETE FROM applicationcheong
 			WHERE 1 = 1
 			AND cheongSeq = #{cheongSeq}
 	</delete>
