@@ -36,6 +36,7 @@ out/
 ### VS Code ###
 .vscode/
 
-### custom ###
+### Custom ###
 application.properties
+application-external.properties
 logs/
