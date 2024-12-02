@@ -26,7 +26,7 @@ public class ApplicationShinController {
 		if(applicationShinVo.getTotalRows() > 0) {
 			model.addAttribute("list", applicationShinService.selectList(applicationShinVo));
 		}
-		return "/xdm/v1/infra/applicationShin/applicationShinXdmList";
+		return "xdm/v1/infra/applicationShin/applicationShinXdmList";
 	}
 	
 	@RequestMapping(value="/xdm/v1/infra/applicationShin/applicationShinXdmForm")
@@ -35,7 +35,7 @@ public class ApplicationShinController {
 		model.addAttribute("listInsProduct", applicationShinService.selectListInsProduct());
 		model.addAttribute("listCustomer", applicationShinService.selectListInsCustomer());
 		model.addAttribute("listInsMember", applicationShinService.selectListInsMember());
-		return "/xdm/v1/infra/applicationShin/applicationShinXdmForm";
+		return "xdm/v1/infra/applicationShin/applicationShinXdmForm";
 	}
 	
 	@RequestMapping(value="/xdm/v1/infra/applicationShin/applicationShinXdmInst")
@@ -50,7 +50,7 @@ public class ApplicationShinController {
 		model.addAttribute("listInsProduct", applicationShinService.selectListInsProduct());
 		model.addAttribute("listCustomer", applicationShinService.selectListInsCustomer());
 		model.addAttribute("listInsMember", applicationShinService.selectListInsMember());
-		return "/xdm/v1/infra/applicationShin/applicationShinXdmMForm";
+		return "xdm/v1/infra/applicationShin/applicationShinXdmMForm";
 	}
 	
 //	update - update

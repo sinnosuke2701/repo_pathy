@@ -23,7 +23,7 @@ public class IndexController {
 		model.addAttribute("countClaim", indexService.selectOneCountClaim());
 		model.addAttribute("countClaimManage", indexService.selectOneCountClaimManage());
 		model.addAttribute("countQna", indexService.selectOneCountQna());
-		return "/xdm/v1/infra/index/indexXdmView";
+		return "xdm/v1/infra/index/indexXdmView";
 	}
 
 }

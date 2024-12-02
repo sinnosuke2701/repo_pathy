@@ -32,7 +32,7 @@ public class InsContractController {
 		}
 		
 //		model.addAttribute("list", insContractService.selectList(insContractVo));
-		return "/xdm/v1/infra/insContract/insContractXdmList";
+		return "xdm/v1/infra/insContract/insContractXdmList";
 	}
 	
 //	insContractXdmForm
@@ -40,7 +40,7 @@ public class InsContractController {
 	public String insContractXdmForm(InsContractVo insContractVo, Model model) {
 		model.addAttribute("listInsProduct", insContractService.selectListInsProduct());
 		model.addAttribute("listCustomer", insContractService.selectListCustomer());
-		return "/xdm/v1/infra/insContract/insContractXdmForm";
+		return "xdm/v1/infra/insContract/insContractXdmForm";
 	}
 	
 //	insContractXdmInst
@@ -58,7 +58,7 @@ public class InsContractController {
 		model.addAttribute("item", insContractService.selectOne(insContractDto));
 		model.addAttribute("listInsProduct", insContractService.selectListInsProduct());
 		model.addAttribute("listCustomer", insContractService.selectListCustomer());
-		return "/xdm/v1/infra/insContract/insContractXdmMForm";
+		return "xdm/v1/infra/insContract/insContractXdmMForm";
 	}
 	
 //	update - update

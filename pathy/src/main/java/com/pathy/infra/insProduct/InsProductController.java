@@ -32,13 +32,13 @@ public class InsProductController {
 		}
 		
 //		model.addAttribute("list", insProductService.selectList(insProductVo));
-		return "/xdm/v1/infra/insProduct/insProductXdmList";
+		return "xdm/v1/infra/insProduct/insProductXdmList";
 	}
 	
 //	insProductXdmForm
 	@RequestMapping(value="/xdm/v1/infra/insProduct/insProductXdmForm")
 	public String insProductXdmForm() {
-		return "/xdm/v1/infra/insProduct/insProductXdmForm";
+		return "xdm/v1/infra/insProduct/insProductXdmForm";
 	}
 	
 //	insProductXdmInst
@@ -54,7 +54,7 @@ public class InsProductController {
 	@RequestMapping(value="/xdm/v1/infra/insProduct/insProductXdmMForm")
 	public String insProductXdmMForm(InsProductDto insProductDto, Model model) {
 		model.addAttribute("item", insProductService.selectOne(insProductDto));
-		return "/xdm/v1/infra/insProduct/insProductXdmMForm";
+		return "xdm/v1/infra/insProduct/insProductXdmMForm";
 	}
 	
 //	update - update

@@ -26,14 +26,14 @@ public class CustomerController {
 		List<CustomerDto> customers = CustomerService.selectList(customerVo);
 		model.addAttribute("list", customers);
 
-		return "/xdm/v1/infra/customer/customerXdmList";
+		return "xdm/v1/infra/customer/customerXdmList";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/customer/customerXdmForm")
 	public String customerXdmForm(Model model) {
 //		List<CustomerDto> customers = CustomerService.selectListCustomer();
 //		model.addAttribute("listCodeGroup", customers);
-		return "/xdm/v1/infra/customer/customerXdmForm";
+		return "xdm/v1/infra/customer/customerXdmForm";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/customer/customerXdmInst")
@@ -47,7 +47,7 @@ public class CustomerController {
 	@RequestMapping(value = "/xdm/v1/infra/customer/customerXdmMfom")
 	public String customerXdmMfom(CustomerDto customerDto, Model model) {
 		model.addAttribute("item", CustomerService.selectOne(customerDto));
-		return "/xdm/v1/infra/customer/customerXdmMfom";
+		return "xdm/v1/infra/customer/customerXdmMfom";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/customer/customerXdmPdt")

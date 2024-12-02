@@ -39,12 +39,12 @@ public class CodeGroupController {
 		}	
 
 				
-		return "/xdm/v1/infra/codegroup/codeGroupXdmList";
+		return "xdm/v1/infra/codegroup/codeGroupXdmList";
 	}
 	
 	@RequestMapping(value="/xdm/v1/infra/codegroup/codeGroupXdmForm")
 	public String codeGroupXdmForm() {
-		return "/xdm/v1/infra/codegroup/codeGroupXdmForm";
+		return "xdm/v1/infra/codegroup/codeGroupXdmForm";
 	}
 	
 	@RequestMapping(value="/xdm/v1/infra/codegroup/codeGroupXdmInst")
@@ -63,7 +63,7 @@ public class CodeGroupController {
       public String codeGroupxdmMfom(CodeGroupDto codeGroupDto,Model model) {
     	  model.addAttribute("item", codeGroupService.selectOne(codeGroupDto));
     	  System.out.println("selectOne 잘 넘어감");
-    	  return "/xdm/v1/infra/codegroup/codeGroupXdmMfom";
+    	  return "xdm/v1/infra/codegroup/codeGroupXdmMfom";
       }
       
       //UPDATE

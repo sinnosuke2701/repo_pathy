@@ -36,13 +36,13 @@ public class InsMemberController {
 		List<InsMemberDto> customers = insMemberService.selectList(insMemberVo);
 		model.addAttribute("list", customers);
 
-		return "/xdm/v1/infra/insmember/insMemberXdmList";
+		return "xdm/v1/infra/insmember/insMemberXdmList";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/insmember/insMemberXdmForm")
 	public String insMemberXdmForm(Model model) {
 //		List<CustomerDto> customers = CustomerService.selectListCustomer();
-		return "/xdm/v1/infra/insmember/insMemberXdmForm";
+		return "xdm/v1/infra/insmember/insMemberXdmForm";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/insmember/insMemberXdmInst")
@@ -54,7 +54,7 @@ public class InsMemberController {
 	@RequestMapping(value = "/xdm/v1/infra/insmember/insMemberXdmMfom")
 	public String insMemberXdmMfom(InsMemberDto insMemberDto, Model model) {
 		model.addAttribute("item", insMemberService.selectOne(insMemberDto));
-		return "/xdm/v1/infra/insmember/insMemberXdmMfom";
+		return "xdm/v1/infra/insmember/insMemberXdmMfom";
 	}
 
 	@RequestMapping(value = "/xdm/v1/infra/insmember/insMemberXdmPdt")
@@ -77,7 +77,7 @@ public class InsMemberController {
 	
 	@RequestMapping(value = "/xdm/v1/infra/index/signinXdmView")
 	public String signinXdmView(InsMemberDto InsMemberDto) {
-		return "/xdm/v1/infra/index/signinXdmView";
+		return "xdm/v1/infra/index/signinXdmView";
 	}
 	
 	@ResponseBody
